@@ -1,0 +1,1311 @@
+[
+  {
+    "word": "cell",
+    "meaning": "the smallest structural and functional unit of life",
+    "tr": "hücre",
+    "exampleSentence": "Every living organism is made up of one or more cells.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "organism",
+    "meaning": "an individual living thing",
+    "tr": "canlı organizma",
+    "exampleSentence": "Humans are complex organisms made of many cells and tissues.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "nucleus",
+    "meaning": "the control center of a cell that contains DNA",
+    "tr": "çekirdek",
+    "exampleSentence": "The nucleus controls the activities of the cell.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "cytoplasm",
+    "meaning": "the jelly-like material that fills a cell",
+    "tr": "sitoplazma",
+    "exampleSentence": "Chemical reactions inside the cell occur in the cytoplasm.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "mitochondrion",
+    "meaning": "an organelle that produces energy for the cell",
+    "tr": "mitokondri",
+    "exampleSentence": "Mitochondria are known as the powerhouses of the cell.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "enzyme",
+    "meaning": "a protein that speeds up chemical reactions in living organisms",
+    "tr": "enzim",
+    "exampleSentence": "Enzymes help the body break down food into smaller molecules.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "gene",
+    "meaning": "a segment of DNA that determines a specific trait",
+    "tr": "gen",
+    "exampleSentence": "Each gene contains instructions for building proteins.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "chromosome",
+    "meaning": "a thread-like structure made of DNA and proteins",
+    "tr": "kromozom",
+    "exampleSentence": "Humans have 23 pairs of chromosomes in each cell.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "DNA",
+    "meaning": "a molecule that carries genetic information",
+    "tr": "deoksiribonükleik asit",
+    "exampleSentence": "DNA determines the genetic traits of all living organisms.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "RNA",
+    "meaning": "a molecule that helps translate genetic information into proteins",
+    "tr": "ribonükleik asit",
+    "exampleSentence": "RNA carries the instructions from DNA to make proteins.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "protein",
+    "meaning": "a molecule made of amino acids essential for body structure and function",
+    "tr": "protein",
+    "exampleSentence": "Proteins are responsible for many cellular functions, including repair.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "amino acid",
+    "meaning": "a molecule that combines to form proteins",
+    "tr": "amino asit",
+    "exampleSentence": "Amino acids are the building blocks of proteins.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "membrane",
+    "meaning": "a thin layer that surrounds or separates cells",
+    "tr": "zar",
+    "exampleSentence": "The cell membrane controls what enters and leaves the cell.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "tissue",
+    "meaning": "a group of similar cells that perform a specific function",
+    "tr": "doku",
+    "exampleSentence": "Muscle tissue helps the body move.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "organ",
+    "meaning": "a structure made up of tissues that performs a specific task",
+    "tr": "organ",
+    "exampleSentence": "The heart is an organ that pumps blood throughout the body.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "system",
+    "meaning": "a group of organs that work together to perform a major function",
+    "tr": "sistem",
+    "exampleSentence": "The digestive system breaks down food into nutrients.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "organism",
+    "meaning": "any individual living entity",
+    "tr": "canlı",
+    "exampleSentence": "Every organism needs energy to survive.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "ecosystem",
+    "meaning": "a community of living organisms interacting with their environment",
+    "tr": "ekosistem",
+    "exampleSentence": "The rainforest ecosystem contains thousands of species.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "population",
+    "meaning": "a group of individuals of the same species living in one area",
+    "tr": "popülasyon",
+    "exampleSentence": "The rabbit population increased rapidly after the spring rains.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "species",
+    "meaning": "a group of similar organisms that can reproduce together",
+    "tr": "tür",
+    "exampleSentence": "Humans belong to the species Homo sapiens.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "evolution",
+    "meaning": "the process by which species change over time",
+    "tr": "evrim",
+    "exampleSentence": "Evolution explains how complex organisms developed from simpler ones.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "mutation",
+    "meaning": "a change in the DNA sequence of an organism",
+    "tr": "mutasyon",
+    "exampleSentence": "A single mutation in a gene can cause a genetic disorder.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "adaptation",
+    "meaning": "a trait that helps an organism survive in its environment",
+    "tr": "uyum",
+    "exampleSentence": "The polar bear’s thick fur is an adaptation to cold climates.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "photosynthesis",
+    "meaning": "the process by which plants convert sunlight into energy",
+    "tr": "fotosentez",
+    "exampleSentence": "Photosynthesis allows plants to produce food from sunlight.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "chlorophyll",
+    "meaning": "a green pigment that captures light energy for photosynthesis",
+    "tr": "klorofil",
+    "exampleSentence": "Chlorophyll gives plants their green color.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "reproduction",
+    "meaning": "the process of producing offspring",
+    "tr": "üreme",
+    "exampleSentence": "Reproduction ensures the survival of a species.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "fertilization",
+    "meaning": "the union of sperm and egg to form a zygote",
+    "tr": "döllenme",
+    "exampleSentence": "Fertilization occurs when sperm meets egg.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "zygote",
+    "meaning": "the cell formed when two gametes unite",
+    "tr": "zigot",
+    "exampleSentence": "The zygote develops into an embryo after fertilization.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "embryo",
+    "meaning": "an early stage of development after fertilization",
+    "tr": "embriyo",
+    "exampleSentence": "The embryo grows and develops inside the mother’s womb.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "fetus",
+    "meaning": "a developing human or animal after the embryo stage",
+    "tr": "fetüs",
+    "exampleSentence": "The fetus continues to grow until birth.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "metabolism",
+    "meaning": "the chemical processes that occur in a living organism to maintain life",
+    "tr": "metabolizma",
+    "exampleSentence": "Exercise can increase your metabolism rate.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "homeostasis",
+    "meaning": "the maintenance of stable internal conditions in an organism",
+    "tr": "homeostazi",
+    "exampleSentence": "The human body maintains homeostasis through temperature control.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "digestion",
+    "meaning": "the process of breaking down food into nutrients",
+    "tr": "sindirim",
+    "exampleSentence": "Digestion starts in the mouth with the help of saliva.",
+    "isCustom": false,
+    "category": "biology"
+  }
+,
+  {
+    "word": "respiration",
+    "meaning": "the process of releasing energy from food",
+    "tr": "solunum",
+    "exampleSentence": "Respiration provides the energy cells need to function.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "circulation",
+    "meaning": "the movement of blood throughout the body",
+    "tr": "dolaşım",
+    "exampleSentence": "The circulation of blood carries oxygen to all body cells.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "excretion",
+    "meaning": "the process of removing waste products from the body",
+    "tr": "boşaltım",
+    "exampleSentence": "Excretion helps maintain chemical balance in the body.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "neuron",
+    "meaning": "a nerve cell that transmits electrical signals in the body",
+    "tr": "nöron",
+    "exampleSentence": "Neurons send messages between the brain and the body.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "synapse",
+    "meaning": "a junction where nerve impulses pass between neurons",
+    "tr": "sinaps",
+    "exampleSentence": "Signals are transmitted between neurons at the synapse.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "hormone",
+    "meaning": "a chemical messenger produced by glands",
+    "tr": "hormon",
+    "exampleSentence": "Insulin is a hormone that regulates blood sugar levels.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "gland",
+    "meaning": "an organ that produces and releases substances such as hormones",
+    "tr": "bez",
+    "exampleSentence": "The thyroid gland controls metabolism through hormone release.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "immune system",
+    "meaning": "the body’s defense against infections and diseases",
+    "tr": "bağışıklık sistemi",
+    "exampleSentence": "The immune system fights off viruses and bacteria.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "antibody",
+    "meaning": "a protein produced by the immune system to fight pathogens",
+    "tr": "antikor",
+    "exampleSentence": "Antibodies bind to viruses to neutralize them.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "pathogen",
+    "meaning": "a microorganism that causes disease",
+    "tr": "patojen",
+    "exampleSentence": "Pathogens such as bacteria and viruses can make people sick.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "bacterium",
+    "meaning": "a single-celled microorganism that can be beneficial or harmful",
+    "tr": "bakteri",
+    "exampleSentence": "Some bacteria help with digestion, while others cause infections.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "virus",
+    "meaning": "a tiny infectious particle that replicates inside living cells",
+    "tr": "virüs",
+    "exampleSentence": "Viruses can mutate quickly and spread between hosts.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "fungus",
+    "meaning": "an organism that absorbs nutrients from organic matter",
+    "tr": "mantar",
+    "exampleSentence": "Mushrooms are a type of fungus found in damp environments.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "algae",
+    "meaning": "simple aquatic plants that perform photosynthesis",
+    "tr": "yosun",
+    "exampleSentence": "Algae produce oxygen through photosynthesis in oceans and lakes.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "protozoa",
+    "meaning": "single-celled organisms that can move and feed like animals",
+    "tr": "protozoa",
+    "exampleSentence": "Protozoa live in water and moist soil environments.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "symbiosis",
+    "meaning": "a close relationship between two different species",
+    "tr": "simbiyoz",
+    "exampleSentence": "Symbiosis can be beneficial, harmful, or neutral for the organisms.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "parasitism",
+    "meaning": "a relationship in which one organism benefits and the other is harmed",
+    "tr": "parazitlik",
+    "exampleSentence": "Ticks live on animals and feed on their blood, an example of parasitism.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "commensalism",
+    "meaning": "a relationship where one organism benefits and the other is unaffected",
+    "tr": "kommensalizm",
+    "exampleSentence": "Barnacles attaching to whales is an example of commensalism.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "predation",
+    "meaning": "the act of one organism hunting and feeding on another",
+    "tr": "avlanma",
+    "exampleSentence": "Predation keeps animal populations balanced in an ecosystem.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "photosystem",
+    "meaning": "a group of proteins and pigments involved in photosynthesis",
+    "tr": "fotosistem",
+    "exampleSentence": "Photosystems absorb light energy for the photosynthesis process.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "chloroplast",
+    "meaning": "an organelle in plant cells where photosynthesis takes place",
+    "tr": "kloroplast",
+    "exampleSentence": "Chloroplasts capture sunlight to produce energy for the plant.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "ecosystem balance",
+    "meaning": "a stable relationship between organisms and their environment",
+    "tr": "ekosistem dengesi",
+    "exampleSentence": "Human activities can disturb ecosystem balance.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "food chain",
+    "meaning": "a sequence showing how energy is transferred from one organism to another",
+    "tr": "besin zinciri",
+    "exampleSentence": "The food chain begins with plants and ends with top predators.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "food web",
+    "meaning": "a complex network of interconnected food chains",
+    "tr": "besin ağı",
+    "exampleSentence": "The food web illustrates how energy flows through an ecosystem.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "producer",
+    "meaning": "an organism that makes its own food through photosynthesis",
+    "tr": "üretici",
+    "exampleSentence": "Green plants are producers in most ecosystems.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "consumer",
+    "meaning": "an organism that eats other organisms for energy",
+    "tr": "tüketici",
+    "exampleSentence": "Lions are consumers that rely on other animals for food.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "decomposer",
+    "meaning": "an organism that breaks down dead matter into nutrients",
+    "tr": "ayrıştırıcı",
+    "exampleSentence": "Fungi and bacteria act as decomposers in nature.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "habitat",
+    "meaning": "the natural environment where an organism lives",
+    "tr": "yaşam alanı",
+    "exampleSentence": "A frog’s habitat is usually near ponds and wetlands.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "niche",
+    "meaning": "an organism’s role in its ecosystem",
+    "tr": "ekolojik niş",
+    "exampleSentence": "Each species occupies a unique niche in the ecosystem.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "biodiversity",
+    "meaning": "the variety of living organisms in an ecosystem",
+    "tr": "biyolojik çeşitlilik",
+    "exampleSentence": "The Amazon rainforest has the highest biodiversity on Earth.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "endangered species",
+    "meaning": "a species at risk of extinction",
+    "tr": "nesli tükenmekte olan tür",
+    "exampleSentence": "Protecting endangered species helps preserve biodiversity.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "extinction",
+    "meaning": "the permanent disappearance of a species",
+    "tr": "soyu tükenme",
+    "exampleSentence": "Many animals face extinction due to habitat loss.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "predator",
+    "meaning": "an animal that hunts and eats other animals",
+    "tr": "yırtıcı",
+    "exampleSentence": "The lion is a predator that hunts in groups called prides.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "prey",
+    "meaning": "an animal that is hunted by another animal",
+    "tr": "av",
+    "exampleSentence": "Rabbits are common prey for foxes.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "camouflage",
+    "meaning": "the ability of an organism to blend into its surroundings",
+    "tr": "kamuflaj",
+    "exampleSentence": "Chameleons use camouflage to hide from predators.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "mimicry",
+    "meaning": "when one species imitates another for protection or advantage",
+    "tr": "taklit",
+    "exampleSentence": "Some butterflies use mimicry to avoid being eaten.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "migration",
+    "meaning": "the movement of organisms from one region to another",
+    "tr": "göç",
+    "exampleSentence": "Birds migrate south during winter to find warmer climates.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "hibernation",
+    "meaning": "a state of inactivity during cold seasons",
+    "tr": "kış uykusu",
+    "exampleSentence": "Bears survive winter through hibernation.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "instinct",
+    "meaning": "a natural behavior an organism is born with",
+    "tr": "içgüdü",
+    "exampleSentence": "Birds build nests by instinct, not by learning.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "behavior",
+    "meaning": "the way an organism acts or responds to its environment",
+    "tr": "davranış",
+    "exampleSentence": "Animal behavior can change depending on the environment.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "stimulus",
+    "meaning": "a change in the environment that causes a response",
+    "tr": "uyaran",
+    "exampleSentence": "Light is a stimulus that triggers plant growth toward the sun.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "response",
+    "meaning": "a reaction to a stimulus",
+    "tr": "tepki",
+    "exampleSentence": "Sweating is a response to high body temperature.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "receptor",
+    "meaning": "a protein that detects and responds to chemical signals",
+    "tr": "reseptör",
+    "exampleSentence": "Receptors on nerve cells detect neurotransmitters released by other neurons.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "neurotransmitter",
+    "meaning": "a chemical that transmits signals between nerve cells",
+    "tr": "sinir ileticisi",
+    "exampleSentence": "Dopamine is a neurotransmitter involved in mood and motivation.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "synaptic cleft",
+    "meaning": "the small gap between two neurons at a synapse",
+    "tr": "sinaptik aralık",
+    "exampleSentence": "Neurotransmitters cross the synaptic cleft to reach the next neuron.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "axon",
+    "meaning": "a long fiber that carries nerve impulses away from the neuron’s body",
+    "tr": "akson",
+    "exampleSentence": "Axons transmit electrical signals to other neurons or muscles.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "dendrite",
+    "meaning": "a branch-like extension of a neuron that receives signals",
+    "tr": "dendrit",
+    "exampleSentence": "Dendrites receive incoming signals from other neurons.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "reflex",
+    "meaning": "an automatic and quick response to a stimulus",
+    "tr": "refleks",
+    "exampleSentence": "Pulling your hand away from a hot surface is a reflex action.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "nervous system",
+    "meaning": "a network of nerves that coordinates body activities",
+    "tr": "sinir sistemi",
+    "exampleSentence": "The nervous system transmits signals between the brain and the body.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "circulatory system",
+    "meaning": "the system responsible for transporting blood and nutrients",
+    "tr": "dolaşım sistemi",
+    "exampleSentence": "The circulatory system delivers oxygen to all parts of the body.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "digestive system",
+    "meaning": "the system that breaks down food into absorbable nutrients",
+    "tr": "sindirim sistemi",
+    "exampleSentence": "The digestive system begins with the mouth and ends with the intestines.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "respiratory system",
+    "meaning": "the system responsible for gas exchange between body and environment",
+    "tr": "solunum sistemi",
+    "exampleSentence": "The respiratory system includes the lungs and airways.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "skeletal system",
+    "meaning": "the body’s framework made up of bones",
+    "tr": "iskelet sistemi",
+    "exampleSentence": "The skeletal system supports and protects internal organs.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "muscular system",
+    "meaning": "the system that enables movement through muscle contraction",
+    "tr": "kas sistemi",
+    "exampleSentence": "The muscular system works with the skeletal system to move the body.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "reproductive system",
+    "meaning": "the system involved in producing offspring",
+    "tr": "üreme sistemi",
+    "exampleSentence": "The reproductive system includes organs that produce gametes.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "endocrine system",
+    "meaning": "a system of glands that secrete hormones",
+    "tr": "endokrin sistemi",
+    "exampleSentence": "The endocrine system helps regulate growth and metabolism.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "excretory system",
+    "meaning": "the system that removes waste products from the body",
+    "tr": "boşaltım sistemi",
+    "exampleSentence": "The kidneys are part of the excretory system.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "integumentary system",
+    "meaning": "the body system that includes skin, hair, and nails",
+    "tr": "deri sistemi",
+    "exampleSentence": "The integumentary system protects the body from external damage.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "lymphatic system",
+    "meaning": "a system that helps fight infection and maintain fluid balance",
+    "tr": "lenfatik sistem",
+    "exampleSentence": "The lymphatic system carries lymph throughout the body.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "bone marrow",
+    "meaning": "soft tissue inside bones where blood cells are produced",
+    "tr": "kemik iliği",
+    "exampleSentence": "Bone marrow produces red and white blood cells.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "tendon",
+    "meaning": "a flexible cord connecting muscle to bone",
+    "tr": "kiriş",
+    "exampleSentence": "Tendons attach muscles to bones and help movement.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "ligament",
+    "meaning": "a band of tissue connecting bones at a joint",
+    "tr": "bağ",
+    "exampleSentence": "Ligaments help stabilize joints and allow movement.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "cartilage",
+    "meaning": "a firm yet flexible tissue that cushions joints",
+    "tr": "kıkırdak",
+    "exampleSentence": "Cartilage prevents bones from rubbing against each other.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "artery",
+    "meaning": "a blood vessel that carries blood away from the heart",
+    "tr": "atardamar",
+    "exampleSentence": "The aorta is the largest artery in the human body.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "vein",
+    "meaning": "a blood vessel that carries blood back to the heart",
+    "tr": "toplardamar",
+    "exampleSentence": "Veins carry deoxygenated blood from the body to the heart.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "capillary",
+    "meaning": "the smallest blood vessel where exchange of substances occurs",
+    "tr": "kılcal damar",
+    "exampleSentence": "Capillaries allow oxygen and nutrients to reach body tissues.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "plasma",
+    "meaning": "the liquid component of blood that carries cells and nutrients",
+    "tr": "plazma",
+    "exampleSentence": "Plasma makes up more than half of total blood volume.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "red blood cell",
+    "meaning": "a cell that carries oxygen using hemoglobin",
+    "tr": "alyuvar",
+    "exampleSentence": "Red blood cells transport oxygen from the lungs to the body.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "white blood cell",
+    "meaning": "a cell that helps the body fight infections",
+    "tr": "akyuvar",
+    "exampleSentence": "White blood cells increase in number during infections.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "platelet",
+    "meaning": "a small blood cell that helps with clotting",
+    "tr": "trombosit",
+    "exampleSentence": "Platelets stop bleeding by forming clots at injury sites.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "antigen",
+    "meaning": "a substance that triggers an immune response",
+    "tr": "antijen",
+    "exampleSentence": "Antigens on pathogens are recognized by antibodies.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "vaccine",
+    "meaning": "a substance used to stimulate the immune system against disease",
+    "tr": "aşı",
+    "exampleSentence": "Vaccines train the immune system to fight specific pathogens.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "antibiotic",
+    "meaning": "a medicine that kills or stops the growth of bacteria",
+    "tr": "antibiyotik",
+    "exampleSentence": "Antibiotics are used to treat bacterial infections.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "infection",
+    "meaning": "the invasion of the body by harmful microorganisms",
+    "tr": "enfeksiyon",
+    "exampleSentence": "A cut can lead to infection if not cleaned properly.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "disease",
+    "meaning": "a disorder that affects normal body function",
+    "tr": "hastalık",
+    "exampleSentence": "Diabetes is a chronic disease that affects blood sugar regulation.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "heredity",
+    "meaning": "the passing of traits from parents to offspring",
+    "tr": "kalıtım",
+    "exampleSentence": "Eye color is determined by heredity.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "dominant gene",
+    "meaning": "a gene that masks the effect of another gene",
+    "tr": "baskın gen",
+    "exampleSentence": "Brown eye color is often caused by a dominant gene.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "recessive gene",
+    "meaning": "a gene whose effect is masked by a dominant gene",
+    "tr": "çekinik gen",
+    "exampleSentence": "Blue eyes are expressed by recessive genes.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "allele",
+    "meaning": "one of two or more forms of a gene",
+    "tr": "alel",
+    "exampleSentence": "Each person inherits one allele for each trait from each parent.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "genotype",
+    "meaning": "the genetic makeup of an organism",
+    "tr": "genotip",
+    "exampleSentence": "The genotype determines the potential traits an organism can express.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "phenotype",
+    "meaning": "the observable traits of an organism",
+    "tr": "fenotip",
+    "exampleSentence": "Eye color is an example of a phenotype influenced by genes.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "punnett square",
+    "meaning": "a chart used to predict genetic variations",
+    "tr": "Punnett karesi",
+    "exampleSentence": "A Punnett square helps visualize possible genotypes of offspring.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "genetic mutation",
+    "meaning": "a change in DNA that can alter traits",
+    "tr": "genetik mutasyon",
+    "exampleSentence": "Genetic mutations can lead to new traits or diseases.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "cloning",
+    "meaning": "the process of creating an identical copy of an organism",
+    "tr": "klonlama",
+    "exampleSentence": "Scientists have cloned animals such as sheep using advanced technology.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "genetic engineering",
+    "meaning": "the direct modification of an organism’s DNA",
+    "tr": "genetik mühendisliği",
+    "exampleSentence": "Genetic engineering allows scientists to modify crops for better yield.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "biotechnology",
+    "meaning": "the use of living systems and organisms to develop products",
+    "tr": "biyoteknoloji",
+    "exampleSentence": "Biotechnology is used in medicine to produce vaccines and hormones.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "stem cell",
+    "meaning": "a cell capable of developing into different types of cells",
+    "tr": "kök hücre",
+    "exampleSentence": "Stem cells can be used to repair damaged tissues.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "tissue culture",
+    "meaning": "the growth of cells or tissues in an artificial environment",
+    "tr": "doku kültürü",
+    "exampleSentence": "Tissue culture is used in plant breeding and genetic research.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "enzyme activity",
+    "meaning": "the rate at which an enzyme catalyzes a reaction",
+    "tr": "enzim aktivitesi",
+    "exampleSentence": "Temperature can affect enzyme activity in biological reactions.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "photosynthetic rate",
+    "meaning": "the speed at which photosynthesis occurs",
+    "tr": "fotosentez hızı",
+    "exampleSentence": "Light intensity influences the photosynthetic rate of plants.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "osmosis",
+    "meaning": "the movement of water through a membrane from low to high solute concentration",
+    "tr": "ozmoz",
+    "exampleSentence": "Osmosis helps regulate water balance in cells.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "diffusion",
+    "meaning": "the passive movement of particles from high to low concentration",
+    "tr": "difüzyon",
+    "exampleSentence": "Oxygen enters cells by diffusion through the cell membrane.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "active transport",
+    "meaning": "the movement of molecules across a membrane using energy",
+    "tr": "aktif taşıma",
+    "exampleSentence": "Active transport requires ATP to move ions across membranes.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "osmosis pressure",
+    "meaning": "the pressure needed to stop osmosis",
+    "tr": "osmotik basınç",
+    "exampleSentence": "Osmotic pressure affects water movement in plant roots.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "chloroplast DNA",
+    "meaning": "the genetic material found in plant chloroplasts",
+    "tr": "kloroplast DNA",
+    "exampleSentence": "Chloroplast DNA is inherited maternally in most plants.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "mitosis",
+    "meaning": "the process by which a cell divides into two identical cells",
+    "tr": "mitoz",
+    "exampleSentence": "Mitosis is essential for growth and tissue repair.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "meiosis",
+    "meaning": "a type of cell division that produces gametes",
+    "tr": "mayoz",
+    "exampleSentence": "Meiosis ensures genetic diversity in offspring.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "cytokinesis",
+    "meaning": "the division of a cell’s cytoplasm after mitosis or meiosis",
+    "tr": "sitokinez",
+    "exampleSentence": "Cytokinesis completes the process of cell division.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "cell cycle",
+    "meaning": "the series of events that lead to cell growth and division",
+    "tr": "hücre döngüsü",
+    "exampleSentence": "The cell cycle consists of interphase and mitotic phase.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "cancer",
+    "meaning": "a disease caused by uncontrolled cell growth",
+    "tr": "kanser",
+    "exampleSentence": "Cancer occurs when cells divide uncontrollably and spread.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "apoptosis",
+    "meaning": "programmed cell death that maintains tissue health",
+    "tr": "apoptoz",
+    "exampleSentence": "Apoptosis removes damaged cells to prevent disease.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "mutation rate",
+    "meaning": "the frequency of changes in an organism’s DNA",
+    "tr": "mutasyon oranı",
+    "exampleSentence": "Radiation can increase the mutation rate in cells.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "ecology",
+    "meaning": "the study of interactions between organisms and their environment",
+    "tr": "ekoloji",
+    "exampleSentence": "Ecology examines how living things adapt to their habitats.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "biosphere",
+    "meaning": "the part of Earth where life exists",
+    "tr": "biyosfer",
+    "exampleSentence": "The biosphere includes land, water, and the atmosphere.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "biome",
+    "meaning": "a large region characterized by specific climate and organisms",
+    "tr": "biyom",
+    "exampleSentence": "The tundra biome is known for its cold climate and short vegetation.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "population density",
+    "meaning": "the number of individuals in a given area",
+    "tr": "nüfus yoğunluğu",
+    "exampleSentence": "High population density can lead to competition for resources.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "carrying capacity",
+    "meaning": "the maximum population size an environment can sustain",
+    "tr": "taşıma kapasitesi",
+    "exampleSentence": "When carrying capacity is reached, population growth slows.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "biotic factor",
+    "meaning": "a living component of an ecosystem",
+    "tr": "biyotik faktör",
+    "exampleSentence": "Plants, animals, and bacteria are all biotic factors.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "abiotic factor",
+    "meaning": "a non-living component of an ecosystem",
+    "tr": "abiyotik faktör",
+    "exampleSentence": "Temperature and sunlight are important abiotic factors.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "photosynthetic organism",
+    "meaning": "an organism that produces energy from sunlight",
+    "tr": "fotosentetik organizma",
+    "exampleSentence": "Algae are photosynthetic organisms that produce oxygen.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "heterotroph",
+    "meaning": "an organism that gets energy by consuming other organisms",
+    "tr": "heterotrof",
+    "exampleSentence": "Animals are heterotrophs because they rely on other organisms for food.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "autotroph",
+    "meaning": "an organism that produces its own food",
+    "tr": "ototrof",
+    "exampleSentence": "Plants are autotrophs that synthesize food through photosynthesis.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "taxonomy",
+    "meaning": "the science of classifying organisms",
+    "tr": "taksonomi",
+    "exampleSentence": "Taxonomy organizes species based on shared characteristics.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "kingdom",
+    "meaning": "the highest taxonomic rank, grouping related organisms",
+    "tr": "alem",
+    "exampleSentence": "Animals and plants belong to different biological kingdoms.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "phylum",
+    "meaning": "a major taxonomic group below kingdom and above class",
+    "tr": "şube",
+    "exampleSentence": "Chordata is the phylum that includes all animals with backbones.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "class",
+    "meaning": "a taxonomic rank below phylum and above order",
+    "tr": "sınıf",
+    "exampleSentence": "Mammalia is the class that includes all mammals.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "order",
+    "meaning": "a rank below class grouping similar families",
+    "tr": "takım",
+    "exampleSentence": "Primates is the order that includes humans and apes.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "family",
+    "meaning": "a taxonomic group containing one or more genera",
+    "tr": "familya",
+    "exampleSentence": "Felidae is the family of cats, including lions and tigers.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "genus",
+    "meaning": "a group of related species",
+    "tr": "cins",
+    "exampleSentence": "The genus Canis includes dogs and wolves.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "species diversity",
+    "meaning": "the variety of species within an ecosystem",
+    "tr": "tür çeşitliliği",
+    "exampleSentence": "Species diversity contributes to the stability of ecosystems.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "biomass",
+    "meaning": "the total mass of living organisms in an area",
+    "tr": "biyokütle",
+    "exampleSentence": "Forests have a large biomass due to dense vegetation.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "gene pool",
+    "meaning": "the total collection of genes in a population",
+    "tr": "gen havuzu",
+    "exampleSentence": "A large gene pool increases a species’ ability to adapt.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "natural selection",
+    "meaning": "the process by which organisms better adapted to their environment survive",
+    "tr": "doğal seçilim",
+    "exampleSentence": "Natural selection drives the evolution of species over generations.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "speciation",
+    "meaning": "the formation of new and distinct species in evolution",
+    "tr": "türleşme",
+    "exampleSentence": "Geographic isolation can lead to speciation in animals.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "extinct species",
+    "meaning": "a species that no longer exists",
+    "tr": "soyu tükenmiş tür",
+    "exampleSentence": "Dinosaurs are extinct species that once dominated the Earth.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "ecosystem restoration",
+    "meaning": "the process of repairing damaged ecosystems",
+    "tr": "ekosistem onarımı",
+    "exampleSentence": "Reforestation plays a key role in ecosystem restoration.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "genetic drift",
+    "meaning": "random changes in gene frequencies in a population",
+    "tr": "genetik sürüklenme",
+    "exampleSentence": "Genetic drift can cause rare traits to disappear over time.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "ecosystem service",
+    "meaning": "the benefits humans gain from ecosystems",
+    "tr": "ekosistem hizmeti",
+    "exampleSentence": "Pollination is an important ecosystem service provided by bees.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "biogeochemical cycle",
+    "meaning": "the movement of elements between living and non-living systems",
+    "tr": "biyogeo-kimyasal döngü",
+    "exampleSentence": "The carbon cycle is a key biogeochemical cycle on Earth.",
+    "isCustom": false,
+    "category": "biology"
+  },
+  {
+    "word": "ecological succession",
+    "meaning": "the gradual process of change in an ecosystem over time",
+    "tr": "ekolojik süksesyon",
+    "exampleSentence": "Ecological succession explains how forests recover after fires.",
+    "isCustom": false,
+    "category": "biology"
+  }
+]
+
+
+
+

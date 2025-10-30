@@ -1,0 +1,1309 @@
+[
+  {
+    "word": "algorithm",
+    "meaning": "a step-by-step procedure for solving a problem or performing a task",
+    "tr": "algoritma",
+    "exampleSentence": "Search engines use complex algorithms to find relevant results.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "artificial intelligence",
+    "meaning": "the simulation of human intelligence by machines",
+    "tr": "yapay zeka",
+    "exampleSentence": "Artificial intelligence can analyze data and make predictions.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "machine learning",
+    "meaning": "a branch of AI that enables systems to learn from data",
+    "tr": "makine öğrenmesi",
+    "exampleSentence": "Machine learning improves with more data and better algorithms.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "neural network",
+    "meaning": "a system modeled after the human brain used for pattern recognition",
+    "tr": "sinir ağı",
+    "exampleSentence": "Neural networks are used in voice and image recognition technologies.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "database",
+    "meaning": "an organized collection of data stored and accessed electronically",
+    "tr": "veritabanı",
+    "exampleSentence": "User information is securely stored in the company’s database.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "cloud computing",
+    "meaning": "the delivery of computing services over the internet",
+    "tr": "bulut bilişim",
+    "exampleSentence": "Cloud computing allows users to store files online instead of locally.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "encryption",
+    "meaning": "the process of converting data into a coded format for security",
+    "tr": "şifreleme",
+    "exampleSentence": "End-to-end encryption protects messages from unauthorized access.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "cybersecurity",
+    "meaning": "the protection of computer systems and networks from attacks",
+    "tr": "siber güvenlik",
+    "exampleSentence": "Cybersecurity experts monitor systems for potential threats.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "firewall",
+    "meaning": "a security system that monitors and controls incoming and outgoing network traffic",
+    "tr": "güvenlik duvarı",
+    "exampleSentence": "The firewall blocks unauthorized access to the network.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "software",
+    "meaning": "programs and operating information used by a computer",
+    "tr": "yazılım",
+    "exampleSentence": "The company develops software for mobile devices.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "hardware",
+    "meaning": "the physical components of a computer system",
+    "tr": "donanım",
+    "exampleSentence": "Hardware includes the CPU, memory, and storage devices.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "processor",
+    "meaning": "the main component that executes instructions in a computer",
+    "tr": "işlemci",
+    "exampleSentence": "A faster processor improves overall system performance.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "motherboard",
+    "meaning": "the main circuit board that connects all computer components",
+    "tr": "anakart",
+    "exampleSentence": "The motherboard distributes power and allows hardware to communicate.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "storage",
+    "meaning": "the component that retains digital data",
+    "tr": "depolama",
+    "exampleSentence": "Solid-state drives offer faster storage than traditional hard drives.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "bandwidth",
+    "meaning": "the maximum amount of data that can be transmitted over a network",
+    "tr": "bant genişliği",
+    "exampleSentence": "High bandwidth allows for faster internet connections.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "router",
+    "meaning": "a device that directs data packets between computer networks",
+    "tr": "yönlendirici",
+    "exampleSentence": "The router connects multiple devices to the internet.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "IP address",
+    "meaning": "a unique number assigned to each device on a network",
+    "tr": "IP adresi",
+    "exampleSentence": "Every computer connected to the internet has an IP address.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "server",
+    "meaning": "a computer that provides data or services to other computers",
+    "tr": "sunucu",
+    "exampleSentence": "The website’s files are stored on a secure server.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "client",
+    "meaning": "a computer or application that accesses a service provided by a server",
+    "tr": "istemci",
+    "exampleSentence": "The client sends a request to the server to retrieve data.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "API",
+    "meaning": "a set of rules that allows different software applications to communicate",
+    "tr": "uygulama programlama arayüzü",
+    "exampleSentence": "Developers use APIs to integrate third-party services into their apps.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "frontend",
+    "meaning": "the part of a website or application users interact with",
+    "tr": "ön yüz",
+    "exampleSentence": "Frontend developers focus on layout, design, and user experience.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "backend",
+    "meaning": "the server-side part of a website or app that handles data and logic",
+    "tr": "arka uç",
+    "exampleSentence": "The backend processes requests and communicates with the database.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "framework",
+    "meaning": "a pre-built set of tools and libraries for software development",
+    "tr": "çatı (framework)",
+    "exampleSentence": "React is a popular JavaScript framework for building user interfaces.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "library",
+    "meaning": "a collection of pre-written code used to simplify programming tasks",
+    "tr": "kütüphane",
+    "exampleSentence": "Developers use libraries to avoid writing repetitive code.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "compiler",
+    "meaning": "a program that translates source code into machine code",
+    "tr": "derleyici",
+    "exampleSentence": "The compiler converts high-level code into executable programs.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "syntax",
+    "meaning": "the set of rules that define the structure of code in a language",
+    "tr": "sözdizimi",
+    "exampleSentence": "Incorrect syntax can cause a program to crash.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "debugging",
+    "meaning": "the process of finding and fixing errors in code",
+    "tr": "hata ayıklama",
+    "exampleSentence": "Debugging is an essential part of the software development process.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "repository",
+    "meaning": "a central place where code and project files are stored",
+    "tr": "depo",
+    "exampleSentence": "The code repository is hosted on GitHub for collaboration.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "version control",
+    "meaning": "a system that tracks changes in code over time",
+    "tr": "sürüm kontrolü",
+    "exampleSentence": "Git is a version control system that helps manage code revisions.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "commit",
+    "meaning": "to save changes in a version control system",
+    "tr": "değişiklik kaydı",
+    "exampleSentence": "Each commit should include a clear message describing the change.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "branch",
+    "meaning": "a copy of the code used for separate development or testing",
+    "tr": "dal",
+    "exampleSentence": "Developers create branches to test new features safely.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "merge",
+    "meaning": "to combine changes from one branch into another",
+    "tr": "birleştirme",
+    "exampleSentence": "After testing, the new feature branch was merged into main.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "deployment",
+    "meaning": "the process of making an application available for use",
+    "tr": "dağıtım",
+    "exampleSentence": "Deployment to production occurs after successful testing.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "testing",
+    "meaning": "the process of checking software for errors and functionality",
+    "tr": "test etme",
+    "exampleSentence": "Automated testing ensures software works correctly after updates.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "container",
+    "meaning": "a lightweight environment for running applications consistently",
+    "tr": "kapsayıcı",
+    "exampleSentence": "Docker containers allow applications to run the same everywhere.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "virtual machine",
+    "meaning": "software that emulates a physical computer system",
+    "tr": "sanal makine",
+    "exampleSentence": "Virtual machines can run multiple operating systems on one device.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "operating system",
+    "meaning": "software that manages computer hardware and software resources",
+    "tr": "işletim sistemi",
+    "exampleSentence": "Linux is an open-source operating system used by developers worldwide.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "kernel",
+    "meaning": "the core component of an operating system that manages hardware and processes",
+    "tr": "çekirdek",
+    "exampleSentence": "The Linux kernel is open-source and constantly updated by developers.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "driver",
+    "meaning": "a program that allows the operating system to communicate with hardware devices",
+    "tr": "sürücü",
+    "exampleSentence": "You must install the latest graphics driver for better performance.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "firmware",
+    "meaning": "software programmed into hardware that controls device functions",
+    "tr": "donanım yazılımı",
+    "exampleSentence": "The router’s firmware needs to be updated to fix security issues.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "network",
+    "meaning": "a group of interconnected computers that share resources",
+    "tr": "ağ",
+    "exampleSentence": "The company network allows employees to access shared files.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "protocol",
+    "meaning": "a set of rules that govern data transmission between devices",
+    "tr": "protokol",
+    "exampleSentence": "HTTP is the main protocol used for transferring web pages.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "latency",
+    "meaning": "the delay before data is transferred over a network",
+    "tr": "gecikme süresi",
+    "exampleSentence": "Low latency is important for online gaming and video calls.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "throughput",
+    "meaning": "the amount of data transferred over a network in a given time",
+    "tr": "veri aktarım hızı",
+    "exampleSentence": "The network upgrade increased throughput by 40 percent.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "IP packet",
+    "meaning": "a small block of data sent over the internet",
+    "tr": "IP paketi",
+    "exampleSentence": "Each IP packet contains the source and destination addresses.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "DNS",
+    "meaning": "a system that translates domain names into IP addresses",
+    "tr": "alan adı sistemi",
+    "exampleSentence": "DNS servers make it possible to visit websites using names instead of numbers.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "domain",
+    "meaning": "a unique name that identifies a website on the internet",
+    "tr": "alan adı",
+    "exampleSentence": "The domain name must be registered before launching a website.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "hosting",
+    "meaning": "a service that stores and serves website files to users",
+    "tr": "barındırma",
+    "exampleSentence": "The company offers fast and reliable website hosting services.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "URL",
+    "meaning": "the address of a resource on the internet",
+    "tr": "internet adresi",
+    "exampleSentence": "You can access the report directly using its URL.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "HTML",
+    "meaning": "a markup language used to structure content on the web",
+    "tr": "hiper metin işaretleme dili",
+    "exampleSentence": "HTML defines the basic layout of every web page.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "CSS",
+    "meaning": "a style sheet language used to design the appearance of web pages",
+    "tr": "kaskat stil sayfaları",
+    "exampleSentence": "CSS controls the color, font, and layout of web elements.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "JavaScript",
+    "meaning": "a programming language used to make web pages interactive",
+    "tr": "JavaScript programlama dili",
+    "exampleSentence": "JavaScript adds dynamic behavior to modern websites.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "frontend framework",
+    "meaning": "a toolkit for building responsive user interfaces",
+    "tr": "ön yüz çatısı",
+    "exampleSentence": "Frameworks like React or Vue simplify frontend development.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "API endpoint",
+    "meaning": "a specific URL where an API receives requests",
+    "tr": "API uç noktası",
+    "exampleSentence": "Developers use endpoints to send data between client and server.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "JSON",
+    "meaning": "a lightweight data format used for data exchange",
+    "tr": "veri değişim formatı (JSON)",
+    "exampleSentence": "APIs often return data in JSON format for easy parsing.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "token",
+    "meaning": "a digital key used to verify user identity or permissions",
+    "tr": "jeton / belirteç",
+    "exampleSentence": "Access tokens are used in secure API communication.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "authentication",
+    "meaning": "the process of verifying a user’s identity",
+    "tr": "kimlik doğrulama",
+    "exampleSentence": "Two-factor authentication increases account security.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "authorization",
+    "meaning": "the process of determining a user’s access rights",
+    "tr": "yetkilendirme",
+    "exampleSentence": "Authorization ensures users can only access permitted resources.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "SSL certificate",
+    "meaning": "a digital certificate that secures website communication",
+    "tr": "SSL sertifikası",
+    "exampleSentence": "Websites with SSL certificates use HTTPS instead of HTTP.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "cookie",
+    "meaning": "a small file stored on a user’s device to remember preferences",
+    "tr": "çerez",
+    "exampleSentence": "Websites use cookies to keep users logged in.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "cache",
+    "meaning": "temporary storage that speeds up data access",
+    "tr": "önbellek",
+    "exampleSentence": "Clearing the cache can fix display problems on websites.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "data mining",
+    "meaning": "the process of analyzing large datasets to find patterns",
+    "tr": "veri madenciliği",
+    "exampleSentence": "Companies use data mining to understand customer behavior.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "big data",
+    "meaning": "extremely large datasets that require advanced analysis tools",
+    "tr": "büyük veri",
+    "exampleSentence": "Big data analytics helps businesses make smarter decisions.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "data warehouse",
+    "meaning": "a system used to store and analyze large volumes of data",
+    "tr": "veri ambarı",
+    "exampleSentence": "The data warehouse combines information from multiple sources.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "blockchain",
+    "meaning": "a decentralized ledger of digital transactions",
+    "tr": "blok zinciri",
+    "exampleSentence": "Blockchain technology secures cryptocurrency transactions.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "cryptocurrency",
+    "meaning": "a digital currency secured by cryptography",
+    "tr": "kripto para",
+    "exampleSentence": "Bitcoin is the most well-known cryptocurrency.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "NFT",
+    "meaning": "a unique digital asset stored on a blockchain",
+    "tr": "benzersiz dijital varlık (NFT)",
+    "exampleSentence": "Artists sell their work as NFTs on digital marketplaces.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "IoT",
+    "meaning": "a network of physical devices connected to the internet",
+    "tr": "nesnelerin interneti",
+    "exampleSentence": "IoT devices can monitor and control home appliances remotely.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "smart device",
+    "meaning": "an electronic device connected to the internet that performs automated tasks",
+    "tr": "akıllı cihaz",
+    "exampleSentence": "Smart devices like thermostats can adjust temperature automatically.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "sensor",
+    "meaning": "a device that detects and responds to physical input like light or heat",
+    "tr": "sensör",
+    "exampleSentence": "Motion sensors activate lights when movement is detected.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "automation",
+    "meaning": "the use of technology to perform tasks without human input",
+    "tr": "otomasyon",
+    "exampleSentence": "Automation increases efficiency in manufacturing processes.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "robotics",
+    "meaning": "the design, construction, and use of robots",
+    "tr": "robotik",
+    "exampleSentence": "Robotics is transforming industries such as healthcare and logistics.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "drone",
+    "meaning": "an unmanned aerial vehicle operated remotely",
+    "tr": "insansız hava aracı (drone)",
+    "exampleSentence": "Drones are used for aerial photography and delivery services.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "3D printing",
+    "meaning": "a process of creating three-dimensional objects from digital models",
+    "tr": "üç boyutlu yazıcı",
+    "exampleSentence": "3D printing allows rapid prototyping of product designs.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "augmented reality",
+    "meaning": "technology that overlays digital information on the real world",
+    "tr": "artırılmış gerçeklik",
+    "exampleSentence": "Augmented reality apps add virtual objects to live camera views.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "virtual reality",
+    "meaning": "a simulated environment created by computer technology",
+    "tr": "sanal gerçeklik",
+    "exampleSentence": "Virtual reality provides immersive gaming and training experiences.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "wearable technology",
+    "meaning": "devices worn on the body that collect and transmit data",
+    "tr": "giyilebilir teknoloji",
+    "exampleSentence": "Wearable technology tracks heart rate and physical activity.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "smartwatch",
+    "meaning": "a wearable device that offers features beyond timekeeping",
+    "tr": "akıllı saat",
+    "exampleSentence": "The smartwatch notifies users about messages and health stats.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "biometric",
+    "meaning": "technology that identifies individuals based on physical traits",
+    "tr": "biyometrik",
+    "exampleSentence": "Biometric systems use fingerprints or facial recognition for access.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "cloud storage",
+    "meaning": "a service that allows users to save data online",
+    "tr": "bulut depolama",
+    "exampleSentence": "Cloud storage services let you access files from any device.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "SaaS",
+    "meaning": "software as a service, applications delivered over the internet",
+    "tr": "hizmet olarak yazılım",
+    "exampleSentence": "Google Docs is a popular SaaS application for document editing.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "PaaS",
+    "meaning": "platform as a service, providing tools for application development online",
+    "tr": "hizmet olarak platform",
+    "exampleSentence": "Developers use PaaS platforms like Heroku for app deployment.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "IaaS",
+    "meaning": "infrastructure as a service, offering virtualized computing resources",
+    "tr": "hizmet olarak altyapı",
+    "exampleSentence": "AWS provides IaaS solutions for scalable computing power.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "virtualization",
+    "meaning": "the creation of virtual versions of hardware or networks",
+    "tr": "sanallaştırma",
+    "exampleSentence": "Virtualization allows multiple operating systems on one machine.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "containerization",
+    "meaning": "packaging software with dependencies into isolated units",
+    "tr": "kapsülleştirme",
+    "exampleSentence": "Containerization makes applications portable across environments.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "edge computing",
+    "meaning": "processing data near its source instead of in a data center",
+    "tr": "uç bilişim",
+    "exampleSentence": "Edge computing reduces latency in IoT systems.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "microservice",
+    "meaning": "a small, independent service that performs a specific function",
+    "tr": "mikro servis",
+    "exampleSentence": "Microservices make large applications easier to scale and maintain.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "load balancing",
+    "meaning": "distributing workloads across multiple servers for efficiency",
+    "tr": "yük dengeleme",
+    "exampleSentence": "Load balancing prevents servers from becoming overloaded.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "DNS server",
+    "meaning": "a server that translates domain names into IP addresses",
+    "tr": "DNS sunucusu",
+    "exampleSentence": "DNS servers ensure users can connect to websites quickly.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "cloud infrastructure",
+    "meaning": "hardware and software components that enable cloud services",
+    "tr": "bulut altyapısı",
+    "exampleSentence": "Companies invest in cloud infrastructure to scale faster.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "encryption key",
+    "meaning": "a piece of data used to encrypt or decrypt information",
+    "tr": "şifreleme anahtarı",
+    "exampleSentence": "Encryption keys ensure data confidentiality in communication.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "cyber attack",
+    "meaning": "an attempt to damage or steal data from a computer system",
+    "tr": "siber saldırı",
+    "exampleSentence": "Phishing is a common type of cyber attack.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "malware",
+    "meaning": "software designed to harm computers or steal data",
+    "tr": "zararlı yazılım",
+    "exampleSentence": "Antivirus software protects against malware infections.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "ransomware",
+    "meaning": "malware that locks files until a ransom is paid",
+    "tr": "fidye yazılımı",
+    "exampleSentence": "Ransomware attacks can paralyze entire companies.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "phishing",
+    "meaning": "a fraudulent attempt to steal sensitive information via email",
+    "tr": "oltalama saldırısı",
+    "exampleSentence": "Phishing emails often imitate legitimate companies.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "VPN",
+    "meaning": "a virtual private network that secures internet connections",
+    "tr": "sanal özel ağ",
+    "exampleSentence": "VPNs encrypt traffic to protect user privacy online.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "bandwidth throttling",
+    "meaning": "intentional slowing of internet speed by a provider",
+    "tr": "bant genişliği kısıtlaması",
+    "exampleSentence": "ISPs sometimes use bandwidth throttling during peak hours.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "HTTP request",
+    "meaning": "a message sent by a client to a server to retrieve data",
+    "tr": "HTTP isteği",
+    "exampleSentence": "Every web page load starts with an HTTP request.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "cache memory",
+    "meaning": "high-speed storage that provides quick data access to the CPU",
+    "tr": "önbellek belleği",
+    "exampleSentence": "Cache memory improves processor performance.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "data breach",
+    "meaning": "unauthorized access to confidential information",
+    "tr": "veri ihlali",
+    "exampleSentence": "A major data breach exposed millions of user accounts.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "cloud backup",
+    "meaning": "storing copies of data on remote servers for protection",
+    "tr": "bulut yedekleme",
+    "exampleSentence": "Cloud backup ensures files are safe even if devices fail.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "botnet",
+    "meaning": "a network of infected computers controlled remotely by hackers",
+    "tr": "bot ağı",
+    "exampleSentence": "Botnets are used to launch large-scale cyber attacks.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "open source",
+    "meaning": "software whose source code is freely available for modification",
+    "tr": "açık kaynak",
+    "exampleSentence": "Linux is an open-source operating system used worldwide.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "closed source",
+    "meaning": "software whose source code is not publicly available",
+    "tr": "kapalı kaynak",
+    "exampleSentence": "Most commercial software is closed source for security reasons.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "compiler error",
+    "meaning": "an error that prevents a program from compiling successfully",
+    "tr": "derleme hatası",
+    "exampleSentence": "A missing semicolon caused a compiler error.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "runtime error",
+    "meaning": "an error that occurs while a program is executing",
+    "tr": "çalışma zamanı hatası",
+    "exampleSentence": "Runtime errors often result from invalid user input.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "exception handling",
+    "meaning": "code that manages unexpected events or errors",
+    "tr": "istisna yönetimi",
+    "exampleSentence": "Proper exception handling prevents applications from crashing.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "algorithmic complexity",
+    "meaning": "a measure of how efficient an algorithm is",
+    "tr": "algoritmik karmaşıklık",
+    "exampleSentence": "Optimizing algorithmic complexity reduces program runtime.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "recursion",
+    "meaning": "a function calling itself to solve smaller instances of a problem",
+    "tr": "özyineleme",
+    "exampleSentence": "Recursion simplifies problems like traversing tree structures.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "iteration",
+    "meaning": "repeating a process or loop until a condition is met",
+    "tr": "yineleme",
+    "exampleSentence": "Iteration is used to process lists of data in programming.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "syntax error",
+    "meaning": "a coding mistake that violates the grammar of a programming language",
+    "tr": "sözdizimi hatası",
+    "exampleSentence": "A syntax error prevented the program from running.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "variable",
+    "meaning": "a storage location identified by a name that holds data",
+    "tr": "değişken",
+    "exampleSentence": "Variables store data values that can change during execution.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "function",
+    "meaning": "a reusable block of code that performs a specific task",
+    "tr": "fonksiyon",
+    "exampleSentence": "Functions help organize and simplify code structure.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "class",
+    "meaning": "a blueprint for creating objects in object-oriented programming",
+    "tr": "sınıf (OOP)",
+    "exampleSentence": "Each class defines properties and behaviors for its objects.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "object",
+    "meaning": "an instance of a class in object-oriented programming",
+    "tr": "nesne",
+    "exampleSentence": "Objects represent real-world entities like users or products.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "inheritance",
+    "meaning": "the mechanism by which one class can use properties of another",
+    "tr": "kalıtım",
+    "exampleSentence": "Inheritance allows code reuse in object-oriented design.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "polymorphism",
+    "meaning": "the ability of different objects to respond to the same method in unique ways",
+    "tr": "çok biçimlilik",
+    "exampleSentence": "Polymorphism improves flexibility in object-oriented programming.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "encapsulation",
+    "meaning": "the bundling of data and methods within a single unit",
+    "tr": "kapsülleme",
+    "exampleSentence": "Encapsulation hides internal details and protects data integrity.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "abstraction",
+    "meaning": "the concept of hiding complex details and showing only essentials",
+    "tr": "soyutlama",
+    "exampleSentence": "Abstraction allows developers to manage complexity in large systems.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "interface",
+    "meaning": "a shared boundary where two systems communicate",
+    "tr": "arayüz",
+    "exampleSentence": "The user interface determines how people interact with software.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "framework library",
+    "meaning": "a structured set of code providing functionality for development",
+    "tr": "çatı kütüphanesi",
+    "exampleSentence": "Developers use framework libraries to speed up project development.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "IDE",
+    "meaning": "integrated development environment, a tool for writing and testing code",
+    "tr": "entegre geliştirme ortamı",
+    "exampleSentence": "Visual Studio Code is a lightweight IDE used by many developers.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "debugger",
+    "meaning": "a tool used to test and fix code during development",
+    "tr": "hata ayıklayıcı",
+    "exampleSentence": "The debugger helped identify the function causing memory leaks.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "build",
+    "meaning": "the process of compiling source code into an executable form",
+    "tr": "derleme",
+    "exampleSentence": "The build failed due to missing dependencies.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "pipeline",
+    "meaning": "a sequence of automated processes for software delivery",
+    "tr": "boru hattı",
+    "exampleSentence": "The CI/CD pipeline automates testing and deployment.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "continuous integration",
+    "meaning": "the practice of frequently merging code changes into a shared repository",
+    "tr": "sürekli entegrasyon",
+    "exampleSentence": "Continuous integration detects conflicts before deployment.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "continuous deployment",
+    "meaning": "automatically releasing software after successful testing",
+    "tr": "sürekli dağıtım",
+    "exampleSentence": "Continuous deployment enables faster updates to production.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "DevOps",
+    "meaning": "a set of practices combining software development and IT operations",
+    "tr": "DevOps",
+    "exampleSentence": "DevOps improves collaboration between development and operations teams.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "scrum",
+    "meaning": "an agile framework for managing complex projects",
+    "tr": "scrum (çevik proje yöntemi)",
+    "exampleSentence": "Scrum teams work in short cycles called sprints.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "sprint",
+    "meaning": "a short, time-boxed period to complete specific project tasks",
+    "tr": "sprint (geliştirme döngüsü)",
+    "exampleSentence": "Each sprint focuses on delivering a small, functional product increment.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "agile",
+    "meaning": "a methodology focused on iterative development and flexibility",
+    "tr": "çevik metodoloji",
+    "exampleSentence": "Agile development emphasizes collaboration and quick adaptation.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "waterfall model",
+    "meaning": "a linear software development approach with defined stages",
+    "tr": "şelale modeli",
+    "exampleSentence": "The waterfall model was common before agile methodologies gained popularity.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "repository cloning",
+    "meaning": "copying a remote code repository to a local machine",
+    "tr": "depo klonlama",
+    "exampleSentence": "You can clone a repository using the Git clone command.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "API documentation",
+    "meaning": "a guide explaining how to use an application programming interface",
+    "tr": "API dokümantasyonu",
+    "exampleSentence": "Good API documentation improves developer experience.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "open API",
+    "meaning": "a publicly available API that allows external developers to connect",
+    "tr": "açık API",
+    "exampleSentence": "Open APIs enable third-party developers to build on existing platforms.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "SDK",
+    "meaning": "software development kit containing tools for building applications",
+    "tr": "yazılım geliştirme kiti",
+    "exampleSentence": "The Android SDK provides libraries for mobile app development.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "binary code",
+    "meaning": "a representation of data using ones and zeros",
+    "tr": "ikili kod",
+    "exampleSentence": "All computer data is ultimately stored as binary code.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "bit",
+    "meaning": "the smallest unit of data in computing",
+    "tr": "bit",
+    "exampleSentence": "A bit represents a single value of 0 or 1.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "byte",
+    "meaning": "a group of eight bits",
+    "tr": "bayt",
+    "exampleSentence": "A kilobyte contains 1024 bytes of data.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "cache server",
+    "meaning": "a server that stores data temporarily for quick access",
+    "tr": "önbellek sunucusu",
+    "exampleSentence": "Cache servers speed up website loading times.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "virtual memory",
+    "meaning": "memory that uses part of the hard drive to simulate RAM",
+    "tr": "sanal bellek",
+    "exampleSentence": "Virtual memory prevents crashes when physical RAM is full.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "encryption algorithm",
+    "meaning": "a method for transforming readable data into unreadable code",
+    "tr": "şifreleme algoritması",
+    "exampleSentence": "AES is one of the most secure encryption algorithms used today.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "hash function",
+    "meaning": "a function that converts data into a fixed-size hash value",
+    "tr": "karma fonksiyonu",
+    "exampleSentence": "Hash functions are crucial for password storage and blockchain security.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "latency optimization",
+    "meaning": "techniques used to minimize delay in data transmission",
+    "tr": "gecikme optimizasyonu",
+    "exampleSentence": "CDNs help with latency optimization for faster content delivery.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "content delivery network",
+    "meaning": "a network that distributes content to users based on their location",
+    "tr": "içerik dağıtım ağı",
+    "exampleSentence": "A CDN reduces server load and improves website performance.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "data compression",
+    "meaning": "reducing the size of data files without losing quality",
+    "tr": "veri sıkıştırma",
+    "exampleSentence": "Data compression saves storage space and bandwidth.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "data encryption",
+    "meaning": "protecting digital information by converting it into a secure code",
+    "tr": "veri şifreleme",
+    "exampleSentence": "Data encryption prevents unauthorized access to sensitive information.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "cyber ethics",
+    "meaning": "moral principles that govern online behavior",
+    "tr": "siber etik",
+    "exampleSentence": "Cyber ethics involves respecting others’ privacy and data rights.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "user experience",
+    "meaning": "the overall experience a person has using a product or service",
+    "tr": "kullanıcı deneyimi",
+    "exampleSentence": "Good user experience keeps people engaged with an app.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "responsive design",
+    "meaning": "a design approach that adapts to different screen sizes",
+    "tr": "duyarlı tasarım",
+    "exampleSentence": "Responsive design ensures websites look good on all devices.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "usability testing",
+    "meaning": "evaluating how easy and intuitive a product is to use",
+    "tr": "kullanılabilirlik testi",
+    "exampleSentence": "Usability testing identifies problems before software release.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "data visualization",
+    "meaning": "the graphical representation of data to make it easier to understand",
+    "tr": "veri görselleştirme",
+    "exampleSentence": "Data visualization helps identify patterns and trends quickly.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "artificial neural network",
+    "meaning": "a computing system inspired by biological neurons",
+    "tr": "yapay sinir ağı",
+    "exampleSentence": "Artificial neural networks are key to deep learning applications.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "deep learning",
+    "meaning": "a subset of machine learning using multiple neural network layers",
+    "tr": "derin öğrenme",
+    "exampleSentence": "Deep learning powers image and speech recognition systems.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "quantum computing",
+    "meaning": "a new form of computing based on quantum mechanics",
+    "tr": "kuantum bilişim",
+    "exampleSentence": "Quantum computing can solve problems beyond classical limits.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "nanotechnology",
+    "meaning": "the manipulation of matter on an atomic or molecular scale",
+    "tr": "nanoteknoloji",
+    "exampleSentence": "Nanotechnology is used in medicine, electronics, and materials science.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "supercomputer",
+    "meaning": "an extremely powerful computer used for complex calculations",
+    "tr": "süper bilgisayar",
+    "exampleSentence": "Supercomputers perform simulations for scientific research.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "bioinformatics",
+    "meaning": "the use of computer technology to analyze biological data",
+    "tr": "biyoenformatik",
+    "exampleSentence": "Bioinformatics combines biology, statistics, and computer science.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "digital twin",
+    "meaning": "a virtual model that represents a physical object or process",
+    "tr": "dijital ikiz",
+    "exampleSentence": "Digital twins are used to monitor and optimize real-world systems.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "metaverse",
+    "meaning": "a virtual shared space combining digital and physical realities",
+    "tr": "metaverse",
+    "exampleSentence": "The metaverse allows users to interact in immersive 3D environments.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "cloud native",
+    "meaning": "applications designed to run efficiently in cloud environments",
+    "tr": "bulut yerel",
+    "exampleSentence": "Cloud-native apps scale automatically based on demand.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "API gateway",
+    "meaning": "a server that manages and routes API requests",
+    "tr": "API geçidi",
+    "exampleSentence": "The API gateway handles authentication and traffic routing.",
+    "isCustom": false,
+    "category": "technology"
+  },
+  {
+    "word": "zero-day vulnerability",
+    "meaning": "a software flaw unknown to the vendor and unpatched",
+    "tr": "sıfır gün açığı",
+    "exampleSentence": "Zero-day vulnerabilities are exploited before developers can fix them.",
+    "isCustom": false,
+    "category": "technology"
+  }
+]
+
+
+

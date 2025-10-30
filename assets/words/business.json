@@ -1,0 +1,1558 @@
+[
+  {
+    "word": "business",
+    "meaning": "the activity of making, buying, or selling goods or services for profit",
+    "tr": "iş, ticaret",
+    "exampleSentence": "Starting a business requires planning and investment.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "entrepreneur",
+    "meaning": "a person who starts and runs a new business",
+    "tr": "girişimci",
+    "exampleSentence": "The entrepreneur launched a successful tech startup.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "startup",
+    "meaning": "a newly established business, often in the technology sector",
+    "tr": "yeni girişim",
+    "exampleSentence": "The startup attracted investors from Silicon Valley.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "company",
+    "meaning": "an organization that sells goods or services",
+    "tr": "şirket",
+    "exampleSentence": "The company expanded its operations to Asia.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "corporation",
+    "meaning": "a large business that is legally separate from its owners",
+    "tr": "anonim şirket",
+    "exampleSentence": "The corporation employs over ten thousand people worldwide.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "management",
+    "meaning": "the process of organizing and controlling a business or team",
+    "tr": "yönetim",
+    "exampleSentence": "Good management leads to increased productivity.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "executive",
+    "meaning": "a person in a high position who makes decisions for a company",
+    "tr": "yönetici",
+    "exampleSentence": "The executive approved the company’s new strategy.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "employee",
+    "meaning": "a person who works for a company or organization",
+    "tr": "çalışan",
+    "exampleSentence": "Employees are required to follow safety rules.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "employer",
+    "meaning": "a person or organization that hires workers",
+    "tr": "işveren",
+    "exampleSentence": "The employer must provide a safe workplace.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "department",
+    "meaning": "a division of a company that handles a specific function",
+    "tr": "departman",
+    "exampleSentence": "The marketing department is launching a new campaign.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "marketing",
+    "meaning": "the process of promoting and selling products or services",
+    "tr": "pazarlama",
+    "exampleSentence": "Effective marketing increases brand awareness.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "advertising",
+    "meaning": "the activity of attracting public attention to products or services",
+    "tr": "reklamcılık",
+    "exampleSentence": "Online advertising targets specific audiences.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "brand",
+    "meaning": "a name, term, or symbol that identifies a company’s product",
+    "tr": "marka",
+    "exampleSentence": "The brand became famous for its quality and innovation.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "logo",
+    "meaning": "a graphic design that represents a company or product",
+    "tr": "logo",
+    "exampleSentence": "The company redesigned its logo to look more modern.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "customer",
+    "meaning": "a person who buys goods or services from a business",
+    "tr": "müşteri",
+    "exampleSentence": "Customer satisfaction is our top priority.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "client",
+    "meaning": "a person or company that receives professional services",
+    "tr": "müşteri, danışan",
+    "exampleSentence": "The firm has many international clients.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "supply",
+    "meaning": "the amount of goods available to be sold or used",
+    "tr": "arz",
+    "exampleSentence": "The supply of raw materials affects production costs.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "demand",
+    "meaning": "the desire of consumers to buy goods or services",
+    "tr": "talep",
+    "exampleSentence": "Demand for electric cars is increasing rapidly.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "market",
+    "meaning": "a place or system where goods and services are exchanged",
+    "tr": "pazar",
+    "exampleSentence": "The company entered the Asian market last year.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "competition",
+    "meaning": "the rivalry between businesses selling similar products",
+    "tr": "rekabet",
+    "exampleSentence": "Strong competition pushes companies to innovate.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "profit",
+    "meaning": "the money a company earns after expenses are subtracted",
+    "tr": "kâr",
+    "exampleSentence": "The company’s profit increased by 20% this quarter.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "revenue",
+    "meaning": "the total income generated by a business",
+    "tr": "gelir",
+    "exampleSentence": "Online sales account for half of the company’s revenue.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "expense",
+    "meaning": "the cost required for something; money spent",
+    "tr": "gider",
+    "exampleSentence": "Reducing expenses can increase net profit.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "budget",
+    "meaning": "a financial plan for a defined period of time",
+    "tr": "bütçe",
+    "exampleSentence": "The team prepared a budget for next year’s projects.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "investment",
+    "meaning": "the act of putting money into something to earn a profit",
+    "tr": "yatırım",
+    "exampleSentence": "Foreign investment helps grow the national economy.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "shareholder",
+    "meaning": "a person who owns shares in a company",
+    "tr": "hissedar",
+    "exampleSentence": "Shareholders voted to approve the new CEO.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "stock market",
+    "meaning": "a market where shares of companies are bought and sold",
+    "tr": "borsa",
+    "exampleSentence": "The stock market reacted positively to the new policy.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "inflation",
+    "meaning": "a general increase in prices and fall in the value of money",
+    "tr": "enflasyon",
+    "exampleSentence": "Inflation reduces consumers’ purchasing power.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "interest rate",
+    "meaning": "the percentage charged for borrowing money",
+    "tr": "faiz oranı",
+    "exampleSentence": "Banks raised interest rates to control inflation.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "loan",
+    "meaning": "an amount of money borrowed that must be repaid with interest",
+    "tr": "kredi",
+    "exampleSentence": "The business took out a loan to expand its operations.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "capital",
+    "meaning": "money or assets used to start or operate a business",
+    "tr": "sermaye",
+    "exampleSentence": "They raised capital from private investors.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "asset",
+    "meaning": "something valuable owned by a company",
+    "tr": "varlık",
+    "exampleSentence": "The company’s assets include real estate and equipment.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "liability",
+    "meaning": "a company’s legal debts or financial obligations",
+    "tr": "yükümlülük, borç",
+    "exampleSentence": "Reducing liabilities helps improve financial stability.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "balance sheet",
+    "meaning": "a financial statement showing assets, liabilities, and equity",
+    "tr": "bilanço",
+    "exampleSentence": "The balance sheet gives a snapshot of a company’s finances.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "cash flow",
+    "meaning": "the movement of money in and out of a business",
+    "tr": "nakit akışı",
+    "exampleSentence": "Healthy cash flow keeps a business running smoothly.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "accounting",
+    "meaning": "the process of recording and summarizing financial transactions",
+    "tr": "muhasebe",
+    "exampleSentence": "Accounting ensures all expenses are tracked accurately.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "audit",
+    "meaning": "an official inspection of a company’s financial records",
+    "tr": "denetim",
+    "exampleSentence": "The audit revealed several accounting errors.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "strategy",
+    "meaning": "a plan designed to achieve a long-term goal",
+    "tr": "strateji",
+    "exampleSentence": "The company’s strategy focuses on sustainable growth.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "negotiation",
+    "meaning": "a discussion aimed at reaching an agreement",
+    "tr": "müzakere",
+    "exampleSentence": "The negotiation ended with a fair contract for both sides.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "contract",
+    "meaning": "a legal agreement between two or more parties",
+    "tr": "sözleşme",
+    "exampleSentence": "They signed a contract for a two-year partnership.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "partnership",
+    "meaning": "a business owned and operated by two or more people",
+    "tr": "ortaklık",
+    "exampleSentence": "Their partnership combines creativity and experience.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "merger",
+    "meaning": "the combination of two companies into one",
+    "tr": "birleşme",
+    "exampleSentence": "The merger created the largest bank in the country.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "acquisition",
+    "meaning": "the act of buying another company",
+    "tr": "satın alma",
+    "exampleSentence": "The acquisition expanded the company’s global presence.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "productivity",
+    "meaning": "the efficiency of production or work output",
+    "tr": "verimlilik",
+    "exampleSentence": "Employee training improved productivity significantly.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "innovation",
+    "meaning": "the introduction of new ideas, methods, or products",
+    "tr": "yenilik",
+    "exampleSentence": "Innovation keeps businesses competitive in changing markets.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "sustainability",
+    "meaning": "conducting business without depleting natural resources",
+    "tr": "sürdürülebilirlik",
+    "exampleSentence": "Sustainability has become a core business value.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "supply chain",
+    "meaning": "the network between a company and its suppliers",
+    "tr": "tedarik zinciri",
+    "exampleSentence": "A strong supply chain ensures timely delivery of products.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "logistics",
+    "meaning": "the management of the movement of goods and resources",
+    "tr": "lojistik",
+    "exampleSentence": "Efficient logistics reduces shipping costs.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "finance",
+    "meaning": "the management of money and investments",
+    "tr": "finans",
+    "exampleSentence": "Finance is essential for running any business efficiently.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "financial statement",
+    "meaning": "a report showing a company’s financial performance",
+    "tr": "mali tablo",
+    "exampleSentence": "The financial statement revealed strong quarterly earnings.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "equity",
+    "meaning": "the value of ownership in a company",
+    "tr": "öz sermaye",
+    "exampleSentence": "Investors increased their equity shares in the startup.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "dividend",
+    "meaning": "a portion of a company’s profit paid to shareholders",
+    "tr": "temettü",
+    "exampleSentence": "Shareholders received a generous dividend this year.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "bond",
+    "meaning": "a fixed-income investment representing a loan made by an investor",
+    "tr": "tahvil",
+    "exampleSentence": "Government bonds are considered low-risk investments.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "credit",
+    "meaning": "the ability to borrow money with the promise to repay later",
+    "tr": "kredi",
+    "exampleSentence": "The company obtained credit to purchase new equipment.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "debt",
+    "meaning": "money that is owed to another person or organization",
+    "tr": "borç",
+    "exampleSentence": "The business struggled to pay off its debt.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "interest",
+    "meaning": "the cost of borrowing money or the return on investment",
+    "tr": "faiz",
+    "exampleSentence": "The bank charges a 5% interest on business loans.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "funding",
+    "meaning": "money provided for a specific purpose or project",
+    "tr": "fonlama",
+    "exampleSentence": "The startup secured funding from angel investors.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "venture capital",
+    "meaning": "money invested in startups with high growth potential",
+    "tr": "risk sermayesi",
+    "exampleSentence": "Venture capital firms often invest in innovative tech companies.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "angel investor",
+    "meaning": "a wealthy person who provides capital for startups",
+    "tr": "melek yatırımcı",
+    "exampleSentence": "The angel investor offered $100,000 in seed funding.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "seed funding",
+    "meaning": "initial capital used to start a new business",
+    "tr": "başlangıç sermayesi",
+    "exampleSentence": "They used seed funding to develop their first prototype.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "crowdfunding",
+    "meaning": "raising small amounts of money from many people online",
+    "tr": "kitlesel fonlama",
+    "exampleSentence": "The company raised $50,000 through crowdfunding.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "economy",
+    "meaning": "the system by which goods and services are produced and distributed",
+    "tr": "ekonomi",
+    "exampleSentence": "The global economy is recovering after the crisis.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "economic growth",
+    "meaning": "an increase in a country’s production and wealth",
+    "tr": "ekonomik büyüme",
+    "exampleSentence": "Economic growth creates new job opportunities.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "recession",
+    "meaning": "a period of economic decline and reduced business activity",
+    "tr": "durgunluk",
+    "exampleSentence": "The company cut costs to survive the recession.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "supply and demand",
+    "meaning": "the relationship between availability and desire for a product",
+    "tr": "arz ve talep",
+    "exampleSentence": "Prices fluctuate based on supply and demand.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "import",
+    "meaning": "to bring goods into a country for sale",
+    "tr": "ithalat",
+    "exampleSentence": "The company imports raw materials from Asia.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "export",
+    "meaning": "to send goods to another country for sale",
+    "tr": "ihracat",
+    "exampleSentence": "They export high-quality furniture to Europe.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "tariff",
+    "meaning": "a tax on imported or exported goods",
+    "tr": "gümrük vergisi",
+    "exampleSentence": "Tariffs can increase the cost of foreign products.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "currency",
+    "meaning": "the system of money used in a country",
+    "tr": "para birimi",
+    "exampleSentence": "The euro is the common currency in many European countries.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "exchange rate",
+    "meaning": "the value of one currency compared to another",
+    "tr": "döviz kuru",
+    "exampleSentence": "The exchange rate affects international trade.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "gross domestic product",
+    "meaning": "the total value of all goods and services produced in a country",
+    "tr": "gayri safi yurt içi hasıla",
+    "exampleSentence": "GDP growth indicates a healthy economy.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "tax",
+    "meaning": "a required payment to the government based on income or profit",
+    "tr": "vergi",
+    "exampleSentence": "The company must pay corporate tax annually.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "income",
+    "meaning": "money received for work or through investments",
+    "tr": "gelir",
+    "exampleSentence": "Her monthly income increased after the promotion.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "expenditure",
+    "meaning": "money spent on goods or services",
+    "tr": "harcama",
+    "exampleSentence": "Reducing unnecessary expenditure increases profitability.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "profit margin",
+    "meaning": "the percentage of profit from total revenue",
+    "tr": "kâr marjı",
+    "exampleSentence": "They improved profit margins by cutting costs.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "cost",
+    "meaning": "the amount required to produce or buy something",
+    "tr": "maliyet",
+    "exampleSentence": "The cost of production increased due to higher energy prices.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "pricing",
+    "meaning": "the process of setting the price for a product or service",
+    "tr": "fiyatlandırma",
+    "exampleSentence": "Competitive pricing helps attract more customers.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "sales",
+    "meaning": "the exchange of goods or services for money",
+    "tr": "satış",
+    "exampleSentence": "Holiday discounts boosted sales significantly.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "promotion",
+    "meaning": "activities designed to increase awareness or sales of a product",
+    "tr": "tanıtım",
+    "exampleSentence": "The company launched a promotion to attract new clients.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "distribution",
+    "meaning": "the process of delivering goods to retailers or consumers",
+    "tr": "dağıtım",
+    "exampleSentence": "Efficient distribution is key to customer satisfaction.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "retail",
+    "meaning": "the sale of goods directly to consumers",
+    "tr": "perakende",
+    "exampleSentence": "Retail stores are adapting to online competition.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "wholesale",
+    "meaning": "the sale of goods in large quantities to be resold",
+    "tr": "toptan satış",
+    "exampleSentence": "The company buys products at wholesale prices.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "e-commerce",
+    "meaning": "the buying and selling of goods online",
+    "tr": "e-ticaret",
+    "exampleSentence": "E-commerce is growing rapidly worldwide.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "customer service",
+    "meaning": "assistance provided to customers before and after a purchase",
+    "tr": "müşteri hizmetleri",
+    "exampleSentence": "Excellent customer service increases loyalty.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "market share",
+    "meaning": "the portion of total sales controlled by a company",
+    "tr": "pazar payı",
+    "exampleSentence": "The brand increased its market share in 2025.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "brand awareness",
+    "meaning": "how familiar consumers are with a brand",
+    "tr": "marka bilinirliği",
+    "exampleSentence": "Social media campaigns boost brand awareness.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "public relations",
+    "meaning": "activities that create a positive image for a company",
+    "tr": "halkla ilişkiler",
+    "exampleSentence": "Public relations helped repair the company’s reputation.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "sponsorship",
+    "meaning": "financial support provided to promote a brand or cause",
+    "tr": "sponsorluk",
+    "exampleSentence": "The brand’s sports sponsorship improved visibility.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "franchise",
+    "meaning": "a business model allowing others to operate under a brand name",
+    "tr": "franşiz",
+    "exampleSentence": "They opened a fast-food franchise in Istanbul.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "monopoly",
+    "meaning": "exclusive control over a market or product by one company",
+    "tr": "tekel",
+    "exampleSentence": "A monopoly can limit consumer choice.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "entrepreneurship",
+    "meaning": "the activity of developing and managing a new business",
+    "tr": "girişimcilik",
+    "exampleSentence": "Entrepreneurship drives innovation and job creation.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "innovation hub",
+    "meaning": "a place that fosters creativity and startup development",
+    "tr": "inovasyon merkezi",
+    "exampleSentence": "Innovation hubs connect entrepreneurs and investors.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "scalability",
+    "meaning": "the ability of a business to grow without losing efficiency",
+    "tr": "ölçeklenebilirlik",
+    "exampleSentence": "Digital platforms offer high scalability potential.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "business model",
+    "meaning": "a plan for how a company will make money",
+    "tr": "iş modeli",
+    "exampleSentence": "Their business model relies on subscription revenue.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "revenue stream",
+    "meaning": "a source of income for a company",
+    "tr": "gelir akışı",
+    "exampleSentence": "Ad sales are a key revenue stream for media companies.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "scaling up",
+    "meaning": "expanding a business to handle more demand",
+    "tr": "büyüme, ölçek genişletme",
+    "exampleSentence": "The company is scaling up to reach global markets.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "leadership",
+    "meaning": "the ability to guide and influence others toward a goal",
+    "tr": "liderlik",
+    "exampleSentence": "Strong leadership is essential for company success.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "leader",
+    "meaning": "a person who guides or directs a group or organization",
+    "tr": "lider",
+    "exampleSentence": "A great leader inspires trust and motivation.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "manager",
+    "meaning": "a person responsible for controlling part of a company or staff",
+    "tr": "yönetici",
+    "exampleSentence": "The manager oversees daily operations and team performance.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "supervisor",
+    "meaning": "a person who oversees the work of others",
+    "tr": "denetçi, gözetmen",
+    "exampleSentence": "The supervisor ensures safety procedures are followed.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "human resources",
+    "meaning": "the department responsible for hiring and managing employees",
+    "tr": "insan kaynakları",
+    "exampleSentence": "The human resources team organized a recruitment event.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "recruitment",
+    "meaning": "the process of finding and hiring new employees",
+    "tr": "işe alım",
+    "exampleSentence": "Recruitment strategies attract top talent.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "job interview",
+    "meaning": "a formal meeting to assess a candidate for a job",
+    "tr": "iş görüşmesi",
+    "exampleSentence": "She prepared carefully for her job interview.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "resume",
+    "meaning": "a written summary of a person’s education and work experience",
+    "tr": "özgeçmiş",
+    "exampleSentence": "A strong resume highlights key achievements.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "training",
+    "meaning": "the process of teaching skills for a particular job",
+    "tr": "eğitim",
+    "exampleSentence": "Employee training improves productivity and morale.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "teamwork",
+    "meaning": "the combined effort of a group to achieve a goal",
+    "tr": "takım çalışması",
+    "exampleSentence": "Effective teamwork boosts company performance.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "collaboration",
+    "meaning": "working together to achieve a shared objective",
+    "tr": "iş birliği",
+    "exampleSentence": "Collaboration across departments drives innovation.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "communication",
+    "meaning": "the exchange of information between individuals or groups",
+    "tr": "iletişim",
+    "exampleSentence": "Clear communication prevents misunderstandings.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "negotiation skills",
+    "meaning": "the ability to reach agreements through discussion",
+    "tr": "müzakere becerileri",
+    "exampleSentence": "Negotiation skills are crucial for business deals.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "conflict resolution",
+    "meaning": "the process of solving a disagreement peacefully",
+    "tr": "çatışma çözümü",
+    "exampleSentence": "Managers need conflict resolution skills to maintain harmony.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "delegation",
+    "meaning": "assigning tasks and authority to subordinates",
+    "tr": "yetki devri",
+    "exampleSentence": "Effective delegation saves time and builds trust.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "decision making",
+    "meaning": "the process of choosing between different options",
+    "tr": "karar verme",
+    "exampleSentence": "Strategic decision making requires accurate data.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "organization",
+    "meaning": "a structured group of people working toward common goals",
+    "tr": "organizasyon, kuruluş",
+    "exampleSentence": "The organization promotes sustainable development.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "corporate culture",
+    "meaning": "the shared values and behaviors within a company",
+    "tr": "kurumsal kültür",
+    "exampleSentence": "A strong corporate culture improves employee retention.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "ethics",
+    "meaning": "moral principles that govern behavior in business",
+    "tr": "etik",
+    "exampleSentence": "Ethics in business build long-term trust with clients.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "corporate social responsibility",
+    "meaning": "a company’s commitment to act ethically and contribute to society",
+    "tr": "kurumsal sosyal sorumluluk",
+    "exampleSentence": "Corporate social responsibility improves brand image.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "stakeholder",
+    "meaning": "any person or group affected by a company’s actions",
+    "tr": "paydaş",
+    "exampleSentence": "Stakeholders include employees, investors, and customers.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "mission statement",
+    "meaning": "a short summary of a company’s purpose and values",
+    "tr": "misyon bildirimi",
+    "exampleSentence": "The mission statement emphasizes sustainability and innovation.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "vision statement",
+    "meaning": "a description of what a company aims to achieve in the future",
+    "tr": "vizyon bildirimi",
+    "exampleSentence": "The company’s vision statement focuses on global leadership.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "strategy planning",
+    "meaning": "defining goals and deciding how to achieve them",
+    "tr": "stratejik planlama",
+    "exampleSentence": "Strategy planning helps allocate resources effectively.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "business plan",
+    "meaning": "a document outlining a company’s goals and strategies",
+    "tr": "iş planı",
+    "exampleSentence": "A detailed business plan attracts investors.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "organizational structure",
+    "meaning": "the hierarchy that defines roles and responsibilities",
+    "tr": "organizasyon yapısı",
+    "exampleSentence": "A flat organizational structure promotes faster communication.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "hierarchy",
+    "meaning": "a system in which people are ranked according to authority",
+    "tr": "hiyerarşi",
+    "exampleSentence": "In large corporations, hierarchy can slow decision making.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "innovation management",
+    "meaning": "the process of managing creative ideas into practical solutions",
+    "tr": "yenilik yönetimi",
+    "exampleSentence": "Innovation management helps companies stay competitive.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "change management",
+    "meaning": "approaches used to prepare and support organizational change",
+    "tr": "değişim yönetimi",
+    "exampleSentence": "Change management ensures smooth transitions during restructuring.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "performance review",
+    "meaning": "an evaluation of an employee’s work and results",
+    "tr": "performans değerlendirmesi",
+    "exampleSentence": "Performance reviews help employees identify areas for growth.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "salary",
+    "meaning": "a fixed amount of money paid to an employee regularly",
+    "tr": "maaş",
+    "exampleSentence": "Her salary increased after the promotion.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "bonus",
+    "meaning": "an extra payment given for good performance",
+    "tr": "prim, ikramiye",
+    "exampleSentence": "Employees received a holiday bonus for their hard work.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "promotion",
+    "meaning": "advancement to a higher position or rank",
+    "tr": "terfi",
+    "exampleSentence": "He received a promotion to senior manager.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "productivity metrics",
+    "meaning": "measures used to assess efficiency and output",
+    "tr": "verimlilik ölçütleri",
+    "exampleSentence": "Managers track productivity metrics weekly.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "workplace",
+    "meaning": "a location where people work, such as an office or factory",
+    "tr": "iş yeri",
+    "exampleSentence": "Creating a safe workplace boosts morale.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "remote work",
+    "meaning": "working from a location outside the traditional office",
+    "tr": "uzaktan çalışma",
+    "exampleSentence": "Remote work became popular after the pandemic.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "meeting",
+    "meaning": "a gathering of people to discuss business matters",
+    "tr": "toplantı",
+    "exampleSentence": "The meeting covered next quarter’s goals.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "deadline",
+    "meaning": "the latest time or date by which something must be completed",
+    "tr": "teslim tarihi, son tarih",
+    "exampleSentence": "The team worked late to meet the project deadline.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "schedule",
+    "meaning": "a plan that lists when tasks or events will happen",
+    "tr": "program, zaman çizelgesi",
+    "exampleSentence": "We set a schedule to track project milestones.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "productivity tools",
+    "meaning": "software or systems that help manage work efficiently",
+    "tr": "verimlilik araçları",
+    "exampleSentence": "Productivity tools help remote teams stay organized.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "workflow",
+    "meaning": "the sequence of processes through which a task passes",
+    "tr": "iş akışı",
+    "exampleSentence": "Automating workflow reduces repetitive tasks.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "time management",
+    "meaning": "the ability to use time effectively and efficiently",
+    "tr": "zaman yönetimi",
+    "exampleSentence": "Good time management prevents burnout.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "efficiency",
+    "meaning": "working in a way that achieves maximum results with minimum effort",
+    "tr": "verimlilik, etkinlik",
+    "exampleSentence": "Automation increased efficiency across all departments.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "key performance indicator",
+    "meaning": "a measurable value showing how effectively objectives are achieved",
+    "tr": "ana performans göstergesi (KPI)",
+    "exampleSentence": "KPIs help track the company’s strategic success.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "project management",
+    "meaning": "the application of processes and skills to achieve project goals",
+    "tr": "proje yönetimi",
+    "exampleSentence": "Effective project management prevents delays and overspending.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "milestone",
+    "meaning": "a significant stage or event in a project timeline",
+    "tr": "kilometre taşı",
+    "exampleSentence": "Releasing the beta version was a major milestone.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "risk management",
+    "meaning": "identifying and reducing potential business risks",
+    "tr": "risk yönetimi",
+    "exampleSentence": "Risk management protects companies from financial losses.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "compliance",
+    "meaning": "the act of following laws, regulations, and policies",
+    "tr": "uyumluluk",
+    "exampleSentence": "Compliance with safety laws is mandatory.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "marketing strategy",
+    "meaning": "a plan to reach and attract target customers effectively",
+    "tr": "pazarlama stratejisi",
+    "exampleSentence": "A good marketing strategy increases sales and brand awareness.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "digital marketing",
+    "meaning": "promoting products or brands using online channels",
+    "tr": "dijital pazarlama",
+    "exampleSentence": "Digital marketing helps businesses reach global audiences.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "social media marketing",
+    "meaning": "using social platforms to promote a product or service",
+    "tr": "sosyal medya pazarlaması",
+    "exampleSentence": "Social media marketing drives engagement and customer loyalty.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "content marketing",
+    "meaning": "creating valuable content to attract and retain customers",
+    "tr": "içerik pazarlaması",
+    "exampleSentence": "Content marketing builds trust with your audience.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "search engine optimization",
+    "meaning": "improving a website’s visibility in search engine results",
+    "tr": "arama motoru optimizasyonu (SEO)",
+    "exampleSentence": "SEO helps websites appear higher in Google searches.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "email marketing",
+    "meaning": "sending promotional messages to customers via email",
+    "tr": "e-posta pazarlaması",
+    "exampleSentence": "Email marketing is cost-effective and personalized.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "affiliate marketing",
+    "meaning": "earning a commission by promoting other companies’ products",
+    "tr": "bağlı pazarlama",
+    "exampleSentence": "Many influencers use affiliate marketing to earn passive income.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "influencer",
+    "meaning": "a person who affects others’ purchasing decisions on social media",
+    "tr": "etkileyici, influencer",
+    "exampleSentence": "Brands partner with influencers to promote products.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "brand identity",
+    "meaning": "the visible elements that distinguish a brand from others",
+    "tr": "marka kimliği",
+    "exampleSentence": "A strong brand identity builds customer trust.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "target audience",
+    "meaning": "the specific group of people a company aims to reach",
+    "tr": "hedef kitle",
+    "exampleSentence": "Understanding the target audience is key to effective advertising.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "market research",
+    "meaning": "the process of collecting information about consumers and markets",
+    "tr": "pazar araştırması",
+    "exampleSentence": "Market research helps identify customer needs.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "branding",
+    "meaning": "the process of creating a unique image for a product or company",
+    "tr": "markalaşma",
+    "exampleSentence": "Branding increases recognition and customer loyalty.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "customer loyalty",
+    "meaning": "a customer’s willingness to continue buying from a brand",
+    "tr": "müşteri sadakati",
+    "exampleSentence": "Reward programs strengthen customer loyalty.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "return on investment",
+    "meaning": "a measure of how profitable an investment is",
+    "tr": "yatırım getirisi (ROI)",
+    "exampleSentence": "ROI determines the success of marketing campaigns.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "analytics",
+    "meaning": "the systematic analysis of data or statistics",
+    "tr": "analitik, veri analizi",
+    "exampleSentence": "Analytics tools help track customer behavior online.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "data-driven",
+    "meaning": "based on analysis and interpretation of data",
+    "tr": "veri odaklı",
+    "exampleSentence": "Data-driven marketing improves decision-making accuracy.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "customer feedback",
+    "meaning": "opinions and responses from customers about products or services",
+    "tr": "müşteri geri bildirimi",
+    "exampleSentence": "Customer feedback guides product improvements.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "product launch",
+    "meaning": "the introduction of a new product to the market",
+    "tr": "ürün lansmanı",
+    "exampleSentence": "The product launch attracted media attention.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "pricing strategy",
+    "meaning": "the method a company uses to price its products",
+    "tr": "fiyatlandırma stratejisi",
+    "exampleSentence": "The pricing strategy positioned the brand as premium.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "sales funnel",
+    "meaning": "the process customers go through before making a purchase",
+    "tr": "satış hunisi",
+    "exampleSentence": "A clear sales funnel helps convert visitors into buyers.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "customer acquisition",
+    "meaning": "the process of gaining new customers",
+    "tr": "müşteri kazanımı",
+    "exampleSentence": "Digital ads improved the company’s customer acquisition rate.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "customer retention",
+    "meaning": "the ability to keep customers over time",
+    "tr": "müşteri tutma",
+    "exampleSentence": "Subscription models improve customer retention.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "conversion rate",
+    "meaning": "the percentage of users who complete a desired action",
+    "tr": "dönüşüm oranı",
+    "exampleSentence": "Website design changes increased the conversion rate.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "advertising campaign",
+    "meaning": "a series of ads with a shared goal or message",
+    "tr": "reklam kampanyası",
+    "exampleSentence": "The advertising campaign boosted sales by 30%.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "publicity",
+    "meaning": "public attention given to a product or company",
+    "tr": "tanıtım, reklam",
+    "exampleSentence": "The company gained publicity after winning the award.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "e-commerce platform",
+    "meaning": "a digital system for buying and selling goods online",
+    "tr": "e-ticaret platformu",
+    "exampleSentence": "Amazon is the world’s largest e-commerce platform.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "subscription model",
+    "meaning": "a business model where customers pay regularly for a service",
+    "tr": "abonelik modeli",
+    "exampleSentence": "Streaming platforms use the subscription model effectively.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "startup ecosystem",
+    "meaning": "a community of entrepreneurs, investors, and institutions supporting startups",
+    "tr": "girişimcilik ekosistemi",
+    "exampleSentence": "The startup ecosystem in Berlin is thriving.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "globalization",
+    "meaning": "the process of businesses operating on an international scale",
+    "tr": "küreselleşme",
+    "exampleSentence": "Globalization connects markets and cultures worldwide.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "outsourcing",
+    "meaning": "hiring external companies to handle certain business activities",
+    "tr": "dış kaynak kullanımı",
+    "exampleSentence": "Outsourcing customer service reduces operational costs.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "import/export business",
+    "meaning": "a company dealing with goods across borders",
+    "tr": "ithalat/ihracat işi",
+    "exampleSentence": "They run an import/export business between Turkey and Germany.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "trade agreement",
+    "meaning": "a treaty between countries to encourage trade",
+    "tr": "ticaret anlaşması",
+    "exampleSentence": "The trade agreement reduced tariffs between the nations.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "supply chain management",
+    "meaning": "controlling the flow of goods from suppliers to consumers",
+    "tr": "tedarik zinciri yönetimi",
+    "exampleSentence": "Supply chain management ensures on-time deliveries.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "export license",
+    "meaning": "official permission to sell goods internationally",
+    "tr": "ihracat lisansı",
+    "exampleSentence": "They applied for an export license for medical products.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "sustainability report",
+    "meaning": "a company’s disclosure about environmental and social impacts",
+    "tr": "sürdürülebilirlik raporu",
+    "exampleSentence": "The sustainability report highlights the firm’s green initiatives.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "carbon footprint",
+    "meaning": "the total amount of greenhouse gases produced by a company",
+    "tr": "karbon ayak izi",
+    "exampleSentence": "Companies aim to reduce their carbon footprint.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "corporate governance",
+    "meaning": "the system of rules by which companies are directed and controlled",
+    "tr": "kurumsal yönetim",
+    "exampleSentence": "Corporate governance ensures transparency and accountability.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "merger and acquisition",
+    "meaning": "the process of combining or purchasing companies",
+    "tr": "birleşme ve satın alma",
+    "exampleSentence": "Mergers and acquisitions reshape industry competition.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "financial technology",
+    "meaning": "innovative technology used in financial services",
+    "tr": "finansal teknoloji (fintech)",
+    "exampleSentence": "Fintech startups are transforming traditional banking.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "cryptocurrency",
+    "meaning": "digital currency using cryptography for transactions",
+    "tr": "kripto para",
+    "exampleSentence": "Bitcoin is the most widely known cryptocurrency.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "blockchain",
+    "meaning": "a digital ledger used to record transactions securely",
+    "tr": "blok zinciri",
+    "exampleSentence": "Blockchain technology increases transaction transparency.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "artificial intelligence",
+    "meaning": "the simulation of human intelligence by machines",
+    "tr": "yapay zeka",
+    "exampleSentence": "Artificial intelligence improves customer support systems.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "automation",
+    "meaning": "using technology to perform tasks with minimal human input",
+    "tr": "otomasyon",
+    "exampleSentence": "Automation increases efficiency in manufacturing.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "cloud computing",
+    "meaning": "storing and accessing data over the internet instead of local servers",
+    "tr": "bulut bilişim",
+    "exampleSentence": "Cloud computing allows flexible data access for companies.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "innovation lab",
+    "meaning": "a space where companies experiment with new ideas",
+    "tr": "inovasyon laboratuvarı",
+    "exampleSentence": "The innovation lab develops prototypes for future products.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "business analytics",
+    "meaning": "the practice of using data to improve business decisions",
+    "tr": "iş analitiği",
+    "exampleSentence": "Business analytics helps identify profitable trends.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "market trend",
+    "meaning": "the general direction in which a market is moving",
+    "tr": "pazar eğilimi",
+    "exampleSentence": "Market trends indicate growing demand for electric vehicles.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "return policy",
+    "meaning": "rules about how and when products can be returned",
+    "tr": "iade politikası",
+    "exampleSentence": "A clear return policy improves customer confidence.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "customer experience",
+    "meaning": "the overall impression customers have of a company",
+    "tr": "müşteri deneyimi",
+    "exampleSentence": "Customer experience defines long-term brand success.",
+    "isCustom": false,
+    "category": "business"
+  },
+  {
+    "word": "entrepreneurial mindset",
+    "meaning": "a way of thinking focused on innovation and value creation",
+    "tr": "girişimci zihniyeti",
+    "exampleSentence": "An entrepreneurial mindset turns challenges into opportunities.",
+    "isCustom": false,
+    "category": "business"
+  }
+]
+
+
+
+

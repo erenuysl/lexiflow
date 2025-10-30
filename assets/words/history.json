@@ -1,0 +1,1341 @@
+[
+  {
+    "word": "civilization",
+    "meaning": "an advanced stage of human society with culture, government, and technology",
+    "tr": "medeniyet",
+    "exampleSentence": "Ancient Egyptian civilization developed along the Nile River.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "empire",
+    "meaning": "a group of nations or territories ruled by a single authority",
+    "tr": "imparatorluk",
+    "exampleSentence": "The Roman Empire expanded across Europe, Africa, and Asia.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "dynasty",
+    "meaning": "a series of rulers from the same family or lineage",
+    "tr": "hanedan",
+    "exampleSentence": "The Ming Dynasty ruled China for nearly three centuries.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "kingdom",
+    "meaning": "a territory ruled by a king or queen",
+    "tr": "krallık",
+    "exampleSentence": "The Kingdom of France was one of Europe’s most powerful states.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "monarchy",
+    "meaning": "a system of government ruled by a monarch",
+    "tr": "monarşi",
+    "exampleSentence": "Britain still maintains a constitutional monarchy.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "republic",
+    "meaning": "a form of government where citizens elect representatives",
+    "tr": "cumhuriyet",
+    "exampleSentence": "Rome transitioned from a monarchy to a republic before becoming an empire.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "revolution",
+    "meaning": "a sudden change in political power or organizational structure",
+    "tr": "devrim",
+    "exampleSentence": "The French Revolution began in 1789 and changed European politics.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "constitution",
+    "meaning": "a written document outlining a nation’s laws and principles",
+    "tr": "anayasa",
+    "exampleSentence": "The U.S. Constitution established the framework of American government.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "colony",
+    "meaning": "a territory controlled by a distant country",
+    "tr": "sömürge",
+    "exampleSentence": "India was once a colony under British rule.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "independence",
+    "meaning": "freedom from control or influence of another country",
+    "tr": "bağımsızlık",
+    "exampleSentence": "Many nations gained independence after World War II.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "treaty",
+    "meaning": "a formal agreement between two or more countries",
+    "tr": "antlaşma",
+    "exampleSentence": "The Treaty of Versailles ended World War I.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "reform",
+    "meaning": "changes made to improve a system or institution",
+    "tr": "reform",
+    "exampleSentence": "The Reformation led to major religious reforms in Europe.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "crusade",
+    "meaning": "a series of religious wars in medieval times",
+    "tr": "haçlı seferi",
+    "exampleSentence": "The Crusades were fought between Christians and Muslims over the Holy Land.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "medieval",
+    "meaning": "related to the Middle Ages, roughly between 500–1500 AD",
+    "tr": "ortaçağ",
+    "exampleSentence": "Medieval Europe was dominated by feudal systems and monarchies.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "renaissance",
+    "meaning": "a period of renewed interest in art, science, and learning",
+    "tr": "rönesans",
+    "exampleSentence": "The Renaissance began in Italy and spread throughout Europe.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "industrial revolution",
+    "meaning": "the transition to new manufacturing processes in the 18th–19th centuries",
+    "tr": "sanayi devrimi",
+    "exampleSentence": "The Industrial Revolution transformed economies with machines and factories.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "feudalism",
+    "meaning": "a medieval social system based on land ownership and loyalty",
+    "tr": "feodalizm",
+    "exampleSentence": "Under feudalism, peasants worked land owned by nobles.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "imperialism",
+    "meaning": "a policy of extending power through colonization or military force",
+    "tr": "emperyalizm",
+    "exampleSentence": "European imperialism spread Western influence worldwide.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "colonialism",
+    "meaning": "the practice of acquiring and exploiting colonies",
+    "tr": "sömürgecilik",
+    "exampleSentence": "Colonialism reshaped global trade and cultures.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "war",
+    "meaning": "a state of armed conflict between nations or groups",
+    "tr": "savaş",
+    "exampleSentence": "World War II was the deadliest conflict in human history.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "peace",
+    "meaning": "freedom from war and violence",
+    "tr": "barış",
+    "exampleSentence": "Peace treaties were signed to end centuries of conflict.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "army",
+    "meaning": "a large organized military force",
+    "tr": "ordu",
+    "exampleSentence": "The Roman army was known for its discipline and tactics.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "republicanism",
+    "meaning": "a political ideology centered on citizen participation and equality",
+    "tr": "cumhuriyetçilik",
+    "exampleSentence": "Republicanism influenced revolutions across Europe and America.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "totalitarianism",
+    "meaning": "a system where the state controls all aspects of life",
+    "tr": "totalitarizm",
+    "exampleSentence": "Totalitarian regimes suppress individual freedom and opposition.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "dictatorship",
+    "meaning": "a government ruled by a single leader with absolute power",
+    "tr": "diktatörlük",
+    "exampleSentence": "Dictatorships often arise during political instability.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "democracy",
+    "meaning": "a system where citizens have the power to elect their leaders",
+    "tr": "demokrasi",
+    "exampleSentence": "Ancient Athens is known as the birthplace of democracy.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "oligarchy",
+    "meaning": "a form of government ruled by a small, powerful group",
+    "tr": "oligarşi",
+    "exampleSentence": "In some city-states, an oligarchy controlled political decisions.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "aristocracy",
+    "meaning": "a class of nobles or people with inherited privilege",
+    "tr": "soylular sınıfı",
+    "exampleSentence": "The French aristocracy lost power after the Revolution.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "serf",
+    "meaning": "a peasant bound to work on a lord’s land in feudal Europe",
+    "tr": "köylü / serf",
+    "exampleSentence": "Serfs worked the land in exchange for protection.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "trade route",
+    "meaning": "a path used for the exchange of goods between regions",
+    "tr": "ticaret yolu",
+    "exampleSentence": "The Silk Road connected Asia to Europe through trade routes.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "exploration",
+    "meaning": "the act of traveling for discovery, especially during the Age of Discovery",
+    "tr": "keşif",
+    "exampleSentence": "European exploration opened sea routes to Asia and the Americas.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "navigator",
+    "meaning": "a person who directs the course of a ship or aircraft",
+    "tr": "kılavuz / seyrüseferci",
+    "exampleSentence": "Navigators like Columbus played key roles in exploration history.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "invention",
+    "meaning": "a new device or method created through innovation",
+    "tr": "icat",
+    "exampleSentence": "The invention of the printing press revolutionized communication.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "discovery",
+    "meaning": "the act of finding something previously unknown",
+    "tr": "keşif",
+    "exampleSentence": "The discovery of America changed the course of world history.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "migration",
+    "meaning": "the movement of people from one region to another",
+    "tr": "göç",
+    "exampleSentence": "Human migration patterns shaped cultural evolution.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "slavery",
+    "meaning": "the practice of owning and exploiting people as property",
+    "tr": "kölelik",
+    "exampleSentence": "Slavery was a central issue in the American Civil War.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "abolition",
+    "meaning": "the act of ending a system or practice, especially slavery",
+    "tr": "kaldırma / köleliğin kaldırılması",
+    "exampleSentence": "The abolition movement fought for the end of slavery in the 19th century.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "reconstruction",
+    "meaning": "the rebuilding period after the American Civil War",
+    "tr": "yeniden yapılanma",
+    "exampleSentence": "Reconstruction aimed to reunite and rebuild the United States.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "propaganda",
+    "meaning": "biased information used to influence public opinion",
+    "tr": "propaganda",
+    "exampleSentence": "Governments used propaganda to gain support during wars.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "relic",
+    "meaning": "an object from the past that has historical importance",
+    "tr": "kalıntı / tarihi eser",
+    "exampleSentence": "Ancient relics were found buried beneath the old temple.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "artifact",
+    "meaning": "an object made by humans, typically of historical interest",
+    "tr": "eser / yapıt",
+    "exampleSentence": "Archaeologists discovered stone artifacts from prehistoric times.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "archaeology",
+    "meaning": "the study of human history through excavation and analysis of remains",
+    "tr": "arkeoloji",
+    "exampleSentence": "Archaeology helps us understand how ancient people lived.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "excavation",
+    "meaning": "the process of digging up remains from the past",
+    "tr": "kazı",
+    "exampleSentence": "The excavation revealed pottery fragments and old coins.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "timeline",
+    "meaning": "a chronological order of events",
+    "tr": "zaman çizelgesi",
+    "exampleSentence": "The museum displayed a timeline of the Ottoman Empire.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "chronology",
+    "meaning": "the arrangement of events in the order they happened",
+    "tr": "kronoloji",
+    "exampleSentence": "Chronology helps historians organize historical data.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "era",
+    "meaning": "a long and distinct period of history",
+    "tr": "çağ / dönem",
+    "exampleSentence": "The Renaissance was an era of artistic and scientific growth.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "century",
+    "meaning": "a period of 100 years",
+    "tr": "yüzyıl",
+    "exampleSentence": "The 20th century saw rapid technological progress.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "decade",
+    "meaning": "a period of 10 years",
+    "tr": "on yıl",
+    "exampleSentence": "The 1960s were a decade of cultural and political change.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "prehistoric",
+    "meaning": "relating to the time before written records",
+    "tr": "tarih öncesi",
+    "exampleSentence": "Prehistoric humans used stone tools for hunting and survival.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "ancient",
+    "meaning": "belonging to the distant past",
+    "tr": "antik / eski",
+    "exampleSentence": "Ancient Greece laid the foundations of Western civilization.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "modern",
+    "meaning": "relating to recent times rather than the distant past",
+    "tr": "modern / çağdaş",
+    "exampleSentence": "Modern history begins after the Middle Ages.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "chronicle",
+    "meaning": "a factual written record of events in order of time",
+    "tr": "kronik / tarihsel kayıt",
+    "exampleSentence": "Medieval monks kept chronicles of important events.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "manuscript",
+    "meaning": "a handwritten or typed document, especially before printing",
+    "tr": "el yazması",
+    "exampleSentence": "The museum preserved ancient manuscripts from the Middle East.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "scroll",
+    "meaning": "a roll of parchment or paper used for writing in ancient times",
+    "tr": "parşömen / tomar",
+    "exampleSentence": "Scholars discovered Hebrew scrolls hidden in desert caves.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "hieroglyph",
+    "meaning": "a character of the ancient Egyptian writing system",
+    "tr": "hiyeroglif",
+    "exampleSentence": "Hieroglyphs were carved into temple walls and tombs.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "inscription",
+    "meaning": "words engraved or written on a surface",
+    "tr": "kitabe / yazıt",
+    "exampleSentence": "The stone bore an inscription honoring the ancient king.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "pyramid",
+    "meaning": "a monumental structure built in ancient Egypt as a tomb",
+    "tr": "piramit",
+    "exampleSentence": "The Great Pyramid of Giza remains one of the world’s wonders.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "pharaoh",
+    "meaning": "a ruler of ancient Egypt",
+    "tr": "firavun",
+    "exampleSentence": "Pharaohs were considered both kings and gods by their people.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "temple",
+    "meaning": "a building devoted to the worship of gods",
+    "tr": "tapınak",
+    "exampleSentence": "The Parthenon was a temple dedicated to the goddess Athena.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "monument",
+    "meaning": "a structure built to commemorate a person or event",
+    "tr": "anıt",
+    "exampleSentence": "Monuments preserve the memory of historical achievements.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "citadel",
+    "meaning": "a fortress protecting a city, often on high ground",
+    "tr": "hisar / kale",
+    "exampleSentence": "The citadel defended the city from invaders for centuries.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "fortress",
+    "meaning": "a strong building designed for defense during war",
+    "tr": "kale / savunma yapısı",
+    "exampleSentence": "Medieval fortresses were built with thick stone walls.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "castle",
+    "meaning": "a large fortified residence of nobility during the Middle Ages",
+    "tr": "şato / kale",
+    "exampleSentence": "European kings built castles to demonstrate power and wealth.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "siege",
+    "meaning": "a military operation to surround and capture a place",
+    "tr": "kuşatma",
+    "exampleSentence": "The Siege of Troy lasted for ten years according to legend.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "battle",
+    "meaning": "a fight between organized armed forces",
+    "tr": "savaş / muharebe",
+    "exampleSentence": "The Battle of Waterloo marked the defeat of Napoleon.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "weapon",
+    "meaning": "an instrument used for fighting or defense",
+    "tr": "silah",
+    "exampleSentence": "Bronze weapons replaced stone tools during the Bronze Age.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "soldier",
+    "meaning": "a person who serves in an army",
+    "tr": "asker",
+    "exampleSentence": "Roman soldiers trained rigorously for battle.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "strategy",
+    "meaning": "a plan designed to achieve a military or political goal",
+    "tr": "strateji / plan",
+    "exampleSentence": "Alexander the Great’s strategies revolutionized ancient warfare.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "alliance",
+    "meaning": "a formal agreement between groups or nations for mutual benefit",
+    "tr": "ittifak",
+    "exampleSentence": "Alliances often shifted during both world wars.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "treaty",
+    "meaning": "a formal written agreement between two states or rulers",
+    "tr": "antlaşma",
+    "exampleSentence": "The Treaty of Westphalia ended the Thirty Years' War.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "empowerment",
+    "meaning": "the process of giving people more control or rights",
+    "tr": "güçlendirme / yetkilendirme",
+    "exampleSentence": "The women’s suffrage movement focused on political empowerment.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "suffrage",
+    "meaning": "the right to vote in political elections",
+    "tr": "oy hakkı",
+    "exampleSentence": "Women’s suffrage was achieved in many countries during the 20th century.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "abolitionist",
+    "meaning": "a person who advocates for ending slavery",
+    "tr": "kölelik karşıtı",
+    "exampleSentence": "Abolitionists campaigned for human rights and equality.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "civil rights",
+    "meaning": "the rights of citizens to political and social freedom and equality",
+    "tr": "sivil haklar",
+    "exampleSentence": "The civil rights movement challenged racial segregation.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "repression",
+    "meaning": "the act of subduing or controlling people by force",
+    "tr": "baskı / zorbalık",
+    "exampleSentence": "Political repression silenced opposition voices in the regime.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "uprising",
+    "meaning": "a rebellion against authority or government",
+    "tr": "ayaklanma / isyan",
+    "exampleSentence": "The 1848 uprisings spread across many European cities.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "coup",
+    "meaning": "a sudden, illegal takeover of government power",
+    "tr": "darbe",
+    "exampleSentence": "Military coups have reshaped the political history of many nations.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "assassination",
+    "meaning": "the killing of a prominent person for political reasons",
+    "tr": "suikast",
+    "exampleSentence": "The assassination of Archduke Franz Ferdinand triggered World War I.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "occupation",
+    "meaning": "the control of a country by a foreign military power",
+    "tr": "işgal",
+    "exampleSentence": "The occupation of France during World War II lasted four years.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "resistance",
+    "meaning": "organized opposition to authority or an occupying force",
+    "tr": "direniş",
+    "exampleSentence": "The French Resistance fought against Nazi occupation.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "colonization",
+    "meaning": "the act of establishing control over a foreign territory",
+    "tr": "sömürgeleştirme",
+    "exampleSentence": "European colonization reshaped global trade and culture.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "nationalism",
+    "meaning": "strong identification with and pride in one's nation",
+    "tr": "milliyetçilik",
+    "exampleSentence": "Nationalism was a driving force behind many independence movements.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "fascism",
+    "meaning": "a political ideology characterized by dictatorship and nationalism",
+    "tr": "faşizm",
+    "exampleSentence": "Fascism rose in Europe before World War II.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "communism",
+    "meaning": "a political system in which all property is publicly owned",
+    "tr": "komünizm",
+    "exampleSentence": "Communism spread across Eastern Europe after World War II.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "capitalism",
+    "meaning": "an economic system based on private ownership and profit",
+    "tr": "kapitalizm",
+    "exampleSentence": "Capitalism encourages competition and innovation in markets.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "socialism",
+    "meaning": "a political and economic system advocating social ownership",
+    "tr": "sosyalizm",
+    "exampleSentence": "Socialism seeks to reduce inequality by redistributing wealth.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "ideology",
+    "meaning": "a system of ideas that forms the basis of political or social policy",
+    "tr": "ideoloji",
+    "exampleSentence": "The Cold War was fueled by conflicting ideologies.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "Cold War",
+    "meaning": "a state of tension between the USA and the USSR after World War II",
+    "tr": "soğuk savaş",
+    "exampleSentence": "The Cold War led to an arms race and space competition.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "nuclear weapon",
+    "meaning": "a bomb or missile that uses nuclear energy to cause destruction",
+    "tr": "nükleer silah",
+    "exampleSentence": "The use of nuclear weapons ended World War II.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "arms race",
+    "meaning": "a competition between nations to build up military power",
+    "tr": "silahlanma yarışı",
+    "exampleSentence": "The Cold War intensified the global arms race.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "space race",
+    "meaning": "the competition between the USA and USSR to explore space",
+    "tr": "uzay yarışı",
+    "exampleSentence": "The space race peaked when the U.S. landed on the Moon in 1969.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "explorer",
+    "meaning": "a person who travels to discover new places",
+    "tr": "kaşif",
+    "exampleSentence": "Explorers like Magellan and Columbus changed global geography.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "voyage",
+    "meaning": "a long journey, especially by sea",
+    "tr": "sefer / deniz yolculuğu",
+    "exampleSentence": "Magellan’s voyage was the first to circumnavigate the globe.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "cartography",
+    "meaning": "the science or practice of drawing maps",
+    "tr": "haritacılık",
+    "exampleSentence": "Cartography improved during the Age of Exploration.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "colosseum",
+    "meaning": "a large Roman amphitheater used for public spectacles",
+    "tr": "kolezyum",
+    "exampleSentence": "The Colosseum remains a symbol of ancient Roman engineering.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "gladiator",
+    "meaning": "a fighter in ancient Rome who battled for public entertainment",
+    "tr": "gladyatör",
+    "exampleSentence": "Gladiators fought for their lives in front of cheering crowds.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "philosopher",
+    "meaning": "a thinker who studies truth, knowledge, and existence",
+    "tr": "filozof",
+    "exampleSentence": "Greek philosophers like Socrates shaped Western thought.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "democracy",
+    "meaning": "a government system ruled by the people",
+    "tr": "demokrasi",
+    "exampleSentence": "Democracy first developed in ancient Athens.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "olympics",
+    "meaning": "ancient Greek athletic competitions revived in modern times",
+    "tr": "olimpiyatlar",
+    "exampleSentence": "The ancient Olympics honored the god Zeus in Olympia.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "renaissance man",
+    "meaning": "a person skilled in many fields of art and science",
+    "tr": "rönesans insanı",
+    "exampleSentence": "Leonardo da Vinci is the best example of a Renaissance man.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "printing press",
+    "meaning": "a machine for reproducing text and images using ink",
+    "tr": "matbaa",
+    "exampleSentence": "The printing press allowed knowledge to spread rapidly.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "enlightenment",
+    "meaning": "a European intellectual movement emphasizing reason and science",
+    "tr": "aydınlanma dönemi",
+    "exampleSentence": "The Enlightenment inspired political and social reforms.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "scientific revolution",
+    "meaning": "a period marked by major advances in science and reasoning",
+    "tr": "bilimsel devrim",
+    "exampleSentence": "The Scientific Revolution transformed views of nature and the universe.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "astronomy",
+    "meaning": "the study of celestial objects and the universe",
+    "tr": "astronomi",
+    "exampleSentence": "Astronomy flourished after the invention of the telescope.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "reformation",
+    "meaning": "a movement against corruption in the Catholic Church",
+    "tr": "reform hareketi",
+    "exampleSentence": "Martin Luther’s theses sparked the Protestant Reformation.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "protestant",
+    "meaning": "a member of the branch of Christianity that broke away from Rome",
+    "tr": "protestan",
+    "exampleSentence": "Protestant reformers emphasized faith over tradition.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "crusader",
+    "meaning": "a participant in medieval religious wars sanctioned by the church",
+    "tr": "haçlı askeri",
+    "exampleSentence": "Crusaders marched to reclaim the Holy Land from Muslim control.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "plague",
+    "meaning": "a widespread and deadly disease outbreak",
+    "tr": "veba",
+    "exampleSentence": "The Black Plague killed millions in medieval Europe.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "pandemic",
+    "meaning": "a global outbreak of a disease",
+    "tr": "pandemi",
+    "exampleSentence": "Pandemics have repeatedly shaped human history.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "medicine",
+    "meaning": "the science of diagnosing and treating illness",
+    "tr": "tıp",
+    "exampleSentence": "Ancient medicine relied on herbs and natural remedies.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "pharmacy",
+    "meaning": "the preparation and distribution of medicinal drugs",
+    "tr": "eczacılık",
+    "exampleSentence": "Early pharmacies were established in the Middle East.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "architecture",
+    "meaning": "the art and practice of designing and constructing buildings",
+    "tr": "mimari",
+    "exampleSentence": "Roman architecture influenced cities across Europe.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "sculpture",
+    "meaning": "the art of shaping materials into three-dimensional forms",
+    "tr": "heykel",
+    "exampleSentence": "Greek sculpture emphasized balance and human beauty.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "painting",
+    "meaning": "the practice of applying pigment to a surface to create art",
+    "tr": "resim",
+    "exampleSentence": "Renaissance painting introduced perspective and realism.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "literature",
+    "meaning": "written works considered as art or historical record",
+    "tr": "edebiyat",
+    "exampleSentence": "Ancient literature includes epics like the Iliad and the Odyssey.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "philosophy",
+    "meaning": "the study of fundamental nature of knowledge and existence",
+    "tr": "felsefe",
+    "exampleSentence": "Greek philosophy laid the groundwork for modern logic.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "mythology",
+    "meaning": "a collection of traditional stories explaining natural events or beliefs",
+    "tr": "mitoloji",
+    "exampleSentence": "Norse mythology inspired many modern fantasy stories.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "legend",
+    "meaning": "a traditional story handed down through generations",
+    "tr": "efsane",
+    "exampleSentence": "The legend of King Arthur remains popular in British folklore.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "folklore",
+    "meaning": "the traditions, stories, and customs of a community",
+    "tr": "halk kültürü",
+    "exampleSentence": "Folklore preserves the beliefs and values of a people.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "heritage",
+    "meaning": "the cultural legacy handed down from past generations",
+    "tr": "kültürel miras",
+    "exampleSentence": "UNESCO protects sites of global heritage importance.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "archival record",
+    "meaning": "a document preserved for its historical significance",
+    "tr": "arşiv kaydı",
+    "exampleSentence": "Archival records are valuable sources for historians.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "chronicle writer",
+    "meaning": "a person who records historical events in sequence",
+    "tr": "vak’anüvis / tarihçi",
+    "exampleSentence": "Chronicle writers documented royal events and battles.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "historian",
+    "meaning": "a person who studies and writes about the past",
+    "tr": "tarihçi",
+    "exampleSentence": "Historians rely on evidence to interpret past events.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "archivist",
+    "meaning": "a person responsible for preserving historical documents",
+    "tr": "arşivci",
+    "exampleSentence": "Archivists catalog old manuscripts for future research.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "anthropology",
+    "meaning": "the study of human societies and cultures over time",
+    "tr": "antropoloji",
+    "exampleSentence": "Anthropology examines how cultures develop and interact.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "World War I",
+    "meaning": "a global conflict that took place from 1914 to 1918",
+    "tr": "Birinci Dünya Savaşı",
+    "exampleSentence": "World War I reshaped the political borders of Europe.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "World War II",
+    "meaning": "a global war from 1939 to 1945 involving most world powers",
+    "tr": "İkinci Dünya Savaşı",
+    "exampleSentence": "World War II ended after the surrender of Japan in 1945.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "Holocaust",
+    "meaning": "the mass genocide of Jews and others during World War II",
+    "tr": "Holokost / soykırım",
+    "exampleSentence": "The Holocaust remains one of the darkest chapters in human history.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "genocide",
+    "meaning": "the deliberate killing of a large group of people, especially of a nation",
+    "tr": "soykırım",
+    "exampleSentence": "The term genocide was coined after World War II.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "refugee",
+    "meaning": "a person forced to flee their country due to war or persecution",
+    "tr": "mülteci",
+    "exampleSentence": "Millions of refugees fled Europe during the war.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "decolonization",
+    "meaning": "the process by which colonies gained independence from empires",
+    "tr": "sömürgeden kurtulma",
+    "exampleSentence": "Decolonization movements spread across Africa and Asia after WWII.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "civil war",
+    "meaning": "a war between groups within the same country",
+    "tr": "iç savaş",
+    "exampleSentence": "The American Civil War was fought over slavery and states' rights.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "United Nations",
+    "meaning": "an international organization founded in 1945 to promote peace",
+    "tr": "Birleşmiş Milletler",
+    "exampleSentence": "The United Nations was established after World War II.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "European Union",
+    "meaning": "a political and economic union of European countries",
+    "tr": "Avrupa Birliği",
+    "exampleSentence": "The European Union was formed to promote unity and trade in Europe.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "globalization",
+    "meaning": "the process of increasing interconnection among countries",
+    "tr": "küreselleşme",
+    "exampleSentence": "Globalization has transformed trade, communication, and culture.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "digital revolution",
+    "meaning": "the shift from traditional industry to information technology",
+    "tr": "dijital devrim",
+    "exampleSentence": "The digital revolution changed how people work and communicate.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "industrialization",
+    "meaning": "the development of industries in a region on a large scale",
+    "tr": "sanayileşme",
+    "exampleSentence": "Industrialization led to rapid urban growth in Europe.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "urbanization",
+    "meaning": "the process of making an area more urban",
+    "tr": "kentleşme",
+    "exampleSentence": "Urbanization increased as people moved to cities for jobs.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "labor union",
+    "meaning": "an organization formed by workers to protect their rights",
+    "tr": "işçi sendikası",
+    "exampleSentence": "Labor unions fought for fair wages and safe working conditions.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "women’s rights",
+    "meaning": "the rights and freedoms claimed for women",
+    "tr": "kadın hakları",
+    "exampleSentence": "The women’s rights movement gained momentum in the 20th century.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "civil disobedience",
+    "meaning": "the act of protesting laws peacefully",
+    "tr": "sivil itaatsizlik",
+    "exampleSentence": "Gandhi used civil disobedience to oppose British rule in India.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "Cold War diplomacy",
+    "meaning": "strategic negotiations between rival powers during the Cold War",
+    "tr": "Soğuk Savaş diplomasisi",
+    "exampleSentence": "Cold War diplomacy relied on espionage and negotiation.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "Vietnam War",
+    "meaning": "a conflict between communist North Vietnam and South Vietnam supported by the US",
+    "tr": "Vietnam Savaşı",
+    "exampleSentence": "The Vietnam War became a symbol of Cold War tension.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "space exploration",
+    "meaning": "the investigation of outer space through technology and travel",
+    "tr": "uzay araştırmaları",
+    "exampleSentence": "Space exploration reached a milestone with the Moon landing.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "internet era",
+    "meaning": "the modern age marked by widespread use of the internet",
+    "tr": "internet çağı",
+    "exampleSentence": "The internet era revolutionized access to information.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "terrorism",
+    "meaning": "the use of violence to achieve political goals",
+    "tr": "terörizm",
+    "exampleSentence": "Terrorism has been a global challenge in the 21st century.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "9/11 attacks",
+    "meaning": "terrorist attacks on the United States on September 11, 2001",
+    "tr": "11 Eylül saldırıları",
+    "exampleSentence": "The 9/11 attacks changed global security policies forever.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "Arab Spring",
+    "meaning": "a series of anti-government uprisings in the Arab world",
+    "tr": "Arap Baharı",
+    "exampleSentence": "The Arab Spring began in Tunisia and spread across the Middle East.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "climate change",
+    "meaning": "long-term alteration of global weather patterns",
+    "tr": "iklim değişikliği",
+    "exampleSentence": "Climate change has become one of the main issues of modern history.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "human rights",
+    "meaning": "the basic rights and freedoms to which all humans are entitled",
+    "tr": "insan hakları",
+    "exampleSentence": "The Universal Declaration of Human Rights was adopted in 1948.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "freedom of speech",
+    "meaning": "the right to express opinions without censorship",
+    "tr": "ifade özgürlüğü",
+    "exampleSentence": "Freedom of speech is essential to democratic societies.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "civilization collapse",
+    "meaning": "the decline or fall of a complex society",
+    "tr": "medeniyetin çöküşü",
+    "exampleSentence": "Historians study factors that caused civilization collapse.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "cultural revolution",
+    "meaning": "a movement aiming to change societal values and beliefs",
+    "tr": "kültürel devrim",
+    "exampleSentence": "China's Cultural Revolution deeply changed its education and politics.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "propaganda campaign",
+    "meaning": "organized effort to spread specific ideas or beliefs",
+    "tr": "propaganda kampanyası",
+    "exampleSentence": "Propaganda campaigns were used during wars to influence people.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "economic crisis",
+    "meaning": "a period of financial instability and recession",
+    "tr": "ekonomik kriz",
+    "exampleSentence": "The Great Depression was the worst economic crisis in modern history.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "Great Depression",
+    "meaning": "a severe worldwide economic depression during the 1930s",
+    "tr": "Büyük Buhran",
+    "exampleSentence": "The Great Depression led to massive unemployment and poverty.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "industrial revolution",
+    "meaning": "the shift from agrarian to industrial economies",
+    "tr": "sanayi devrimi",
+    "exampleSentence": "The Industrial Revolution began in Britain in the 18th century.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "technological advancement",
+    "meaning": "progress in technology that improves society",
+    "tr": "teknolojik gelişme",
+    "exampleSentence": "Technological advancement drives changes in every era.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "social media",
+    "meaning": "online platforms that enable user interaction and content sharing",
+    "tr": "sosyal medya",
+    "exampleSentence": "Social media became a key tool for activism and communication.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "information age",
+    "meaning": "the period where information became easily accessible via technology",
+    "tr": "bilgi çağı",
+    "exampleSentence": "The information age transformed how humans share knowledge.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "art movement",
+    "meaning": "a style or tendency in art with a common philosophy",
+    "tr": "sanat akımı",
+    "exampleSentence": "Impressionism was a revolutionary art movement in the 19th century.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "cultural exchange",
+    "meaning": "the sharing of ideas and traditions between cultures",
+    "tr": "kültürel etkileşim",
+    "exampleSentence": "Cultural exchange promotes understanding among nations.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "global economy",
+    "meaning": "the interconnected economic activities across the world",
+    "tr": "küresel ekonomi",
+    "exampleSentence": "The global economy depends on trade and technology.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "pandemic response",
+    "meaning": "actions taken to manage global disease outbreaks",
+    "tr": "pandemiye karşı önlem",
+    "exampleSentence": "Pandemic responses have evolved with medical advances.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "space exploration",
+    "meaning": "human efforts to explore outer space using technology",
+    "tr": "uzay keşfi",
+    "exampleSentence": "Space exploration continues with Mars and lunar missions.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "modernization",
+    "meaning": "the transformation from traditional to modern systems",
+    "tr": "modernleşme",
+    "exampleSentence": "Modernization reshaped cities and social structures worldwide.",
+    "isCustom": false,
+    "category": "history"
+  },
+  {
+    "word": "artificial intelligence",
+    "meaning": "the simulation of human intelligence by machines",
+    "tr": "yapay zeka",
+    "exampleSentence": "Artificial intelligence is becoming a major part of modern history.",
+    "isCustom": false,
+    "category": "history"
+  }
+]
+
+
+

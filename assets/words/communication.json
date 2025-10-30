@@ -1,0 +1,1549 @@
+[
+  {
+    "word": "communication",
+    "meaning": "the act of exchanging information through speech, writing, or gestures",
+    "tr": "iletişim",
+    "exampleSentence": "Effective communication builds trust between people.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "message",
+    "meaning": "information or idea that one person sends to another",
+    "tr": "mesaj",
+    "exampleSentence": "He sent a short message to confirm the meeting.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "sender",
+    "meaning": "the person who initiates a message in communication",
+    "tr": "gönderici",
+    "exampleSentence": "The sender must ensure the message is clear and accurate.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "receiver",
+    "meaning": "the person who receives and interprets a message",
+    "tr": "alıcı",
+    "exampleSentence": "The receiver’s feedback shows if the message was understood.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "feedback",
+    "meaning": "a response given to the sender to indicate understanding",
+    "tr": "geri bildirim",
+    "exampleSentence": "Constructive feedback helps improve future communication.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "context",
+    "meaning": "the situation or environment in which communication takes place",
+    "tr": "bağlam",
+    "exampleSentence": "The meaning of words often depends on their context.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "channel",
+    "meaning": "the medium used to send a message, such as speech or email",
+    "tr": "kanal",
+    "exampleSentence": "Email is a common channel for business communication.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "verbal communication",
+    "meaning": "the use of words and language to share information",
+    "tr": "sözlü iletişim",
+    "exampleSentence": "Verbal communication is essential in meetings.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "nonverbal communication",
+    "meaning": "the exchange of information without using words",
+    "tr": "sözsüz iletişim",
+    "exampleSentence": "Nonverbal communication includes gestures and facial expressions.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "body language",
+    "meaning": "physical movements that express feelings or attitudes",
+    "tr": "beden dili",
+    "exampleSentence": "Good body language shows confidence.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "gesture",
+    "meaning": "a movement of the hands or body to express meaning",
+    "tr": "jest, el hareketi",
+    "exampleSentence": "He made a polite gesture to greet his colleague.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "facial expression",
+    "meaning": "the movement of the face showing emotions",
+    "tr": "yüz ifadesi",
+    "exampleSentence": "Her facial expression revealed her surprise.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "tone of voice",
+    "meaning": "the quality or emotion in someone’s speech",
+    "tr": "ses tonu",
+    "exampleSentence": "His tone of voice sounded calm and reassuring.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "intonation",
+    "meaning": "the rise and fall of the voice when speaking",
+    "tr": "tonlama",
+    "exampleSentence": "Intonation can change the meaning of a sentence.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "eye contact",
+    "meaning": "looking directly into another person’s eyes during communication",
+    "tr": "göz teması",
+    "exampleSentence": "Maintaining eye contact shows respect and attention.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "listening",
+    "meaning": "actively paying attention to what someone is saying",
+    "tr": "dinleme",
+    "exampleSentence": "Listening is as important as speaking in communication.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "active listening",
+    "meaning": "fully concentrating on and responding to a speaker",
+    "tr": "etkin dinleme",
+    "exampleSentence": "Active listening helps avoid misunderstandings.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "misunderstanding",
+    "meaning": "a failure to understand something correctly",
+    "tr": "yanlış anlama",
+    "exampleSentence": "Misunderstandings can cause conflicts in the workplace.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "clarity",
+    "meaning": "the quality of being clear and easy to understand",
+    "tr": "açıklık, netlik",
+    "exampleSentence": "Clarity is essential for good communication.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "conciseness",
+    "meaning": "the quality of expressing much in few words",
+    "tr": "özlülük, kısalık",
+    "exampleSentence": "Conciseness makes business writing more effective.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "persuasion",
+    "meaning": "the act of convincing someone to do or believe something",
+    "tr": "ikna",
+    "exampleSentence": "Persuasion is a key skill in sales and leadership.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "presentation",
+    "meaning": "a formal talk or display given to an audience",
+    "tr": "sunum",
+    "exampleSentence": "She gave a presentation about digital marketing trends.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "public speaking",
+    "meaning": "speaking to an audience in a structured way",
+    "tr": "hitabet, topluluk önünde konuşma",
+    "exampleSentence": "Public speaking requires confidence and preparation.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "speech",
+    "meaning": "a formal address delivered to an audience",
+    "tr": "konuşma",
+    "exampleSentence": "His speech inspired everyone at the conference.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "conversation",
+    "meaning": "a spoken exchange between two or more people",
+    "tr": "sohbet, konuşma",
+    "exampleSentence": "They had a friendly conversation over coffee.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "dialogue",
+    "meaning": "a discussion between two or more people or groups",
+    "tr": "diyalog",
+    "exampleSentence": "Open dialogue promotes understanding and peace.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "interaction",
+    "meaning": "communication or direct involvement with others",
+    "tr": "etkileşim",
+    "exampleSentence": "Positive interaction strengthens teamwork.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "medium",
+    "meaning": "a means or channel of communication",
+    "tr": "iletişim aracı",
+    "exampleSentence": "Television is still a powerful medium for advertising.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "media",
+    "meaning": "mass communication channels such as TV, radio, and internet",
+    "tr": "medya",
+    "exampleSentence": "The media play a big role in shaping public opinion.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "journalism",
+    "meaning": "the activity of gathering and publishing news",
+    "tr": "gazetecilik",
+    "exampleSentence": "Good journalism relies on truth and objectivity.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "press release",
+    "meaning": "an official statement given to the media",
+    "tr": "basın bülteni",
+    "exampleSentence": "The company issued a press release about its new product.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "broadcast",
+    "meaning": "to transmit information by radio, TV, or online",
+    "tr": "yayın yapmak",
+    "exampleSentence": "The event was broadcast live on national television.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "announcement",
+    "meaning": "a public statement or notice",
+    "tr": "duyuru",
+    "exampleSentence": "The airline made an announcement about the delay.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "rumor",
+    "meaning": "an unverified piece of information spread among people",
+    "tr": "söylenti",
+    "exampleSentence": "Rumors can damage a company’s reputation.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "gossip",
+    "meaning": "informal talk about other people’s private lives",
+    "tr": "dedikodu",
+    "exampleSentence": "Office gossip can create a negative environment.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "interview",
+    "meaning": "a formal meeting to ask or answer questions",
+    "tr": "röportaj, mülakat",
+    "exampleSentence": "The journalist conducted an interview with the CEO.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "meeting",
+    "meaning": "a gathering of people for discussion or decision-making",
+    "tr": "toplantı",
+    "exampleSentence": "The team held a meeting to discuss the new project.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "conference",
+    "meaning": "a large formal meeting for discussion or exchange of ideas",
+    "tr": "konferans",
+    "exampleSentence": "Experts gathered at the annual science conference.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "seminar",
+    "meaning": "a meeting for training or discussion on a specific topic",
+    "tr": "seminer",
+    "exampleSentence": "Students attended a seminar on communication ethics.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "negotiation",
+    "meaning": "a discussion aimed at reaching an agreement",
+    "tr": "müzakere",
+    "exampleSentence": "Successful negotiation requires listening and compromise.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "argument",
+    "meaning": "a discussion in which people disagree and express different opinions",
+    "tr": "tartışma",
+    "exampleSentence": "The argument ended when they agreed to compromise.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "perspective",
+    "meaning": "a particular attitude or way of viewing something",
+    "tr": "bakış açısı",
+    "exampleSentence": "Hearing different perspectives helps solve problems.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "dialogue skills",
+    "meaning": "the ability to engage in open and respectful conversation",
+    "tr": "diyalog becerileri",
+    "exampleSentence": "Good dialogue skills prevent conflicts in teams.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "communication barrier",
+    "meaning": "anything that prevents effective communication",
+    "tr": "iletişim engeli",
+    "exampleSentence": "Language differences can create communication barriers.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "cross-cultural communication",
+    "meaning": "communication between people from different cultures",
+    "tr": "kültürlerarası iletişim",
+    "exampleSentence": "Cross-cultural communication requires sensitivity and respect.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "conflict",
+    "meaning": "a serious disagreement or argument between people or groups",
+    "tr": "çatışma, anlaşmazlık",
+    "exampleSentence": "Open communication can resolve most conflicts.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "compromise",
+    "meaning": "an agreement reached by each side giving up something",
+    "tr": "uzlaşma",
+    "exampleSentence": "They found a compromise that satisfied both parties.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "empathy",
+    "meaning": "the ability to understand and share another’s feelings",
+    "tr": "empati",
+    "exampleSentence": "Empathy is the foundation of compassionate communication.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "written communication",
+    "meaning": "the exchange of information through written symbols like letters or emails",
+    "tr": "yazılı iletişim",
+    "exampleSentence": "Written communication is essential for documentation and clarity.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "formal communication",
+    "meaning": "official communication following established structures or rules",
+    "tr": "resmî iletişim",
+    "exampleSentence": "Formal communication often takes place in organizations and offices.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "informal communication",
+    "meaning": "casual communication outside formal channels",
+    "tr": "gayriresmî iletişim",
+    "exampleSentence": "Informal communication helps build personal relationships.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "visual communication",
+    "meaning": "the use of visual elements to convey ideas or information",
+    "tr": "görsel iletişim",
+    "exampleSentence": "Posters and infographics are tools of visual communication.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "symbol",
+    "meaning": "an image, sign, or object that represents something else",
+    "tr": "sembol",
+    "exampleSentence": "The dove is a universal symbol of peace.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "sign language",
+    "meaning": "a visual language using hand movements and gestures",
+    "tr": "işaret dili",
+    "exampleSentence": "Sign language allows deaf people to communicate effectively.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "media literacy",
+    "meaning": "the ability to understand and evaluate media content critically",
+    "tr": "medya okuryazarlığı",
+    "exampleSentence": "Media literacy helps people identify misinformation.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "mass communication",
+    "meaning": "the process of sending messages to a large audience through media",
+    "tr": "kitle iletişimi",
+    "exampleSentence": "Television and newspapers are examples of mass communication.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "interpersonal communication",
+    "meaning": "direct communication between two or more people",
+    "tr": "kişilerarası iletişim",
+    "exampleSentence": "Interpersonal communication builds strong social connections.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "intrapersonal communication",
+    "meaning": "communication within one’s own mind or self-reflection",
+    "tr": "kişi içi iletişim",
+    "exampleSentence": "Intrapersonal communication helps clarify thoughts and feelings.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "group communication",
+    "meaning": "interaction among several people to achieve a shared goal",
+    "tr": "grup iletişimi",
+    "exampleSentence": "Group communication is vital in teamwork.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "organizational communication",
+    "meaning": "the process of exchanging information within an organization",
+    "tr": "örgütsel iletişim",
+    "exampleSentence": "Organizational communication keeps employees informed and motivated.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "digital communication",
+    "meaning": "the exchange of information using digital technologies",
+    "tr": "dijital iletişim",
+    "exampleSentence": "Digital communication includes email, chat, and video calls.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "social media",
+    "meaning": "online platforms where users create and share content",
+    "tr": "sosyal medya",
+    "exampleSentence": "Social media has transformed global communication.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "instant messaging",
+    "meaning": "real-time text communication through digital devices",
+    "tr": "anlık mesajlaşma",
+    "exampleSentence": "Instant messaging is a quick way to stay in touch with coworkers.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "email",
+    "meaning": "electronic mail sent via the internet",
+    "tr": "e-posta",
+    "exampleSentence": "She received an email confirming her interview time.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "newsletter",
+    "meaning": "a regular publication sent to subscribers with updates or news",
+    "tr": "bülten",
+    "exampleSentence": "The company newsletter is emailed to all employees monthly.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "press conference",
+    "meaning": "a formal meeting where journalists ask questions to public figures",
+    "tr": "basın toplantısı",
+    "exampleSentence": "The minister held a press conference to announce the new policy.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "advertisement",
+    "meaning": "a public notice promoting products or services",
+    "tr": "reklam",
+    "exampleSentence": "The advertisement went viral on social media.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "propaganda",
+    "meaning": "information used to influence people’s opinions or beliefs",
+    "tr": "propaganda",
+    "exampleSentence": "Propaganda is often used in political campaigns.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "public relations",
+    "meaning": "managing communication between an organization and the public",
+    "tr": "halkla ilişkiler",
+    "exampleSentence": "Public relations teams handle media inquiries and reputation management.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "branding",
+    "meaning": "creating a unique image or identity for a product or company",
+    "tr": "markalaşma",
+    "exampleSentence": "Branding is crucial for recognition and loyalty.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "campaign",
+    "meaning": "a planned series of actions to promote an idea or product",
+    "tr": "kampanya",
+    "exampleSentence": "The advertising campaign increased sales significantly.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "announcement post",
+    "meaning": "a social media post used to share official information",
+    "tr": "duyuru gönderisi",
+    "exampleSentence": "The announcement post received thousands of likes.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "viral content",
+    "meaning": "media that spreads rapidly online through sharing",
+    "tr": "viral içerik",
+    "exampleSentence": "Funny videos often become viral content.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "influencer",
+    "meaning": "a person who affects others’ opinions or buying decisions online",
+    "tr": "influencer, etkileyici kişi",
+    "exampleSentence": "Influencers use storytelling to connect with audiences.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "storytelling",
+    "meaning": "the act of telling stories to engage or persuade an audience",
+    "tr": "hikaye anlatıcılığı",
+    "exampleSentence": "Storytelling makes brand messages more memorable.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "feedback loop",
+    "meaning": "a process where information is returned to adjust future actions",
+    "tr": "geri bildirim döngüsü",
+    "exampleSentence": "Feedback loops improve communication efficiency.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "two-way communication",
+    "meaning": "communication involving exchange and feedback between both parties",
+    "tr": "çift yönlü iletişim",
+    "exampleSentence": "Two-way communication fosters understanding and trust.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "one-way communication",
+    "meaning": "communication without feedback or response",
+    "tr": "tek yönlü iletişim",
+    "exampleSentence": "Broadcast television is a form of one-way communication.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "virtual meeting",
+    "meaning": "an online meeting using video conferencing tools",
+    "tr": "sanal toplantı",
+    "exampleSentence": "Virtual meetings connect teams across countries.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "video call",
+    "meaning": "a real-time conversation with visual and audio connection",
+    "tr": "görüntülü arama",
+    "exampleSentence": "They scheduled a video call to discuss the project.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "voice message",
+    "meaning": "a recorded audio message sent digitally",
+    "tr": "sesli mesaj",
+    "exampleSentence": "He sent a quick voice message instead of typing.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "chatbot",
+    "meaning": "an automated program that simulates conversation with users",
+    "tr": "sohbet botu",
+    "exampleSentence": "Chatbots improve customer service response times.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "communication technology",
+    "meaning": "tools and systems that enable information exchange",
+    "tr": "iletişim teknolojisi",
+    "exampleSentence": "5G networks revolutionized communication technology.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "satellite communication",
+    "meaning": "using satellites to send signals over long distances",
+    "tr": "uydu iletişimi",
+    "exampleSentence": "Satellite communication allows global broadcasting.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "telecommunication",
+    "meaning": "communication over distance using electronic systems",
+    "tr": "uzaktan iletişim, telekomünikasyon",
+    "exampleSentence": "Telecommunication companies provide internet and phone services.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "broadcast media",
+    "meaning": "radio and television channels that transmit information widely",
+    "tr": "yayın medyası",
+    "exampleSentence": "Broadcast media reach millions of viewers daily.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "print media",
+    "meaning": "newspapers, magazines, and other printed publications",
+    "tr": "basılı medya",
+    "exampleSentence": "Print media remains relevant in many rural areas.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "online platform",
+    "meaning": "a digital space for communication or interaction",
+    "tr": "çevrimiçi platform",
+    "exampleSentence": "Online platforms like Zoom facilitate global collaboration.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "communication network",
+    "meaning": "a system of connections that allows information exchange",
+    "tr": "iletişim ağı",
+    "exampleSentence": "The company upgraded its internal communication network.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "Wi-Fi",
+    "meaning": "a wireless technology for connecting devices to the internet",
+    "tr": "kablosuz ağ (Wi-Fi)",
+    "exampleSentence": "Wi-Fi enables communication without physical cables.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "data transfer",
+    "meaning": "the movement of digital information from one place to another",
+    "tr": "veri aktarımı",
+    "exampleSentence": "Faster data transfer improves communication quality.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "encryption",
+    "meaning": "the process of encoding information to prevent unauthorized access",
+    "tr": "şifreleme",
+    "exampleSentence": "Encryption ensures secure online communication.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "privacy",
+    "meaning": "the right to keep personal information secure and private",
+    "tr": "gizlilik",
+    "exampleSentence": "Privacy settings protect users’ communication data.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "cyber communication",
+    "meaning": "interaction between people through digital technologies",
+    "tr": "siber iletişim",
+    "exampleSentence": "Cyber communication has redefined human connection.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "fake news",
+    "meaning": "false or misleading information spread as news",
+    "tr": "sahte haber",
+    "exampleSentence": "Fake news spreads quickly through social media platforms.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "corporate communication",
+    "meaning": "the way a company shares information internally and externally",
+    "tr": "kurumsal iletişim",
+    "exampleSentence": "Corporate communication shapes the public image of a company.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "internal communication",
+    "meaning": "information exchange within an organization",
+    "tr": "iç iletişim",
+    "exampleSentence": "Internal communication keeps employees aligned with company goals.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "external communication",
+    "meaning": "interaction between an organization and external stakeholders",
+    "tr": "dış iletişim",
+    "exampleSentence": "External communication maintains good relationships with partners.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "press officer",
+    "meaning": "a person who manages media relations for an organization",
+    "tr": "basın sorumlusu",
+    "exampleSentence": "The press officer prepared a statement for journalists.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "spokesperson",
+    "meaning": "someone who speaks officially for an organization or group",
+    "tr": "sözcü",
+    "exampleSentence": "The spokesperson addressed the media during the crisis.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "diplomacy",
+    "meaning": "the skill of managing communication between nations or people",
+    "tr": "diplomasi",
+    "exampleSentence": "Good diplomacy can prevent international conflicts.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "negotiator",
+    "meaning": "a person who tries to reach an agreement between parties",
+    "tr": "müzakereci",
+    "exampleSentence": "A skilled negotiator listens more than they speak.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "interpreter",
+    "meaning": "a person who translates spoken language in real-time",
+    "tr": "tercüman",
+    "exampleSentence": "The interpreter translated the diplomat’s speech into French.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "translator",
+    "meaning": "a person who converts written text from one language to another",
+    "tr": "çevirmen",
+    "exampleSentence": "The translator worked on the English version of the novel.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "multilingual",
+    "meaning": "able to speak or use several languages",
+    "tr": "çok dilli",
+    "exampleSentence": "Multilingual employees improve cross-border communication.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "language barrier",
+    "meaning": "a difficulty in communication caused by speaking different languages",
+    "tr": "dil engeli",
+    "exampleSentence": "Language barriers can slow down international business deals.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "cross-cultural competence",
+    "meaning": "the ability to communicate effectively across cultures",
+    "tr": "kültürlerarası yeterlilik",
+    "exampleSentence": "Cross-cultural competence helps in global collaboration.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "public diplomacy",
+    "meaning": "communication aimed at influencing foreign publics",
+    "tr": "kamu diplomasisi",
+    "exampleSentence": "Public diplomacy strengthens international relations.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "mass media",
+    "meaning": "forms of communication that reach large audiences",
+    "tr": "kitle iletişim araçları",
+    "exampleSentence": "Mass media shape opinions on global issues.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "news outlet",
+    "meaning": "a media organization that publishes news",
+    "tr": "haber kuruluşu",
+    "exampleSentence": "Major news outlets covered the story extensively.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "editorial",
+    "meaning": "an article expressing the opinion of an editor or publisher",
+    "tr": "baş yazı",
+    "exampleSentence": "The editorial criticized the government’s new policy.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "headline",
+    "meaning": "the title of a news article or report",
+    "tr": "manşet",
+    "exampleSentence": "The headline caught everyone’s attention immediately.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "press coverage",
+    "meaning": "the reporting of news by the media",
+    "tr": "basın haberi, medya kapsamı",
+    "exampleSentence": "The product launch received positive press coverage.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "media bias",
+    "meaning": "the tendency of journalists to present information subjectively",
+    "tr": "medya yanlılığı",
+    "exampleSentence": "Media bias can influence public perception.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "censorship",
+    "meaning": "the control or suppression of public communication",
+    "tr": "sansür",
+    "exampleSentence": "Censorship limits freedom of expression in some countries.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "freedom of speech",
+    "meaning": "the right to express opinions without censorship",
+    "tr": "ifade özgürlüğü",
+    "exampleSentence": "Freedom of speech is a core democratic principle.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "opinion leader",
+    "meaning": "a person who influences others’ views or attitudes",
+    "tr": "kanaat önderi",
+    "exampleSentence": "Opinion leaders shape discussions on social media.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "media influence",
+    "meaning": "the effect that media have on people’s thoughts and behavior",
+    "tr": "medya etkisi",
+    "exampleSentence": "Media influence is powerful in shaping public opinion.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "journalist",
+    "meaning": "a person who writes or reports news for the media",
+    "tr": "gazeteci",
+    "exampleSentence": "The journalist investigated the corruption case.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "reporter",
+    "meaning": "someone who gathers information and writes news stories",
+    "tr": "muhabir",
+    "exampleSentence": "The reporter covered the event live from the scene.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "news anchor",
+    "meaning": "a person who presents news on television or radio",
+    "tr": "haber sunucusu",
+    "exampleSentence": "The news anchor introduced the breaking story calmly.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "podcast",
+    "meaning": "a digital audio program available on the internet",
+    "tr": "podcast",
+    "exampleSentence": "He hosts a podcast about modern communication trends.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "blog",
+    "meaning": "a website containing regularly updated personal or professional posts",
+    "tr": "blog",
+    "exampleSentence": "She runs a blog on language learning and communication.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "comment section",
+    "meaning": "an online area where users share opinions on content",
+    "tr": "yorum bölümü",
+    "exampleSentence": "The comment section exploded after the controversial post.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "discussion forum",
+    "meaning": "a website or space for people to discuss shared interests",
+    "tr": "tartışma forumu",
+    "exampleSentence": "Discussion forums allow users to exchange ideas freely.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "feedback form",
+    "meaning": "a tool for collecting users’ opinions or experiences",
+    "tr": "geri bildirim formu",
+    "exampleSentence": "The feedback form helped improve the website’s design.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "confidentiality",
+    "meaning": "the state of keeping information private and secure",
+    "tr": "gizlilik",
+    "exampleSentence": "Confidentiality is vital in professional communication.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "trust",
+    "meaning": "firm belief in the reliability or truth of someone or something",
+    "tr": "güven",
+    "exampleSentence": "Trust is the foundation of healthy communication.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "transparency",
+    "meaning": "openness and honesty in communication and actions",
+    "tr": "şeffaflık",
+    "exampleSentence": "Transparency builds credibility with the audience.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "rumor control",
+    "meaning": "the act of managing or stopping false information from spreading",
+    "tr": "söylenti yönetimi",
+    "exampleSentence": "Rumor control is crucial during emergencies.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "crisis communication",
+    "meaning": "managing communication during emergencies or public crises",
+    "tr": "kriz iletişimi",
+    "exampleSentence": "Crisis communication protects a company’s reputation.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "public announcement",
+    "meaning": "information officially shared with the general public",
+    "tr": "kamu duyurusu",
+    "exampleSentence": "The mayor made a public announcement about the storm.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "communication ethics",
+    "meaning": "principles of honesty, respect, and fairness in communication",
+    "tr": "iletişim etiği",
+    "exampleSentence": "Communication ethics prevent manipulation and deception.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "tone",
+    "meaning": "the general character or attitude of a piece of communication",
+    "tr": "ton, üslup",
+    "exampleSentence": "The tone of the email was polite but firm.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "language register",
+    "meaning": "the level of formality in speech or writing",
+    "tr": "dil düzeyi",
+    "exampleSentence": "Academic writing requires a formal language register.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "slang",
+    "meaning": "informal words or phrases used in casual communication",
+    "tr": "argo",
+    "exampleSentence": "Slang makes conversations sound more natural.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "jargon",
+    "meaning": "specialized language used by a specific profession or group",
+    "tr": "mesleki terim",
+    "exampleSentence": "Avoid using too much jargon in public communication.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "metaphor",
+    "meaning": "a figure of speech comparing two things without using 'like' or 'as'",
+    "tr": "metafor, mecaz",
+    "exampleSentence": "Metaphors make communication more vivid and emotional.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "sarcasm",
+    "meaning": "the use of irony to mock or convey contempt",
+    "tr": "alay, iğneleme",
+    "exampleSentence": "Sarcasm can easily be misunderstood in written communication.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "humor",
+    "meaning": "the quality of being amusing or entertaining",
+    "tr": "mizah",
+    "exampleSentence": "Humor can make difficult messages easier to accept.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "emotional intelligence",
+    "meaning": "the ability to recognize and manage emotions in oneself and others",
+    "tr": "duygusal zeka",
+    "exampleSentence": "Emotional intelligence improves interpersonal communication.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "nonviolent communication",
+    "meaning": "a communication approach focusing on empathy and honesty",
+    "tr": "şiddetsiz iletişim",
+    "exampleSentence": "Nonviolent communication helps resolve conflicts peacefully.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "assertiveness",
+    "meaning": "the quality of expressing one’s opinions confidently without aggression",
+    "tr": "kendini ifade etme becerisi",
+    "exampleSentence": "Assertiveness helps maintain respect in communication.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "interviewing skills",
+    "meaning": "the ability to ask and answer questions effectively in interviews",
+    "tr": "mülakat becerileri",
+    "exampleSentence": "Good interviewing skills are essential for journalists.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "interpersonal skills",
+    "meaning": "abilities that help people interact effectively with others",
+    "tr": "kişilerarası beceriler",
+    "exampleSentence": "Strong interpersonal skills are vital in leadership positions.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "networking",
+    "meaning": "building relationships for professional or social advantage",
+    "tr": "ağ kurma",
+    "exampleSentence": "Networking helps professionals discover new opportunities.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "public relations strategy",
+    "meaning": "a plan for managing an organization’s image and media relations",
+    "tr": "halkla ilişkiler stratejisi",
+    "exampleSentence": "The PR strategy focused on transparency and community impact.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "crisis management",
+    "meaning": "the process of handling unexpected negative events effectively",
+    "tr": "kriz yönetimi",
+    "exampleSentence": "Crisis management requires quick and clear communication.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "branding message",
+    "meaning": "the main idea a brand communicates to its audience",
+    "tr": "marka mesajı",
+    "exampleSentence": "A consistent branding message strengthens recognition.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "visual identity",
+    "meaning": "the visual elements that represent a brand or organization",
+    "tr": "görsel kimlik",
+    "exampleSentence": "A strong visual identity enhances brand communication.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "campaign planning",
+    "meaning": "the process of designing and organizing a communication campaign",
+    "tr": "kampanya planlama",
+    "exampleSentence": "Campaign planning ensures that all messages align with goals.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "stakeholder communication",
+    "meaning": "information exchange with people affected by decisions or policies",
+    "tr": "paydaş iletişimi",
+    "exampleSentence": "Stakeholder communication maintains trust and collaboration.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "brand reputation",
+    "meaning": "the public perception of a company or product",
+    "tr": "marka itibarı",
+    "exampleSentence": "Brand reputation can be damaged by poor communication.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "customer engagement",
+    "meaning": "the process of building relationships with customers",
+    "tr": "müşteri etkileşimi",
+    "exampleSentence": "Social media helps increase customer engagement.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "community management",
+    "meaning": "the act of building and nurturing online communities",
+    "tr": "topluluk yönetimi",
+    "exampleSentence": "Community management fosters loyalty and collaboration.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "media relations",
+    "meaning": "maintaining good relationships between an organization and the media",
+    "tr": "medya ilişkileri",
+    "exampleSentence": "Media relations are crucial for spreading accurate information.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "strategic communication",
+    "meaning": "planned communication aligned with an organization’s goals",
+    "tr": "stratejik iletişim",
+    "exampleSentence": "Strategic communication ensures consistent messaging.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "advocacy",
+    "meaning": "public support or argument for a cause or policy",
+    "tr": "savunuculuk",
+    "exampleSentence": "Advocacy campaigns raise awareness of social issues.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "persuasive communication",
+    "meaning": "communication intended to influence others’ attitudes or behaviors",
+    "tr": "ikna edici iletişim",
+    "exampleSentence": "Persuasive communication is essential in marketing and politics.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "psychological barrier",
+    "meaning": "a mental or emotional factor that blocks communication",
+    "tr": "psikolojik engel",
+    "exampleSentence": "Anxiety can create psychological barriers in public speaking.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "cultural sensitivity",
+    "meaning": "awareness and respect for cultural differences in communication",
+    "tr": "kültürel duyarlılık",
+    "exampleSentence": "Cultural sensitivity prevents misunderstandings in global teams.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "intercultural dialogue",
+    "meaning": "communication aimed at understanding between cultures",
+    "tr": "kültürlerarası diyalog",
+    "exampleSentence": "Intercultural dialogue promotes global peace.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "ethical communication",
+    "meaning": "honest, respectful, and fair exchange of information",
+    "tr": "etik iletişim",
+    "exampleSentence": "Ethical communication builds long-term trust.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "digital storytelling",
+    "meaning": "using digital tools to tell stories and engage audiences",
+    "tr": "dijital hikaye anlatımı",
+    "exampleSentence": "Digital storytelling helps brands connect emotionally with customers.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "algorithmic communication",
+    "meaning": "content distribution and personalization through algorithms",
+    "tr": "algoritmik iletişim",
+    "exampleSentence": "Algorithmic communication shapes what users see online.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "feedback culture",
+    "meaning": "an environment where feedback is encouraged and valued",
+    "tr": "geri bildirim kültürü",
+    "exampleSentence": "A feedback culture improves communication and performance.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "empathy training",
+    "meaning": "developing skills to understand and relate to others’ emotions",
+    "tr": "empati eğitimi",
+    "exampleSentence": "Empathy training enhances interpersonal communication.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "active dialogue",
+    "meaning": "a form of communication where both sides actively participate",
+    "tr": "etkin diyalog",
+    "exampleSentence": "Active dialogue encourages cooperation and problem solving.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "transmission model",
+    "meaning": "a communication theory describing the linear flow of messages",
+    "tr": "iletim modeli",
+    "exampleSentence": "The transmission model simplifies the communication process.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "interaction model",
+    "meaning": "a communication model including feedback and response",
+    "tr": "etkileşim modeli",
+    "exampleSentence": "The interaction model views communication as a two-way process.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "noise",
+    "meaning": "anything that interferes with or distorts a message",
+    "tr": "gürültü, iletişim engeli",
+    "exampleSentence": "Background noise makes phone calls difficult to hear.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "information overload",
+    "meaning": "receiving too much information to process effectively",
+    "tr": "bilgi aşırı yüklenmesi",
+    "exampleSentence": "Email spam contributes to information overload.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "emotional appeal",
+    "meaning": "a persuasive technique targeting people’s emotions",
+    "tr": "duygusal etki",
+    "exampleSentence": "Emotional appeal is often used in charity advertisements.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "credibility",
+    "meaning": "the quality of being trusted or believed in",
+    "tr": "güvenilirlik",
+    "exampleSentence": "Credibility depends on honesty and expertise.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "body posture",
+    "meaning": "the way someone positions their body while communicating",
+    "tr": "vücut duruşu",
+    "exampleSentence": "Confident body posture improves first impressions.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "paralanguage",
+    "meaning": "the nonverbal elements of speech like tone or pitch",
+    "tr": "paradil, ses tonu öğeleri",
+    "exampleSentence": "Paralanguage can change the meaning of a statement.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "proxemics",
+    "meaning": "the study of how people use personal space in communication",
+    "tr": "yakınlık bilimi",
+    "exampleSentence": "Proxemics vary across different cultures.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "chronemics",
+    "meaning": "the study of how time affects communication",
+    "tr": "zaman kullanımı (iletişimde)",
+    "exampleSentence": "Chronemics explain why punctuality matters in some cultures.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "kinesics",
+    "meaning": "the study of body movements and gestures in communication",
+    "tr": "beden hareketleri bilimi",
+    "exampleSentence": "Kinesics is essential in understanding nonverbal messages.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "haptics",
+    "meaning": "communication through touch",
+    "tr": "dokunma yoluyla iletişim",
+    "exampleSentence": "Haptics play an important role in expressing empathy.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "visual cue",
+    "meaning": "a nonverbal signal received through sight",
+    "tr": "görsel ipucu",
+    "exampleSentence": "Visual cues help listeners understand the speaker’s intent.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "social interaction",
+    "meaning": "communication between individuals in society",
+    "tr": "sosyal etkileşim",
+    "exampleSentence": "Social interaction is fundamental for mental health.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "online etiquette",
+    "meaning": "rules for polite and respectful behavior on the internet",
+    "tr": "çevrimiçi görgü kuralları",
+    "exampleSentence": "Online etiquette helps maintain respectful discussions.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "digital footprint",
+    "meaning": "the record of a person’s online activities",
+    "tr": "dijital ayak izi",
+    "exampleSentence": "Managing your digital footprint protects your reputation.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "social listening",
+    "meaning": "monitoring online conversations to understand audience opinions",
+    "tr": "sosyal dinleme",
+    "exampleSentence": "Social listening tools help companies improve engagement.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "user-generated content",
+    "meaning": "media created by the audience instead of professionals",
+    "tr": "kullanıcı tarafından oluşturulan içerik",
+    "exampleSentence": "User-generated content increases authenticity in marketing.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "story arc",
+    "meaning": "the structured progression of a narrative or message",
+    "tr": "hikaye akışı",
+    "exampleSentence": "A clear story arc keeps the audience emotionally engaged.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "information literacy",
+    "meaning": "the ability to find, evaluate, and use information effectively",
+    "tr": "bilgi okuryazarlığı",
+    "exampleSentence": "Information literacy helps people identify reliable sources.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "fact-checking",
+    "meaning": "verifying the truth of information before sharing it",
+    "tr": "doğruluk kontrolü",
+    "exampleSentence": "Fact-checking prevents the spread of misinformation.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "public discourse",
+    "meaning": "discussion of issues that affect society as a whole",
+    "tr": "kamusal söylem",
+    "exampleSentence": "Public discourse reflects the values of a democratic society.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "mass persuasion",
+    "meaning": "the use of media to influence large groups of people",
+    "tr": "kitle iknası",
+    "exampleSentence": "Mass persuasion is common in political advertising.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "agenda setting",
+    "meaning": "the ability of media to influence what topics people think about",
+    "tr": "gündem belirleme",
+    "exampleSentence": "Agenda setting shapes how societies prioritize issues.",
+    "isCustom": false,
+    "category": "communication"
+  },
+  {
+    "word": "media literacy education",
+    "meaning": "teaching people how to analyze and evaluate media critically",
+    "tr": "medya okuryazarlığı eğitimi",
+    "exampleSentence": "Media literacy education helps citizens identify bias and propaganda.",
+    "isCustom": false,
+    "category": "communication"
+  }
+]
+
+
+

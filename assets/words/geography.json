@@ -1,0 +1,1540 @@
+[
+  {
+    "word": "continent",
+    "meaning": "a large continuous area of land on Earth",
+    "tr": "kıta",
+    "exampleSentence": "Asia is the largest continent in the world.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "ocean",
+    "meaning": "a very large body of salt water that covers most of Earth's surface",
+    "tr": "okyanus",
+    "exampleSentence": "The Pacific Ocean is deeper than the Atlantic Ocean.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "island",
+    "meaning": "a piece of land surrounded by water",
+    "tr": "ada",
+    "exampleSentence": "Japan is an island nation in East Asia.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "peninsula",
+    "meaning": "a piece of land almost surrounded by water",
+    "tr": "yarımada",
+    "exampleSentence": "Italy is a famous peninsula in southern Europe.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "mountain",
+    "meaning": "a large natural elevation of the Earth's surface",
+    "tr": "dağ",
+    "exampleSentence": "Mount Everest is the highest mountain in the world.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "valley",
+    "meaning": "a low area between hills or mountains",
+    "tr": "vadi",
+    "exampleSentence": "The Nile Valley is one of the most fertile areas on Earth.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "river",
+    "meaning": "a large stream of water flowing across the land",
+    "tr": "nehir",
+    "exampleSentence": "The Amazon River is the longest in South America.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "lake",
+    "meaning": "a large body of water surrounded by land",
+    "tr": "göl",
+    "exampleSentence": "Lake Victoria is located in Africa.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "desert",
+    "meaning": "a dry, barren area of land with little rainfall",
+    "tr": "çöl",
+    "exampleSentence": "The Sahara Desert is the largest hot desert in the world.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "plateau",
+    "meaning": "a flat elevated area of land",
+    "tr": "plato",
+    "exampleSentence": "The Tibetan Plateau is known as the 'Roof of the World'.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "glacier",
+    "meaning": "a large mass of moving ice",
+    "tr": "buzul",
+    "exampleSentence": "Glaciers move slowly across the land, carving valleys.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "climate",
+    "meaning": "the average weather conditions of a region over time",
+    "tr": "iklim",
+    "exampleSentence": "Turkey has a Mediterranean climate along its coastlines.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "weather",
+    "meaning": "the state of the atmosphere at a particular time and place",
+    "tr": "hava durumu",
+    "exampleSentence": "The weather today is sunny with a few clouds.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "equator",
+    "meaning": "an imaginary line around the middle of Earth dividing north and south",
+    "tr": "ekvator",
+    "exampleSentence": "Countries near the equator are usually warm all year round.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "hemisphere",
+    "meaning": "half of the Earth, divided into northern and southern parts",
+    "tr": "yarımküre",
+    "exampleSentence": "Brazil is located in the southern hemisphere.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "longitude",
+    "meaning": "the distance east or west of the prime meridian",
+    "tr": "boylam",
+    "exampleSentence": "The city lies at 35 degrees east longitude.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "latitude",
+    "meaning": "the distance north or south of the equator",
+    "tr": "enlem",
+    "exampleSentence": "Istanbul is located at about 41 degrees north latitude.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "map",
+    "meaning": "a drawing that shows the surface of the Earth",
+    "tr": "harita",
+    "exampleSentence": "We used a map to find our way through the forest.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "compass",
+    "meaning": "an instrument used for finding direction",
+    "tr": "pusula",
+    "exampleSentence": "The compass needle always points north.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "erosion",
+    "meaning": "the process of being worn away by wind or water",
+    "tr": "erozyon",
+    "exampleSentence": "Soil erosion can destroy fertile land.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "delta",
+    "meaning": "a landform at the mouth of a river where it splits into smaller parts",
+    "tr": "delta",
+    "exampleSentence": "The Nile Delta is rich in nutrients and supports farming.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "forest",
+    "meaning": "a large area covered chiefly with trees and undergrowth",
+    "tr": "orman",
+    "exampleSentence": "The Amazon rainforest produces much of the world's oxygen.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "plain",
+    "meaning": "a large area of flat land with few trees",
+    "tr": "ova",
+    "exampleSentence": "The Great Plains stretch across central North America.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "hill",
+    "meaning": "a naturally raised area of land, smaller than a mountain",
+    "tr": "tepe",
+    "exampleSentence": "They climbed the hill to watch the sunset.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "canyon",
+    "meaning": "a deep gorge, typically with a river flowing through it",
+    "tr": "kanyon",
+    "exampleSentence": "The Grand Canyon is one of the world's natural wonders.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "volcano",
+    "meaning": "a mountain that erupts with lava and gases",
+    "tr": "volkan",
+    "exampleSentence": "Mount Vesuvius erupted in AD 79, burying Pompeii.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "earthquake",
+    "meaning": "a sudden shaking of the ground caused by movement of Earth's crust",
+    "tr": "deprem",
+    "exampleSentence": "Earthquakes often occur along tectonic plate boundaries.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "fault",
+    "meaning": "a crack in Earth's crust along which movement occurs",
+    "tr": "fay hattı",
+    "exampleSentence": "The San Andreas Fault is located in California.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "crust",
+    "meaning": "the outermost layer of the Earth",
+    "tr": "kabuk",
+    "exampleSentence": "The Earth's crust is made up of tectonic plates.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "core",
+    "meaning": "the central part of the Earth below the mantle",
+    "tr": "çekirdek",
+    "exampleSentence": "The Earth's core is extremely hot and dense.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "mantle",
+    "meaning": "the layer of Earth between the crust and the core",
+    "tr": "manto tabakası",
+    "exampleSentence": "The mantle is made up of semi-molten rock called magma.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "magma",
+    "meaning": "molten rock beneath the Earth's surface",
+    "tr": "magma",
+    "exampleSentence": "Magma erupts through volcanoes as lava.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "lava",
+    "meaning": "melted rock that comes out of a volcano",
+    "tr": "lav",
+    "exampleSentence": "Lava flows can destroy everything in their path.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "tectonic plate",
+    "meaning": "large sections of Earth's crust that move slowly over the mantle",
+    "tr": "tektonik plaka",
+    "exampleSentence": "The movement of tectonic plates causes earthquakes.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "coast",
+    "meaning": "the area where land meets the sea",
+    "tr": "kıyı",
+    "exampleSentence": "The Mediterranean coast of Turkey attracts many tourists.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "bay",
+    "meaning": "a broad inlet of the sea where the land curves inward",
+    "tr": "körfez",
+    "exampleSentence": "San Francisco Bay is surrounded by hills and cities.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "gulf",
+    "meaning": "a large area of sea partly surrounded by land",
+    "tr": "körfez",
+    "exampleSentence": "The Gulf of Mexico lies between the U.S. and Mexico.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "strait",
+    "meaning": "a narrow passage of water connecting two larger bodies",
+    "tr": "boğaz",
+    "exampleSentence": "The Bosphorus Strait separates Europe and Asia.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "archipelago",
+    "meaning": "a group or chain of islands",
+    "tr": "takımada",
+    "exampleSentence": "Indonesia is an archipelago of more than 17,000 islands.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "harbor",
+    "meaning": "a sheltered area of water where ships can dock safely",
+    "tr": "liman",
+    "exampleSentence": "The ship entered the harbor to unload cargo.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "waterfall",
+    "meaning": "a place where water flows over a cliff or steep area",
+    "tr": "şelale",
+    "exampleSentence": "Niagara Falls is one of the most famous waterfalls in the world.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "tundra",
+    "meaning": "a cold, treeless region found in the Arctic",
+    "tr": "tundra",
+    "exampleSentence": "Few plants can grow in the frozen tundra.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "rainforest",
+    "meaning": "a dense forest found in tropical areas with heavy rainfall",
+    "tr": "yağmur ormanı",
+    "exampleSentence": "Rainforests are home to diverse species of animals and plants.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "savanna",
+    "meaning": "a grassy plain in tropical or subtropical regions",
+    "tr": "savana",
+    "exampleSentence": "Lions and elephants live in the African savanna.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "oasis",
+    "meaning": "a fertile area in a desert where water is found",
+    "tr": "vaha",
+    "exampleSentence": "Caravans stopped to rest at the desert oasis.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "cave",
+    "meaning": "a large underground hollow in a hillside or cliff",
+    "tr": "mağara",
+    "exampleSentence": "The cave was full of ancient paintings.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "geyser",
+    "meaning": "a hot spring that occasionally sends up a jet of water and steam",
+    "tr": "gayzer",
+    "exampleSentence": "Old Faithful is a famous geyser in Yellowstone National Park.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "soil",
+    "meaning": "the top layer of the Earth in which plants grow",
+    "tr": "toprak",
+    "exampleSentence": "Fertile soil is essential for agriculture.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "basin",
+    "meaning": "a natural depression on Earth's surface, often containing water",
+    "tr": "havza",
+    "exampleSentence": "The Amazon Basin is the largest in the world.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "rainfall",
+    "meaning": "the amount of rain that falls in a specific area",
+    "tr": "yağış miktarı",
+    "exampleSentence": "This region receives heavy rainfall during the monsoon season.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "humidity",
+    "meaning": "the amount of water vapor in the air",
+    "tr": "nem",
+    "exampleSentence": "High humidity makes hot weather feel even hotter.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "temperature",
+    "meaning": "the degree of heat present in a substance or place",
+    "tr": "sıcaklık",
+    "exampleSentence": "The temperature drops sharply at night in the desert.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "precipitation",
+    "meaning": "any form of water that falls from the sky, such as rain or snow",
+    "tr": "yağış",
+    "exampleSentence": "Annual precipitation in this area is very low.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "drought",
+    "meaning": "a long period with little or no rainfall",
+    "tr": "kuraklık",
+    "exampleSentence": "The farmers lost their crops due to a severe drought.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "flood",
+    "meaning": "an overflow of water onto normally dry land",
+    "tr": "sel",
+    "exampleSentence": "Heavy rains caused the river to flood the nearby villages.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "hurricane",
+    "meaning": "a powerful tropical storm with strong winds",
+    "tr": "kasırga",
+    "exampleSentence": "The hurricane destroyed thousands of homes along the coast.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "tornado",
+    "meaning": "a violently rotating column of air extending from a thunderstorm to the ground",
+    "tr": "hortum",
+    "exampleSentence": "The tornado moved quickly across the open field.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "avalanche",
+    "meaning": "a mass of snow, ice, and rocks falling rapidly down a mountainside",
+    "tr": "çığ",
+    "exampleSentence": "The avalanche blocked the mountain road completely.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "tsunami",
+    "meaning": "a large ocean wave caused by an underwater earthquake",
+    "tr": "tsunami",
+    "exampleSentence": "The tsunami reached the shore within minutes after the quake.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "monsoon",
+    "meaning": "a seasonal wind that brings heavy rain to southern Asia",
+    "tr": "muson",
+    "exampleSentence": "The monsoon season brings much-needed rain to farmers.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "wind",
+    "meaning": "moving air caused by differences in air pressure",
+    "tr": "rüzgar",
+    "exampleSentence": "Strong winds can cause waves and erosion on the coast.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "storm",
+    "meaning": "a violent disturbance of the atmosphere with wind and rain",
+    "tr": "fırtına",
+    "exampleSentence": "The storm damaged several houses in the town.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "blizzard",
+    "meaning": "a severe snowstorm with strong winds",
+    "tr": "kar fırtınası",
+    "exampleSentence": "The blizzard made travel impossible for two days.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "erosion",
+    "meaning": "the wearing away of land by wind or water",
+    "tr": "aşınma",
+    "exampleSentence": "Coastal erosion is a serious problem for island nations.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "deposition",
+    "meaning": "the process by which sediments are laid down in new locations",
+    "tr": "birikme",
+    "exampleSentence": "River deposition forms deltas at the river mouth.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "sediment",
+    "meaning": "small particles of rock and soil carried by water or wind",
+    "tr": "tortu",
+    "exampleSentence": "Sediment builds up at the bottom of rivers over time.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "continent drift",
+    "meaning": "the gradual movement of continents across Earth's surface",
+    "tr": "kıta kayması",
+    "exampleSentence": "Continental drift led to the separation of the supercontinent Pangaea.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "earthquake zone",
+    "meaning": "an area prone to earthquakes",
+    "tr": "deprem bölgesi",
+    "exampleSentence": "Japan lies in an active earthquake zone.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "fault line",
+    "meaning": "a fracture in Earth's surface where movement has occurred",
+    "tr": "fay hattı",
+    "exampleSentence": "The city is located near a major fault line.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "mineral",
+    "meaning": "a naturally occurring solid substance formed in the Earth",
+    "tr": "mineral",
+    "exampleSentence": "Quartz and gold are common minerals found in rocks.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "rock",
+    "meaning": "a solid material forming part of Earth's surface",
+    "tr": "kaya",
+    "exampleSentence": "The mountain is made up of ancient volcanic rock.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "cave formation",
+    "meaning": "the process by which caves are created, usually by erosion or dissolution",
+    "tr": "mağara oluşumu",
+    "exampleSentence": "Cave formations often take thousands of years to develop.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "valley floor",
+    "meaning": "the flat or gently sloping bottom of a valley",
+    "tr": "vadi tabanı",
+    "exampleSentence": "Farms are often found along the fertile valley floor.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "delta plain",
+    "meaning": "the flat area of land formed at the mouth of a river",
+    "tr": "delta ovası",
+    "exampleSentence": "The delta plain supports a dense population due to fertile soil.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "fossil fuel",
+    "meaning": "natural fuel formed from the remains of ancient plants and animals",
+    "tr": "fosil yakıt",
+    "exampleSentence": "Coal and oil are examples of fossil fuels.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "renewable energy",
+    "meaning": "energy from sources that can be replenished naturally",
+    "tr": "yenilenebilir enerji",
+    "exampleSentence": "Wind and solar power are forms of renewable energy.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "population",
+    "meaning": "the number of people living in a specific area",
+    "tr": "nüfus",
+    "exampleSentence": "The population of the city has doubled in 20 years.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "urbanization",
+    "meaning": "the growth of cities and movement of people to urban areas",
+    "tr": "kentleşme",
+    "exampleSentence": "Rapid urbanization can lead to overcrowding.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "migration",
+    "meaning": "the movement of people or animals from one place to another",
+    "tr": "göç",
+    "exampleSentence": "Bird migration occurs every autumn and spring.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "emigration",
+    "meaning": "leaving one’s country to live in another",
+    "tr": "göç etme",
+    "exampleSentence": "Economic hardship caused widespread emigration.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "immigration",
+    "meaning": "moving into a foreign country to live there permanently",
+    "tr": "göçmenlik",
+    "exampleSentence": "Immigration has changed the cultural landscape of many nations.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "capital city",
+    "meaning": "the city where a country's government is based",
+    "tr": "başkent",
+    "exampleSentence": "Ankara is the capital city of Turkey.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "border",
+    "meaning": "the line separating two countries or regions",
+    "tr": "sınır",
+    "exampleSentence": "The border between France and Spain runs through the Pyrenees.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "region",
+    "meaning": "an area defined by certain physical or cultural characteristics",
+    "tr": "bölge",
+    "exampleSentence": "This region is famous for its vineyards.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "territory",
+    "meaning": "an area of land under the control of a country or ruler",
+    "tr": "toprak, bölge",
+    "exampleSentence": "The country expanded its territory through exploration.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "nation",
+    "meaning": "a large group of people united by common descent, culture, or language",
+    "tr": "ulus",
+    "exampleSentence": "Japan is an island nation in East Asia.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "state",
+    "meaning": "a politically organized territory with its own government",
+    "tr": "eyalet, devlet",
+    "exampleSentence": "Texas is one of the 50 states of the USA.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "urban area",
+    "meaning": "a city or town with a dense population",
+    "tr": "kentsel alan",
+    "exampleSentence": "Urban areas tend to have more infrastructure than rural ones.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "rural area",
+    "meaning": "an area with low population density and open land",
+    "tr": "kırsal alan",
+    "exampleSentence": "Most people in rural areas work in agriculture.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "infrastructure",
+    "meaning": "the basic facilities and systems serving a country or city",
+    "tr": "altyapı",
+    "exampleSentence": "Good infrastructure is vital for economic development.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "agriculture",
+    "meaning": "the practice of farming, growing crops, and raising animals",
+    "tr": "tarım",
+    "exampleSentence": "Agriculture remains a key part of the local economy.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "industry",
+    "meaning": "economic activity concerned with processing raw materials and manufacturing goods",
+    "tr": "sanayi",
+    "exampleSentence": "The textile industry is important in this region.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "resource",
+    "meaning": "a supply of materials or assets used to function effectively",
+    "tr": "kaynak",
+    "exampleSentence": "Water is a vital natural resource.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "trade",
+    "meaning": "the buying and selling of goods and services",
+    "tr": "ticaret",
+    "exampleSentence": "International trade connects countries around the world.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "transportation",
+    "meaning": "the movement of people or goods from one place to another",
+    "tr": "ulaşım",
+    "exampleSentence": "Modern transportation systems make global travel possible.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "tourism",
+    "meaning": "the business of attracting and serving visitors to a place",
+    "tr": "turizm",
+    "exampleSentence": "Tourism contributes significantly to the local economy.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "north",
+    "meaning": "the direction toward the top of a map or the North Pole",
+    "tr": "kuzey",
+    "exampleSentence": "Russia lies to the north of China.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "south",
+    "meaning": "the direction opposite to north",
+    "tr": "güney",
+    "exampleSentence": "Africa extends far into the southern hemisphere.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "east",
+    "meaning": "the direction from which the sun rises",
+    "tr": "doğu",
+    "exampleSentence": "Japan is located to the east of China.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "west",
+    "meaning": "the direction where the sun sets",
+    "tr": "batı",
+    "exampleSentence": "The United States is west of the Atlantic Ocean.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "northeast",
+    "meaning": "the direction between north and east",
+    "tr": "kuzeydoğu",
+    "exampleSentence": "New England is in the northeast of the United States.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "northwest",
+    "meaning": "the direction between north and west",
+    "tr": "kuzeybatı",
+    "exampleSentence": "Scotland lies to the northwest of England.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "southeast",
+    "meaning": "the direction between south and east",
+    "tr": "güneydoğu",
+    "exampleSentence": "Vietnam is in Southeast Asia.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "southwest",
+    "meaning": "the direction between south and west",
+    "tr": "güneybatı",
+    "exampleSentence": "Spain is in the southwest of Europe.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "compass rose",
+    "meaning": "a diagram on a map showing directions",
+    "tr": "yön gülü",
+    "exampleSentence": "The compass rose points to all four cardinal directions.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "scale",
+    "meaning": "the ratio between a distance on a map and the actual distance on the ground",
+    "tr": "ölçek",
+    "exampleSentence": "This map has a scale of 1:100,000.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "legend",
+    "meaning": "a key explaining the symbols used on a map",
+    "tr": "harita anahtarı",
+    "exampleSentence": "The legend shows what each color represents.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "topography",
+    "meaning": "the physical features of an area of land",
+    "tr": "yeryüzü şekilleri",
+    "exampleSentence": "The topography of the region includes hills and valleys.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "elevation",
+    "meaning": "the height of a place above sea level",
+    "tr": "yükselti",
+    "exampleSentence": "Denver is known as the Mile High City due to its elevation.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "sea level",
+    "meaning": "the average level of the ocean's surface used as a base for measuring height",
+    "tr": "deniz seviyesi",
+    "exampleSentence": "Mount Everest rises over 8,800 meters above sea level.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "cartography",
+    "meaning": "the science or practice of drawing maps",
+    "tr": "haritacılık",
+    "exampleSentence": "Modern cartography uses satellite images for accuracy.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "aerial view",
+    "meaning": "a view from above, as seen from an aircraft or satellite",
+    "tr": "hava görünümü",
+    "exampleSentence": "The aerial view revealed patterns of farmland.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "satellite",
+    "meaning": "a device in space that orbits Earth and collects data",
+    "tr": "uydu",
+    "exampleSentence": "Satellites provide data for weather forecasts and mapping.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "geographic coordinates",
+    "meaning": "a system that uses latitude and longitude to locate points on Earth",
+    "tr": "coğrafi koordinatlar",
+    "exampleSentence": "Each city has unique geographic coordinates.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "GPS",
+    "meaning": "a system that uses satellites to determine location on Earth",
+    "tr": "küresel konumlandırma sistemi",
+    "exampleSentence": "The GPS helps drivers find the shortest route.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "equatorial region",
+    "meaning": "the area around the equator with a hot and humid climate",
+    "tr": "ekvator bölgesi",
+    "exampleSentence": "The equatorial region receives sunlight all year round.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "tropical zone",
+    "meaning": "the region between the Tropic of Cancer and Tropic of Capricorn",
+    "tr": "tropikal bölge",
+    "exampleSentence": "Rainforests are found mostly in the tropical zone.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "temperate zone",
+    "meaning": "a region with moderate temperatures, between the tropics and polar areas",
+    "tr": "ılıman bölge",
+    "exampleSentence": "Most of Europe lies in the temperate zone.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "polar zone",
+    "meaning": "a cold region around the North and South Poles",
+    "tr": "kutup bölgesi",
+    "exampleSentence": "The polar zone experiences long winters and short summers.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "climate zone",
+    "meaning": "an area defined by its long-term weather patterns",
+    "tr": "iklim kuşağı",
+    "exampleSentence": "The world can be divided into several major climate zones.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "water cycle",
+    "meaning": "the process by which water circulates between the Earth and atmosphere",
+    "tr": "su döngüsü",
+    "exampleSentence": "Evaporation and precipitation are key parts of the water cycle.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "evaporation",
+    "meaning": "the process of turning liquid water into vapor",
+    "tr": "buharlaşma",
+    "exampleSentence": "Evaporation increases when temperatures rise.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "condensation",
+    "meaning": "the process of water vapor turning into liquid droplets",
+    "tr": "yoğuşma",
+    "exampleSentence": "Clouds form through the process of condensation.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "precipitation",
+    "meaning": "any form of water falling from the sky, such as rain or snow",
+    "tr": "yağış",
+    "exampleSentence": "Precipitation can be measured using a rain gauge.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "runoff",
+    "meaning": "water that flows over the land surface into rivers and lakes",
+    "tr": "yüzey akışı",
+    "exampleSentence": "Heavy rain causes increased surface runoff.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "groundwater",
+    "meaning": "water stored beneath Earth's surface in soil and rocks",
+    "tr": "yeraltı suyu",
+    "exampleSentence": "Wells are used to access groundwater for drinking.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "aquifer",
+    "meaning": "a layer of rock that holds groundwater",
+    "tr": "yeraltı suyu taşıyan katman",
+    "exampleSentence": "The city depends on an underground aquifer for its water supply.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "erosion control",
+    "meaning": "methods used to prevent soil from being washed away",
+    "tr": "erozyon kontrolü",
+    "exampleSentence": "Planting trees helps with erosion control.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "deforestation",
+    "meaning": "the removal of forests by humans",
+    "tr": "orman tahribatı",
+    "exampleSentence": "Deforestation leads to loss of wildlife habitat.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "reforestation",
+    "meaning": "the process of planting trees to replace lost forests",
+    "tr": "yeniden ağaçlandırma",
+    "exampleSentence": "Reforestation can restore damaged ecosystems.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "pollution",
+    "meaning": "the introduction of harmful substances into the environment",
+    "tr": "kirlilik",
+    "exampleSentence": "Air pollution is a serious problem in large cities.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "greenhouse effect",
+    "meaning": "the trapping of heat in Earth's atmosphere by gases",
+    "tr": "sera etkisi",
+    "exampleSentence": "The greenhouse effect keeps Earth's temperature stable.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "global warming",
+    "meaning": "the gradual increase in Earth's average temperature",
+    "tr": "küresel ısınma",
+    "exampleSentence": "Global warming is caused mainly by human activities.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "climate change",
+    "meaning": "long-term alteration of temperature and typical weather patterns",
+    "tr": "iklim değişikliği",
+    "exampleSentence": "Climate change affects agriculture and water supplies.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "ecosystem",
+    "meaning": "a community of living and nonliving things interacting together",
+    "tr": "ekosistem",
+    "exampleSentence": "A coral reef is a fragile marine ecosystem.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "biosphere",
+    "meaning": "the part of Earth where life exists",
+    "tr": "biyosfer",
+    "exampleSentence": "The biosphere includes land, water, and air where life thrives.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "lithosphere",
+    "meaning": "the rigid outer layer of the Earth, including the crust",
+    "tr": "litosfer",
+    "exampleSentence": "The lithosphere is broken into tectonic plates.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "hydrosphere",
+    "meaning": "all the water on Earth's surface, underground, and in the air",
+    "tr": "hidrosfer",
+    "exampleSentence": "The hydrosphere covers about 70% of Earth's surface.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "atmosphere",
+    "meaning": "the layer of gases surrounding the Earth",
+    "tr": "atmosfer",
+    "exampleSentence": "The atmosphere protects life from harmful solar radiation.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "geosphere",
+    "meaning": "the solid part of the Earth including rocks and landforms",
+    "tr": "jeosfer",
+    "exampleSentence": "Mountains and valleys are part of Earth's geosphere.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "natural resource",
+    "meaning": "materials found in nature that are useful to humans",
+    "tr": "doğal kaynak",
+    "exampleSentence": "Oil and forests are important natural resources.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "sustainability",
+    "meaning": "the practice of using resources so they are not depleted",
+    "tr": "sürdürülebilirlik",
+    "exampleSentence": "Sustainability ensures that future generations have what they need.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "continent",
+    "meaning": "one of the large landmasses on Earth",
+    "tr": "kıta",
+    "exampleSentence": "Africa is the second-largest continent after Asia.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "Africa",
+    "meaning": "the second-largest continent located south of Europe",
+    "tr": "Afrika",
+    "exampleSentence": "Africa is home to diverse cultures and climates.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "Asia",
+    "meaning": "the largest continent on Earth",
+    "tr": "Asya",
+    "exampleSentence": "Asia includes countries like China, India, and Japan.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "Europe",
+    "meaning": "a continent located mostly in the Northern Hemisphere",
+    "tr": "Avrupa",
+    "exampleSentence": "Europe has many countries with rich histories.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "North America",
+    "meaning": "a continent in the Northern Hemisphere including the USA and Canada",
+    "tr": "Kuzey Amerika",
+    "exampleSentence": "North America is bordered by the Atlantic and Pacific Oceans.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "South America",
+    "meaning": "a continent located in the Western Hemisphere below North America",
+    "tr": "Güney Amerika",
+    "exampleSentence": "South America is home to the Amazon rainforest.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "Antarctica",
+    "meaning": "the coldest continent covered by ice at the South Pole",
+    "tr": "Antarktika",
+    "exampleSentence": "Antarctica has no permanent residents, only scientists.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "Australia",
+    "meaning": "a continent and country located in the Southern Hemisphere",
+    "tr": "Avustralya",
+    "exampleSentence": "Australia is famous for its deserts and kangaroos.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "Pacific Ocean",
+    "meaning": "the largest and deepest ocean on Earth",
+    "tr": "Pasifik Okyanusu",
+    "exampleSentence": "The Pacific Ocean covers one-third of Earth's surface.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "Atlantic Ocean",
+    "meaning": "the ocean between Europe, Africa, and the Americas",
+    "tr": "Atlas Okyanusu",
+    "exampleSentence": "The Atlantic Ocean separates Europe from North America.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "Indian Ocean",
+    "meaning": "the ocean south of Asia and between Africa and Australia",
+    "tr": "Hint Okyanusu",
+    "exampleSentence": "The Indian Ocean is known for its warm waters.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "Arctic Ocean",
+    "meaning": "the smallest and shallowest ocean around the North Pole",
+    "tr": "Arktik Okyanusu",
+    "exampleSentence": "The Arctic Ocean is mostly covered by sea ice.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "Southern Ocean",
+    "meaning": "the ocean surrounding Antarctica",
+    "tr": "Güney Okyanusu",
+    "exampleSentence": "The Southern Ocean has some of the strongest winds on Earth.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "volcanic island",
+    "meaning": "an island formed by volcanic activity",
+    "tr": "volkanik ada",
+    "exampleSentence": "Hawaii is a volcanic island chain in the Pacific Ocean.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "coral reef",
+    "meaning": "an underwater structure made by coral organisms",
+    "tr": "mercan resifi",
+    "exampleSentence": "The Great Barrier Reef is the largest coral reef on Earth.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "delta formation",
+    "meaning": "the creation of land where a river meets the sea",
+    "tr": "delta oluşumu",
+    "exampleSentence": "Delta formation occurs due to sediment buildup.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "sand dune",
+    "meaning": "a hill of sand formed by the wind",
+    "tr": "kum tepesi",
+    "exampleSentence": "Sand dunes are common in desert landscapes.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "sinkhole",
+    "meaning": "a hole formed when the ground collapses",
+    "tr": "obruk",
+    "exampleSentence": "A large sinkhole opened up after heavy rain.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "cave system",
+    "meaning": "a network of connected caves underground",
+    "tr": "mağara sistemi",
+    "exampleSentence": "The cave system extends for several kilometers.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "plate boundary",
+    "meaning": "the edges where Earth's tectonic plates meet",
+    "tr": "plaka sınırı",
+    "exampleSentence": "Earthquakes often occur along plate boundaries.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "volcanic eruption",
+    "meaning": "an explosion of magma and gases from a volcano",
+    "tr": "volkanik patlama",
+    "exampleSentence": "The volcanic eruption covered nearby towns in ash.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "fault zone",
+    "meaning": "an area of many fractures in Earth's crust",
+    "tr": "fay zonu",
+    "exampleSentence": "The fault zone stretches for hundreds of kilometers.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "natural disaster",
+    "meaning": "a catastrophic event caused by natural processes",
+    "tr": "doğal afet",
+    "exampleSentence": "Floods and earthquakes are common natural disasters.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "renewable resource",
+    "meaning": "a resource that can be replaced naturally",
+    "tr": "yenilenebilir kaynak",
+    "exampleSentence": "Wind is a renewable resource used for electricity.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "nonrenewable resource",
+    "meaning": "a resource that cannot be replaced quickly",
+    "tr": "yenilenemez kaynak",
+    "exampleSentence": "Coal and oil are nonrenewable resources.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "solar energy",
+    "meaning": "energy obtained from sunlight",
+    "tr": "güneş enerjisi",
+    "exampleSentence": "Solar energy is becoming more affordable worldwide.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "wind energy",
+    "meaning": "energy produced by moving air",
+    "tr": "rüzgar enerjisi",
+    "exampleSentence": "Wind turbines generate clean wind energy.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "hydroelectric power",
+    "meaning": "electricity produced by moving water",
+    "tr": "hidroelektrik enerji",
+    "exampleSentence": "The dam provides hydroelectric power for the city.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "geothermal energy",
+    "meaning": "heat energy from inside the Earth",
+    "tr": "jeotermal enerji",
+    "exampleSentence": "Iceland uses geothermal energy for heating.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "biome",
+    "meaning": "a large community of plants and animals in a specific climate",
+    "tr": "biyom",
+    "exampleSentence": "The tundra is a cold and treeless biome.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "habitat",
+    "meaning": "the natural home of an organism",
+    "tr": "yaşam alanı",
+    "exampleSentence": "Deforestation destroys animal habitats.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "biodiversity",
+    "meaning": "the variety of living organisms in an area",
+    "tr": "biyolojik çeşitlilik",
+    "exampleSentence": "The Amazon rainforest has the highest biodiversity on Earth.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "conservation",
+    "meaning": "the protection and preservation of natural resources",
+    "tr": "koruma",
+    "exampleSentence": "Conservation efforts help protect endangered species.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "deforestation",
+    "meaning": "the cutting down of trees on a large scale",
+    "tr": "orman tahribatı",
+    "exampleSentence": "Deforestation contributes to global warming.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "erosion",
+    "meaning": "the gradual wearing away of Earth's surface by wind or water",
+    "tr": "erozyon",
+    "exampleSentence": "Erosion changes the shape of coastlines over time.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "pollution control",
+    "meaning": "actions taken to reduce or prevent environmental pollution",
+    "tr": "kirlilik kontrolü",
+    "exampleSentence": "Factories must follow pollution control regulations.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "environment",
+    "meaning": "the surroundings in which a person, animal, or plant lives",
+    "tr": "çevre",
+    "exampleSentence": "We must protect the environment for future generations.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "urban sprawl",
+    "meaning": "the uncontrolled expansion of cities into rural areas",
+    "tr": "kentsel yayılma",
+    "exampleSentence": "Urban sprawl increases traffic and pollution.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "land use",
+    "meaning": "the management and modification of natural environments into built environments",
+    "tr": "arazi kullanımı",
+    "exampleSentence": "Proper land use planning prevents overdevelopment.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "coastline",
+    "meaning": "the boundary between land and sea",
+    "tr": "kıyı şeridi",
+    "exampleSentence": "Turkey has a long coastline along the Mediterranean.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "archipelago",
+    "meaning": "a chain or group of islands",
+    "tr": "takımada",
+    "exampleSentence": "The Philippines is an archipelago of over 7,000 islands.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "lagoon",
+    "meaning": "a shallow body of water separated from the sea by sand or coral",
+    "tr": "lagün",
+    "exampleSentence": "The blue lagoon is a popular tourist destination.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "estuary",
+    "meaning": "the area where a river meets the sea, mixing fresh and salt water",
+    "tr": "haliç",
+    "exampleSentence": "The Thames Estuary is important for shipping.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "cliff",
+    "meaning": "a steep rock face, especially at the edge of the sea",
+    "tr": "uçurum",
+    "exampleSentence": "Seagulls nest on the cliffs above the ocean.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "canyon",
+    "meaning": "a deep gorge with steep sides, often with a river flowing through it",
+    "tr": "kanyon",
+    "exampleSentence": "The Grand Canyon attracts millions of visitors each year.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "plain",
+    "meaning": "a large area of flat land with few trees",
+    "tr": "ova",
+    "exampleSentence": "The Great Plains are ideal for agriculture.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "wetland",
+    "meaning": "land consisting of marshes or swamps; saturated with water",
+    "tr": "bataklık alan",
+    "exampleSentence": "Wetlands are vital for water purification and wildlife.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "reservoir",
+    "meaning": "a large natural or artificial lake used to store water",
+    "tr": "baraj gölü",
+    "exampleSentence": "The reservoir supplies drinking water to the city.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "dam",
+    "meaning": "a barrier built to hold back water and raise its level",
+    "tr": "baraj",
+    "exampleSentence": "The dam helps control flooding downstream.",
+    "isCustom": false,
+    "category": "geography"
+  },
+  {
+    "word": "fjord",
+    "meaning": "a long, narrow inlet with steep sides formed by glacial erosion",
+    "tr": "fjord",
+    "exampleSentence": "Norway is famous for its deep fjords.",
+    "isCustom": false,
+    "category": "geography"
+  }
+]
+
+

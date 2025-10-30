@@ -1,0 +1,154 @@
+# ======================
+# 🌍 Genel Dosyalar
+# ======================
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# ======================
+# 💻 IDE & Editor
+# ======================
+*.iml
+*.ipr
+*.iws
+.idea/
+.vscode/
+*.code-workspace
+
+# ======================
+# 🐦 Flutter / Dart / Pub
+# ======================
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+build/
+coverage/
+.packages
+pubspec.lock
+**/doc/api/
+**/ios/Flutter/.last_build_id
+
+# ======================
+# 🤖 Android
+# ======================
+android/app/google-services.json
+android/key.properties
+*.keystore
+*.jks
+/android/app/debug
+/android/app/profile
+/android/app/release
+android/app/google-services.json.bak
+
+# ======================
+# 🍎 iOS
+# ======================
+ios/Runner/GoogleService-Info.plist
+ios/Flutter/Flutter.podspec
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/.last_build_id
+*.xcuserstate
+*.xcworkspace
+*.xcuserdata/
+
+# ======================
+# 🔐 Secrets & Configs
+# ======================
+.env
+*.env
+*.keys
+*.pem
+*.crt
+*.p12
+*.der
+*.cfg
+*.config
+*.ini
+lib/firebase_options.dart
+.firebaserc
+**/secrets/
+**/credentials/
+**/keys/
+credentials.json
+serviceAccountKey.json
++lib/core/config.dart        
++*.sqlite                    
++hive_boxes/                
++*.aab                   
++*.apk
+
+
+# ======================
+# 🧪 Test / Emulator
+# ======================
+test/
+integration_test/
+*.spec.dart
+*.test.dart
+firebase-debug.log
+firestore-debug.log
+emulator-data/
+local_emulator_cache/
+
+# ======================
+# 🧰 Local Scripts & Reports
+# ======================
+*.ps1
+*.sh
+*.bat
+*.md.bak
+fixlog.txt
+analyze_report*.txt
+imports.log
+relative_imports.log
+dead_code_report.txt
+CLEANUP_REPORT_OLD.md
+SECURITY_AUDIT_REPORT.md
+
+# ======================
+# 🌐 Platform Build (opsiyonel)
+# ======================
+web/
+linux/
+macos/
+windows/
+
+# ======================
+# 🧠 Temporary / Cache
+# ======================
+tmp/
+temp/
+*.tmp
+*.bak
+*.old
+cache/
+.cache/
+logs/
+flutter_export_environment.sh
+
+# ======================
+# 🧩 Node / Firebase Tools (bazı sistemlerde)
+# ======================
+functions/node_modules/
+firebase-debug.log
+firebase-debug.*
+.firebase/
+
+# ======================
+# 🎨 Public Assets Exception
+# ======================
+!store_assets/banner.png
+!store_assets/playstore.png
+!store_assets/appstore.png

@@ -1,0 +1,37 @@
+LexiFlow Privacy Policy  
+Last updated: October 2025  
+
+LexiFlow is a personal language learning application focused on improving your English vocabulary through interactive quizzes, progress tracking, and personalized learning tools.  
+
+We value your privacy and are committed to protecting your personal information.  
+This Privacy Policy explains how we handle your data within the LexiFlow app.
+
+1. Data Collection  
+LexiFlow does not collect or store any personal identifying information such as your name, email, or location.  
+Basic app data (like quiz scores, favorite words, and learned words) are stored securely on Firebase Firestore and linked only to your anonymous user ID.  
+
+2. How Your Data Is Used  
+- To track your progress (learned words, XP, and quiz history)  
+- To personalize your in-app experience  
+- To sync your data across devices (if logged in with Google or email)  
+
+3. Data Sharing  
+We do not sell, rent, or share your data with any third party.  
+All data transfers are encrypted and used only for app functionality.  
+
+4. Advertising & Analytics  
+LexiFlow may show non-personalized ads through Google AdMob.  
+AdMob may use anonymous identifiers (not linked to your identity) to improve ad relevance.  
+
+5. Your Rights  
+- You can delete your account and all related data at any time.  
+- You can disable analytics and ads through system permissions.  
+
+6. Security  
+All data is stored on secure Google Firebase servers with restricted access and SSL encryption.
+
+7. Contact  
+If you have any questions about this policy or how we handle data, contact us at:  
+📧 kirakendev@gmail.com
+
+By using LexiFlow, you agree to this Privacy Policy.

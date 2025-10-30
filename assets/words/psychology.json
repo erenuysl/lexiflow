@@ -1,0 +1,1508 @@
+[
+  {
+    "word": "psychology",
+    "meaning": "the scientific study of the mind and behavior",
+    "tr": "psikoloji",
+    "exampleSentence": "Psychology helps us understand why people act the way they do.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "behavior",
+    "meaning": "the way in which one acts or conducts oneself",
+    "tr": "davranış",
+    "exampleSentence": "Aggressive behavior can result from frustration or anger.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "mind",
+    "meaning": "the element of a person that enables thinking, feeling, and consciousness",
+    "tr": "zihin",
+    "exampleSentence": "The mind processes thoughts and emotions constantly.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "emotion",
+    "meaning": "a strong feeling such as happiness, anger, or fear",
+    "tr": "duygu",
+    "exampleSentence": "Emotions influence our decisions more than we realize.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "motivation",
+    "meaning": "the reason or desire for acting or behaving in a particular way",
+    "tr": "motivasyon",
+    "exampleSentence": "Motivation drives us to achieve our goals.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "cognition",
+    "meaning": "the mental process of acquiring knowledge and understanding",
+    "tr": "biliş",
+    "exampleSentence": "Cognition involves memory, learning, and problem-solving.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "memory",
+    "meaning": "the ability to store and recall information and experiences",
+    "tr": "hafıza",
+    "exampleSentence": "Our memory helps us learn from past experiences.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "perception",
+    "meaning": "the process of interpreting sensory information",
+    "tr": "algı",
+    "exampleSentence": "Perception allows us to make sense of our surroundings.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "attention",
+    "meaning": "the act of focusing awareness on a particular stimulus",
+    "tr": "dikkat",
+    "exampleSentence": "Selective attention helps us filter out distractions.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "learning",
+    "meaning": "the process of acquiring new knowledge or skills",
+    "tr": "öğrenme",
+    "exampleSentence": "Learning occurs through experience and repetition.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "conditioning",
+    "meaning": "a learning process in which behavior becomes linked to stimuli",
+    "tr": "koşullanma",
+    "exampleSentence": "Pavlov demonstrated classical conditioning using dogs.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "classical conditioning",
+    "meaning": "learning through association between a neutral and a meaningful stimulus",
+    "tr": "klasik koşullanma",
+    "exampleSentence": "Fear of dogs can develop through classical conditioning.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "operant conditioning",
+    "meaning": "learning through rewards and punishments for behavior",
+    "tr": "edimsel koşullanma",
+    "exampleSentence": "Operant conditioning explains how behavior is shaped by consequences.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "reinforcement",
+    "meaning": "a consequence that increases the likelihood of a behavior",
+    "tr": "pekiştirme",
+    "exampleSentence": "Positive reinforcement encourages desired actions.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "punishment",
+    "meaning": "a consequence that decreases the likelihood of a behavior",
+    "tr": "cezalandırma",
+    "exampleSentence": "Punishment can reduce unwanted behaviors temporarily.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "stimulus",
+    "meaning": "something that causes a response or reaction",
+    "tr": "uyaran",
+    "exampleSentence": "A loud noise is a stimulus that triggers attention.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "response",
+    "meaning": "a reaction to a stimulus or situation",
+    "tr": "tepki",
+    "exampleSentence": "The body’s response to stress includes faster breathing.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "habit",
+    "meaning": "a regular behavior or practice that is hard to give up",
+    "tr": "alışkanlık",
+    "exampleSentence": "Habits can form unconsciously over time.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "personality",
+    "meaning": "the combination of traits that make a person unique",
+    "tr": "kişilik",
+    "exampleSentence": "Personality influences how we interact with others.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "trait",
+    "meaning": "a distinguishing quality or characteristic of a person",
+    "tr": "özellik",
+    "exampleSentence": "Honesty is a positive personality trait.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "introvert",
+    "meaning": "a person who prefers solitary activities and limited social interaction",
+    "tr": "içe dönük",
+    "exampleSentence": "Introverts often enjoy quiet and reflective environments.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "extrovert",
+    "meaning": "a person who is outgoing and enjoys being around people",
+    "tr": "dışa dönük",
+    "exampleSentence": "Extroverts feel energized by social interaction.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "ego",
+    "meaning": "the part of the mind that mediates between desire and reality",
+    "tr": "benlik",
+    "exampleSentence": "Freud believed the ego balances the id and the superego.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "id",
+    "meaning": "the part of the mind containing instinctual desires and impulses",
+    "tr": "alt benlik",
+    "exampleSentence": "The id seeks pleasure without considering consequences.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "superego",
+    "meaning": "the part of personality that represents internalized moral standards",
+    "tr": "üst benlik",
+    "exampleSentence": "The superego acts as a moral conscience.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "unconscious",
+    "meaning": "the part of the mind that contains thoughts and memories not easily accessed",
+    "tr": "bilinçdışı",
+    "exampleSentence": "Unconscious motives can influence behavior.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "consciousness",
+    "meaning": "the state of being aware of and able to think about oneself and surroundings",
+    "tr": "bilinç",
+    "exampleSentence": "Consciousness allows us to reflect on our actions.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "self-esteem",
+    "meaning": "confidence in one’s own worth or abilities",
+    "tr": "özsaygı",
+    "exampleSentence": "Healthy self-esteem contributes to mental well-being.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "self-concept",
+    "meaning": "a person's perception of their own identity and abilities",
+    "tr": "benlik algısı",
+    "exampleSentence": "A positive self-concept is key to emotional health.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "stress",
+    "meaning": "a state of mental or emotional strain resulting from pressure",
+    "tr": "stres",
+    "exampleSentence": "Too much stress can affect physical health.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "anxiety",
+    "meaning": "a feeling of worry or nervousness about something uncertain",
+    "tr": "kaygı",
+    "exampleSentence": "Anxiety can interfere with daily activities if unmanaged.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "depression",
+    "meaning": "a mental health condition marked by persistent sadness and loss of interest",
+    "tr": "depresyon",
+    "exampleSentence": "Depression can be treated with therapy and medication.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "therapy",
+    "meaning": "treatment intended to relieve or heal a mental disorder",
+    "tr": "terapi",
+    "exampleSentence": "Cognitive behavioral therapy helps change negative thought patterns.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "counseling",
+    "meaning": "professional guidance to help resolve personal or psychological problems",
+    "tr": "danışmanlık",
+    "exampleSentence": "Students often seek counseling during stressful times.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "empathy",
+    "meaning": "the ability to understand and share another person’s feelings",
+    "tr": "empati",
+    "exampleSentence": "Empathy helps build stronger human connections.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "sympathy",
+    "meaning": "feelings of pity and sorrow for someone else's misfortune",
+    "tr": "sempati, acıma",
+    "exampleSentence": "He expressed his sympathy for the victims’ families.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "motivation theory",
+    "meaning": "a concept explaining why people act in certain ways to achieve goals",
+    "tr": "motivasyon teorisi",
+    "exampleSentence": "Maslow’s hierarchy of needs is a classic motivation theory.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "hierarchy of needs",
+    "meaning": "a model describing human needs from basic to self-fulfillment",
+    "tr": "ihtiyaçlar hiyerarşisi",
+    "exampleSentence": "Self-actualization is at the top of Maslow’s hierarchy of needs.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "self-actualization",
+    "meaning": "the realization of one’s full potential",
+    "tr": "kendini gerçekleştirme",
+    "exampleSentence": "Artists often pursue self-actualization through creative work.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "development",
+    "meaning": "the process of growth and change throughout life",
+    "tr": "gelişim",
+    "exampleSentence": "Psychologists study emotional development from infancy to adulthood.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "childhood",
+    "meaning": "the period of life from birth to adolescence",
+    "tr": "çocukluk",
+    "exampleSentence": "Childhood experiences shape adult personality.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "adolescence",
+    "meaning": "the transition period between childhood and adulthood",
+    "tr": "ergenlik",
+    "exampleSentence": "Adolescence is marked by identity exploration and emotional change.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "cognitive development",
+    "meaning": "the growth of thinking, reasoning, and problem-solving abilities",
+    "tr": "bilişsel gelişim",
+    "exampleSentence": "Piaget’s stages describe cognitive development in children.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "attachment",
+    "meaning": "an emotional bond between an infant and caregiver",
+    "tr": "bağlanma",
+    "exampleSentence": "Secure attachment leads to healthier relationships in adulthood.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "conditioning experiment",
+    "meaning": "a study testing how stimuli affect learning and behavior",
+    "tr": "koşullanma deneyi",
+    "exampleSentence": "Skinner’s box is a famous conditioning experiment.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "emotion regulation",
+    "meaning": "the ability to manage and respond to emotional experiences effectively",
+    "tr": "duygu düzenleme",
+    "exampleSentence": "Emotion regulation helps prevent impulsive reactions during stress.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "coping mechanism",
+    "meaning": "a strategy used to deal with stress or difficult emotions",
+    "tr": "başa çıkma mekanizması",
+    "exampleSentence": "Exercise is a healthy coping mechanism for anxiety.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "defense mechanism",
+    "meaning": "an unconscious psychological strategy to protect oneself from anxiety",
+    "tr": "savunma mekanizması",
+    "exampleSentence": "Denial is one of the most common defense mechanisms.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "denial",
+    "meaning": "refusing to accept reality or facts",
+    "tr": "inkar",
+    "exampleSentence": "Denial can temporarily reduce emotional pain after a loss.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "repression",
+    "meaning": "unconsciously blocking unpleasant thoughts or memories",
+    "tr": "bastırma",
+    "exampleSentence": "Repression keeps distressing memories out of awareness.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "projection",
+    "meaning": "attributing one’s own feelings to someone else",
+    "tr": "yansıtma",
+    "exampleSentence": "A person who lies often accuses others of dishonesty through projection.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "rationalization",
+    "meaning": "creating logical explanations for behaviors driven by emotion",
+    "tr": "mantığa bürünme",
+    "exampleSentence": "He used rationalization to justify his poor decision.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "displacement",
+    "meaning": "shifting emotions from a dangerous target to a safer one",
+    "tr": "yer değiştirme",
+    "exampleSentence": "Yelling at a pet after a bad day is an example of displacement.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "sublimation",
+    "meaning": "channeling unacceptable impulses into acceptable activities",
+    "tr": "yüceltme",
+    "exampleSentence": "Sublimation allows anger to be expressed through sports or art.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "regression",
+    "meaning": "reverting to an earlier stage of development under stress",
+    "tr": "gerileme",
+    "exampleSentence": "Under stress, adults may show childlike behavior through regression.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "ego defense",
+    "meaning": "a behavior protecting the ego from anxiety or guilt",
+    "tr": "ego savunması",
+    "exampleSentence": "Ego defenses operate unconsciously to maintain self-esteem.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "social psychology",
+    "meaning": "the study of how people influence and relate to each other",
+    "tr": "sosyal psikoloji",
+    "exampleSentence": "Social psychology explores group behavior and conformity.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "conformity",
+    "meaning": "adjusting one’s behavior or beliefs to match others",
+    "tr": "uyum sağlama",
+    "exampleSentence": "Group pressure can lead to conformity even against one’s beliefs.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "obedience",
+    "meaning": "following the orders of an authority figure",
+    "tr": "itaat",
+    "exampleSentence": "Milgram’s experiment studied obedience under moral conflict.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "groupthink",
+    "meaning": "the desire for harmony in a group leading to poor decisions",
+    "tr": "grup düşüncesi",
+    "exampleSentence": "Groupthink discourages critical thinking and alternatives.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "stereotype",
+    "meaning": "a widely held but oversimplified belief about a group",
+    "tr": "kalıp yargı",
+    "exampleSentence": "Stereotypes can lead to unfair discrimination.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "prejudice",
+    "meaning": "an unjustified negative attitude toward a group or person",
+    "tr": "önyargı",
+    "exampleSentence": "Prejudice often stems from ignorance or fear.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "discrimination",
+    "meaning": "unfair treatment based on group membership",
+    "tr": "ayrımcılık",
+    "exampleSentence": "Discrimination can negatively affect mental health.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "attitude",
+    "meaning": "a settled way of thinking or feeling about something",
+    "tr": "tutum",
+    "exampleSentence": "Positive attitudes lead to better relationships.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "persuasion",
+    "meaning": "the process of influencing someone’s beliefs or actions",
+    "tr": "ikna",
+    "exampleSentence": "Advertising uses persuasion to change consumer behavior.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "emotional intelligence",
+    "meaning": "the ability to recognize and manage one’s emotions and those of others",
+    "tr": "duygusal zeka",
+    "exampleSentence": "Leaders with emotional intelligence handle conflicts better.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "body language",
+    "meaning": "nonverbal communication expressed through physical behavior",
+    "tr": "beden dili",
+    "exampleSentence": "Body language often reveals feelings more honestly than words.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "communication",
+    "meaning": "the exchange of information through speaking, writing, or other means",
+    "tr": "iletişim",
+    "exampleSentence": "Effective communication strengthens relationships.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "nonverbal communication",
+    "meaning": "communication through gestures, expressions, and posture",
+    "tr": "sözsüz iletişim",
+    "exampleSentence": "Nonverbal communication can convey emotions instantly.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "identity",
+    "meaning": "a person’s sense of who they are and what makes them unique",
+    "tr": "kimlik",
+    "exampleSentence": "Adolescents often struggle with forming their identity.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "self-awareness",
+    "meaning": "conscious knowledge of one’s own character and emotions",
+    "tr": "özfarkındalık",
+    "exampleSentence": "Self-awareness helps people regulate their behavior.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "self-control",
+    "meaning": "the ability to manage impulses and delay gratification",
+    "tr": "özdenetim",
+    "exampleSentence": "Children who learn self-control perform better later in life.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "frustration",
+    "meaning": "the feeling of being upset when goals are blocked",
+    "tr": "hayal kırıklığı",
+    "exampleSentence": "Frustration can lead to anger if not managed properly.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "anger management",
+    "meaning": "techniques for controlling and reducing anger",
+    "tr": "öfke kontrolü",
+    "exampleSentence": "Therapy often teaches anger management strategies.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "resilience",
+    "meaning": "the ability to recover from difficulties or stress",
+    "tr": "dayanıklılık",
+    "exampleSentence": "Resilience helps people adapt after trauma.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "optimism",
+    "meaning": "a general expectation that good things will happen",
+    "tr": "iyimserlik",
+    "exampleSentence": "Optimism is linked to better health and well-being.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "pessimism",
+    "meaning": "a tendency to expect negative outcomes",
+    "tr": "kötümserlik",
+    "exampleSentence": "Pessimism can lead to lower motivation.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "motivation theory",
+    "meaning": "the study of what drives people to act in certain ways",
+    "tr": "motivasyon teorisi",
+    "exampleSentence": "Herzberg’s motivation theory focuses on job satisfaction.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "personality test",
+    "meaning": "an assessment to measure personal traits and characteristics",
+    "tr": "kişilik testi",
+    "exampleSentence": "The MBTI is a popular personality test in psychology.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "intelligence quotient",
+    "meaning": "a score representing an individual’s intellectual ability",
+    "tr": "zeka katsayısı",
+    "exampleSentence": "An intelligence quotient, or IQ, is measured using standardized tests.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "creativity",
+    "meaning": "the ability to produce original and valuable ideas",
+    "tr": "yaratıcılık",
+    "exampleSentence": "Creativity often increases when people are relaxed.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "problem solving",
+    "meaning": "the process of finding solutions to difficult issues",
+    "tr": "problem çözme",
+    "exampleSentence": "Psychologists study the stages of problem solving.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "decision making",
+    "meaning": "the process of choosing between alternatives",
+    "tr": "karar verme",
+    "exampleSentence": "Decision making is influenced by emotions and logic.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "bias",
+    "meaning": "a tendency to favor one thing or person unfairly",
+    "tr": "önyargı, yanlılık",
+    "exampleSentence": "Confirmation bias leads people to seek evidence that supports their beliefs.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "cognitive bias",
+    "meaning": "a pattern of deviation from rational judgment",
+    "tr": "bilişsel yanlılık",
+    "exampleSentence": "Anchoring is a common cognitive bias in decision making.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "heuristic",
+    "meaning": "a mental shortcut that helps make decisions quickly",
+    "tr": "sezgisel kural",
+    "exampleSentence": "The availability heuristic makes people overestimate rare events.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "memory recall",
+    "meaning": "the process of retrieving information from the past",
+    "tr": "hafıza geri çağırma",
+    "exampleSentence": "Memory recall can be affected by emotional state.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "forgetting curve",
+    "meaning": "a theory describing how memory retention declines over time",
+    "tr": "unutma eğrisi",
+    "exampleSentence": "Regular review helps slow down the forgetting curve.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "mnemonic",
+    "meaning": "a memory aid or technique to help remember information",
+    "tr": "hafıza tekniği",
+    "exampleSentence": "Acronyms are common mnemonic devices used by students.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "neurotransmitter",
+    "meaning": "a chemical messenger in the brain transmitting signals between neurons",
+    "tr": "nörotransmitter",
+    "exampleSentence": "Serotonin is a neurotransmitter linked to mood and sleep.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "dopamine",
+    "meaning": "a neurotransmitter involved in motivation and pleasure",
+    "tr": "dopamin",
+    "exampleSentence": "Dopamine release creates feelings of reward.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "serotonin",
+    "meaning": "a neurotransmitter affecting mood and emotional balance",
+    "tr": "serotonin",
+    "exampleSentence": "Low serotonin levels are linked to depression.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "endorphin",
+    "meaning": "a chemical in the brain that reduces pain and increases happiness",
+    "tr": "endorfin",
+    "exampleSentence": "Exercise increases endorphin levels, improving mood.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "brain",
+    "meaning": "the organ in the head responsible for thought, emotion, and control of the body",
+    "tr": "beyin",
+    "exampleSentence": "The brain processes billions of signals every second.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "neuron",
+    "meaning": "a nerve cell that transmits information through electrical signals",
+    "tr": "nöron",
+    "exampleSentence": "Neurons communicate with each other via synapses.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "synapse",
+    "meaning": "the junction between two neurons where impulses pass",
+    "tr": "sinaps",
+    "exampleSentence": "Drugs can affect how signals are transmitted at synapses.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "cerebral cortex",
+    "meaning": "the outer layer of the brain responsible for higher mental functions",
+    "tr": "beyin korteksi",
+    "exampleSentence": "The cerebral cortex is crucial for thinking and decision making.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "frontal lobe",
+    "meaning": "the brain region associated with reasoning, planning, and judgment",
+    "tr": "ön lob",
+    "exampleSentence": "The frontal lobe is essential for self-control and problem solving.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "temporal lobe",
+    "meaning": "the region of the brain responsible for hearing and language",
+    "tr": "temporal lob",
+    "exampleSentence": "The temporal lobe processes sounds and speech comprehension.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "parietal lobe",
+    "meaning": "the part of the brain that processes sensory information",
+    "tr": "parietal lob",
+    "exampleSentence": "The parietal lobe helps us sense touch and spatial position.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "occipital lobe",
+    "meaning": "the visual processing center of the brain",
+    "tr": "oksipital lob",
+    "exampleSentence": "Damage to the occipital lobe can cause vision loss.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "amygdala",
+    "meaning": "a brain structure involved in emotion and fear responses",
+    "tr": "amigdala",
+    "exampleSentence": "The amygdala activates during threatening situations.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "hippocampus",
+    "meaning": "a brain region involved in memory formation and learning",
+    "tr": "hipokampus",
+    "exampleSentence": "The hippocampus helps convert short-term memories to long-term ones.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "hypothalamus",
+    "meaning": "a brain region controlling hunger, thirst, and body temperature",
+    "tr": "hipotalamus",
+    "exampleSentence": "The hypothalamus maintains the body's internal balance.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "limbic system",
+    "meaning": "a group of brain structures involved in emotion and motivation",
+    "tr": "limbik sistem",
+    "exampleSentence": "The limbic system regulates emotional responses and memory.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "brainstem",
+    "meaning": "the part of the brain that controls vital life functions such as breathing",
+    "tr": "beyin sapı",
+    "exampleSentence": "The brainstem keeps the heart beating and lungs working.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "nervous system",
+    "meaning": "the network of nerves that transmits signals between the brain and body",
+    "tr": "sinir sistemi",
+    "exampleSentence": "The nervous system allows rapid communication within the body.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "central nervous system",
+    "meaning": "the brain and spinal cord, controlling all bodily functions",
+    "tr": "merkezi sinir sistemi",
+    "exampleSentence": "The central nervous system processes all sensory information.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "neuroplasticity",
+    "meaning": "the brain's ability to reorganize itself by forming new connections",
+    "tr": "nöroplastisite",
+    "exampleSentence": "Neuroplasticity enables recovery after brain injury.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "psychological disorder",
+    "meaning": "a condition that affects thinking, feeling, or behavior",
+    "tr": "psikolojik bozukluk",
+    "exampleSentence": "Anxiety disorders are the most common psychological disorders.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "anxiety disorder",
+    "meaning": "a mental condition characterized by excessive fear or worry",
+    "tr": "anksiyete bozukluğu",
+    "exampleSentence": "Social anxiety disorder makes public speaking difficult.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "mood disorder",
+    "meaning": "a psychological condition that affects emotional state",
+    "tr": "duygu durum bozukluğu",
+    "exampleSentence": "Bipolar disorder is a type of mood disorder.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "bipolar disorder",
+    "meaning": "a disorder causing extreme mood swings between mania and depression",
+    "tr": "bipolar bozukluk",
+    "exampleSentence": "People with bipolar disorder experience alternating highs and lows.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "schizophrenia",
+    "meaning": "a severe mental disorder involving delusions and hallucinations",
+    "tr": "şizofreni",
+    "exampleSentence": "Schizophrenia can distort thoughts and perceptions.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "obsessive-compulsive disorder",
+    "meaning": "a condition marked by unwanted thoughts and repetitive behaviors",
+    "tr": "takıntı-zorlantı bozukluğu",
+    "exampleSentence": "People with OCD may feel compelled to wash their hands repeatedly.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "post-traumatic stress disorder",
+    "meaning": "a disorder that develops after experiencing a terrifying event",
+    "tr": "travma sonrası stres bozukluğu",
+    "exampleSentence": "PTSD symptoms include flashbacks and anxiety.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "phobia",
+    "meaning": "an irrational fear of a specific object or situation",
+    "tr": "fobi",
+    "exampleSentence": "Arachnophobia is an extreme fear of spiders.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "panic attack",
+    "meaning": "a sudden episode of intense fear with physical symptoms",
+    "tr": "panik atak",
+    "exampleSentence": "A panic attack can cause rapid heartbeat and sweating.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "therapy session",
+    "meaning": "a meeting between a therapist and a client for treatment",
+    "tr": "terapi seansı",
+    "exampleSentence": "Each therapy session builds trust between client and therapist.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "cognitive behavioral therapy",
+    "meaning": "a treatment that changes negative thoughts and behaviors",
+    "tr": "bilişsel davranışçı terapi",
+    "exampleSentence": "CBT is effective for anxiety and depression.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "psychoanalysis",
+    "meaning": "a therapy exploring unconscious motives and early experiences",
+    "tr": "psikanaliz",
+    "exampleSentence": "Freud developed psychoanalysis to uncover unconscious conflicts.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "humanistic therapy",
+    "meaning": "a form of therapy focusing on personal growth and self-fulfillment",
+    "tr": "hümanistik terapi",
+    "exampleSentence": "Humanistic therapy encourages self-acceptance and authenticity.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "behavior therapy",
+    "meaning": "a treatment that uses learning principles to change behavior",
+    "tr": "davranış terapisi",
+    "exampleSentence": "Behavior therapy helps people overcome phobias through gradual exposure.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "exposure therapy",
+    "meaning": "a psychological treatment that helps confront fears safely",
+    "tr": "maruz bırakma terapisi",
+    "exampleSentence": "Exposure therapy helps reduce fear of flying by repeated safe experiences.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "client-centered therapy",
+    "meaning": "a therapy emphasizing empathy and unconditional positive regard",
+    "tr": "danışan odaklı terapi",
+    "exampleSentence": "Carl Rogers founded client-centered therapy.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "group therapy",
+    "meaning": "a form of psychotherapy involving multiple participants",
+    "tr": "grup terapisi",
+    "exampleSentence": "Group therapy allows people to share experiences with others.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "psychiatrist",
+    "meaning": "a medical doctor who diagnoses and treats mental disorders",
+    "tr": "psikiyatrist",
+    "exampleSentence": "A psychiatrist can prescribe medication for depression.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "psychologist",
+    "meaning": "a professional trained to study and treat mental processes and behavior",
+    "tr": "psikolog",
+    "exampleSentence": "Psychologists use therapy rather than medication for treatment.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "clinical psychology",
+    "meaning": "the branch of psychology focused on diagnosing and treating disorders",
+    "tr": "klinik psikoloji",
+    "exampleSentence": "Clinical psychology combines science and therapy practice.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "counseling psychology",
+    "meaning": "a branch helping people with everyday personal and emotional issues",
+    "tr": "danışma psikolojisi",
+    "exampleSentence": "Counseling psychology focuses on life adjustments and growth.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "forensic psychology",
+    "meaning": "the application of psychology to the legal system",
+    "tr": "adli psikoloji",
+    "exampleSentence": "Forensic psychology is used in criminal investigations.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "industrial psychology",
+    "meaning": "the study of human behavior in the workplace",
+    "tr": "endüstri psikolojisi",
+    "exampleSentence": "Industrial psychology improves employee motivation and performance.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "educational psychology",
+    "meaning": "the study of how people learn and retain knowledge",
+    "tr": "eğitim psikolojisi",
+    "exampleSentence": "Educational psychology explores classroom learning methods.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "experimental psychology",
+    "meaning": "the branch that studies behavior through controlled experiments",
+    "tr": "deneysel psikoloji",
+    "exampleSentence": "Experimental psychology relies on data and scientific method.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "neuropsychology",
+    "meaning": "the study of brain structure and function related to behavior",
+    "tr": "nöropsikoloji",
+    "exampleSentence": "Neuropsychology connects brain damage with cognitive deficits.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "developmental psychology",
+    "meaning": "the study of growth and change across the lifespan",
+    "tr": "gelişim psikolojisi",
+    "exampleSentence": "Developmental psychology examines changes from infancy to old age.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "positive psychology",
+    "meaning": "the scientific study of happiness, strengths, and well-being",
+    "tr": "pozitif psikoloji",
+    "exampleSentence": "Positive psychology focuses on life satisfaction and resilience.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "cognitive psychology",
+    "meaning": "the study of mental processes such as perception and thinking",
+    "tr": "bilişsel psikoloji",
+    "exampleSentence": "Cognitive psychology explores how people solve problems and remember information.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "metacognition",
+    "meaning": "awareness and understanding of one’s own thought processes",
+    "tr": "üstbiliş",
+    "exampleSentence": "Metacognition allows students to monitor how well they are learning.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "critical thinking",
+    "meaning": "the objective analysis and evaluation of information to form a judgment",
+    "tr": "eleştirel düşünme",
+    "exampleSentence": "Critical thinking helps people avoid false assumptions.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "decision fatigue",
+    "meaning": "the mental exhaustion from making too many decisions",
+    "tr": "karar yorgunluğu",
+    "exampleSentence": "Decision fatigue can reduce willpower later in the day.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "motivation",
+    "meaning": "the internal drive to take action toward a goal",
+    "tr": "güdülenme",
+    "exampleSentence": "Intrinsic motivation leads to more lasting engagement.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "intrinsic motivation",
+    "meaning": "doing something because it is personally rewarding",
+    "tr": "içsel motivasyon",
+    "exampleSentence": "Curiosity is a form of intrinsic motivation.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "extrinsic motivation",
+    "meaning": "doing something to earn a reward or avoid punishment",
+    "tr": "dışsal motivasyon",
+    "exampleSentence": "Grades often serve as extrinsic motivation for students.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "achievement motivation",
+    "meaning": "the drive to excel or achieve success",
+    "tr": "başarı güdüsü",
+    "exampleSentence": "High achievement motivation leads to persistence in challenges.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "goal setting",
+    "meaning": "the process of identifying specific, measurable objectives",
+    "tr": "hedef belirleme",
+    "exampleSentence": "Goal setting improves focus and performance.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "self-efficacy",
+    "meaning": "belief in one’s ability to succeed in specific situations",
+    "tr": "öz yeterlilik",
+    "exampleSentence": "High self-efficacy increases persistence after failure.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "locus of control",
+    "meaning": "the degree to which people believe they control their life outcomes",
+    "tr": "denetim odağı",
+    "exampleSentence": "An internal locus of control leads to greater responsibility for success.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "self-determination",
+    "meaning": "the ability to make choices and control one’s own life",
+    "tr": "öz belirleme",
+    "exampleSentence": "Self-determination supports motivation and well-being.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "learned helplessness",
+    "meaning": "a state of passive behavior resulting from repeated failure",
+    "tr": "öğrenilmiş çaresizlik",
+    "exampleSentence": "Learned helplessness can lead to depression.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "self-awareness",
+    "meaning": "understanding one’s own emotions, thoughts, and values",
+    "tr": "öz farkındalık",
+    "exampleSentence": "Self-awareness is crucial for emotional regulation.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "mindfulness",
+    "meaning": "focusing one’s awareness on the present moment",
+    "tr": "farkındalık",
+    "exampleSentence": "Mindfulness reduces stress and improves focus.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "burnout",
+    "meaning": "emotional exhaustion caused by prolonged stress",
+    "tr": "tükenmişlik",
+    "exampleSentence": "Chronic workplace stress can lead to burnout.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "trauma",
+    "meaning": "a deeply distressing or disturbing experience",
+    "tr": "travma",
+    "exampleSentence": "Childhood trauma can have long-lasting psychological effects.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "grief",
+    "meaning": "intense sorrow caused by loss",
+    "tr": "yas",
+    "exampleSentence": "Grief is a natural response to losing someone important.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "attachment theory",
+    "meaning": "a theory explaining emotional bonds between people",
+    "tr": "bağlanma kuramı",
+    "exampleSentence": "Attachment theory highlights the importance of early relationships.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "parenting style",
+    "meaning": "the emotional climate in which parents raise their children",
+    "tr": "ebeveynlik tarzı",
+    "exampleSentence": "Authoritative parenting style is linked to positive outcomes.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "authoritarian",
+    "meaning": "a strict parenting style with high control and low warmth",
+    "tr": "otoriter",
+    "exampleSentence": "Authoritarian parents expect obedience without question.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "permissive",
+    "meaning": "a parenting style with few rules or demands",
+    "tr": "hoşgörülü",
+    "exampleSentence": "Permissive parents tend to avoid confrontation.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "authoritative",
+    "meaning": "a balanced parenting style combining warmth and discipline",
+    "tr": "yetkeci",
+    "exampleSentence": "Authoritative parenting promotes independence and confidence.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "social learning",
+    "meaning": "learning by observing and imitating others",
+    "tr": "sosyal öğrenme",
+    "exampleSentence": "Children develop behaviors through social learning.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "modeling",
+    "meaning": "demonstrating behavior for others to imitate",
+    "tr": "model olma",
+    "exampleSentence": "Teachers influence students’ behavior through modeling.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "role model",
+    "meaning": "a person looked up to and imitated by others",
+    "tr": "rol model",
+    "exampleSentence": "Positive role models inspire healthy behaviors.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "peer pressure",
+    "meaning": "influence from members of one's peer group",
+    "tr": "akran baskısı",
+    "exampleSentence": "Peer pressure can lead teenagers to risky behavior.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "altruism",
+    "meaning": "selfless concern for the well-being of others",
+    "tr": "özgecilik",
+    "exampleSentence": "Acts of altruism strengthen social bonds.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "aggression",
+    "meaning": "hostile or violent behavior toward others",
+    "tr": "saldırganlık",
+    "exampleSentence": "Frustration can lead to aggression under stress.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "prosocial behavior",
+    "meaning": "actions intended to help or benefit others",
+    "tr": "yardımsever davranış",
+    "exampleSentence": "Prosocial behavior increases empathy in communities.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "emotional abuse",
+    "meaning": "psychological manipulation causing harm to one’s self-esteem",
+    "tr": "duygusal istismar",
+    "exampleSentence": "Emotional abuse leaves long-term psychological scars.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "assertiveness",
+    "meaning": "the quality of expressing opinions confidently and respectfully",
+    "tr": "kendini ifade etme",
+    "exampleSentence": "Assertiveness helps set healthy boundaries in relationships.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "boundaries",
+    "meaning": "limits that protect personal well-being in relationships",
+    "tr": "sınırlar",
+    "exampleSentence": "Setting boundaries is essential for mental health.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "social support",
+    "meaning": "assistance and comfort from others during stress",
+    "tr": "sosyal destek",
+    "exampleSentence": "Strong social support improves recovery from illness.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "relationship",
+    "meaning": "a connection or bond between people",
+    "tr": "ilişki",
+    "exampleSentence": "Healthy relationships require trust and communication.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "trust",
+    "meaning": "firm belief in the reliability or honesty of someone",
+    "tr": "güven",
+    "exampleSentence": "Trust is the foundation of any successful relationship.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "jealousy",
+    "meaning": "a feeling of envy or insecurity about another’s success or affection",
+    "tr": "kıskançlık",
+    "exampleSentence": "Jealousy can damage friendships if not controlled.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "forgiveness",
+    "meaning": "letting go of anger and resentment toward others",
+    "tr": "affetme",
+    "exampleSentence": "Forgiveness promotes emotional healing.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "gratitude",
+    "meaning": "a feeling of thankfulness and appreciation",
+    "tr": "minnettarlık",
+    "exampleSentence": "Practicing gratitude improves mental well-being.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "self-compassion",
+    "meaning": "being kind to oneself in times of failure or suffering",
+    "tr": "öz-şefkat",
+    "exampleSentence": "Self-compassion helps reduce self-criticism and guilt.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "personal growth",
+    "meaning": "improvement in self-awareness, knowledge, and identity",
+    "tr": "kişisel gelişim",
+    "exampleSentence": "Personal growth often comes through facing challenges.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "life satisfaction",
+    "meaning": "a person’s overall assessment of their quality of life",
+    "tr": "yaşam doyumu",
+    "exampleSentence": "High life satisfaction is linked with emotional balance.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "well-being",
+    "meaning": "a state of being comfortable, healthy, or happy",
+    "tr": "iyi oluş",
+    "exampleSentence": "Mental well-being depends on emotional and social health.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "psychological assessment",
+    "meaning": "a process of evaluating mental health using tests and observations",
+    "tr": "psikolojik değerlendirme",
+    "exampleSentence": "Psychological assessment helps identify learning difficulties.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "standardized test",
+    "meaning": "a test administered and scored in a consistent manner",
+    "tr": "standart test",
+    "exampleSentence": "IQ tests are standardized to compare results fairly.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "reliability",
+    "meaning": "the consistency of a test’s results over time",
+    "tr": "güvenilirlik",
+    "exampleSentence": "A reliable test produces similar results each time it is given.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "validity",
+    "meaning": "the degree to which a test measures what it claims to measure",
+    "tr": "geçerlilik",
+    "exampleSentence": "High validity ensures the accuracy of psychological tests.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "placebo effect",
+    "meaning": "a change in condition resulting from belief in treatment rather than the treatment itself",
+    "tr": "plasebo etkisi",
+    "exampleSentence": "The placebo effect shows the power of the mind over the body.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "research method",
+    "meaning": "a systematic plan for conducting scientific investigation",
+    "tr": "araştırma yöntemi",
+    "exampleSentence": "Psychologists use experimental and observational research methods.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "case study",
+    "meaning": "an in-depth analysis of a single individual or group",
+    "tr": "vaka çalışması",
+    "exampleSentence": "Freud’s case studies helped shape psychoanalytic theory.",
+    "isCustom": false,
+    "category": "psychology"
+  },
+  {
+    "word": "survey",
+    "meaning": "a research tool used to collect data from many people",
+    "tr": "anket",
+    "exampleSentence": "Surveys are often used to study attitudes and opinions.",
+    "isCustom": false,
+    "category": "psychology"
+  }
+]
+
+

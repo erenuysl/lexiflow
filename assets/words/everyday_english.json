@@ -1,0 +1,1598 @@
+[
+  {
+    "word": "hello",
+    "meaning": "a greeting used when meeting someone",
+    "tr": "merhaba",
+    "exampleSentence": "Hello, how are you today?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "hi",
+    "meaning": "an informal way to greet someone",
+    "tr": "selam",
+    "exampleSentence": "Hi! It’s nice to see you again.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "good morning",
+    "meaning": "a greeting used in the morning",
+    "tr": "günaydın",
+    "exampleSentence": "Good morning! Did you sleep well?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "good afternoon",
+    "meaning": "a greeting used in the afternoon",
+    "tr": "tünaydın",
+    "exampleSentence": "Good afternoon! How’s your day going?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "good evening",
+    "meaning": "a greeting used in the evening",
+    "tr": "iyi akşamlar",
+    "exampleSentence": "Good evening, nice to meet you!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "good night",
+    "meaning": "used when going to bed or leaving at night",
+    "tr": "iyi geceler",
+    "exampleSentence": "Good night, see you tomorrow!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "how are you",
+    "meaning": "a common question asking about someone’s well-being",
+    "tr": "nasılsın",
+    "exampleSentence": "How are you today?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "I’m fine",
+    "meaning": "a response meaning you are doing well",
+    "tr": "iyiyim",
+    "exampleSentence": "I’m fine, thanks. And you?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "what’s up",
+    "meaning": "a casual way to ask what someone is doing",
+    "tr": "ne haber",
+    "exampleSentence": "Hey! What’s up?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "not much",
+    "meaning": "a casual response to 'what’s up'",
+    "tr": "pek bir şey yok",
+    "exampleSentence": "Not much, just relaxing at home.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "nice to meet you",
+    "meaning": "a polite phrase used when meeting someone for the first time",
+    "tr": "tanıştığıma memnun oldum",
+    "exampleSentence": "Nice to meet you, I’ve heard a lot about you.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "see you later",
+    "meaning": "a casual way to say goodbye",
+    "tr": "görüşürüz",
+    "exampleSentence": "See you later, take care!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "take care",
+    "meaning": "a friendly phrase said when parting",
+    "tr": "kendine iyi bak",
+    "exampleSentence": "Take care and drive safely.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "goodbye",
+    "meaning": "used when leaving or ending a conversation",
+    "tr": "hoşça kal",
+    "exampleSentence": "Goodbye! Have a nice day.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "have a nice day",
+    "meaning": "a polite wish for someone’s day to be good",
+    "tr": "iyi günler",
+    "exampleSentence": "Have a nice day at work!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "thank you",
+    "meaning": "an expression of gratitude",
+    "tr": "teşekkür ederim",
+    "exampleSentence": "Thank you for your help!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "you’re welcome",
+    "meaning": "a polite reply to 'thank you'",
+    "tr": "rica ederim",
+    "exampleSentence": "You’re welcome! Glad I could help.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "excuse me",
+    "meaning": "used to get someone’s attention or apologize slightly",
+    "tr": "affedersiniz",
+    "exampleSentence": "Excuse me, can I ask you a question?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "sorry",
+    "meaning": "used to express apology or sympathy",
+    "tr": "üzgünüm",
+    "exampleSentence": "I’m sorry for being late.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "no problem",
+    "meaning": "used to say everything is fine after an apology",
+    "tr": "sorun değil",
+    "exampleSentence": "No problem! It happens sometimes.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "please",
+    "meaning": "used to make a request polite",
+    "tr": "lütfen",
+    "exampleSentence": "Can you pass the salt, please?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "of course",
+    "meaning": "used to show agreement or willingness",
+    "tr": "tabii ki",
+    "exampleSentence": "Of course, I’ll help you.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "sure",
+    "meaning": "used to agree or confirm something",
+    "tr": "elbette",
+    "exampleSentence": "Sure, let’s go out for coffee.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "maybe",
+    "meaning": "used when something is possible but not certain",
+    "tr": "belki",
+    "exampleSentence": "Maybe we can watch a movie later.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "I don’t know",
+    "meaning": "used to say you are not sure about something",
+    "tr": "bilmiyorum",
+    "exampleSentence": "I don’t know the answer to that question.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "I think so",
+    "meaning": "used to agree or express belief in something",
+    "tr": "sanırım öyle",
+    "exampleSentence": "Will it rain today? — I think so.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "I don’t think so",
+    "meaning": "used to politely disagree or express doubt",
+    "tr": "sanmıyorum",
+    "exampleSentence": "Will he come? — I don’t think so.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "really",
+    "meaning": "used to express surprise or disbelief",
+    "tr": "gerçekten mi",
+    "exampleSentence": "Really? I didn’t know that!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "exactly",
+    "meaning": "used to show strong agreement",
+    "tr": "kesinlikle, tam olarak",
+    "exampleSentence": "Exactly! That’s what I was trying to say.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "that’s right",
+    "meaning": "used to confirm something is correct",
+    "tr": "doğru",
+    "exampleSentence": "That’s right, we’ll meet at six.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "that’s true",
+    "meaning": "used to agree with someone’s statement",
+    "tr": "doğru söylüyorsun",
+    "exampleSentence": "That’s true, we do need more time.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "I agree",
+    "meaning": "used to express the same opinion as someone else",
+    "tr": "katılıyorum",
+    "exampleSentence": "I agree with you completely.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "I disagree",
+    "meaning": "used to express a different opinion",
+    "tr": "katılmıyorum",
+    "exampleSentence": "I disagree — I think it’s too risky.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "it depends",
+    "meaning": "used when the answer varies based on the situation",
+    "tr": "duruma bağlı",
+    "exampleSentence": "Will you go? — It depends on the weather.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "sounds good",
+    "meaning": "used to show agreement or approval of a suggestion",
+    "tr": "kulağa hoş geliyor",
+    "exampleSentence": "Let’s meet at 5. — Sounds good!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "no way",
+    "meaning": "used to express surprise or disbelief",
+    "tr": "olamaz, yok artık",
+    "exampleSentence": "No way! You actually met him?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "awesome",
+    "meaning": "a casual way to say something is great or impressive",
+    "tr": "harika",
+    "exampleSentence": "That movie was awesome!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "cool",
+    "meaning": "a casual expression for something good or impressive",
+    "tr": "süper, hoş",
+    "exampleSentence": "That’s a cool jacket!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "great",
+    "meaning": "used to describe something very good",
+    "tr": "harika, mükemmel",
+    "exampleSentence": "You did a great job today.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "amazing",
+    "meaning": "very impressive or surprising",
+    "tr": "şaşırtıcı, muhteşem",
+    "exampleSentence": "That concert was amazing!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "I see",
+    "meaning": "used to show understanding",
+    "tr": "anlıyorum",
+    "exampleSentence": "I see what you mean now.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "I get it",
+    "meaning": "used to show comprehension or agreement",
+    "tr": "anladım",
+    "exampleSentence": "Oh, I get it now — thanks for explaining.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "that’s okay",
+    "meaning": "used to comfort or forgive someone",
+    "tr": "önemli değil",
+    "exampleSentence": "That’s okay, don’t worry about it.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "don’t worry",
+    "meaning": "used to reassure someone that everything is fine",
+    "tr": "merak etme",
+    "exampleSentence": "Don’t worry, everything will be alright.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "come on",
+    "meaning": "used to encourage or express disbelief",
+    "tr": "hadi canım, hadi ama",
+    "exampleSentence": "Come on, it’s not that bad!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "hurry up",
+    "meaning": "used to tell someone to do something quickly",
+    "tr": "acele et",
+    "exampleSentence": "Hurry up! We’re going to be late.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "calm down",
+    "meaning": "used to tell someone to relax or be less angry",
+    "tr": "sakin ol",
+    "exampleSentence": "Calm down, everything’s under control.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "how much",
+    "meaning": "used to ask the price of something",
+    "tr": "ne kadar",
+    "exampleSentence": "How much is this T-shirt?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "how many",
+    "meaning": "used to ask about quantity of countable things",
+    "tr": "kaç tane",
+    "exampleSentence": "How many apples do you want?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "cheap",
+    "meaning": "not expensive",
+    "tr": "ucuz",
+    "exampleSentence": "This bag was really cheap.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "expensive",
+    "meaning": "costing a lot of money",
+    "tr": "pahalı",
+    "exampleSentence": "That restaurant is too expensive for me.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "buy",
+    "meaning": "to get something by paying for it",
+    "tr": "satın almak",
+    "exampleSentence": "I want to buy a new phone.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "sell",
+    "meaning": "to give something in exchange for money",
+    "tr": "satmak",
+    "exampleSentence": "They sell fresh bread every morning.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "shopping",
+    "meaning": "the activity of buying goods",
+    "tr": "alışveriş",
+    "exampleSentence": "I love going shopping on weekends.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "store",
+    "meaning": "a place where you buy things",
+    "tr": "mağaza",
+    "exampleSentence": "Let’s stop by the store for some snacks.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "market",
+    "meaning": "a place where people sell food and goods",
+    "tr": "pazar",
+    "exampleSentence": "The market is crowded on Sundays.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "cash",
+    "meaning": "money in the form of notes and coins",
+    "tr": "nakit",
+    "exampleSentence": "Do you accept cash or card?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "credit card",
+    "meaning": "a card used to buy goods on credit",
+    "tr": "kredi kartı",
+    "exampleSentence": "I paid for my groceries with a credit card.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "receipt",
+    "meaning": "a paper that shows you have paid for something",
+    "tr": "fiş",
+    "exampleSentence": "Keep your receipt in case you need to return it.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "discount",
+    "meaning": "a reduction in price",
+    "tr": "indirim",
+    "exampleSentence": "There’s a 20% discount on all shoes today.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "change",
+    "meaning": "money returned after paying more than the cost",
+    "tr": "para üstü",
+    "exampleSentence": "Here’s your change, have a nice day!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "open",
+    "meaning": "not closed; available for business",
+    "tr": "açık",
+    "exampleSentence": "The store opens at 9 a.m.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "closed",
+    "meaning": "not open; shut",
+    "tr": "kapalı",
+    "exampleSentence": "The bank is closed on Sundays.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "hungry",
+    "meaning": "wanting to eat",
+    "tr": "aç",
+    "exampleSentence": "I’m hungry, let’s get some pizza.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "thirsty",
+    "meaning": "wanting to drink",
+    "tr": "susamış",
+    "exampleSentence": "I’m thirsty, can I have some water?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "breakfast",
+    "meaning": "the first meal of the day",
+    "tr": "kahvaltı",
+    "exampleSentence": "I usually have eggs for breakfast.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "lunch",
+    "meaning": "a meal eaten in the middle of the day",
+    "tr": "öğle yemeği",
+    "exampleSentence": "Let’s go out for lunch today.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "dinner",
+    "meaning": "the main meal of the day, usually in the evening",
+    "tr": "akşam yemeği",
+    "exampleSentence": "We had pasta for dinner last night.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "restaurant",
+    "meaning": "a place where people pay to eat meals",
+    "tr": "restoran",
+    "exampleSentence": "That restaurant serves delicious food.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "menu",
+    "meaning": "a list of food available in a restaurant",
+    "tr": "menü",
+    "exampleSentence": "Can I see the menu, please?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "waiter",
+    "meaning": "a man who serves food in a restaurant",
+    "tr": "garson (erkek)",
+    "exampleSentence": "The waiter took our order quickly.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "bill",
+    "meaning": "a statement of the money owed for goods or services",
+    "tr": "hesap",
+    "exampleSentence": "Can we have the bill, please?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "tip",
+    "meaning": "extra money given for good service",
+    "tr": "bahşiş",
+    "exampleSentence": "We left a small tip for the waiter.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "water",
+    "meaning": "a clear liquid essential for life",
+    "tr": "su",
+    "exampleSentence": "Can I have a glass of water?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "coffee",
+    "meaning": "a hot drink made from roasted coffee beans",
+    "tr": "kahve",
+    "exampleSentence": "Would you like some coffee?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "tea",
+    "meaning": "a drink made by infusing dried leaves in hot water",
+    "tr": "çay",
+    "exampleSentence": "I drink tea every morning.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "juice",
+    "meaning": "a drink made from fruit or vegetables",
+    "tr": "meyve suyu",
+    "exampleSentence": "Orange juice is my favorite drink.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "bread",
+    "meaning": "a staple food made from flour and water",
+    "tr": "ekmek",
+    "exampleSentence": "Can you buy some bread on your way home?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "meat",
+    "meaning": "the flesh of animals used as food",
+    "tr": "et",
+    "exampleSentence": "I don’t eat much red meat.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "fruit",
+    "meaning": "the sweet product of a tree or plant containing seeds",
+    "tr": "meyve",
+    "exampleSentence": "Apples and bananas are my favorite fruits.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "vegetable",
+    "meaning": "a plant used as food",
+    "tr": "sebze",
+    "exampleSentence": "You should eat more vegetables for better health.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "weather",
+    "meaning": "the condition of the air at a certain time and place",
+    "tr": "hava durumu",
+    "exampleSentence": "The weather is sunny and warm today.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "rain",
+    "meaning": "water falling from the sky",
+    "tr": "yağmur",
+    "exampleSentence": "It’s starting to rain, take an umbrella!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "sunny",
+    "meaning": "bright with sunlight",
+    "tr": "güneşli",
+    "exampleSentence": "It’s a sunny day, let’s go outside.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "cloudy",
+    "meaning": "covered with clouds",
+    "tr": "bulutlu",
+    "exampleSentence": "It’s too cloudy to see the stars tonight.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "cold",
+    "meaning": "having a low temperature",
+    "tr": "soğuk",
+    "exampleSentence": "It’s very cold, wear your jacket.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "hot",
+    "meaning": "having a high temperature",
+    "tr": "sıcak",
+    "exampleSentence": "It’s too hot to go outside right now.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "windy",
+    "meaning": "with a lot of wind",
+    "tr": "rüzgarlı",
+    "exampleSentence": "It’s windy, hold on to your hat.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "snow",
+    "meaning": "frozen water falling from the sky as white flakes",
+    "tr": "kar",
+    "exampleSentence": "It’s snowing outside, let’s make a snowman!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "time",
+    "meaning": "the ongoing sequence of events measured in hours and minutes",
+    "tr": "zaman",
+    "exampleSentence": "What time is it?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "clock",
+    "meaning": "a device used to measure and show time",
+    "tr": "saat",
+    "exampleSentence": "The clock on the wall is slow.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "hour",
+    "meaning": "a period of sixty minutes",
+    "tr": "saat (zaman birimi)",
+    "exampleSentence": "I’ll be there in an hour.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "minute",
+    "meaning": "a period of sixty seconds",
+    "tr": "dakika",
+    "exampleSentence": "Wait a minute, I’ll be right back.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "morning",
+    "meaning": "the early part of the day",
+    "tr": "sabah",
+    "exampleSentence": "I go for a run every morning.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "evening",
+    "meaning": "the later part of the day, before night",
+    "tr": "akşam",
+    "exampleSentence": "We usually watch TV in the evening.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "night",
+    "meaning": "the time when it is dark outside",
+    "tr": "gece",
+    "exampleSentence": "I like reading books at night.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "where is",
+    "meaning": "used to ask about the location of something or someone",
+    "tr": "nerede",
+    "exampleSentence": "Excuse me, where is the nearest bus stop?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "how can I get to",
+    "meaning": "used to ask for directions to a place",
+    "tr": "nasıl gidebilirim",
+    "exampleSentence": "How can I get to the train station?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "straight ahead",
+    "meaning": "in a straight direction without turning",
+    "tr": "düz ileride",
+    "exampleSentence": "Go straight ahead for two blocks.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "turn left",
+    "meaning": "move in the direction to your left",
+    "tr": "sola dön",
+    "exampleSentence": "Turn left at the traffic lights.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "turn right",
+    "meaning": "move in the direction to your right",
+    "tr": "sağa dön",
+    "exampleSentence": "Turn right after the supermarket.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "across from",
+    "meaning": "directly opposite of something",
+    "tr": "karşısında",
+    "exampleSentence": "The bank is across from the park.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "next to",
+    "meaning": "beside something or someone",
+    "tr": "yanında",
+    "exampleSentence": "The pharmacy is next to the bakery.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "behind",
+    "meaning": "at the back of something",
+    "tr": "arkasında",
+    "exampleSentence": "The school is behind the library.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "in front of",
+    "meaning": "before or facing something",
+    "tr": "önünde",
+    "exampleSentence": "There’s a car parked in front of the house.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "near",
+    "meaning": "close to something",
+    "tr": "yakınında",
+    "exampleSentence": "The restaurant is near the beach.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "far",
+    "meaning": "at a long distance away",
+    "tr": "uzak",
+    "exampleSentence": "My office is far from my home.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "bus",
+    "meaning": "a large vehicle for public transportation",
+    "tr": "otobüs",
+    "exampleSentence": "I take the bus to school every day.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "train",
+    "meaning": "a vehicle that moves on tracks and carries passengers",
+    "tr": "tren",
+    "exampleSentence": "The train leaves at 7:30 a.m.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "station",
+    "meaning": "a place where trains or buses regularly stop",
+    "tr": "istasyon",
+    "exampleSentence": "The bus station is five minutes away.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "airport",
+    "meaning": "a place where airplanes take off and land",
+    "tr": "havaalanı",
+    "exampleSentence": "We need to be at the airport by 8 a.m.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "ticket",
+    "meaning": "a printed piece of paper allowing travel or entry",
+    "tr": "bilet",
+    "exampleSentence": "I bought a ticket for the concert.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "luggage",
+    "meaning": "bags and suitcases for travel",
+    "tr": "bagaj",
+    "exampleSentence": "I only have one piece of luggage.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "flight",
+    "meaning": "a journey made by air",
+    "tr": "uçuş",
+    "exampleSentence": "Our flight was delayed by two hours.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "seat",
+    "meaning": "a place where someone sits",
+    "tr": "koltuk",
+    "exampleSentence": "My seat is next to the window.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "window",
+    "meaning": "an opening in a wall or vehicle to let in light and air",
+    "tr": "pencere",
+    "exampleSentence": "She sat by the window and watched the rain.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "car",
+    "meaning": "a road vehicle with an engine and four wheels",
+    "tr": "araba",
+    "exampleSentence": "I drive my car to work every morning.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "taxi",
+    "meaning": "a car that carries passengers for money",
+    "tr": "taksi",
+    "exampleSentence": "We took a taxi to the hotel.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "bike",
+    "meaning": "a vehicle with two wheels that you pedal",
+    "tr": "bisiklet",
+    "exampleSentence": "I ride my bike to school every morning.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "walk",
+    "meaning": "to move by putting one foot in front of the other",
+    "tr": "yürümek",
+    "exampleSentence": "Let’s walk to the park.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "run",
+    "meaning": "to move faster than walking",
+    "tr": "koşmak",
+    "exampleSentence": "She runs every morning before work.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "late",
+    "meaning": "after the usual or expected time",
+    "tr": "geç",
+    "exampleSentence": "I’m sorry I’m late to the meeting.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "early",
+    "meaning": "before the usual or expected time",
+    "tr": "erken",
+    "exampleSentence": "He always wakes up early.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "arrive",
+    "meaning": "to reach a place",
+    "tr": "varmak",
+    "exampleSentence": "We arrived at the airport on time.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "leave",
+    "meaning": "to go away from a place",
+    "tr": "ayrılmak",
+    "exampleSentence": "We leave the office at six o’clock.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "plan",
+    "meaning": "a set of decisions about what you will do",
+    "tr": "plan",
+    "exampleSentence": "What’s your plan for the weekend?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "appointment",
+    "meaning": "a planned meeting at a specific time",
+    "tr": "randevu",
+    "exampleSentence": "I have a doctor’s appointment tomorrow morning.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "schedule",
+    "meaning": "a plan that shows when activities will happen",
+    "tr": "program, takvim",
+    "exampleSentence": "My schedule is full this week.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "meeting",
+    "meaning": "a gathering for discussion or decision-making",
+    "tr": "toplantı",
+    "exampleSentence": "The team meeting starts at 10 a.m.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "call",
+    "meaning": "to communicate by phone",
+    "tr": "aramak",
+    "exampleSentence": "I’ll call you when I get home.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "answer",
+    "meaning": "to reply to a question or phone call",
+    "tr": "cevaplamak",
+    "exampleSentence": "She didn’t answer my call.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "message",
+    "meaning": "information sent to someone electronically or verbally",
+    "tr": "mesaj",
+    "exampleSentence": "I left you a message on your phone.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "text",
+    "meaning": "to send a written message by phone",
+    "tr": "mesaj atmak",
+    "exampleSentence": "Can you text me the address?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "email",
+    "meaning": "a digital message sent via the internet",
+    "tr": "e-posta",
+    "exampleSentence": "I’ll send you the details by email.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "phone",
+    "meaning": "a device used for talking to someone at a distance",
+    "tr": "telefon",
+    "exampleSentence": "My phone battery is almost dead.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "speak",
+    "meaning": "to say words to communicate",
+    "tr": "konuşmak",
+    "exampleSentence": "Can I speak to Mr. Johnson, please?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "listen",
+    "meaning": "to pay attention to sound or speech",
+    "tr": "dinlemek",
+    "exampleSentence": "Listen carefully to the instructions.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "wait",
+    "meaning": "to stay in one place until something happens",
+    "tr": "beklemek",
+    "exampleSentence": "Wait here, I’ll be right back.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "meet",
+    "meaning": "to come together with someone by arrangement",
+    "tr": "buluşmak",
+    "exampleSentence": "Let’s meet for coffee tomorrow.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "talk",
+    "meaning": "to communicate or exchange ideas with someone",
+    "tr": "konuşmak",
+    "exampleSentence": "We need to talk about your project.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "visit",
+    "meaning": "to go to see someone or a place",
+    "tr": "ziyaret etmek",
+    "exampleSentence": "I’ll visit my grandparents this weekend.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "come in",
+    "meaning": "used to invite someone to enter",
+    "tr": "içeri gel",
+    "exampleSentence": "Come in! The door is open.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "sit down",
+    "meaning": "used to tell someone to take a seat",
+    "tr": "otur",
+    "exampleSentence": "Please sit down and make yourself comfortable.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "stand up",
+    "meaning": "to rise from sitting to standing position",
+    "tr": "ayağa kalk",
+    "exampleSentence": "Stand up straight when talking to people.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "get up",
+    "meaning": "to rise from bed after sleeping",
+    "tr": "kalkmak",
+    "exampleSentence": "I usually get up at 7 a.m.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "go out",
+    "meaning": "to leave your home to go somewhere for fun",
+    "tr": "dışarı çıkmak",
+    "exampleSentence": "Let’s go out tonight for dinner.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "come back",
+    "meaning": "to return to a place",
+    "tr": "geri dönmek",
+    "exampleSentence": "Come back soon, we’ll miss you!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "go home",
+    "meaning": "to return to one’s house",
+    "tr": "eve gitmek",
+    "exampleSentence": "I usually go home after work at six.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "happy",
+    "meaning": "feeling or showing pleasure or contentment",
+    "tr": "mutlu",
+    "exampleSentence": "I’m so happy to see you again!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "sad",
+    "meaning": "feeling unhappy or sorrowful",
+    "tr": "üzgün",
+    "exampleSentence": "She felt sad after watching the movie.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "angry",
+    "meaning": "feeling strong annoyance or displeasure",
+    "tr": "kızgın",
+    "exampleSentence": "He was angry because his flight was delayed.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "tired",
+    "meaning": "in need of rest or sleep",
+    "tr": "yorgun",
+    "exampleSentence": "I’m really tired after work today.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "bored",
+    "meaning": "feeling weary because something is dull or repetitive",
+    "tr": "sıkılmış",
+    "exampleSentence": "I’m bored. Let’s do something fun!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "excited",
+    "meaning": "feeling very happy and enthusiastic",
+    "tr": "heyecanlı",
+    "exampleSentence": "I’m excited about the trip tomorrow!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "worried",
+    "meaning": "feeling anxious or concerned about something",
+    "tr": "endişeli",
+    "exampleSentence": "I’m worried about the exam next week.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "surprised",
+    "meaning": "feeling shocked or amazed",
+    "tr": "şaşırmış",
+    "exampleSentence": "I was surprised to see him at the party.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "afraid",
+    "meaning": "feeling fear or anxiety",
+    "tr": "korkmuş",
+    "exampleSentence": "I’m afraid of spiders.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "confused",
+    "meaning": "unable to understand or think clearly",
+    "tr": "kafası karışmış",
+    "exampleSentence": "I’m confused about the new rules.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "interested",
+    "meaning": "showing curiosity or concern about something",
+    "tr": "ilgili",
+    "exampleSentence": "I’m interested in learning a new language.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "together",
+    "meaning": "with or near to each other",
+    "tr": "birlikte",
+    "exampleSentence": "Let’s go to the concert together.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "alone",
+    "meaning": "without other people",
+    "tr": "yalnız",
+    "exampleSentence": "He lives alone in a small apartment.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "busy",
+    "meaning": "having a lot of things to do",
+    "tr": "meşgul",
+    "exampleSentence": "I’m too busy to go out tonight.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "free",
+    "meaning": "not busy; available",
+    "tr": "boş, müsait",
+    "exampleSentence": "Are you free this weekend?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "fun",
+    "meaning": "enjoyable or entertaining",
+    "tr": "eğlenceli",
+    "exampleSentence": "The party was so much fun!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "good luck",
+    "meaning": "a wish for success",
+    "tr": "iyi şanslar",
+    "exampleSentence": "Good luck on your exam!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "congratulations",
+    "meaning": "an expression of praise for an achievement",
+    "tr": "tebrikler",
+    "exampleSentence": "Congratulations on your promotion!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "cheer up",
+    "meaning": "used to tell someone to be happier",
+    "tr": "neşelen",
+    "exampleSentence": "Cheer up! Things will get better soon.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "calm down",
+    "meaning": "used to tell someone to relax",
+    "tr": "sakin ol",
+    "exampleSentence": "Calm down, everything is fine.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "don’t worry",
+    "meaning": "used to reassure someone",
+    "tr": "merak etme",
+    "exampleSentence": "Don’t worry, it’s going to be okay.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "take it easy",
+    "meaning": "used to tell someone to relax or not be stressed",
+    "tr": "sakin ol, kafana takma",
+    "exampleSentence": "Take it easy and enjoy your weekend.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "good job",
+    "meaning": "used to praise someone’s work or effort",
+    "tr": "aferin, iyi iş çıkardın",
+    "exampleSentence": "Good job on your presentation!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "well done",
+    "meaning": "used to express approval or admiration",
+    "tr": "aferin, bravo",
+    "exampleSentence": "Well done! You passed the test!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "take care",
+    "meaning": "used to say goodbye and wish someone well",
+    "tr": "kendine iyi bak",
+    "exampleSentence": "Take care! See you soon.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "see you soon",
+    "meaning": "a friendly way to say you will meet again soon",
+    "tr": "yakında görüşürüz",
+    "exampleSentence": "See you soon! Don’t be late next time.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "let’s go",
+    "meaning": "used to suggest leaving or starting something",
+    "tr": "hadi gidelim",
+    "exampleSentence": "Let’s go, the movie is about to start.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "let’s see",
+    "meaning": "used when thinking or deciding",
+    "tr": "bir bakalım, düşüneyim",
+    "exampleSentence": "Let’s see… maybe we can go tomorrow.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "let me think",
+    "meaning": "used when you need a moment to decide",
+    "tr": "bir düşüneyim",
+    "exampleSentence": "Let me think… I guess around 8 o’clock.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "could you please",
+    "meaning": "used to make a polite request",
+    "tr": "lütfen … yapabilir misin",
+    "exampleSentence": "Could you please close the window?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "can I have",
+    "meaning": "used to ask politely for something",
+    "tr": "alabilir miyim",
+    "exampleSentence": "Can I have a cup of coffee, please?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "may I",
+    "meaning": "used to ask for permission politely",
+    "tr": "izin verir misiniz",
+    "exampleSentence": "May I sit here?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "can I",
+    "meaning": "used to ask for permission or ability",
+    "tr": "yapabilir miyim",
+    "exampleSentence": "Can I open the window?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "help",
+    "meaning": "to make it easier for someone to do something",
+    "tr": "yardım etmek",
+    "exampleSentence": "Can you help me with this box?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "excuse me",
+    "meaning": "used to get attention or apologize slightly",
+    "tr": "affedersiniz",
+    "exampleSentence": "Excuse me, is anyone sitting here?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "thank you so much",
+    "meaning": "a stronger way to express gratitude",
+    "tr": "çok teşekkür ederim",
+    "exampleSentence": "Thank you so much for your help!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "no worries",
+    "meaning": "used to say there is no problem or need to apologize",
+    "tr": "sorun değil, takma kafana",
+    "exampleSentence": "No worries! It’s all good.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "you’re right",
+    "meaning": "used to agree that someone is correct",
+    "tr": "haklısın",
+    "exampleSentence": "You’re right, I didn’t think about that.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "I guess",
+    "meaning": "used to show uncertainty or mild agreement",
+    "tr": "sanırım, galiba",
+    "exampleSentence": "I guess we can try that restaurant.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "I hope so",
+    "meaning": "used to express desire for something to be true",
+    "tr": "umarım öyle olur",
+    "exampleSentence": "Will it stop raining soon? — I hope so.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "I’m not sure",
+    "meaning": "used when uncertain about something",
+    "tr": "emin değilim",
+    "exampleSentence": "I’m not sure if he’s coming tonight.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "it’s up to you",
+    "meaning": "used to say someone should decide",
+    "tr": "sana kalmış",
+    "exampleSentence": "We can stay in or go out — it’s up to you.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "good idea",
+    "meaning": "used to agree with a suggestion",
+    "tr": "iyi fikir",
+    "exampleSentence": "Let’s order pizza — good idea!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "bad idea",
+    "meaning": "used to disagree with a suggestion",
+    "tr": "kötü fikir",
+    "exampleSentence": "Going out in this storm is a bad idea.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "I’m sorry to hear that",
+    "meaning": "used to show sympathy",
+    "tr": "bunu duyduğuma üzüldüm",
+    "exampleSentence": "I’m sorry to hear that you’re sick.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "bless you",
+    "meaning": "said when someone sneezes",
+    "tr": "çok yaşa",
+    "exampleSentence": "Achoo! — Bless you!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "what do you mean",
+    "meaning": "used to ask for clarification",
+    "tr": "ne demek istiyorsun",
+    "exampleSentence": "What do you mean by that?",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "never mind",
+    "meaning": "used to say something is not important anymore",
+    "tr": "boş ver",
+    "exampleSentence": "Never mind, I’ll do it myself.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "take your time",
+    "meaning": "used to tell someone not to rush",
+    "tr": "acele etme",
+    "exampleSentence": "Take your time, there’s no hurry.",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "long time no see",
+    "meaning": "used when you meet someone after a long time",
+    "tr": "görüşmeyeli uzun zaman oldu",
+    "exampleSentence": "Hey! Long time no see!",
+    "isCustom": false,
+    "category": "everyday_english"
+  },
+  {
+    "word": "how’s it going",
+    "meaning": "used to ask how someone is doing",
+    "tr": "nasıl gidiyor",
+    "exampleSentence": "Hey! How’s it going?",
+    "isCustom": false,
+    "category": "everyday_english"
+  }
+]
+
+
+
+
