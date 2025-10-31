@@ -25,9 +25,12 @@ class _TagEditDialogState extends State<TagEditDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: Text('Edit Tags'),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
+      content: SizedBox(
+        width: double.maxFinite,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
           Wrap(
             spacing: 8,
             children: tags.map((t) => Chip(
@@ -78,7 +81,9 @@ class _TagEditDialogState extends State<TagEditDialog> {
               )
             ],
           ),
-        ],
+            ],
+          ),
+        ),
       ),
       actions: [
         TextButton(

@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+import '../services/level_service.dart';
 
 part 'user_data.g.dart';
 
@@ -14,7 +15,7 @@ class UserData extends HiveObject {
   int totalXp;
 
   @HiveField(3)
-  int currentLevel;
+  int level; // standardized level field
 
   @HiveField(4)
   int longestStreak;
@@ -32,29 +33,36 @@ class UserData extends HiveObject {
     required this.lastLoginDate,
     this.currentStreak = 0,
     this.totalXp = 0,
-    this.currentLevel = 1,
+    this.level = 1, // standardized level field
     this.longestStreak = 0,
     this.totalWordsLearned = 0,
     this.totalQuizzesTaken = 0,
     this.lastFreeQuizDate,
   });
 
-  // Calculate XP needed for next level
-  int get xpForNextLevel => currentLevel * 100;
-
-  // Calculate progress to next level (0.0 to 1.0)
-  double get levelProgress {
-    final xpInCurrentLevel = totalXp % 100;
-    return xpInCurrentLevel / 100.0;
+  // Calculate XP needed for next level using LevelService
+  int get xpForNextLevel {
+    final levelData = LevelService.computeLevelData(totalXp);
+    return levelData.xpNeeded - levelData.xpIntoLevel;
   }
 
-  // Add XP and check for level up
+  // Calculate progress to next level (0.0 to 1.0) using LevelService
+  double get levelProgress {
+    final levelData = LevelService.computeLevelData(totalXp);
+    return levelData.progressPct;
+  }
+
+  // Add XP and check for level up using LevelService
   bool addXp(int amount) {
-    final oldLevel = currentLevel;
+    final oldLevelData = LevelService.computeLevelData(totalXp);
     totalXp += amount;
-    currentLevel = (totalXp / 100).floor() + 1;
+    final newLevelData = LevelService.computeLevelData(totalXp);
+    
+    // Update level based on LevelService calculation
+    level = newLevelData.level;
     save();
-    return currentLevel > oldLevel; // Returns true if leveled up
+    
+    return newLevelData.level > oldLevelData.level; // Returns true if leveled up
   }
 
   void updateStreak(DateTime today) {

@@ -1,9 +1,42 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Allow read/write access on all documents to any user signed in to the application
-    match /{document=**} {
-      allow read, write: if request.auth != null;
+    // User data - only allow access to own user document
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+      
+      // User's daily words subcollection
+      match /daily_words/{docId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+      
+      // Other user subcollections (if any)
+      match /{subcollection=**} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+    }
+    
+    // Leaderboard stats - allow read for all authenticated users, write only for document owner
+    match /leaderboard_stats/{userId} {
+      allow read: if request.auth != null;        // All signed-in users can view leaderboard
+      allow write: if request.auth.uid == userId; // Only owner can update their stats
+    }
+    
+    // Global collections that all authenticated users can read
+    match /categories/{document} {
+      allow read: if request.auth != null;
+      allow write: if false; // Only admin can write
+    }
+    
+    match /words/{document} {
+      allow read: if request.auth != null;
+      allow write: if false; // Only admin can write
+    }
+    
+    // Public words collection for daily word selection
+    match /public_words/{document} {
+      allow read: if request.auth != null;
+      allow write: if false; // Only admin can write
     }
     
     // Special rule for feedback collection - allow anonymous feedback with security measures
@@ -28,6 +61,11 @@ service cloud.firestore {
         request.resource.data.userId.size() <= 100;
         
       allow read, update, delete: if request.auth != null; // Only authenticated users can read/update/delete
+    }
+    
+    // Deny all other access
+    match /{document=**} {
+      allow read, write: if false;
     }
   }
 }

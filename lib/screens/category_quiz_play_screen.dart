@@ -2,20 +2,15 @@ import 'package:flutter/material.dart';
 import '../models/word_model.dart';
 import '../services/word_service.dart';
 import '../services/user_service.dart';
+import '../services/quiz_generator.dart';
 import 'quiz_screen.dart';
 
 class CategoryQuizPlayScreen extends StatefulWidget {
-  final String? category;
-  final String? categoryName;
-  final List<Word>? categoryWords;
   final WordService wordService;
   final UserService userService;
 
   const CategoryQuizPlayScreen({
     super.key,
-    this.category,
-    this.categoryName,
-    this.categoryWords,
     required this.wordService,
     required this.userService,
   });
@@ -25,49 +20,59 @@ class CategoryQuizPlayScreen extends StatefulWidget {
 }
 
 class _CategoryQuizPlayScreenState extends State<CategoryQuizPlayScreen> {
-  List<Word> _categoryWords = [];
+  QuizData? _quizData;
   bool _isLoading = true;
-  String _category = '';
-  String _categoryName = '';
-  Color? _categoryColor;
+  String? _error;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _loadCategoryData();
+    _loadQuizData();
   }
 
-  Future<void> _loadCategoryData() async {
+  Future<void> _loadQuizData() async {
     final args = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
     
-    _category = args?['category'] ?? widget.category ?? '';
-    _categoryName = args?['title'] ?? widget.categoryName ?? '';
-    _categoryColor = args?['categoryColor'] as Color?;
+    if (args?['quizData'] != null) {
+      // Quiz data already generated, use it directly
+      setState(() {
+        _quizData = args!['quizData'] as QuizData;
+        _isLoading = false;
+      });
+    } else {
+      // Fallback: generate quiz from category (shouldn't happen with new flow)
+      final categoryKey = args?['categoryKey'] as String?;
+      if (categoryKey == null) {
+        setState(() {
+          _error = 'Kategori bilgisi bulunamadı';
+          _isLoading = false;
+        });
+        return;
+      }
 
-    if (_category.isEmpty) {
-      setState(() {
-        _isLoading = false;
-      });
-      return;
-    }
+      try {
+        final words = await widget.wordService.getCategoryWords(categoryKey);
+        if (!QuizGenerator.canGenerateQuiz(words)) {
+          setState(() {
+            _error = QuizGenerator.getInsufficientWordsMessage(words.length);
+            _isLoading = false;
+          });
+          return;
+        }
 
-    try {
-      // Load all words and filter by category
-      final allWords = widget.wordService.getAllWords();
-      final filteredWords = allWords.where((word) => word.category == _category).toList();
-      
-      setState(() {
-        _categoryWords = filteredWords;
-        _isLoading = false;
-      });
-    } catch (e) {
-      setState(() {
-        _isLoading = false;
-      });
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Kelimeler yüklenirken hata oluştu: $e')),
+        final quizData = QuizGenerator.generateQuiz(
+          sourceWords: words,
+          quizType: 'category_$categoryKey',
         );
+        setState(() {
+          _quizData = quizData;
+          _isLoading = false;
+        });
+      } catch (e) {
+        setState(() {
+          _error = 'Quiz oluşturulurken hata oluştu: $e';
+          _isLoading = false;
+        });
       }
     }
   }
@@ -78,54 +83,47 @@ class _CategoryQuizPlayScreenState extends State<CategoryQuizPlayScreen> {
       return _buildLoadingScreen(context);
     }
 
-    if (_categoryWords.length < 4) {
-      return _buildInsufficientWordsScreen(context);
+    if (_error != null) {
+      return _buildErrorScreen(context, _error!);
     }
 
-    final filteredWords = _prepareQuizWords();
+    if (_quizData == null) {
+      return _buildErrorScreen(context, 'Quiz verisi bulunamadı');
+    }
 
     return QuizScreen(
       wordService: widget.wordService,
       userService: widget.userService,
-      quizWords: filteredWords,
-      quizType: 'category_$_category',
+      quizWords: _quizData!.questions.map((q) => q.correctWord).toList(),
+      quizType: 'category_quiz',
     );
   }
 
   Widget _buildLoadingScreen(BuildContext context) {
     return Scaffold(
-      backgroundColor: _categoryColor?.withOpacity(0.1),
       appBar: AppBar(
-        title: Text('$_categoryName Quiz'),
-        backgroundColor: _categoryColor?.withOpacity(0.2),
+        title: const Text('Quiz Hazırlanıyor'),
       ),
       body: const Center(
-        child: CircularProgressIndicator(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircularProgressIndicator(),
+            SizedBox(height: 16),
+            Text('Quiz sorular hazırlanıyor...'),
+          ],
+        ),
       ),
     );
   }
 
-  List<Word> _prepareQuizWords() {
-    // Shuffle and limit to 10 words for optimal quiz experience
-    final shuffledWords = List<Word>.from(_categoryWords);
-    shuffledWords.shuffle();
-    
-    // Take up to 10 words for the quiz
-    final quizWords = shuffledWords.take(10).toList();
-    
-    return quizWords;
-  }
-
-  Widget _buildInsufficientWordsScreen(BuildContext context) {
+  Widget _buildErrorScreen(BuildContext context, String error) {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
-      backgroundColor: _categoryColor?.withOpacity(0.1),
       appBar: AppBar(
-        title: Text('$_categoryName Quiz'),
-        backgroundColor: _categoryColor?.withOpacity(0.2),
-        foregroundColor: colorScheme.onSurface,
+        title: const Text('Quiz Hatası'),
       ),
       body: Center(
         child: Padding(
@@ -134,13 +132,13 @@ class _CategoryQuizPlayScreenState extends State<CategoryQuizPlayScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
-                Icons.quiz_outlined,
+                Icons.error_outline,
                 size: 80,
-                color: _categoryColor ?? colorScheme.outline,
+                color: colorScheme.error,
               ),
               const SizedBox(height: 24),
               Text(
-                'Bu kategoride yeterli kelime yok ⚠️',
+                'Quiz Başlatılamadı',
                 style: textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: colorScheme.onSurface,
@@ -149,28 +147,17 @@ class _CategoryQuizPlayScreenState extends State<CategoryQuizPlayScreen> {
               ),
               const SizedBox(height: 16),
               Text(
-                'Quiz oluşturmak için en az 4 kelime gerekli.',
+                error,
                 style: textTheme.bodyLarge?.copyWith(
                   color: colorScheme.onSurface.withOpacity(0.7),
                 ),
                 textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'Mevcut kelime sayısı: ${_categoryWords.length}',
-                style: textTheme.bodyMedium?.copyWith(
-                  color: _categoryColor ?? colorScheme.primary,
-                  fontWeight: FontWeight.w600,
-                ),
               ),
               const SizedBox(height: 32),
               FilledButton.icon(
                 onPressed: () => Navigator.pop(context),
                 icon: const Icon(Icons.arrow_back),
                 label: const Text('Geri Dön'),
-                style: FilledButton.styleFrom(
-                  backgroundColor: _categoryColor,
-                ),
               ),
             ],
           ),

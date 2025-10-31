@@ -884,8 +884,6 @@ class _LearnedWordsListState extends State<_LearnedWordsList> with TickerProvide
       final success = await _learnedWordsService.unmarkWordAsLearned(uid, word.word);
       
       if (success && mounted) {
-        await session.decrementWordsLearned();
-        
         showLexiflowToast(
           context,
           ToastType.success,

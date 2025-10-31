@@ -9,6 +9,8 @@ import 'offline_storage_manager.dart';
 import 'offline_auth_service.dart';
 import 'user_service.dart';
 import 'leaderboard_service.dart';
+import 'weekly_xp_service.dart';
+import 'level_service.dart';
 
 /// Kullanıcı oturum durumunu ve verilerini yöneten servis
 class SessionService extends ChangeNotifier {
@@ -24,6 +26,12 @@ class SessionService extends ChangeNotifier {
   // Servis örnekleri
   final SyncManager _syncManager = SyncManager();
   final OfflineStorageManager _offlineStorageManager = OfflineStorageManager();
+  
+  // Core ready stream for UI to listen when critical services are ready
+  final StreamController<bool> _coreReadyController = StreamController<bool>.broadcast();
+  Stream<bool> get coreReadyStream => _coreReadyController.stream;
+  bool _isCoreReady = false;
+  bool get isCoreReady => _isCoreReady;
 
   // Kullanıcı verileri
   User? _user;
@@ -56,9 +64,23 @@ class SessionService extends ChangeNotifier {
     return raw is int ? raw : 0;
   }
   
-  int get currentLevel {
-    final raw = _firestoreUserData?['currentLevel'];
-    return raw is int ? raw : 1;
+  int get level {
+    // LevelService kullanarak totalXp'den level hesapla
+    final totalXp = this.totalXp;
+    final levelData = LevelService.computeLevelData(totalXp);
+    final calculatedLevel = levelData.level;
+    
+    // migration için eski level değerlerini kontrol et
+    final rawLevel = _firestoreUserData?['level'];
+    final rawCurrentLevel = _firestoreUserData?['currentLevel'];
+    final storedLevel = rawLevel is int ? rawLevel : (rawCurrentLevel is int ? rawCurrentLevel : 1);
+    
+    // hesaplanan level ile saklanan level arasında fark varsa log'la
+    if (calculatedLevel != storedLevel) {
+      Logger.w('Level mismatch in SessionService: calculated=$calculatedLevel, stored=$storedLevel, totalXp=$totalXp');
+    }
+    
+    return calculatedLevel; // LevelService hesaplamasını kullan
   }
   
   int get totalXp {
@@ -85,6 +107,11 @@ class SessionService extends ChangeNotifier {
     final raw = _firestoreUserData?['totalQuizzesTaken'];
     return raw is int ? raw : 0;
   }
+  
+  int get weeklyXp {
+    final raw = _firestoreUserData?['weeklyXp'];
+    return raw is int ? raw : 0;
+  }
 
   Future<void> initialize() async {
     if (_isInitialized) return;
@@ -94,51 +121,20 @@ class SessionService extends ChangeNotifier {
       _isLoading = true;
       notifyListeners();
       
-      // İlk olarak Firebase auth durumunu kontrol et
-      _user = _auth.currentUser;
+      // PHASE 1: Critical initialization - user auth and basic data
+      await _initializeCriticalServices();
       
-      if (_user != null) {
-        // Firebase kullanıcısı mevcut - Firebase modunu kullan
-        _isOfflineMode = false;
-        _offlineUser = null; // Mevcut offline kullanıcıyı temizle
-        
-        // Tüm gerekli alt koleksiyonlarla birlikte kullanıcı dokümanının var olduğundan emin ol
-        final userRef = FirebaseFirestore.instance.collection('users').doc(_user!.uid);
-        final userDoc = await userRef.get();
-        final isNewUser = !userDoc.exists;
-        
-        await ensureUserDocumentExists(_user!);
-        await _loadUserData();
-        Logger.i('Existing Firebase session restored: ${_user?.uid}', 'SessionService');
-        
-        // 🔥 CRITICAL FIX: Only initialize leaderboard stats for NEW users
-        if (isNewUser) {
-          Logger.i('👤 NEW USER: Initializing leaderboard stats for ${_user!.uid}', 'SessionService');
-          await LeaderboardService().updateUserStats(_user!.uid);
-        } else {
-          Logger.i('👤 EXISTING USER: Skipping leaderboard initialization for ${_user!.uid}', 'SessionService');
-        }
-      } else {
-        // No Firebase user - check for offline session
-        final isOfflineSessionActive = await OfflineAuthService.isOfflineSessionActive();
-        if (isOfflineSessionActive) {
-          _offlineUser = await OfflineAuthService.getCurrentOfflineUser();
-          if (_offlineUser != null) {
-            _isOfflineMode = true;
-            await _loadOfflineUserData();
-            Logger.i('Offline session restored: ${_offlineUser?.uid}', 'SessionService');
-          }
-        } else {
-          // No existing session found - let the user choose sign-in method
-          Logger.i('No existing session found, waiting for user action', 'SessionService');
-        }
-      }
+      // Mark core as ready for UI
+       _isCoreReady = true;
+       _coreReadyController.add(true);
+       debugPrint('I/flutter: [SESSION] coreReady=true (non-critical continue in bg)');
+       Logger.i('🚀 Core services ready - UI can proceed', 'SessionService');
+      
+      // PHASE 2: Non-critical initialization - can happen in background
+      _initializeNonCriticalServices();
       
       _isInitialized = true;
       _isLoading = false;
-      
-      // 🔥 REMOVED: No longer calling updateUserStats on every app initialization
-      // This was causing data resets for existing users
       
       Logger.i('SessionService initialized', 'SessionService');
     } catch (e) {
@@ -150,6 +146,71 @@ class SessionService extends ChangeNotifier {
       Logger.finishPerformanceTask(perfTask, 'SessionService', 'initialize');
       notifyListeners();
     }
+  }
+  
+  /// Phase 1: Critical services that must complete before UI can proceed
+  Future<void> _initializeCriticalServices() async {
+    Logger.i('🔄 Initializing critical services...', 'SessionService');
+    
+    // İlk olarak Firebase auth durumunu kontrol et
+    _user = _auth.currentUser;
+    
+    if (_user != null) {
+      // Firebase kullanıcısı mevcut - Firebase modunu kullan
+      _isOfflineMode = false;
+      _offlineUser = null; // Mevcut offline kullanıcıyı temizle
+      
+      // Tüm gerekli alt koleksiyonlarla birlikte kullanıcı dokümanının var olduğundan emin ol
+      await ensureUserDocumentExists(_user!);
+      await _loadUserData();
+      Logger.i('✅ Critical: Firebase session restored: ${_user?.uid}', 'SessionService');
+    } else {
+      // No Firebase user - check for offline session
+      final isOfflineSessionActive = await OfflineAuthService.isOfflineSessionActive();
+      if (isOfflineSessionActive) {
+        _offlineUser = await OfflineAuthService.getCurrentOfflineUser();
+        if (_offlineUser != null) {
+          _isOfflineMode = true;
+          await _loadOfflineUserData();
+          Logger.i('✅ Critical: Offline session restored: ${_offlineUser?.uid}', 'SessionService');
+        }
+      } else {
+        // No existing session found - let the user choose sign-in method
+        Logger.i('✅ Critical: No existing session found, waiting for user action', 'SessionService');
+      }
+    }
+  }
+  
+  /// Phase 2: Non-critical services that can initialize in background
+  void _initializeNonCriticalServices() {
+    Logger.i('🔄 Starting non-critical services in background...', 'SessionService');
+    
+    // Run non-critical initialization in background
+    Future.microtask(() async {
+      try {
+        if (_user != null) {
+          // Check if this is a new user for leaderboard initialization
+          final userRef = FirebaseFirestore.instance.collection('users').doc(_user!.uid);
+          final userDoc = await userRef.get();
+          final isNewUser = !userDoc.exists;
+          
+          // 🔥 CRITICAL FIX: Only initialize leaderboard stats for NEW users
+          if (isNewUser) {
+            Logger.i('👤 Non-critical: NEW USER - Initializing leaderboard stats for ${_user!.uid}', 'SessionService');
+            await LeaderboardService().updateUserStats(_user!.uid);
+          } else {
+            Logger.i('👤 Non-critical: EXISTING USER - Skipping leaderboard initialization for ${_user!.uid}', 'SessionService');
+          }
+          
+          // Set up real-time listeners after core initialization
+          _setupRealTimeListener();
+        }
+        
+        Logger.i('✅ Non-critical services initialized', 'SessionService');
+      } catch (e) {
+        Logger.e('Non-critical service initialization failed (app continues normally)', e, null, 'SessionService');
+      }
+    });
   }
 
   /// Tüm gerekli alt koleksiyonlarla birlikte Firestore'da kullanıcı dokümanının var olduğundan emin ol
@@ -204,8 +265,7 @@ class SessionService extends ChangeNotifier {
         _firestoreUserData = {};
       }
       
-      // Kullanıcı istatistikleri için gerçek zamanlı dinleyici kur
-      _setupRealTimeListener();
+      // Real-time listener will be set up in non-critical phase
     } catch (e) {
       Logger.e('Failed to load user data', e, null, 'SessionService');
     }
@@ -219,7 +279,7 @@ class SessionService extends ChangeNotifier {
     // This prevents overwriting updated XP data with old cached data
     if (_firestoreUserData != null && _isOfflineMode) {
       Logger.i('⏭️ Skipping offline data reload - data already loaded for ${_offlineUser!.uid}', 'SessionService');
-      Logger.i('📊 Current cached data: totalXp=${_firestoreUserData!['totalXp']}, currentLevel=${_firestoreUserData!['currentLevel']}', 'SessionService');
+      Logger.i('📊 Current cached data: totalXp=${_firestoreUserData!['totalXp']}, level=${_firestoreUserData!['level'] ?? _firestoreUserData!['currentLevel']}', 'SessionService');
       return;
     }
     
@@ -229,9 +289,9 @@ class SessionService extends ChangeNotifier {
         // Only update if we don't have data or if the loaded data is different
         if (_firestoreUserData == null || 
             _firestoreUserData!['totalXp'] != userData['totalXp'] ||
-            _firestoreUserData!['currentLevel'] != userData['currentLevel']) {
+            (_firestoreUserData!['level'] ?? _firestoreUserData!['currentLevel']) != (userData['level'] ?? userData['currentLevel'])) {
           _firestoreUserData = userData;
-          Logger.i('📥 Loaded offline user data for ${_offlineUser!.uid}: totalXp=${userData['totalXp']}, currentLevel=${userData['currentLevel']}', 'SessionService');
+          Logger.i('📥 Loaded offline user data for ${_offlineUser!.uid}: totalXp=${userData['totalXp']}, level=${userData['level'] ?? userData['currentLevel']}', 'SessionService');
         } else {
           Logger.i('📊 Offline data unchanged, keeping current cache', 'SessionService');
         }
@@ -240,7 +300,7 @@ class SessionService extends ChangeNotifier {
         if (_firestoreUserData == null) {
           _firestoreUserData = {
             'favoritesCount': 0,
-            'currentLevel': 1,
+            'level': 1, // standardized level field
             'totalXp': 0,
             'currentStreak': 0,
             'longestStreak': 0,
@@ -316,38 +376,19 @@ class SessionService extends ChangeNotifier {
     print('✅ addXp proceeding with XP addition');
     
     try {
-      final currentXp = _firestoreUserData?['totalXp'] ?? 0;
-      final currentLevel = _firestoreUserData?['currentLevel'] ?? 1;
-      
-      Logger.i('🎯 Adding XP: $amount (Current: $currentXp, Level: $currentLevel)', 'SessionService');
-      
-      // Simple level calculation (can be adjusted based on game design)
-      final newXp = currentXp + amount;
-      final newLevel = (newXp / 100).floor() + 1;
-      
-      final updates = {
-        'totalXp': newXp,
-      };
-      
-      // Level up if needed
-      if (newLevel > currentLevel) {
-        updates['currentLevel'] = newLevel;
-        Logger.i('User leveled up to $newLevel', 'SessionService');
+      final userId = _user?.uid;
+      if (userId == null) {
+        Logger.e('Cannot add XP: user ID is null', 'SessionService');
+        return;
       }
+
+      // Use WeeklyXpService for comprehensive XP tracking (total + weekly)
+      await WeeklyXpService.addXp(userId, amount);
+
+      // Log XP addition
+      debugPrint('[XP] +$amount → leaderboard_stats with weekly tracking (uid=$userId)');
       
-      // Update local data immediately for UI responsiveness
-      _firestoreUserData = {
-        if (_firestoreUserData != null) ..._firestoreUserData!,
-        ...updates,
-      };
-      
-      // Save to storage and sync
-      await updateUserData(updates);
-      
-      // Force notify listeners to ensure UI updates
-      notifyListeners();
-      
-      Logger.i('✅ XP Added successfully: $amount (New Total: $newXp, Level: $newLevel)', 'SessionService');
+      Logger.i('✅ XP Added successfully: $amount via WeeklyXpService', 'SessionService');
     } catch (e) {
       Logger.e('Failed to add XP', e, null, 'SessionService');
     }
@@ -425,15 +466,14 @@ class SessionService extends ChangeNotifier {
         // If leaderboard stats don't exist, create them with current user data
         final userData = _firestoreUserData ?? {};
         
-        // Type guards for numeric fields to prevent FieldValue type errors
-        final rawCurrentLevel = userData['currentLevel'];
-        final currentLevel = rawCurrentLevel is int ? rawCurrentLevel : 1;
-        
-        final rawHighestLevel = userData['highestLevel'];
-        final highestLevel = rawHighestLevel is int ? rawHighestLevel : currentLevel;
-        
+        // LevelService kullanarak level hesapla
         final rawTotalXp = userData['totalXp'];
         final totalXp = rawTotalXp is int ? rawTotalXp : 0;
+        final levelData = LevelService.computeLevelData(totalXp);
+        final level = levelData.level;
+        
+        final rawHighestLevel = userData['highestLevel'];
+        final highestLevel = rawHighestLevel is int ? rawHighestLevel : level;
         
         final rawWeeklyXp = userData['weeklyXp'];
         final weeklyXp = rawWeeklyXp is int ? rawWeeklyXp : 0;
@@ -447,21 +487,21 @@ class SessionService extends ChangeNotifier {
         final rawQuizzesCompleted = userData['totalQuizzesCompleted'];
         final quizzesCompleted = rawQuizzesCompleted is int ? rawQuizzesCompleted : 0;
         
-        final rawWordsLearned = userData['learnedWordsCount'];
-        final wordsLearned = rawWordsLearned is int ? rawWordsLearned : 0;
+        final rawLearnedWordsCount = userData['learnedWordsCount'];
+        final learnedWordsCount = rawLearnedWordsCount is int ? rawLearnedWordsCount : 0;
         
         await docRef.set({
           'userId': _user!.uid,
           'displayName': displayName,
           'photoURL': _user!.photoURL,
-          'currentLevel': currentLevel,
+          'level': level, // standardized level field
           'highestLevel': highestLevel,
           'totalXp': totalXp,
           'weeklyXp': weeklyXp,
           'currentStreak': currentStreak,
           'longestStreak': longestStreak,
           'quizzesCompleted': quizzesCompleted,
-          'wordsLearned': wordsLearned,
+          'learnedWordsCount': learnedWordsCount,
           'lastUpdated': FieldValue.serverTimestamp(),
           'weekResetDate': _getNextMondayMidnight(),
         });
@@ -507,15 +547,14 @@ class SessionService extends ChangeNotifier {
         // If leaderboard stats don't exist, create them with current user data
         final userData = _firestoreUserData ?? {};
         
-        // Type guards for numeric fields to prevent FieldValue type errors
-        final rawCurrentLevel = userData['currentLevel'];
-        final currentLevel = rawCurrentLevel is int ? rawCurrentLevel : 1;
-        
-        final rawHighestLevel = userData['highestLevel'];
-        final highestLevel = rawHighestLevel is int ? rawHighestLevel : currentLevel;
-        
+        // LevelService kullanarak level hesapla
         final rawTotalXp = userData['totalXp'];
         final totalXp = rawTotalXp is int ? rawTotalXp : 0;
+        final levelData = LevelService.computeLevelData(totalXp);
+        final level = levelData.level;
+        
+        final rawHighestLevel = userData['highestLevel'];
+        final highestLevel = rawHighestLevel is int ? rawHighestLevel : level;
         
         final rawWeeklyXp = userData['weeklyXp'];
         final weeklyXp = rawWeeklyXp is int ? rawWeeklyXp : 0;
@@ -529,21 +568,21 @@ class SessionService extends ChangeNotifier {
         final rawQuizzesCompleted = userData['totalQuizzesCompleted'];
         final quizzesCompleted = rawQuizzesCompleted is int ? rawQuizzesCompleted : 0;
         
-        final rawWordsLearned = userData['learnedWordsCount'];
-        final wordsLearned = rawWordsLearned is int ? rawWordsLearned : 0;
+        final rawLearnedWordsCount = userData['learnedWordsCount'];
+        final learnedWordsCount = rawLearnedWordsCount is int ? rawLearnedWordsCount : 0;
         
         await docRef.set({
           'userId': _user!.uid,
           'displayName': _user!.displayName ?? 'Kullanıcı',
           'photoURL': photoURL,
-          'currentLevel': currentLevel,
+          'level': level, // standardized level field
           'highestLevel': highestLevel,
           'totalXp': totalXp,
           'weeklyXp': weeklyXp,
           'currentStreak': currentStreak,
           'longestStreak': longestStreak,
           'quizzesCompleted': quizzesCompleted,
-          'wordsLearned': wordsLearned,
+          'learnedWordsCount': learnedWordsCount,
           'lastUpdated': FieldValue.serverTimestamp(),
           'weekResetDate': _getNextMondayMidnight(),
         });
@@ -658,7 +697,7 @@ class SessionService extends ChangeNotifier {
         await _loadUserData();
         notifyListeners();
         Logger.i('Google Sign-In successful: ${_user?.displayName} (${_user?.email})', 'SessionService');
-        Logger.i('Final stats after Google Sign-In: totalXp=$totalXp, currentLevel=$currentLevel, currentStreak=$currentStreak', 'SessionService');
+        Logger.i('Final stats after Google Sign-In: totalXp=$totalXp, level=$level, currentStreak=$currentStreak', 'SessionService');
         
         // sadece YENİ kullanıcılar için leaderboard stats başlat
         if (isNewUser) {
@@ -800,73 +839,6 @@ class SessionService extends ChangeNotifier {
     }
   }
   
-  /// Increment words learned count
-  Future<void> incrementWordsLearned() async {
-    if (_user == null && _offlineUser == null) return;
-    
-    try {
-      final currentCount = _firestoreUserData?['learnedWordsCount'] ?? 0;
-      
-      final updates = {
-        'learnedWordsCount': currentCount + 1,
-      };
-      
-      final firestoreUpdates = {
-        'learnedWordsCount': FieldValue.increment(1),
-      };
-      
-      await updateUserData(updates);
-      
-      if (_user != null && !_isOfflineMode) {
-        final userId = _user!.uid;
-        await SyncManager().addOperation(
-          path: 'users/$userId',
-          type: SyncOperationType.update,
-          data: firestoreUpdates,
-        );
-      }
-      
-      Logger.i('Incremented words learned count', 'SessionService');
-    } catch (e) {
-      Logger.e('Failed to increment words learned count', e, null, 'SessionService');
-    }
-  }
-  
-  /// Decrement words learned count
-  Future<void> decrementWordsLearned() async {
-    if (_user == null && _offlineUser == null) return;
-    
-    try {
-      final currentCount = _firestoreUserData?['learnedWordsCount'] ?? 0;
-      
-      // 0'ın altına düşmesin
-      final newCount = currentCount > 0 ? currentCount - 1 : 0;
-      
-      final updates = {
-        'learnedWordsCount': newCount,
-      };
-      
-      final firestoreUpdates = {
-        'learnedWordsCount': FieldValue.increment(-1),
-      };
-      
-      await updateUserData(updates);
-      
-      if (_user != null && !_isOfflineMode) {
-        final userId = _user!.uid;
-        await SyncManager().addOperation(
-          path: 'users/$userId',
-          type: SyncOperationType.update,
-          data: firestoreUpdates,
-        );
-      }
-      
-      Logger.i('Decremented words learned count', 'SessionService');
-    } catch (e) {
-      Logger.e('Failed to decrement words learned count', e, null, 'SessionService');
-    }
-  }
-  
   /// Update leaderboard after word learned
   Future<void> updateLeaderboardAfterWordLearned(int xpGained) async {
     if ((_user == null && _offlineUser == null) || xpGained <= 0) return;
@@ -943,7 +915,7 @@ class SessionService extends ChangeNotifier {
       };
       
       Logger.i('📝 Updated local cache with: $processedData', 'SessionService');
-      Logger.i('📊 New local data: totalXp=${_firestoreUserData!['totalXp']}, currentLevel=${_firestoreUserData!['currentLevel']}', 'SessionService');
+      Logger.i('📊 New local data: totalXp=${_firestoreUserData!['totalXp']}, level=${_firestoreUserData!['level'] ?? _firestoreUserData!['currentLevel']}', 'SessionService');
       
       await OfflineStorageManager().saveUserData(userId, _firestoreUserData!);
       Logger.i('💾 Saved to offline storage for user: $userId', 'SessionService');
@@ -968,7 +940,40 @@ class SessionService extends ChangeNotifier {
     }
   }
 
-  /// Set up real-time listener for user stats
+  /// Real-time stats synchronization method
+  Future<void> refreshStats() async {
+    if (_user == null) return;
+    
+    try {
+      final docRef = _firestore.collection('users').doc(_user!.uid);
+      final snapshot = await docRef.get();
+      
+      if (snapshot.exists && snapshot.data() != null) {
+        final data = snapshot.data()!;
+        
+        // Update local cache with fresh Firestore data
+        _firestoreUserData = {
+          ..._firestoreUserData ?? {},
+          'totalXp': data['totalXp'] ?? 0,
+          'learnedWordsCount': data['learnedWordsCount'] ?? 0,
+          'totalQuizzesCompleted': data['totalQuizzesCompleted'] ?? 0,
+          'favoritesCount': data['favoritesCount'] ?? 0,
+          'currentStreak': data['currentStreak'] ?? 0,
+          'longestStreak': data['longestStreak'] ?? 0,
+          'level': data['level'] ?? data['currentLevel'] ?? 1, // prioritize level field
+        };
+        
+        Logger.i('📊 Stats refreshed: totalXp=${_firestoreUserData!['totalXp']}, learnedWords=${_firestoreUserData!['learnedWordsCount']}, quizzes=${_firestoreUserData!['totalQuizzesCompleted']}', 'SessionService');
+        
+        // Notify listeners for UI updates
+        notifyListeners();
+      }
+    } catch (e) {
+      Logger.e('Failed to refresh stats', e, null, 'SessionService');
+    }
+  }
+
+  /// Enhanced real-time listener with proper field mapping
   void _setupRealTimeListener() {
     if (_user == null || _isOfflineMode) return;
     
@@ -976,23 +981,32 @@ class SessionService extends ChangeNotifier {
     _leaderboardStatsSubscription?.cancel();
     
     try {
-      final docRef = _firestore
-          .collection('users')
-          .doc(_user!.uid);
+      final docRef = _firestore.collection('users').doc(_user!.uid);
       
       _userDataSubscription = docRef.snapshots().listen(
         (snapshot) {
           if (snapshot.exists && snapshot.data() != null) {
             final newData = snapshot.data()!;
             
-            // gereksiz rebuild'leri önlemek için deep equality kontrolü
-            if (_firestoreUserData == null || !_isDataEqual(_firestoreUserData!, newData)) {
-              _firestoreUserData = newData;
-              Logger.i('📡 Real-time update received: favoritesCount=${newData['favoritesCount']}, learnedWordsCount=${newData['learnedWordsCount']}, currentStreak=${newData['currentStreak']}, longestStreak=${newData['longestStreak']}', 'SessionService');
-              
-              // aşırı rebuild'leri önlemek için debounced notify
-              _debouncedNotifyListeners();
-            }
+            // Override cache with fresh Firestore data (no merge)
+            _firestoreUserData = {
+              'totalXp': newData['totalXp'] ?? 0,
+              'learnedWordsCount': newData['learnedWordsCount'] ?? 0,
+              'totalQuizzesCompleted': newData['totalQuizzesCompleted'] ?? 0,
+              'favoritesCount': newData['favoritesCount'] ?? 0,
+              'currentStreak': newData['currentStreak'] ?? 0,
+              'longestStreak': newData['longestStreak'] ?? 0,
+              'level': newData['level'] ?? newData['currentLevel'] ?? 1, // prioritize level field
+              'username': newData['username'],
+              'avatar': newData['avatar'],
+              'createdAt': newData['createdAt'],
+              'updatedAt': newData['updatedAt'],
+            };
+            
+            Logger.i('📡 Real-time update: totalXp=${newData['totalXp']}, learnedWords=${newData['learnedWordsCount']}, quizzes=${newData['totalQuizzesCompleted']}', 'SessionService');
+            
+            // Immediate UI notification
+            notifyListeners();
           }
         },
         onError: (error) {
@@ -1002,7 +1016,7 @@ class SessionService extends ChangeNotifier {
       
       _setupLeaderboardStatsListener();
       
-      Logger.i('📡 Real-time listener set up for user stats', 'SessionService');
+      Logger.i('📡 Enhanced real-time listener set up for user stats', 'SessionService');
     } catch (e) {
       Logger.e('Failed to set up real-time listener', e, null, 'SessionService');
     }
@@ -1015,7 +1029,7 @@ class SessionService extends ChangeNotifier {
       'favoritesCount',
       'learnedWordsCount', 
       'totalXp',
-      'currentLevel',
+      'level', // standardized level field
       'currentStreak',
       'longestStreak',
       'weeklyXp',
@@ -1079,12 +1093,75 @@ class SessionService extends ChangeNotifier {
     }
   }
 
+  /// Test method to verify synchronization between cached and Firestore data
+  Future<void> testSynchronizationFix() async {
+    print('🔄 SYNCHRONIZATION TEST STARTED');
+    
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) {
+      print('❌ SYNC TEST: No authenticated user');
+      return;
+    }
+
+    try {
+      // Get fresh data from Firestore
+      final freshDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .get();
+
+      if (!freshDoc.exists) {
+        print('❌ SYNC TEST: User document does not exist');
+        return;
+      }
+
+      final freshData = freshDoc.data()!;
+      
+      // Compare with cached data
+      print('🔍 SYNC TEST: Comparing cached vs Firestore data');
+      print('📊 Cached totalXp: ${_firestoreUserData?['totalXp']} | Firestore totalXp: ${freshData['totalXp']}');
+      print('📊 Cached learnedWordsCount: ${_firestoreUserData?['learnedWordsCount']} | Firestore learnedWordsCount: ${freshData['learnedWordsCount']}');
+      print('📊 Cached totalQuizzesCompleted: ${_firestoreUserData?['totalQuizzesCompleted']} | Firestore totalQuizzesCompleted: ${freshData['totalQuizzesCompleted']}');
+      
+      bool needsSync = false;
+      
+      if (_firestoreUserData?['totalXp'] != freshData['totalXp']) {
+        print('⚠️ SYNC ISSUE: totalXp mismatch');
+        needsSync = true;
+      }
+      
+      if (_firestoreUserData?['learnedWordsCount'] != freshData['learnedWordsCount']) {
+        print('⚠️ SYNC ISSUE: learnedWordsCount mismatch');
+        needsSync = true;
+      }
+      
+      if (_firestoreUserData?['totalQuizzesCompleted'] != freshData['totalQuizzesCompleted']) {
+        print('⚠️ SYNC ISSUE: totalQuizzesCompleted mismatch');
+        needsSync = true;
+      }
+      
+      if (needsSync) {
+        print('🔄 SYNC TEST: Triggering refreshStats()');
+        await refreshStats();
+        print('✅ SYNC TEST: Stats refreshed successfully');
+      } else {
+        print('✅ SYNC TEST: All data is synchronized');
+      }
+      
+    } catch (e) {
+      print('❌ SYNC TEST ERROR: $e');
+    }
+    
+    print('🏁 SYNCHRONIZATION TEST COMPLETED');
+  }
+
   /// Dispose resources
   @override
   void dispose() {
     _userDataSubscription?.cancel();
     _leaderboardStatsSubscription?.cancel();
     _notifyDebounceTimer?.cancel();
+    _coreReadyController.close();
     super.dispose();
   }
 }

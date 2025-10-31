@@ -28,7 +28,7 @@ class ActivityService {
       final activityData = FirestoreSchema.createUserActivity(
         type: FirestoreSchema.activityTypeQuizCompleted,
         xpEarned: xpEarned,
-        wordsLearned: correctAnswers,
+        learnedWordsCount: correctAnswers,
         quizType: quizType,
         correctAnswers: correctAnswers,
         totalQuestions: totalQuestions,
@@ -66,7 +66,7 @@ class ActivityService {
       final activityData = FirestoreSchema.createUserActivity(
         type: FirestoreSchema.activityTypeWordLearned,
         xpEarned: xpEarned,
-        wordsLearned: 1,
+        learnedWordsCount: 1,
         wordId: wordId,
         metadata: {...?metadata, 'learningMethod': learningMethod},
       );
@@ -292,7 +292,7 @@ class ActivityService {
         final data = doc.data() as Map<String, dynamic>;
 
         totalXpEarned += (data['xpEarned'] ?? 0) as int;
-        totalWordsLearned += (data['wordsLearned'] ?? 0) as int;
+        totalWordsLearned += (data['learnedWordsCount'] ?? data['wordsLearned'] ?? 0) as int; // fallback for migration
 
         final type = data['type'] as String?;
         if (type != null) {
@@ -354,7 +354,7 @@ class ActivityService {
         final data = doc.data();
 
         dailyXpEarned += (data['xpEarned'] ?? 0) as int;
-        dailyWordsLearned += (data['wordsLearned'] ?? 0) as int;
+        dailyWordsLearned += (data['learnedWordsCount'] ?? data['wordsLearned'] ?? 0) as int; // fallback for migration
 
         if (data['type'] == FirestoreSchema.activityTypeQuizCompleted) {
           dailyQuizzesCompleted++;
@@ -427,21 +427,21 @@ class ActivityService {
           if (!dailyBreakdown.containsKey(dayKey)) {
             dailyBreakdown[dayKey] = {
               'xpEarned': 0,
-              'wordsLearned': 0,
+              'learnedWordsCount': 0,
               'quizzesCompleted': 0,
             };
           }
 
           final xpEarned = data['xpEarned'] ?? 0;
-          final wordsLearned = data['wordsLearned'] ?? 0;
+          final wordsLearned = data['learnedWordsCount'] ?? data['wordsLearned'] ?? 0; // fallback for migration
 
           weeklyXpEarned += (xpEarned as int);
           weeklyWordsLearned += (wordsLearned as int);
 
           dailyBreakdown[dayKey]!['xpEarned'] =
               dailyBreakdown[dayKey]!['xpEarned']! + xpEarned;
-          dailyBreakdown[dayKey]!['wordsLearned'] =
-              dailyBreakdown[dayKey]!['wordsLearned']! + wordsLearned;
+          dailyBreakdown[dayKey]!['learnedWordsCount'] =
+              dailyBreakdown[dayKey]!['learnedWordsCount']! + wordsLearned;
 
           if (data['type'] == FirestoreSchema.activityTypeQuizCompleted) {
             weeklyQuizzesCompleted++;
@@ -523,7 +523,7 @@ class ActivityService {
         final activityData = FirestoreSchema.createUserActivity(
           type: activity['type'] as String,
           xpEarned: activity['xpEarned'] as int? ?? 0,
-          wordsLearned: activity['wordsLearned'] as int? ?? 0,
+          learnedWordsCount: activity['learnedWordsCount'] as int? ?? activity['wordsLearned'] as int? ?? 0, // fallback for migration
           quizType: activity['quizType'] as String?,
           correctAnswers: activity['correctAnswers'] as int? ?? 0,
           totalQuestions: activity['totalQuestions'] as int? ?? 0,

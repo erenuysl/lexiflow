@@ -63,7 +63,7 @@ class _CategoryQuizScreenState extends State<CategoryQuizScreen> {
     if (categoryWords.length < 4) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: const Text('Daha fazla kelime ekleyin. En az 4 kelime gerekli.'),
+          content: const Text('Quiz başlatmak için en az 4 kelime gerekli.'),
           backgroundColor: Theme.of(context).colorScheme.error,
           behavior: SnackBarBehavior.floating,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -76,9 +76,9 @@ class _CategoryQuizScreenState extends State<CategoryQuizScreen> {
       context,
       '/quiz/start',
       arguments: {
-        'category': widget.category,
+        'categoryKey': widget.category,
         'categoryName': widget.categoryName,
-        'words': categoryWords,
+        'categoryIcon': widget.categoryIcon,
       },
     );
   }

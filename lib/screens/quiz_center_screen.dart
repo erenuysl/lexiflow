@@ -92,7 +92,7 @@ class _QuizCenterScreenState extends State<QuizCenterScreen> {
       context,
       '/quiz/start',
       arguments: {
-        'category': categoryKey,
+        'categoryKey': categoryKey,
         'categoryName': categoryData['name'],
         'categoryIcon': categoryData['icon'],
       },
@@ -367,16 +367,7 @@ class _QuizCenterScreenState extends State<QuizCenterScreen> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  onPressed: () => Navigator.pushNamed(
-                    context,
-                    '/quiz/play',
-                    arguments: {
-                      'category': categoryKey,
-                      'title': categoryData['name'],
-                      'categoryIcon': categoryData['icon'],
-                      'categoryColor': categoryColor,
-                    },
-                  ),
+                  onPressed: () => _startCategoryQuiz(categoryKey),
                 ),
               ],
             ),

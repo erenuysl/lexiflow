@@ -149,7 +149,7 @@ class FirestoreSchema {
   static Map<String, dynamic> createUserActivity({
     required String type,
     int xpEarned = 0,
-    int wordsLearned = 0,
+    int learnedWordsCount = 0,
     String? quizType,
     int correctAnswers = 0,
     int totalQuestions = 0,
@@ -159,7 +159,7 @@ class FirestoreSchema {
     return {
       'type': type,
       'xpEarned': xpEarned,
-      'wordsLearned': wordsLearned,
+      'learnedWordsCount': learnedWordsCount,
       'quizType': quizType,
       'correctAnswers': correctAnswers,
       'totalQuestions': totalQuestions,
@@ -327,7 +327,7 @@ class FirestoreSchema {
     required String userId,
     required String displayName,
     String? photoURL,
-    int currentLevel = 1,
+    int level = 1, // using standardized level field
     int totalXp = 0,
     int weeklyXp = 0,
     int currentStreak = 0,
@@ -342,7 +342,7 @@ class FirestoreSchema {
       'userId': userId,
       'displayName': displayName,
       'photoURL': photoURL,
-      'currentLevel': currentLevel,
+      'level': level, // using standardized level field
       'totalXp': totalXp,
       'weeklyXp': weeklyXp,
       'currentStreak': currentStreak,

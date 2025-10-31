@@ -107,9 +107,6 @@ class _WordDetailScreenState extends State<WordDetailScreen>
             _isMarkingLearned = false;
           });
           
-          // Update SessionService stats to reflect the unlearned word
-          await sessionService.decrementWordsLearned();
-          
           // Show success feedback
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -128,9 +125,6 @@ class _WordDetailScreenState extends State<WordDetailScreen>
             _isLearned = true;
             _isMarkingLearned = false;
           });
-          
-          // Update SessionService stats to reflect the learned word
-          await sessionService.incrementWordsLearned();
           
           // Show success feedback
           showLexiflowToast(

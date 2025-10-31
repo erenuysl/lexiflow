@@ -20,6 +20,7 @@ import 'statistics_screen.dart';
 import 'leaderboard_screen.dart';
 import '../widgets/lexiflow_toast.dart';
 import 'daily_challenge_screen.dart';
+import '../providers/profile_stats_provider.dart';
 
 class DashboardScreen extends StatefulWidget {
   final WordService wordService;
@@ -39,7 +40,8 @@ class DashboardScreen extends StatefulWidget {
 
 // removed old pinned header delegate in favor of FAB coach UI
 
-class _DashboardScreenState extends State<DashboardScreen> {
+class _DashboardScreenState extends State<DashboardScreen> 
+    with AutomaticKeepAliveClientMixin {
   final DailyWordService _dailyWordService = DailyWordService();
   final StatisticsService _statisticsService = StatisticsService();
   final NotificationService _notificationService = NotificationService();
@@ -52,6 +54,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   List<Word> _dailyWords = [];
   bool _isLoading = true;
+  bool _isFirstLoaded = false; // latch for first load shimmer
   final bool _isExtended = false;
   List<String> _allWordIds = [];
 
@@ -59,6 +62,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Map<String, dynamic>? _dailyWordsData;
   Timer? _countdownTimer;
   Duration _timeUntilReset = Duration.zero;
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
@@ -98,11 +104,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
         setState(() {
           _dailyWords = words;
           _isLoading = false;
+          _isFirstLoaded = true; // mark as loaded
         });
+        debugPrint('I/flutter: [HOME] firstLoad->$_isFirstLoaded, showingShimmer=${!_isFirstLoaded}');
         return;
       }
 
-      await AdService.initialize();
+      // AdService.initialize() kaldırıldı - gereksiz tekrar çağrı
 
       // Use correct method name and handle the response properly
       final dailyWordsData = await _dailyWordService.getTodaysWords(user.uid);
@@ -120,7 +128,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
         _allWordIds = allWordIds;
         _dailyWordsData = dailyWordsData;
         _isLoading = false;
+        _isFirstLoaded = true; // mark as loaded
       });
+      debugPrint('I/flutter: [HOME] firstLoad->$_isFirstLoaded, showingShimmer=${!_isFirstLoaded}');
     } catch (e) {
       debugPrint('Error loading daily words: $e');
       
@@ -129,12 +139,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
         setState(() {
           _dailyWords = words;
           _isLoading = false;
+          _isFirstLoaded = true; // mark as loaded even on fallback
         });
+        debugPrint('I/flutter: [HOME] firstLoad->$_isFirstLoaded, showingShimmer=${!_isFirstLoaded}');
       } catch (fallbackError) {
         debugPrint('Fallback error: $fallbackError');
         setState(() {
           _isLoading = false;
+          _isFirstLoaded = true; // mark as loaded even on error
         });
+        debugPrint('I/flutter: [HOME] firstLoad->$_isFirstLoaded, showingShimmer=${!_isFirstLoaded}');
       }
     }
   }
@@ -154,15 +168,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
       if (success) {
         await _loadDailyWords();
 
-        final prevLevel = sessionService.currentLevel;
+        final prevLevel = sessionService.level;
         await sessionService.addXp(10);
-        final leveledUpResult = sessionService.currentLevel > prevLevel;
+        final leveledUpResult = sessionService.level > prevLevel;
 
         try {
           await _statisticsService.recordActivity(
             userId: userId,
             xpEarned: 10,
-            wordsLearned: 5, // 5 new words unlocked
+            learnedWordsCount: 5, // 5 new words unlocked
             quizzesCompleted: 0,
           );
           debugPrint('✅ Activity recorded: 10 XP for unlocking words');
@@ -171,7 +185,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         }
 
         if (leveledUpResult) {
-          _showLevelUpDialog(sessionService.currentLevel);
+          _showLevelUpDialog(sessionService.level);
         } else {
           _showSnackBar(
             '🎉 +5 new words unlocked! +10 XP',
@@ -342,9 +356,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context); // AutomaticKeepAliveClientMixin gereksinimi
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    if (_isLoading) {
+    // shimmer sadece ilk yüklemede göster
+    if (_isLoading && !_isFirstLoaded) {
       return Column(
         children: [
           // Offline durum göstergesi
@@ -631,10 +647,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 child: Row(
                   children: [
                     Expanded(
-                      child: _buildModernStatItem(
-                        Icons.book_rounded,
-                        '${_dailyWords.length}',
-                        'Words Today',
+                      child: Consumer<ProfileStatsProvider>(
+                        builder: (context, profileProvider, _) {
+                          final learnedCount = profileProvider.learnedCount ?? 0;
+                          return _buildModernStatItem(
+                            Icons.school,
+                            '$learnedCount',
+                            'Öğrenilen Kelime',
+                          );
+                        },
                       ),
                     ),
                     Container(

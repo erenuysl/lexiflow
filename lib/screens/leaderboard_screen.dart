@@ -22,22 +22,24 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
   
   // Removed debounce timer as it was causing excessive auto-refresh
 
-  // ✅ FIX: Use single collection 'leaderboard_stats'
-  String get _currentCollection => 'leaderboard_stats';
+  // ✅ FIX: Use 'leaderboard_stats' collection for all metrics
+  String get _currentCollection {
+    // All metrics come from leaderboard_stats collection
+    return 'leaderboard_stats';
+  }
 
   String get _currentField {
-    // ✅ FIXED: Correct field mapping for weekly vs all-time isolation
     switch (_segment) {
       case Segment.xp:
-        // Weekly: weeklyXp (resets weekly), All-time: totalXp (never resets)
-        return _tab == LeaderboardTab.weekly ? 'weeklyXp' : 'totalXp';
+        // level segment için level alanını kullan
+        return _tab == LeaderboardTab.weekly
+            ? 'level'
+            : 'highestLevel';
       case Segment.streak:
-        // Weekly: currentStreak (day-based, can reset), All-time: longestStreak (never resets)
         return _tab == LeaderboardTab.weekly
             ? 'currentStreak'
             : 'longestStreak';
       case Segment.quiz:
-        // Weekly: weeklyQuizzes (resets weekly), All-time: quizzesCompleted (never resets)
         return _tab == LeaderboardTab.weekly
             ? 'weeklyQuizzes'
             : 'quizzesCompleted';
@@ -46,17 +48,16 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
 
   /// Get display value for leaderboard item based on current tab and segment
   String _getDisplayValue(Map<String, dynamic> data) {
-    final value = data[_currentField] ?? 0;
-    
     switch (_segment) {
       case Segment.xp:
-        // For XP segment, show level with "Seviye" prefix
-        return 'Seviye $value';
+        // level segment için gerçek level değerini göster
+        final level = data['level'] ?? data['currentLevel'] ?? 0;
+        return 'Seviye $level';
       case Segment.streak:
-        // For streak segment, show days with "gün" suffix
+        final value = data[_currentField] ?? 0;
         return '$value gün';
       case Segment.quiz:
-        // For quiz segment, show count with "quiz" suffix
+        final value = data[_currentField] ?? 0;
         return '$value quiz';
     }
   }
@@ -65,13 +66,9 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
   String _getSubtitle(Map<String, dynamic> data) {
     switch (_segment) {
       case Segment.xp:
-        if (_tab == LeaderboardTab.weekly) {
-          final weeklyXp = data['weeklyXp'] ?? 0;
-          return '$weeklyXp XP bu hafta';
-        } else {
-          final totalXp = data['totalXp'] ?? 0;
-          return '$totalXp toplam XP';
-        }
+        // For level segment, show total XP from leaderboard_stats collection
+        final totalXp = data['totalXp'] ?? 0;
+        return '$totalXp XP toplam';
       case Segment.streak:
         if (_tab == LeaderboardTab.weekly) {
           final currentStreak = data['currentStreak'] ?? 0;
@@ -96,9 +93,8 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
     try {
       print('🔄 TRACE: _refreshLeaderboard() called at ${DateTime.now()}');
       
-      // Clear leaderboard cache to force fresh data
+      // Cache'i temizle ve yeniden yükle
       print('🗑️ TRACE: Clearing leaderboard cache');
-      _leaderboardService.clearCache();
       
       // Add debounce delay to ensure Firestore updates propagate
       print('⏳ TRACE: Waiting 300ms for Firestore updates to propagate');
@@ -316,8 +312,10 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
                         final weeklyXp = data['weeklyXp'] ?? 0;
                         final weeklyQuizzes = data['weeklyQuizzes'] ?? 0;
                         final totalXp = data['totalXp'] ?? 0;
+                        final level = data['level'];
                         
                         print("📊 Entry ${index + 1}: $displayName - weeklyXp: $weeklyXp, weeklyQuizzes: $weeklyQuizzes, totalXp: $totalXp");
+                        print("📊 Level field: $level");
                         print("📊 Current field value ($_currentField): ${data[_currentField] ?? 0}");
 
                         // ✅ ENHANCED: Use new display methods for proper field isolation

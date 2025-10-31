@@ -29,13 +29,14 @@ class WordAdapter extends TypeAdapter<Word> {
       tags: (fields[9] as List).cast<String>(),
       srsLevel: fields[10] as int,
       isCustom: fields[11] as bool,
+      category: fields[12] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, Word obj) {
     writer
-      ..writeByte(12)
+      ..writeByte(13)
       ..writeByte(0)
       ..write(obj.word)
       ..writeByte(1)
@@ -59,7 +60,9 @@ class WordAdapter extends TypeAdapter<Word> {
       ..writeByte(10)
       ..write(obj.srsLevel)
       ..writeByte(11)
-      ..write(obj.isCustom);
+      ..write(obj.isCustom)
+      ..writeByte(12)
+      ..write(obj.category);
   }
 
   @override

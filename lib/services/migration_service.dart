@@ -331,7 +331,7 @@ class MigrationService {
           final activityDoc = FirestoreSchema.createUserActivity(
             type: activityData['type'] ?? 'unknown',
             xpEarned: activityData['xpEarned'] ?? 0,
-            wordsLearned: activityData['wordsLearned'] ?? 0,
+            learnedWordsCount: activityData['learnedWordsCount'] ?? activityData['wordsLearned'] ?? 0, // fallback for migration
             quizType: activityData['quizType'],
             correctAnswers: activityData['correctAnswers'] ?? 0,
             totalQuestions: activityData['totalQuestions'] ?? 0,

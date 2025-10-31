@@ -4,6 +4,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 import '../services/session_service.dart';
+import '../services/level_service.dart';
+import '../providers/profile_stats_provider.dart';
+import '../models/aggregated_profile_stats.dart';
+import '../widgets/username_edit_dialog.dart';
+import '../widgets/level_up_banner.dart';
 import 'settings_screen.dart';
 import 'statistics_screen.dart';
 
@@ -25,33 +30,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
     'assets/icons/woman.svg',
   ];
 
+  // Level-up detection
+  int? _lastKnownLevel;
+
   @override
   void initState() {
     super.initState();
-    _setupLeaderboardSync();
-  }
-
-  // Real-time leaderboard synchronization listener
-  void _setupLeaderboardSync() {
-    final user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      FirebaseFirestore.instance
-          .collection('leaderboard_stats')
-          .doc(user.uid)
-          .snapshots()
-          .listen((snapshot) {
-        if (snapshot.exists) {
-          final data = snapshot.data() as Map<String, dynamic>;
-          final leaderboardDisplayName = data['displayName'] as String?;
-          
-          // username senkronizasyonu gerekirse güncelle
-          if (leaderboardDisplayName != null && 
-              leaderboardDisplayName != user.displayName) {
-            _syncUsernameToLeaderboard(user.uid, user.displayName ?? '');
-          }
+    
+    // Delay initialization until widget is fully mounted to prevent disposal races
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        final user = FirebaseAuth.instance.currentUser;
+        if (user != null) {
+          final profileStatsProvider = context.read<ProfileStatsProvider>();
+          profileStatsProvider.initializeForUser(user.uid);
+          _syncUsernameToLeaderboard(user.uid, user.displayName ?? '');
         }
-      });
-    }
+      }
+    });
   }
 
   // Sync username to leaderboard_stats
@@ -71,8 +67,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Consumer<SessionService>(
-        builder: (context, sessionService, child) {
+      body: Consumer2<SessionService, ProfileStatsProvider>(
+        builder: (context, sessionService, profileStatsProvider, child) {
+          // SessionService henüz başlatılmadıysa loading göster
+          if (!sessionService.isInitialized) {
+            return _buildInitializingState();
+          }
+
           if (!sessionService.isAuthenticated) {
             return const Center(
               child: Text('Lütfen giriş yapın'),
@@ -81,29 +82,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
           final userId = sessionService.currentUser?.uid;
           if (userId == null) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return _buildAuthLoadingState();
           }
 
-          return StreamBuilder<DocumentSnapshot>(
-            stream: FirebaseFirestore.instance
-                .collection('users')
-                .doc(userId)
-                .snapshots(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return _buildLoadingState();
+          // Use ProfileStatsProvider for unified stats
+          final stats = profileStatsProvider.stats;
+          final error = profileStatsProvider.error;
+          
+          // Show error state with retry option
+          if (error != null) {
+            return _buildErrorState(error, () {
+              if (mounted) {
+                profileStatsProvider.retry();
               }
+            });
+          }
+          
+          if (stats.isLoading) {
+            return _buildLoadingState();
+          }
 
-              if (snapshot.hasError) {
-                return _buildErrorState();
-              }
+          // Get user profile data (avatar, username) from SessionService
+          final username = sessionService.currentUser?.displayName ?? 'Kullanıcı';
+          final avatar = 'assets/icons/boy.svg'; // Default avatar, can be enhanced later
 
-              final data = snapshot.data?.data() as Map<String, dynamic>?;
-              return _buildProfileContent(context, sessionService, data ?? {}, userId);
-            },
-          );
+          return _buildProfileContent(context, sessionService, stats, username, avatar, userId);
         },
       ),
     );
@@ -124,40 +127,149 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  Widget _buildErrorState() {
+  Widget _buildErrorState(String error, VoidCallback onRetry) {
+    return SafeArea(
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(
+                Icons.error_outline,
+                size: 64,
+                color: Colors.red,
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                'Profil yüklenemedi',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 8),
+              Text(
+                error,
+                style: const TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 24),
+              ElevatedButton.icon(
+                onPressed: onRetry,
+                icon: const Icon(Icons.refresh),
+                label: const Text('Yeniden dene'),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 12,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildInitializingState() {
     return const SafeArea(
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.error_outline, size: 64, color: Colors.red),
+            CircularProgressIndicator(),
             SizedBox(height: 16),
-            Text('Profil yüklenirken hata oluştu'),
+            Text('Oturum başlatılıyor...'),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildProfileContent(BuildContext context, SessionService sessionService, 
-      Map<String, dynamic> data, String userId) {
-    // Firestore'dan gelen veriler
-    final username = data['username'] ?? sessionService.currentUser?.displayName ?? 'Kullanıcı';
-    final level = data['level'] ?? sessionService.currentLevel;
-    final currentXP = data['xp'] ?? sessionService.totalXp;
-    final xpToNext = data['xpToNext'] ?? ((level + 1) * 100);
-    final wordsLearned = data['wordsLearned'] ?? sessionService.learnedWordsCount;
-    final quizzesCompleted = data['quizzesCompleted'] ?? sessionService.totalQuizzesTaken;
-    final favorites = data['favorites'] ?? sessionService.favoritesCount;
-    final totalXP = data['totalXP'] ?? sessionService.totalXp;
-    final streak = data['streak'] ?? sessionService.currentStreak;
-    final longestStreak = data['longestStreak'] ?? sessionService.longestStreak;
-    final avatar = data['avatar'] ?? 'assets/icons/boy.svg';
+  Widget _buildAuthLoadingState() {
+    return const SafeArea(
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircularProgressIndicator(),
+            SizedBox(height: 16),
+            Text('Kimlik doğrulanıyor...'),
+          ],
+        ),
+      ),
+    );
+  }
 
-    // XP kontrolü ve seviye artırma
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _checkAndUpdateLevel(userId, currentXP, xpToNext, level);
-    });
+
+
+  Widget _buildPermissionErrorState() {
+    return SafeArea(
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.lock_outline, size: 64, color: Colors.orange),
+            const SizedBox(height: 16),
+            const Text('Erişim İzNi Gerekli'),
+            const SizedBox(height: 8),
+            const Text(
+              'Profil verilerinize erişim için giriş yapmanız gerekiyor.',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.grey),
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                // Çıkış yap ve tekrar giriş yap
+                FirebaseAuth.instance.signOut();
+              },
+              child: const Text('Tekrar Giriş Yap'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildProfileContent(BuildContext context, SessionService sessionService,
+      AggregatedProfileStats stats, String username, String avatar, String? userId) {
+    
+    // Get level data from ProfileStatsProvider
+    final profileStatsProvider = context.read<ProfileStatsProvider>();
+    final levelData = profileStatsProvider.currentLevelData;
+    
+    // Use new level system if available, fallback to old system
+    final level = levelData?.level ?? stats.level;
+    final totalXP = stats.totalXp;
+    final learnedCount = stats.learnedWordsCount; 
+    final quizzesCompleted = stats.totalQuizzesCompleted; 
+    final favorites = sessionService.favoritesCount; // Keep from SessionService for now
+    final streak = stats.currentStreak; 
+    final longestStreak = stats.longestStreak;
+
+    // XP values for the progress bar - use new level system if available
+    final currentXP = levelData?.xpIntoLevel ?? (stats.totalXp % stats.xpToNextLevel);
+    final xpToNext = levelData?.xpNeeded ?? stats.xpToNextLevel;
+
+    // Level-up detection and banner trigger
+    if (levelData != null && _lastKnownLevel != null && levelData.level > _lastKnownLevel!) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) {
+          LevelUpBanner.show(context, levelData.level);
+        }
+      });
+    }
+    _lastKnownLevel = levelData?.level ?? level;
+
+    // Log profile stats combination
+    debugPrint('[PROFILE] stats <- xp=$totalXP, quizzes=$quizzesCompleted, learned=$learnedCount, level=$level');
 
     return SafeArea(
       child: SingleChildScrollView(
@@ -165,7 +277,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Column(
           children: [
             // Gradient Header
-            _buildGradientHeader(context, username, level, avatar, userId),
+            _buildGradientHeader(context, username, level, avatar, userId ?? ''),
             
             const SizedBox(height: 24),
             
@@ -179,7 +291,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   const SizedBox(height: 24),
                   
                   // Stats Grid - Gerçek zamanlı veri doğrulama ile
-                  _buildStatsGrid(context, userId, wordsLearned, quizzesCompleted, favorites, totalXP),
+                  _buildStatsGrid(context, userId ?? '', learnedCount, quizzesCompleted, favorites, totalXP),
                   
                   const SizedBox(height: 24),
                   
@@ -350,64 +462,103 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final progress = currentXP / xpToNext;
     final xpNeeded = xpToNext - currentXP;
     
-    return Card(
-      elevation: 4,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      child: Container(
-        padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          color: Theme.of(context).colorScheme.primaryContainer.withOpacity(0.3),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Consumer<SessionService>(
+      builder: (context, sessionService, child) {
+        final weeklyXp = sessionService.weeklyXp;
+        
+        return Card(
+          elevation: 4,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          child: Container(
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              color: Theme.of(context).colorScheme.primaryContainer.withOpacity(0.3),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Deneyim Puanı',
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).colorScheme.onSurface,
+                      ),
+                    ),
+                    Text(
+                      '$currentXP / $xpToNext XP',
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+                
+                const SizedBox(height: 16),
+                
+                LinearProgressIndicator(
+                  value: progress.clamp(0.0, 1.0),
+                  backgroundColor: Theme.of(context).colorScheme.outline.withOpacity(0.2),
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    Theme.of(context).colorScheme.primary,
+                  ),
+                  minHeight: 8,
+                ),
+                
+                const SizedBox(height: 12),
+                
                 Text(
-                  'Deneyim Puanı',
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.onSurface,
+                  xpNeeded > 0 ? 'Bir sonraki seviyeye $xpNeeded XP kaldı!' : 'Seviye atlamaya hazır!',
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
                 ),
-                Text(
-                  '$currentXP / $xpToNext XP',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
-                    fontWeight: FontWeight.w600,
+                
+                // haftalık XP bilgisi
+                if (weeklyXp > 0) ...[
+                  const SizedBox(height: 12),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.secondary.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        color: Theme.of(context).colorScheme.secondary.withOpacity(0.3),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.calendar_today, // haftalık XP için uygun icon
+                          size: 16,
+                          color: Theme.of(context).colorScheme.secondary,
+                        ),
+                        const SizedBox(width: 6),
+                        Text(
+                          'Bu hafta: $weeklyXp XP',
+                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                            color: Theme.of(context).colorScheme.secondary,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
+                ],
               ],
             ),
-            
-            const SizedBox(height: 16),
-            
-            LinearProgressIndicator(
-              value: progress.clamp(0.0, 1.0),
-              backgroundColor: Theme.of(context).colorScheme.outline.withOpacity(0.2),
-              valueColor: AlwaysStoppedAnimation<Color>(
-                Theme.of(context).colorScheme.primary,
-              ),
-              minHeight: 8,
-            ),
-            
-            const SizedBox(height: 12),
-            
-            Text(
-              xpNeeded > 0 ? 'Bir sonraki seviyeye $xpNeeded XP kaldı!' : 'Seviye atlamaya hazır!',
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: Theme.of(context).colorScheme.onSurfaceVariant,
-              ),
-            ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 
-  Widget _buildStatsGrid(BuildContext context, String userId, int wordsLearned, 
+  Widget _buildStatsGrid(BuildContext context, String userId, int learnedWordsCount, 
       int quizzesCompleted, int favorites, int totalXP) {
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -416,28 +567,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
         
         return Column(
           children: [
-            // Real-time learned words count validation with enhanced synchronization
-            StreamBuilder<QuerySnapshot>(
-              stream: FirebaseFirestore.instance
-                  .collection('users')
-                  .doc(userId)
-                  .collection('words')
-                  .where('learned', isEqualTo: true)
-                  .snapshots(),
-              builder: (context, wordsSnapshot) {
-                final actualWordsLearned = wordsSnapshot.hasData ? wordsSnapshot.data!.docs.length : wordsLearned;
-                
-                // Enhanced synchronization: Update both user_data and leaderboard_stats if counts don't match
-                if (wordsSnapshot.hasData && actualWordsLearned != wordsLearned) {
-                  WidgetsBinding.instance.addPostFrameCallback((_) {
-                    _syncWordsLearnedCount(userId, actualWordsLearned);
-                  });
-                }
+            // Use ProfileStatsProvider as single source of truth for learned count
+            Consumer<ProfileStatsProvider>(
+              builder: (context, profileProvider, child) {
+                final learnedCount = profileProvider.learnedCount;
                 
                 final stats = [
                   {
                     'title': 'Öğrenilen Kelime',
-                    'value': actualWordsLearned.toString(),
+                    'value': learnedCount.toString(),
                     'icon': Icons.school_outlined,
                     'color': Theme.of(context).colorScheme.primary,
                   },
@@ -670,30 +808,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   void _showUsernameEditDialog(BuildContext context, String userId, String currentUsername) {
-    final TextEditingController controller = TextEditingController(text: currentUsername);
-    
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Kullanıcı Adını Düzenle'),
-        content: TextField(
-          controller: controller,
-          decoration: const InputDecoration(
-            labelText: 'Yeni kullanıcı adı',
-            border: OutlineInputBorder(),
-          ),
-          maxLength: 20,
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('İptal'),
-          ),
-          ElevatedButton(
-            onPressed: () => _updateUsername(context, userId, controller.text.trim()),
-            child: const Text('Kaydet'),
-          ),
-        ],
+      barrierDismissible: true,
+      builder: (context) => UsernameEditDialog(
+        currentUsername: currentUsername,
+        onSave: (newUsername) => _updateUsername(context, userId, newUsername),
       ),
     );
   }
@@ -739,52 +859,54 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
 
     try {
-      // Update both user_data and leaderboard_stats in a transaction for consistency
-      await FirebaseFirestore.instance.runTransaction((transaction) async {
-        // Define document references
-        final userDataRef = FirebaseFirestore.instance
-            .collection('users')
-            .doc(userId);
-        
-        final leaderboardRef = FirebaseFirestore.instance
-            .collection('leaderboard_stats')
-            .doc(userId);
+      // Define document references
+      final userDataRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(userId);
+      
+      final leaderboardRef = FirebaseFirestore.instance
+          .collection('leaderboard_stats')
+          .doc(userId);
 
-        // PHASE 1: Perform all reads first (required by Firestore transaction rules)
-        final userDataDoc = await transaction.get(userDataRef);
-        final leaderboardDoc = await transaction.get(leaderboardRef);
+      // PHASE 1: Perform all reads first (before batch operations)
+      final userDataDoc = await userDataRef.get();
+      final leaderboardDoc = await leaderboardRef.get();
 
-        // PHASE 2: Perform all writes after reads are complete
-        // Update user_data stats
-        transaction.update(userDataRef, {
-          'username': newUsername,
+      // PHASE 2: Create batch and perform all writes
+      final batch = FirebaseFirestore.instance.batch();
+
+      // Update user_data stats
+      batch.update(userDataRef, {
+        'username': newUsername,
+        'lastUpdated': FieldValue.serverTimestamp(),
+      });
+
+      // Update or create leaderboard_stats document
+      if (leaderboardDoc.exists) {
+        batch.update(leaderboardRef, {
+          'displayName': newUsername,
           'lastUpdated': FieldValue.serverTimestamp(),
         });
+      } else {
+        // Create leaderboard entry with current user data if it doesn't exist
+        final userData = userDataDoc.data() as Map<String, dynamic>?;
+        batch.set(leaderboardRef, {
+          'userId': userId,
+          'displayName': newUsername,
+          'currentLevel': userData?['level'] ?? 1,
+          'highestLevel': userData?['level'] ?? 1,
+          'totalXp': userData?['totalXp'] ?? 0,
+          'weeklyXp': 0,
+          'currentStreak': userData?['currentStreak'] ?? 0,
+          'longestStreak': userData?['longestStreak'] ?? 0,
+          'quizzesCompleted': userData?['quizzesCompleted'] ?? 0,
+          'learnedWordsCount': userData?['learnedWordsCount'] ?? userData?['wordsLearned'] ?? 0, // fallback for migration
+          'lastUpdated': FieldValue.serverTimestamp(),
+        });
+      }
 
-        // Update or create leaderboard_stats document
-        if (leaderboardDoc.exists) {
-          transaction.update(leaderboardRef, {
-            'displayName': newUsername,
-            'lastUpdated': FieldValue.serverTimestamp(),
-          });
-        } else {
-          // Create leaderboard entry with current user data if it doesn't exist
-          final userData = userDataDoc.data() as Map<String, dynamic>?;
-          transaction.set(leaderboardRef, {
-            'userId': userId,
-            'displayName': newUsername,
-            'currentLevel': userData?['level'] ?? 1,
-            'highestLevel': userData?['level'] ?? 1,
-            'totalXp': userData?['totalXp'] ?? 0,
-            'weeklyXp': 0,
-            'currentStreak': userData?['currentStreak'] ?? 0,
-            'longestStreak': userData?['longestStreak'] ?? 0,
-            'quizzesCompleted': userData?['quizzesCompleted'] ?? 0,
-            'wordsLearned': userData?['wordsLearned'] ?? 0,
-            'lastUpdated': FieldValue.serverTimestamp(),
-          });
-        }
-      });
+      // Commit the batch
+      await batch.commit();
       
       if (mounted) {
         Navigator.pop(context);
@@ -805,62 +927,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         );
       }
-    }
-  }
-
-  Future<void> _checkAndUpdateLevel(String userId, int currentXP, int xpToNext, int currentLevel) async {
-    if (currentXP >= xpToNext) {
-      final newLevel = currentLevel + 1;
-      final remainingXP = currentXP - xpToNext;
-      final newXpToNext = newLevel * 100;
-
-      try {
-        await FirebaseFirestore.instance
-            .collection('users')
-            .doc(userId)
-            .update({
-          'level': newLevel,
-          'xp': remainingXP,
-          'xpToNext': newXpToNext,
-        });
-
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Tebrikler! Level $newLevel\'e yükseldiniz! 🎉'),
-              backgroundColor: Colors.green,
-              duration: const Duration(seconds: 3),
-            ),
-          );
-        }
-      } catch (e) {
-        // Seviye güncelleme hatası - sessizce geç
-      }
-    }
-  }
-
-  // Enhanced synchronization function for learned words count
-  Future<void> _syncWordsLearnedCount(String userId, int actualCount) async {
-    try {
-      final batch = FirebaseFirestore.instance.batch();
-      
-      // Update user_data stats
-      final userDataRef = FirebaseFirestore.instance
-          .collection('users')
-          .doc(userId);
-      
-      batch.update(userDataRef, {'wordsLearned': actualCount});
-      
-      // Update leaderboard_stats
-      final leaderboardRef = FirebaseFirestore.instance
-          .collection('leaderboard_stats')
-          .doc(userId);
-      
-      batch.update(leaderboardRef, {'wordsLearned': actualCount});
-      
-      await batch.commit();
-    } catch (e) {
-      // Güncelleme hatası - sessizce geç
     }
   }
 }

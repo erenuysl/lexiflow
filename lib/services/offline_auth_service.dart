@@ -36,7 +36,7 @@ class OfflineAuthService {
       
       // Initialize default user stats
       final defaultStats = {
-        'currentLevel': 1,
+        'level': 1, // using standardized level field
         'totalXp': 0,
         'currentStreak': 0,
         'longestStreak': 0,

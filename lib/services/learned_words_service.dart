@@ -7,6 +7,7 @@ import '../utils/logger.dart';
 import 'sync_manager.dart';
 import 'offline_storage_manager.dart';
 import 'connectivity_service.dart';
+import 'session_service.dart'; // Added for refreshStats
 
 class LearnedWordsService {
   static final LearnedWordsService _instance = LearnedWordsService._internal();
@@ -151,27 +152,39 @@ class LearnedWordsService {
               .collection('leaderboard_stats')
               .doc(userId);
 
-          // Check if word is already learned (double-check in transaction)
+          // Check if word is already learned (idempotency check in transaction)
           final existingDoc = await transaction.get(learnedWordRef);
           if (existingDoc.exists) {
-            throw Exception('Word already learned');
+            Logger.i('[LEARNED] Word already exists in subcollection, skipping: $wordId (uid=$userId)', 'LearnedWordsService');
+            return; // Do nothing - idempotent behavior
           }
 
           // Add learned word
           transaction.set(learnedWordRef, learnedWordData);
 
-          // Increment stats
+          // Increment stats with standardized field name
           transaction.update(statsRef, {
-            'wordsLearned': FieldValue.increment(1),
+            'learnedWordsCount': FieldValue.increment(1),
             'lastUpdated': FieldValue.serverTimestamp(),
           });
 
-          // Update leaderboard stats
+          // Update leaderboard stats with standardized field name
           transaction.update(leaderboardRef, {
-            'wordsLearned': FieldValue.increment(1),
+            'learnedWordsCount': FieldValue.increment(1),
             'lastUpdated': FieldValue.serverTimestamp(),
           });
+
+          Logger.i('[LEARNED] +1 -> learnedWordsCount after add (uid=$userId, wordId=$wordId)', 'LearnedWordsService');
         });
+
+        // Trigger SessionService refresh for real-time UI updates
+        try {
+          final sessionService = SessionService();
+          await sessionService.refreshStats();
+          Logger.i('📊 SessionService stats refreshed after word learned', 'LearnedWordsService');
+        } catch (e) {
+          Logger.w('Failed to refresh SessionService stats', 'LearnedWordsService');
+        }
 
         Logger.i('Word marked as learned successfully: $wordId', 'LearnedWordsService');
       } else {
@@ -184,11 +197,6 @@ class LearnedWordsService {
 
     } catch (e) {
       Logger.e('Error marking word as learned', e, null, 'LearnedWordsService');
-      
-      // If Firestore fails, queue for sync when online
-      if (e.toString().contains('Word already learned')) {
-        return false; // Already learned
-      }
       
       // Queue the operation for later sync
       await _queueLearnedWordForSync(userId, word);
@@ -213,22 +221,22 @@ class LearnedWordsService {
         data: learnedWordData,
       );
 
-      // Queue stats update
+      // Queue stats update with standardized field name
       await SyncManager().addOperation(
         path: 'users/$userId',
         type: SyncOperationType.update,
         data: {
-          'wordsLearned': FieldValue.increment(1),
+          'learnedWordsCount': FieldValue.increment(1),
           'lastUpdated': FieldValue.serverTimestamp(),
         },
       );
 
-      // Queue leaderboard update
+      // Queue leaderboard update with standardized field name
       await SyncManager().addOperation(
         path: 'leaderboard_stats/$userId',
         type: SyncOperationType.update,
         data: {
-          'wordsLearned': FieldValue.increment(1),
+          'learnedWordsCount': FieldValue.increment(1),
           'lastUpdated': FieldValue.serverTimestamp(),
         },
       );
@@ -446,27 +454,39 @@ class LearnedWordsService {
               .collection('leaderboard_stats')
               .doc(userId);
 
-          // Check if word is actually learned (double-check in transaction)
+          // Check if word is actually learned (idempotency check in transaction)
           final existingDoc = await transaction.get(learnedWordRef);
           if (!existingDoc.exists) {
-            throw Exception('Word is not learned');
+            Logger.i('[LEARNED] Word not in subcollection, skipping: $wordId (uid=$userId)', 'LearnedWordsService');
+            return; // Do nothing - idempotent behavior
           }
 
           // Remove learned word
           transaction.delete(learnedWordRef);
 
-          // Decrement stats
+          // Decrement stats with standardized field name
           transaction.update(statsRef, {
-            'wordsLearned': FieldValue.increment(-1),
+            'learnedWordsCount': FieldValue.increment(-1),
             'lastUpdated': FieldValue.serverTimestamp(),
           });
 
-          // Update leaderboard stats
+          // Update leaderboard stats with standardized field name
           transaction.update(leaderboardRef, {
-            'wordsLearned': FieldValue.increment(-1),
+            'learnedWordsCount': FieldValue.increment(-1),
             'lastUpdated': FieldValue.serverTimestamp(),
           });
+
+          Logger.i('[LEARNED] -1 -> learnedWordsCount after remove (uid=$userId, wordId=$wordId)', 'LearnedWordsService');
         });
+
+        // Trigger SessionService refresh for real-time UI updates
+        try {
+          final sessionService = SessionService();
+          await sessionService.refreshStats();
+          Logger.i('📊 SessionService stats refreshed after word unmarked', 'LearnedWordsService');
+        } catch (e) {
+          Logger.w('Failed to refresh SessionService stats', 'LearnedWordsService');
+        }
 
         Logger.i('Word unmarked as learned successfully: $wordId', 'LearnedWordsService');
       } else {
@@ -479,11 +499,6 @@ class LearnedWordsService {
 
     } catch (e) {
       Logger.e('Error unmarking word as learned', e, null, 'LearnedWordsService');
-      
-      // If Firestore fails, queue for sync when online
-      if (e.toString().contains('Word is not learned')) {
-        return false; // Not learned
-      }
       
       // Queue the operation for later sync
       await _queueUnlearnedWordForSync(userId, wordId);
@@ -501,22 +516,22 @@ class LearnedWordsService {
         data: {},
       );
 
-      // Queue stats update
+      // Queue stats update with standardized field name
       await SyncManager().addOperation(
         path: 'users/$userId',
         type: SyncOperationType.update,
         data: {
-          'wordsLearned': FieldValue.increment(-1),
+          'learnedWordsCount': FieldValue.increment(-1),
           'lastUpdated': FieldValue.serverTimestamp(),
         },
       );
 
-      // Queue leaderboard update
+      // Queue leaderboard update with standardized field name
       await SyncManager().addOperation(
         path: 'leaderboard_stats/$userId',
         type: SyncOperationType.update,
         data: {
-          'wordsLearned': FieldValue.increment(-1),
+          'learnedWordsCount': FieldValue.increment(-1),
           'lastUpdated': FieldValue.serverTimestamp(),
         },
       );

@@ -120,10 +120,13 @@ class _AddWordDialogState extends State<AddWordDialog> {
       ),
       content: Form(
         key: _formKey,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+        child: SizedBox(
+          width: double.maxFinite,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
             Text('İngilizce Kelime',
                 style: GoogleFonts.inter(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.grey[700])),
             const SizedBox(height: 8),
@@ -191,7 +194,9 @@ class _AddWordDialogState extends State<AddWordDialog> {
               maxLines: 3,
               textCapitalization: TextCapitalization.sentences,
             ),
-          ],
+              ],
+            ),
+          ),
         ),
       ),
       actions: [

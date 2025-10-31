@@ -9,6 +9,7 @@ import '../services/srs_service.dart';
 import '../services/analytics_service.dart';
 import '../services/remote_config_service.dart';
 import '../services/leaderboard_service.dart';
+import '../services/weekly_xp_service.dart';
 import '../utils/feature_flags.dart';
 import '../utils/logger.dart';
 import 'quiz_results_screen.dart';
@@ -302,13 +303,19 @@ class _QuizScreenState extends State<QuizScreen> {
           }
         }
 
-        widget.userService.addXp(earnedXp);
-
+        // Use WeeklyXpService for comprehensive XP and quiz tracking
         try {
-          final leaderboardService = LeaderboardService();
-          await leaderboardService.updateUserStats(uid, xpEarned: earnedXp);
+          // Add XP (includes weekly tracking)
+          await sessionService.addXp(earnedXp);
+          
+          // Add quiz completion (includes weekly tracking)
+          await WeeklyXpService.addQuizCompletion(uid);
+          
+          // Log XP and quiz completion
+          debugPrint('[XP] +$earnedXp → totalXp with weekly tracking (uid=$uid)');
+          debugPrint('[QUIZ] +1 → totalQuizzesCompleted with weekly tracking (uid=$uid)');
         } catch (e) {
-          // sessiz hata, devam et
+          debugPrint('Error updating XP and quiz stats: $e');
         }
 
         try {

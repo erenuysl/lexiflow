@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../services/session_service.dart';
 import '../services/word_service.dart';
 import '../services/user_service.dart';
@@ -31,6 +32,8 @@ class _AuthWrapperState extends State<AuthWrapper> {
   bool _isCheckingMigration = true;
   bool _shouldShowMigration = false;
   bool _hasCheckedMigration = false;
+  
+  static const String _migrationCacheKey = 'migration_check_completed';
 
   @override
   void initState() {
@@ -50,14 +53,42 @@ class _AuthWrapperState extends State<AuthWrapper> {
   Future<void> _checkMigrationStatus() async {
     // Prevent multiple checks
     if (_hasCheckedMigration) {
-      debugPrint('✅ Migration already checked - skipping');
+      debugPrint('I/flutter: [AUTH] Migration cached -> skip');
       return;
     }
 
     try {
-      debugPrint('🔍 Checking migration status...');
-      final shouldShow =
-          await widget.migrationIntegrationService.shouldShowMigrationScreen();
+      debugPrint('I/flutter: [AUTH] Checking migration...');
+      
+      // önce cache kontrol et
+      final prefs = await SharedPreferences.getInstance();
+      final isCached = prefs.getBool(_migrationCacheKey) ?? false;
+      
+      if (isCached) {
+        debugPrint('I/flutter: [AUTH] Migration cached -> skip');
+        if (mounted) {
+          setState(() {
+            _shouldShowMigration = false;
+            _isCheckingMigration = false;
+            _hasCheckedMigration = true;
+          });
+        }
+        return;
+      }
+      
+      // timeout 2 saniyeye düşürüldü
+      final shouldShow = await widget.migrationIntegrationService
+          .shouldShowMigrationScreen()
+          .timeout(
+            const Duration(seconds: 2),
+            onTimeout: () {
+              debugPrint('I/flutter: [AUTH] Migration check timeout -> continue');
+              return false;
+            },
+          );
+
+      // sonucu cache'le
+      await prefs.setBool(_migrationCacheKey, true);
 
       if (mounted) {
         setState(() {
@@ -76,10 +107,11 @@ class _AuthWrapperState extends State<AuthWrapper> {
       debugPrint('❌ Migration kontrolü hatası: $e');
       if (mounted) {
         setState(() {
-          _shouldShowMigration = false; // Hata durumunda ana ekrana geç
+          _shouldShowMigration = false; // hata durumunda ana ekrana geç
           _isCheckingMigration = false;
           _hasCheckedMigration = true;
         });
+        debugPrint('🏠 Hata nedeniyle ana ekrana yönlendiriliyor');
       }
     }
   }

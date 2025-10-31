@@ -170,7 +170,7 @@ class _StatisticsScreenState extends State<StatisticsScreen>
     int favoritesCount = 0;
 
     try {
-      currentLevel = session.currentLevel;
+      currentLevel = session.level;
       totalXp = session.totalXp;
       currentStreak = session.currentStreak;
       longestStreak = session.longestStreak;
@@ -433,7 +433,7 @@ class _StatisticsScreenState extends State<StatisticsScreen>
                   
                   final dayActivity = activityData.firstWhere(
                     (activity) => activity['date'] == dateKey,
-                    orElse: () => {'xpEarned': 0, 'wordsLearned': 0, 'quizzesCompleted': 0},
+                    orElse: () => {'xpEarned': 0, 'learnedWordsCount': 0, 'quizzesCompleted': 0},
                   );
                   
                   return (dayActivity['xpEarned'] as num?)?.toDouble() ?? 0.0;
@@ -557,7 +557,7 @@ class _StatisticsScreenState extends State<StatisticsScreen>
           ),
           const SizedBox(height: 8),
           Text(
-            'Level ${session.currentLevel} → Level ${session.currentLevel + 1}',
+            'Level ${session.level} → Level ${session.level + 1}',
             style: TextStyle(
               color: isDark ? Colors.grey[400] : Colors.grey[600],
             ),
@@ -774,33 +774,33 @@ class _StatisticsScreenState extends State<StatisticsScreen>
             'icon': Icons.emoji_events,
             'title': 'Seviye 5',
             'description': '5. seviyeye ulaş',
-            'progress': session.currentLevel.clamp(0, 5),
-            'target': 5,
-            'unlocked': session.currentLevel >= 5,
+            'progress': session.level.clamp(0, 5),
+          'total': 5,
+          'unlocked': session.level >= 5,
           },
           {
             'icon': Icons.emoji_events,
             'title': 'Seviye 10',
             'description': '10. seviyeye ulaş',
-            'progress': session.currentLevel.clamp(0, 10),
-            'target': 10,
-            'unlocked': session.currentLevel >= 10,
+            'progress': session.level.clamp(0, 10),
+          'total': 10,
+          'unlocked': session.level >= 10,
           },
           {
             'icon': Icons.emoji_events,
             'title': 'Seviye 25',
             'description': '25. seviyeye ulaş',
-            'progress': session.currentLevel.clamp(0, 25),
-            'target': 25,
-            'unlocked': session.currentLevel >= 25,
+            'progress': session.level.clamp(0, 25),
+          'total': 25,
+          'unlocked': session.level >= 25,
           },
           {
             'icon': Icons.emoji_events,
             'title': 'Elit Oyuncu',
             'description': '50. seviyeye ulaş',
-            'progress': session.currentLevel.clamp(0, 50),
-            'target': 50,
-            'unlocked': session.currentLevel >= 50,
+            'progress': session.level.clamp(0, 50),
+          'total': 50,
+          'unlocked': session.level >= 50,
           },
         ],
       },

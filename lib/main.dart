@@ -22,6 +22,7 @@ import 'services/ad_service.dart';
 import 'services/notification_service.dart';
 import 'services/learned_words_service.dart';
 import 'providers/theme_provider.dart';
+import 'providers/profile_stats_provider.dart';
 import 'utils/design_system.dart';
 import 'widgets/auth_wrapper.dart';
 import 'widgets/mobile_only_guard.dart';
@@ -37,6 +38,8 @@ import 'screens/share_preview_screen.dart';
 import 'screens/quiz_center_screen.dart';
 import 'screens/category_quiz_screen.dart';
 import 'screens/category_quiz_play_screen.dart';
+import 'screens/general_quiz_screen.dart';
+import 'screens/quiz_start_screen.dart';
 import 'utils/logger.dart';
 import 'widgets/connection_status_widget.dart';
 import 'widgets/sync_notification_widget.dart';
@@ -78,6 +81,7 @@ Future<void> main() async {
   runApp(const MyApp());
   
   // Kritik olmayan servisleri arka planda başlat
+  debugPrint('I/flutter: [MAIN] Starting non-critical services in background');
   _initializeNonCriticalServices();
 }
 
@@ -128,6 +132,51 @@ Future<void> _initializeFirebaseServices() async {
   } catch (e) {
     debugPrint('⚠️ Remote Config fetch failed (using defaults): $e');
   }
+}
+
+// Helper functions for category metadata
+String _getCategoryName(String categoryKey) {
+  const categoryNames = {
+    'biology': 'Biyoloji',
+    'business': 'İş Dünyası',
+    'chemistry': 'Kimya',
+    'computer': 'Bilgisayar',
+    'economics': 'Ekonomi',
+    'geography': 'Coğrafya',
+    'history': 'Tarih',
+    'literature': 'Edebiyat',
+    'mathematics': 'Matematik',
+    'medicine': 'Tıp',
+    'philosophy': 'Felsefe',
+    'physics': 'Fizik',
+    'politics': 'Politika',
+    'psychology': 'Psikoloji',
+    'sociology': 'Sosyoloji',
+    'technology': 'Teknoloji',
+  };
+  return categoryNames[categoryKey] ?? categoryKey.toUpperCase();
+}
+
+String _getCategoryIcon(String categoryKey) {
+  const categoryIcons = {
+    'biology': '🧬',
+    'business': '💼',
+    'chemistry': '⚗️',
+    'computer': '💻',
+    'economics': '📈',
+    'geography': '🌍',
+    'history': '📜',
+    'literature': '📚',
+    'mathematics': '🔢',
+    'medicine': '⚕️',
+    'philosophy': '🤔',
+    'physics': '⚛️',
+    'politics': '🏛️',
+    'psychology': '🧠',
+    'sociology': '👥',
+    'technology': '🔧',
+  };
+  return categoryIcons[categoryKey] ?? '📖';
 }
 
 Future<void> _initializeLocalServices() async {
@@ -193,7 +242,10 @@ Future<void> _initializeNonCriticalServices() async {
     await learnedWordsService.initialize();
     debugPrint('✅ LearnedWordsService initialized');
     
-    debugPrint('🎉 All non-critical services initialized successfully');
+    // SessionService handles its own non-critical initialization (LeaderboardService, real-time listeners)
+    debugPrint('ℹ️ SessionService non-critical services handled internally');
+    
+    debugPrint('🎉 All main.dart non-critical services initialized successfully');
   } catch (e) {
     debugPrint('⚠️ Error initializing non-critical services: $e');
   }
@@ -208,6 +260,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => locator<ThemeProvider>()),
         ChangeNotifierProvider.value(value: locator<SessionService>()),
+        ChangeNotifierProvider(create: (_) => ProfileStatsProvider()),
         Provider.value(value: locator<WordService>()),
         Provider.value(value: locator<UserService>()),
         Provider.value(value: locator<MigrationIntegrationService>()),
@@ -262,6 +315,19 @@ class MyApp extends StatelessWidget {
                 ),
               ),
               '/quiz-center': (context) => const QuizCenterScreen(),
+              '/quiz/general': (context) => const GeneralQuizScreen(),
+              '/quiz/start': (context) {
+                final args = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
+                return QuizStartScreen(
+                  categoryKey: args?['categoryKey'] as String?,
+                  categoryName: args?['categoryName'] as String?,
+                  categoryIcon: args?['categoryIcon'] as String?,
+                );
+              },
+              '/quiz/play': (context) => CategoryQuizPlayScreen(
+                wordService: locator<WordService>(),
+                userService: locator<UserService>(),
+              ),
               '/category-quiz': (context) => const CategoryQuizScreen(
                 category: 'general',
                 categoryName: 'Genel',
@@ -272,6 +338,21 @@ class MyApp extends StatelessWidget {
                 userService: locator<UserService>(),
               ),
               if (kDebugMode) '/connectivity-debug': (context) => const ConnectivityDebugWidget(),
+            },
+            onGenerateRoute: (settings) {
+              // Handle dynamic routes like /quiz/category/:key
+              if (settings.name?.startsWith('/quiz/category/') == true) {
+                final categoryKey = settings.name!.split('/').last;
+                return MaterialPageRoute(
+                  builder: (context) => CategoryQuizScreen(
+                    category: categoryKey,
+                    categoryName: _getCategoryName(categoryKey),
+                    categoryIcon: _getCategoryIcon(categoryKey),
+                  ),
+                  settings: settings,
+                );
+              }
+              return null;
             },
             builder: (context, child) {
               return ConnectionStatusWidget(

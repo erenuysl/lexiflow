@@ -22,7 +22,7 @@ class ShareUtils {
       final sessionService = SessionService();
       
       final userStats = UserStatsModel(
-        level: sessionService.currentLevel,
+        level: sessionService.level,
         xp: sessionService.totalXp,
         longestStreak: sessionService.longestStreak,
         learnedWords: sessionService.learnedWordsCount,

@@ -25,42 +25,21 @@ class MainNavigation extends StatefulWidget {
 }
 
 class _MainNavigationState extends State<MainNavigation> {
-  int _selectedIndex = 0;
-  late final PageController _pageController;
-
-  @override
-  void initState() {
-    super.initState();
-    _pageController = PageController();
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
+  int _currentIndex = 0;
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      _currentIndex = index;
     });
-    _pageController.animateToPage(
-      index,
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
-    );
+    // telemetri log
+    debugPrint('I/flutter: [NAV] Switched tab -> index=$_currentIndex');
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        controller: _pageController,
-        onPageChanged: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
+      body: IndexedStack(
+        index: _currentIndex,
         children: [
           // Ana Sayfa - Dashboard
           DashboardScreen(
@@ -68,20 +47,20 @@ class _MainNavigationState extends State<MainNavigation> {
             userService: widget.userService,
             adService: widget.adService,
           ),
+          // Quiz Center
+          const QuizCenterScreen(),
           // Favoriler
           FavoritesScreen(
             wordService: widget.wordService,
             userService: widget.userService,
             adService: widget.adService,
           ),
-          // Quiz Center
-          const QuizCenterScreen(),
           // Profil
           const ProfileScreen(),
         ],
       ),
       bottomNavigationBar: CustomBottomNavBar(
-        currentIndex: _selectedIndex,
+        currentIndex: _currentIndex,
         onTap: _onItemTapped,
       ),
     );

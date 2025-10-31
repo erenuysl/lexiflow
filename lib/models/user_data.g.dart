@@ -20,7 +20,7 @@ class UserDataAdapter extends TypeAdapter<UserData> {
       lastLoginDate: fields[0] as DateTime,
       currentStreak: fields[1] as int,
       totalXp: fields[2] as int,
-      currentLevel: fields[3] as int,
+      level: fields[3] as int,
       longestStreak: fields[4] as int,
       totalWordsLearned: fields[5] as int,
       totalQuizzesTaken: fields[6] as int,
@@ -39,7 +39,7 @@ class UserDataAdapter extends TypeAdapter<UserData> {
       ..writeByte(2)
       ..write(obj.totalXp)
       ..writeByte(3)
-      ..write(obj.currentLevel)
+      ..write(obj.level)
       ..writeByte(4)
       ..write(obj.longestStreak)
       ..writeByte(5)

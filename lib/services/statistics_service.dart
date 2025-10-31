@@ -15,12 +15,12 @@ class StatisticsService {
   Future<void> recordActivity({
     required String userId,
     required int xpEarned,
-    int wordsLearned = 0,
+    int learnedWordsCount = 0,
     int quizzesCompleted = 0,
   }) async {
     try {
       final today = _getTodayKey();
-      Logger.d('Recording activity: date=$today, xp=$xpEarned, words=$wordsLearned, quizzes=$quizzesCompleted', _tag);
+      Logger.d('Recording activity: date=$today, xp=$xpEarned, words=$learnedWordsCount, quizzes=$quizzesCompleted', _tag);
       
       final activityRef = _firestore
           .collection('users')
@@ -36,7 +36,7 @@ class StatisticsService {
           // Update existing document with FieldValue increments
           transaction.update(activityRef, {
             'xpEarned': FieldValue.increment(xpEarned),
-            'wordsLearned': FieldValue.increment(wordsLearned),
+            'learnedWordsCount': FieldValue.increment(learnedWordsCount),
             'quizzesCompleted': FieldValue.increment(quizzesCompleted),
             'lastUpdated': FieldValue.serverTimestamp(),
           });
@@ -45,7 +45,7 @@ class StatisticsService {
           transaction.set(activityRef, {
             'date': today,
             'xpEarned': xpEarned,
-            'wordsLearned': wordsLearned,
+            'learnedWordsCount': learnedWordsCount,
             'quizzesCompleted': quizzesCompleted,
             'lastUpdated': FieldValue.serverTimestamp(),
           });
@@ -55,7 +55,7 @@ class StatisticsService {
       // Invalidate cache when new activity is recorded
       _weeklyActivityCache.remove(userId);
 
-      Logger.success('Activity recorded for $today (XP: $xpEarned, Words: $wordsLearned, Quizzes: $quizzesCompleted)', _tag);
+      Logger.success('Activity recorded for $today (XP: $xpEarned, Words: $learnedWordsCount, Quizzes: $quizzesCompleted)', _tag);
     } catch (e, stackTrace) {
       Logger.e('Failed to record activity for user $userId', e, stackTrace, _tag);
       rethrow;
@@ -91,7 +91,7 @@ class StatisticsService {
             return {
               'date': docData['date'],
               'xpEarned': docData['xpEarned'] is int ? docData['xpEarned'] : 0,
-              'wordsLearned': docData['wordsLearned'] is int ? docData['wordsLearned'] : 0,
+              'learnedWordsCount': docData['learnedWordsCount'] is int ? docData['learnedWordsCount'] : (docData['wordsLearned'] is int ? docData['wordsLearned'] : 0), // fallback for migration
               'quizzesCompleted': docData['quizzesCompleted'] is int ? docData['quizzesCompleted'] : 0,
               'lastUpdated': docData['lastUpdated'],
             };

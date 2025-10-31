@@ -26,6 +26,7 @@ import 'package:flutter/foundation.dart';
 
 import '../models/leaderboard_user.dart';
 import '../utils/logger.dart';
+import 'level_service.dart';
 
 class LeaderboardService {
   final FirebaseFirestore _firestore;
@@ -263,16 +264,16 @@ class LeaderboardService {
     String currentUserId, {
     int limit = 20,
   }) {
-    debugPrint('🏆 WEEKLY LEVEL: Using ONLY currentLevel (NO INDEX NEEDED)');
+    debugPrint('🏆 WEEKLY LEVEL: Using level field for leaderboard');
     return _firestore
         .collection('leaderboard_stats')
-        .orderBy('currentLevel', descending: true)
+        .orderBy('level', descending: true)
         .limit(limit)
         .snapshots()
         .asyncMap((snapshot) => _mergeWithUserStats(
               snapshot,
               currentUserId,
-              metricField: 'currentLevel',
+              metricField: 'level',
             ))
         .handleError((e, st) {
           Logger.e('getWeeklyLevelLeaders stream error', e, st);
@@ -380,7 +381,7 @@ class LeaderboardService {
     String currentUserId, {
     required String metricField,
   }) async {
-    final futures = snapshot.docs.asMap().entries.map((entry) async {
+    final futures = snapshot.docs.asMap().entries.map<Future<LeaderboardUser>>((entry) async {
       final index = entry.key;
       final doc = entry.value;
       final rawData = doc.data();
@@ -404,13 +405,38 @@ class LeaderboardService {
         Logger.e('mergeWithUserStats: failed to read live stats for ${doc.id}', e, st);
       }
 
-      // birleştir
-      final curLvl = (live?['currentLevel'] ?? data['currentLevel'] ?? 1);
+      // birleştir - LevelService kullanarak level hesapla
+      final totalXp = (data['totalXp'] is int) ? data['totalXp'] : 0;
+      final levelData = LevelService.computeLevelData(totalXp);
+      final calculatedLevel = levelData.level;
+      
+      // migration için eski level değerlerini kontrol et
+      final rawLevel = data['level'];
+      final rawCurrentLevel = live?['currentLevel'] ?? data['currentLevel'];
+      
+      // level field null ise debug print ve otomatik güncelleme
+      if (rawLevel == null) {
+        debugPrint('Level field: null for user ${doc.id}, using calculated level: $calculatedLevel');
+        
+        // level field'ını otomatik güncelle
+        updateUserStats(
+          doc.id,
+          level: calculatedLevel,
+        );
+      }
+      
+      final storedLevel = rawLevel is int ? rawLevel : (rawCurrentLevel is int ? rawCurrentLevel : 1);
+      
+      // hesaplanan level ile saklanan level arasında fark varsa log'la
+      if (calculatedLevel != storedLevel) {
+        Logger.w('Level mismatch for user ${doc.id}: calculated=$calculatedLevel, stored=$storedLevel, totalXp=$totalXp');
+      }
+      
+      final level = calculatedLevel; // LevelService hesaplamasını kullan
+      
       final highLvl = (data['highestLevel'] ?? 0);
-      final safeCurLvl = (curLvl is int) ? curLvl : 1;
       final safeHighLvl = (highLvl is int) ? highLvl : 0;
-      final mergedHighest =
-          safeHighLvl > safeCurLvl ? safeHighLvl : safeCurLvl;
+      final mergedHighest = safeHighLvl > level ? safeHighLvl : level;
 
       final curStreak = (live?['currentStreak'] ?? data['currentStreak'] ?? 0);
       final longStreak = (data['longestStreak'] ?? 0);
@@ -440,15 +466,15 @@ class LeaderboardService {
             ? data['displayName']
             : 'Anonymous',
         photoURL: data['photoURL'],
-        currentLevel: safeCurLvl,
+        level: level,
         highestLevel: mergedHighest,
-        totalXp: (data['totalXp'] is int) ? data['totalXp'] : 0,
+        totalXp: totalXp, // önceden hesaplanan totalXp değerini kullan
         weeklyXp: (data['weeklyXp'] is int) ? data['weeklyXp'] : 0,
         currentStreak: safeCurStreak,
         longestStreak: mergedLongest,
         quizzesCompleted: safeQc,
-        wordsLearned:
-            (data['wordsLearned'] is int) ? data['wordsLearned'] : 0,
+        learnedWordsCount: (data['learnedWordsCount'] is int) ? data['learnedWordsCount'] : 
+                          (data['wordsLearned'] is int) ? data['wordsLearned'] : 0, // fallback for migration
         rank: (index + 1),
         previousRank:
             (data['previousRank'] is int) ? data['previousRank'] : null,
@@ -554,12 +580,15 @@ class LeaderboardService {
       case 'quizzesCompleted':
       case 'totalQuizzesCompleted': // legacy external name
         return u.quizzesCompleted;
-      case 'currentLevel':
-        return u.currentLevel;
+      case 'level':
+      case 'currentLevel': // legacy support
+        return u.level;
       case 'longestStreak':
         return u.longestStreak;
       case 'highestLevel':
         return u.highestLevel;
+      case 'learnedWordsCount':
+        return u.learnedWordsCount;
       default:
         return 0;
     }
@@ -616,48 +645,43 @@ class LeaderboardService {
     int? xpEarned,
     int? quizzesCompleted,
     int? currentStreak,
-    int? currentLevel,
-    int? wordsLearned,
+    int? level, // standardized level field
+    int? learnedWordsCount,
     String? displayName,
     String? photoURL,
     bool forceSync = false,
   }) async {
     try {
       final docRef = _firestore.collection('leaderboard_stats').doc(userId);
-      DocumentSnapshot<Map<String, dynamic>> doc;
-      try {
-        doc = await docRef.get();
-      } catch (e, st) {
-        Logger.e('updateUserStats failed to read doc', e, st);
-        return;
-      }
+      
+      // transaction ile atomik güncelleme
+      await _firestore.runTransaction((transaction) async {
+        final doc = await transaction.get(docRef);
 
-      if (!doc.exists) {
-        // Create new stats document
-        try {
-          await docRef.set({
+        if (!doc.exists) {
+          // Create new stats document
+          transaction.set(docRef, {
             'userId': userId,
             'displayName': displayName ?? 'Anonymous',
             'photoURL': photoURL,
-            'currentLevel': currentLevel ?? 1,
-            'highestLevel': currentLevel ?? 1,
+            'level': level ?? 1, // standardized level field
+            'highestLevel': level ?? 1,
             'totalXp': xpEarned ?? 0,
             'weeklyXp': xpEarned ?? 0,
             'currentStreak': currentStreak ?? 1,
             'longestStreak': currentStreak ?? 1,
             'quizzesCompleted': quizzesCompleted ?? 0,
             'weeklyQuizzes': quizzesCompleted ?? 0,
-            'wordsLearned': wordsLearned ?? 0,
+            'learnedWordsCount': learnedWordsCount ?? 0,
             'lastUpdated': FieldValue.serverTimestamp(),
             'lastActiveDate': DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day),
             'weekResetDate': _getNextMondayMidnight(),
           }, SetOptions(merge: true));
-        } catch (e, st) {
-          Logger.e('updateUserStats failed to create doc', e, st);
+          
+          debugPrint('✅ Created leaderboard stats for $userId');
           return;
         }
-        debugPrint('✅ Created leaderboard stats for $userId');
-      } else {
+        
         // Update existing stats
         final updates = <String, dynamic>{
           'lastUpdated': FieldValue.serverTimestamp(),
@@ -673,12 +697,11 @@ class LeaderboardService {
           updates['weeklyQuizzes'] = FieldValue.increment(quizzesCompleted);
         }
 
-        // 🎯 DAY-BASED STREAK LOGIC (only reset if user skips a day)
+        // streak hesaplama mantığı
         final data = doc.data()!;
         final now = DateTime.now();
         final today = DateTime(now.year, now.month, now.day);
         
-        // Get lastActiveDate from Firestore
         final lastActiveDateTimestamp = data['lastActiveDate'] as Timestamp?;
         final lastActiveDate = lastActiveDateTimestamp?.toDate();
         
@@ -686,81 +709,38 @@ class LeaderboardService {
         final existingLongestRaw = data['longestStreak'] ?? 0;
         final existingLongestStreak = (existingLongestRaw is int) ? existingLongestRaw : 0;
         
-        // 🔥 DEBUG LOGS - Before calculation
-        if (kDebugMode) {
-          debugPrint('📊 User $userId - Streak Calculation:');
-          debugPrint('🕒 Last Active: ${lastActiveDate?.toString().split(' ')[0] ?? 'Never'} → ${today.toString().split(' ')[0]}');
-          debugPrint('✅ Current Streak (before): $calculatedCurrentStreak');
-          debugPrint('🏆 Longest Streak: $existingLongestStreak');
-        }
-        
         if (lastActiveDate != null) {
           final lastActiveDateNormalized = DateTime(lastActiveDate.year, lastActiveDate.month, lastActiveDate.day);
           final daysDiff = today.difference(lastActiveDateNormalized).inDays;
           
-          if (kDebugMode) {
-            debugPrint('📅 Days difference: $daysDiff');
-          }
-          
           if (daysDiff == 1) {
-            // Continued streak - increment by 1
             calculatedCurrentStreak += 1;
-            if (kDebugMode) {
-              debugPrint('🔥 Continued Streak: ${calculatedCurrentStreak - 1} → $calculatedCurrentStreak');
-            }
           } else if (daysDiff > 1) {
-            // Missed at least one day → streak broken, reset to 1
             calculatedCurrentStreak = 1;
-            if (kDebugMode) {
-              debugPrint('💔 Streak Broken ($daysDiff days gap): Reset to 1');
-            }
-          } else if (daysDiff == 0) {
-            // Same day - no change to streak
-            if (kDebugMode) {
-              debugPrint('📅 Same day activity - streak unchanged: $calculatedCurrentStreak');
-            }
           }
         } else {
-          // First time user - start streak at 1
           calculatedCurrentStreak = 1;
-          if (kDebugMode) {
-            debugPrint('🆕 First time user - starting streak at 1');
-          }
         }
         
-        // Update currentStreak (use calculated value or provided value)
         final finalCurrentStreak = currentStreak ?? calculatedCurrentStreak;
         updates['currentStreak'] = finalCurrentStreak;
         updates['lastActiveDate'] = today;
         
-        // Update longestStreak if record broken
         if (finalCurrentStreak > existingLongestStreak) {
           updates['longestStreak'] = finalCurrentStreak;
-          if (kDebugMode) {
-            debugPrint('🏆 NEW LONGEST STREAK RECORD: $existingLongestStreak → $finalCurrentStreak');
-          }
         }
-        
-        // 🔥 DEBUG LOGS - After calculation
-        debugPrint('📊 User $userId - Final Result:');
-        debugPrint('✅ Current Streak (after): $finalCurrentStreak');
-        debugPrint('🏆 Longest Streak (after): ${finalCurrentStreak > existingLongestStreak ? finalCurrentStreak : existingLongestStreak}');
 
-        if (currentLevel != null) {
-          updates['currentLevel'] = currentLevel;
-          // 🎯 OTOMATİK REKOR GÜNCELLEME: highestLevel
-          final data = doc.data()!;
-          final existingHighestRaw = data['highestLevel'] ?? currentLevel;
-          final existingHighestLevel =
-              (existingHighestRaw is int) ? existingHighestRaw : (currentLevel ?? 1);
-          if (currentLevel > existingHighestLevel) {
-            updates['highestLevel'] = currentLevel;
-            debugPrint('🏆 NEW HIGHEST LEVEL RECORD: $existingHighestLevel → $currentLevel');
+        if (level != null) {
+          updates['level'] = level;
+          final existingHighestRaw = data['highestLevel'] ?? level;
+          final existingHighestLevel = (existingHighestRaw is int) ? existingHighestRaw : (level);
+          if (level > existingHighestLevel) {
+            updates['highestLevel'] = level;
           }
         }
 
-        if (wordsLearned != null) {
-          updates['wordsLearned'] = FieldValue.increment(wordsLearned);
+        if (learnedWordsCount != null) {
+          updates['learnedWordsCount'] = FieldValue.increment(learnedWordsCount);
         }
 
         if (displayName != null) {
@@ -771,34 +751,9 @@ class LeaderboardService {
           updates['photoURL'] = photoURL;
         }
 
-        try {
-          await docRef.update(updates);
-          
-          // FieldValue işlemlerinden sonra sunucu fetch'i zorla
-          if (updates.values.any((value) => value.toString().contains('FieldValue'))) {
-            await Future.delayed(const Duration(milliseconds: 100));
-            // FieldValue işlemlerinin çözümlendiğinden emin olmak için fresh read zorla
-            await docRef.get(const GetOptions(source: Source.server));
-            debugPrint('🔄 Forced server fetch after FieldValue.increment() operations');
-          }
-          
-          // 🔥 ADDITIONAL CACHE INVALIDATION: Force refresh entire leaderboard_stats collection
-          try {
-            await _firestore
-                .collection('leaderboard_stats')
-                .limit(1)
-                .get(const GetOptions(source: Source.server));
-            debugPrint('🔄 Invalidated Firestore cache for leaderboard_stats collection');
-          } catch (e) {
-            debugPrint('⚠️ Collection cache invalidation failed: $e');
-          }
-          
-        } catch (e, st) {
-          Logger.e('updateUserStats failed to update doc', e, st);
-          return;
-        }
+        transaction.update(docRef, updates);
         debugPrint('✅ Updated leaderboard stats for $userId');
-      }
+      });
 
       // Clear local cache to force refresh
       _cache.clear();
@@ -839,7 +794,7 @@ class LeaderboardService {
           'weeklyXp': 0,
           'quizzesCompleted': 0, // haftalık quiz sayısını sıfırla
           'weeklyQuizzes': 0, // haftalık quiz sayısını sıfırla (yeni alan)
-          'wordsLearned': 0, // haftalık kelime sayısını sıfırla
+          'learnedWordsCount': 0, // haftalık kelime sayısını sıfırla
           // önemli: currentStreak'i sıfırlama - gün bazlı, hafta bazlı değil
           // 'currentStreak': korundu (devam eden streak haftalar boyunca devam eder)
           // 'longestStreak': korundu (tüm zamanların rekoru asla sıfırlanmaz)

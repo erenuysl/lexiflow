@@ -8,6 +8,7 @@ import '../models/word_model.dart';
 import 'srs_service.dart';
 import '../models/daily_log.dart';
 import 'favorites_cleanup_service.dart';
+import 'word_loader.dart';
 
 class WordService {
   static const String _wordsBoxName = 'words';
@@ -802,6 +803,33 @@ class WordService {
       return randomWords;
     } catch (e) {
       print('❌ [FIX] Error getting public words: $e');
+      return [];
+    }
+  }
+
+  // ============================================================================
+  // UNIFIED QUIZ DATA ACCESS METHODS
+  // ============================================================================
+
+  /// Get all words from local 1kwords.json for general quiz
+  Future<List<Word>> getAllWordsFromLocal() async {
+    try {
+      // _allWords zaten 1kwords.json'dan yüklendi
+      return List<Word>.from(_allWords);
+    } catch (e) {
+      debugPrint('❌ Error getting local words: $e');
+      return [];
+    }
+  }
+
+  /// Get category-specific words using WordLoader
+  Future<List<Word>> getCategoryWords(String categoryKey) async {
+    try {
+      final categoryWords = await WordLoader.loadCategoryWords(categoryKey);
+      debugPrint('📚 Loaded ${categoryWords.length} words for category: $categoryKey');
+      return categoryWords;
+    } catch (e) {
+      debugPrint('❌ Error loading category words for $categoryKey: $e');
       return [];
     }
   }

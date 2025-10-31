@@ -7,14 +7,14 @@ class LeaderboardUser {
   final String userId;
   final String displayName;
   final String? photoURL;
-  final int currentLevel;
+  final int level; // Standardized level field
   final int highestLevel; // 🏆 Tüm zamanlar en yüksek level
   final int totalXp;
   final int weeklyXp;
   final int currentStreak;
   final int longestStreak;
   final int quizzesCompleted;
-  final int wordsLearned;
+  final int learnedWordsCount;
   final int rank;
   final int? previousRank;
   final DateTime lastUpdated;
@@ -24,14 +24,14 @@ class LeaderboardUser {
     required this.userId,
     required this.displayName,
     this.photoURL,
-    required this.currentLevel,
+    required this.level,
     required this.highestLevel,
     required this.totalXp,
     required this.weeklyXp,
     required this.currentStreak,
     required this.longestStreak,
     required this.quizzesCompleted,
-    required this.wordsLearned,
+    required this.learnedWordsCount,
     required this.rank,
     this.previousRank,
     required this.lastUpdated,
@@ -68,11 +68,13 @@ class LeaderboardUser {
     final data = doc.data() as Map<String, dynamic>;
     
     // Type guards for numeric fields to prevent FieldValue type errors
+    // Prioritize 'level' field, fallback to 'currentLevel' for migration
+    final rawLevel = data['level'];
     final rawCurrentLevel = data['currentLevel'];
-    final currentLevel = rawCurrentLevel is int ? rawCurrentLevel : 1;
+    final level = rawLevel is int ? rawLevel : (rawCurrentLevel is int ? rawCurrentLevel : 1);
     
     final rawHighestLevel = data['highestLevel'];
-    final highestLevel = rawHighestLevel is int ? rawHighestLevel : currentLevel;
+    final highestLevel = rawHighestLevel is int ? rawHighestLevel : level;
     
     final rawCurrentStreak = data['currentStreak'];
     final currentStreak = rawCurrentStreak is int ? rawCurrentStreak : 0;
@@ -89,8 +91,8 @@ class LeaderboardUser {
     final rawQuizzesCompleted = data['quizzesCompleted'];
     final quizzesCompleted = rawQuizzesCompleted is int ? rawQuizzesCompleted : 0;
     
-    final rawWordsLearned = data['wordsLearned'];
-    final wordsLearned = rawWordsLearned is int ? rawWordsLearned : 0;
+    final rawLearnedWordsCount = data['learnedWordsCount'] ?? data['wordsLearned']; // fallback for migration
+    final learnedWordsCount = rawLearnedWordsCount is int ? rawLearnedWordsCount : 0;
     
     final rawRank = data['rank'];
     final rank = rawRank is int ? rawRank : 0;
@@ -102,14 +104,14 @@ class LeaderboardUser {
       userId: doc.id,
       displayName: data['displayName'] ?? 'Anonymous',
       photoURL: data['photoURL'],
-      currentLevel: currentLevel,
-      highestLevel: highestLevel > currentLevel ? highestLevel : currentLevel,
+      level: level,
+      highestLevel: highestLevel > level ? highestLevel : level,
       totalXp: totalXp,
       weeklyXp: weeklyXp,
       currentStreak: currentStreak,
       longestStreak: longestStreak > currentStreak ? longestStreak : currentStreak,
       quizzesCompleted: quizzesCompleted,
-      wordsLearned: wordsLearned,
+      learnedWordsCount: learnedWordsCount,
       rank: rank,
       previousRank: previousRank,
       lastUpdated:
@@ -123,14 +125,14 @@ class LeaderboardUser {
     return {
       'displayName': displayName,
       'photoURL': photoURL,
-      'currentLevel': currentLevel,
+      'level': level,
       'highestLevel': highestLevel,
       'totalXp': totalXp,
       'weeklyXp': weeklyXp,
       'currentStreak': currentStreak,
       'longestStreak': longestStreak,
       'quizzesCompleted': quizzesCompleted,
-      'wordsLearned': wordsLearned,
+      'learnedWordsCount': learnedWordsCount,
       'rank': rank,
       'previousRank': previousRank,
       'lastUpdated': FieldValue.serverTimestamp(),
@@ -141,14 +143,14 @@ class LeaderboardUser {
     String? userId,
     String? displayName,
     String? photoURL,
-    int? currentLevel,
+    int? level,
     int? highestLevel,
     int? totalXp,
     int? weeklyXp,
     int? currentStreak,
     int? longestStreak,
     int? quizzesCompleted,
-    int? wordsLearned,
+    int? learnedWordsCount,
     int? rank,
     int? previousRank,
     DateTime? lastUpdated,
@@ -158,14 +160,14 @@ class LeaderboardUser {
       userId: userId ?? this.userId,
       displayName: displayName ?? this.displayName,
       photoURL: photoURL ?? this.photoURL,
-      currentLevel: currentLevel ?? this.currentLevel,
+      level: level ?? this.level,
       highestLevel: highestLevel ?? this.highestLevel,
       totalXp: totalXp ?? this.totalXp,
       weeklyXp: weeklyXp ?? this.weeklyXp,
       currentStreak: currentStreak ?? this.currentStreak,
       longestStreak: longestStreak ?? this.longestStreak,
       quizzesCompleted: quizzesCompleted ?? this.quizzesCompleted,
-      wordsLearned: wordsLearned ?? this.wordsLearned,
+      learnedWordsCount: learnedWordsCount ?? this.learnedWordsCount,
       rank: rank ?? this.rank,
       previousRank: previousRank ?? this.previousRank,
       lastUpdated: lastUpdated ?? this.lastUpdated,
