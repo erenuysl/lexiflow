@@ -8,6 +8,7 @@ import 'sync_manager.dart';
 import 'offline_storage_manager.dart';
 import 'connectivity_service.dart';
 import 'session_service.dart'; // Added for refreshStats
+import '../providers/profile_stats_provider.dart';
 
 class LearnedWordsService {
   static final LearnedWordsService _instance = LearnedWordsService._internal();
@@ -184,6 +185,16 @@ class LearnedWordsService {
           Logger.i('📊 SessionService stats refreshed after word learned', 'LearnedWordsService');
         } catch (e) {
           Logger.w('Failed to refresh SessionService stats', 'LearnedWordsService');
+        }
+
+        // Increment streak if it's a new day (first learning activity of the day)
+        try {
+          final profileStatsProvider = ProfileStatsProvider();
+          await profileStatsProvider.incrementStreakIfNewDay();
+          Logger.i('[STREAK] Streak increment attempted after word learned', 'LearnedWordsService');
+        } catch (e) {
+          Logger.e('[STREAK] Failed to increment streak after word learned', e, null, 'LearnedWordsService');
+          // Don't fail word learning if streak increment fails
         }
 
         Logger.i('Word marked as learned successfully: $wordId', 'LearnedWordsService');

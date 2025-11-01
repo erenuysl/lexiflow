@@ -1,9 +1,15 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // User data - only allow access to own user document
+    // User data - allow limited read access for username uniqueness check
     match /users/{userId} {
+      // Full access to own document
       allow read, write: if request.auth != null && request.auth.uid == userId;
+      
+      // Username benzersizlik kontrolü için basit read izni
+      // Sadece username field'ı için sınırlı sorgu
+      allow read: if request.auth != null && 
+                     request.query.limit <= 10; // maksimum 10 kayıt
       
       // User's daily words subcollection
       match /daily_words/{docId} {

@@ -1,10 +1,12 @@
 import 'dart:async';
-import 'package:flutter/foundation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import '../models/aggregated_profile_stats.dart';
 import '../services/level_service.dart';
+import '../services/streak_service.dart';
 import '../utils/logger.dart';
+import '../utils/streak_migration_helper.dart';
 
 class ProfileStatsProvider extends ChangeNotifier {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -59,6 +61,9 @@ class ProfileStatsProvider extends ChangeNotifier {
       _error = null;
       _stats = AggregatedProfileStats.loading();
       _safeNotifyListeners();
+
+      // Run migration helper to ensure streak data exists
+      await StreakMigrationHelper.migrateUserStreakData();
 
       Logger.i('[PROFILE] Initializing triple streams for user: $userId', 'ProfileStatsProvider');
 
@@ -122,6 +127,10 @@ class ProfileStatsProvider extends ChangeNotifier {
 
       // Perform reconciliation after streams are set up
       await _performReconciliation(userId);
+      
+      // Initialize streak system for the user
+      await ensureStreakDefaults();
+      await checkStreakReset();
     } catch (e) {
       Logger.e('[PROFILE] Initialization failed', e, null, 'ProfileStatsProvider');
       if (!_disposed) {
@@ -388,4 +397,73 @@ class ProfileStatsProvider extends ChangeNotifier {
       await initializeForUser(user.uid);
     }
   }
+
+  // ========== STREAK MANAGEMENT ==========
+  
+  /// Ensure initial streak defaults for new users
+  Future<void> ensureStreakDefaults() async {
+    if (_disposed || _currentUserId == null) return;
+    
+    try {
+      await StreakService.ensureInitialDefaults(_currentUserId!);
+      Logger.i('[STREAK] Initial defaults ensured for user ${_currentUserId}', 'ProfileStatsProvider');
+    } catch (e) {
+      Logger.e('[STREAK] Failed to ensure defaults', e, null, 'ProfileStatsProvider');
+    }
+  }
+  
+  /// Increment streak if it's a new day and notify listeners
+  /// Returns true if streak was incremented
+  Future<bool> incrementStreakIfNewDay() async {
+    if (_disposed || _currentUserId == null) return false;
+    
+    try {
+      final wasIncremented = await StreakService.incrementIfNewDay(_currentUserId!);
+      
+      if (wasIncremented) {
+        // Refresh data to get updated streak values
+        await refresh();
+        Logger.i('[STREAK] Streak incremented and UI refreshed for user ${_currentUserId}', 'ProfileStatsProvider');
+      }
+      
+      return wasIncremented;
+    } catch (e) {
+      Logger.e('[STREAK] Failed to increment streak', e, null, 'ProfileStatsProvider');
+      return false;
+    }
+  }
+  
+  /// Migrate existing user to proper streak defaults
+  Future<void> migrateUserStreak() async {
+    if (_disposed || _currentUserId == null) return;
+    
+    try {
+      await StreakService.migrateExistingUser(_currentUserId!);
+      // Refresh data to reflect migration changes
+      await refresh();
+      Logger.i('[STREAK] User migration completed for ${_currentUserId}', 'ProfileStatsProvider');
+    } catch (e) {
+      Logger.e('[STREAK] Migration failed', e, null, 'ProfileStatsProvider');
+    }
+  }
+  
+  /// Check and reset streak if user missed days
+  Future<void> checkStreakReset() async {
+    if (_disposed || _currentUserId == null) return;
+    
+    try {
+      await StreakService.checkAndResetStreakIfNeeded(_currentUserId!);
+      // Refresh data to reflect any reset
+      await refresh();
+      Logger.i('[STREAK] Streak reset check completed for ${_currentUserId}', 'ProfileStatsProvider');
+    } catch (e) {
+      Logger.e('[STREAK] Streak reset check failed', e, null, 'ProfileStatsProvider');
+    }
+  }
+  
+  /// Get current streak value from stats
+  int get currentStreak => _stats?.currentStreak ?? 0;
+  
+  /// Get longest streak value from stats
+  int get longestStreak => _stats?.longestStreak ?? 0;
 }

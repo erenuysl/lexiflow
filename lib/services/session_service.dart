@@ -11,6 +11,7 @@ import 'user_service.dart';
 import 'leaderboard_service.dart';
 import 'weekly_xp_service.dart';
 import 'level_service.dart';
+import '../providers/profile_stats_provider.dart';
 
 /// Kullanıcı oturum durumunu ve verilerini yöneten servis
 class SessionService extends ChangeNotifier {
@@ -387,6 +388,16 @@ class SessionService extends ChangeNotifier {
 
       // Log XP addition
       debugPrint('[XP] +$amount → leaderboard_stats with weekly tracking (uid=$userId)');
+      
+      // Increment streak if it's a new day (first activity of the day)
+      try {
+        final profileStatsProvider = ProfileStatsProvider();
+        await profileStatsProvider.incrementStreakIfNewDay();
+        Logger.i('[STREAK] Streak increment attempted after XP gain', 'SessionService');
+      } catch (e) {
+        Logger.e('[STREAK] Failed to increment streak after XP gain', e, null, 'SessionService');
+        // Don't fail XP addition if streak increment fails
+      }
       
       Logger.i('✅ XP Added successfully: $amount via WeeklyXpService', 'SessionService');
     } catch (e) {
@@ -793,6 +804,8 @@ class SessionService extends ChangeNotifier {
   }
   
   /// Update leaderboard after quiz
+  /// @deprecated Use WeeklyXpService.addQuizCompletion() and updateLeaderboardAfterXpGain() instead
+  @Deprecated('Use WeeklyXpService.addQuizCompletion() and updateLeaderboardAfterXpGain() instead')
   Future<void> updateLeaderboardAfterQuiz(int score) async {
     if (_user == null && _offlineUser == null) return;
     
@@ -836,6 +849,47 @@ class SessionService extends ChangeNotifier {
       Logger.i('Updated leaderboard after quiz with score: $score', 'SessionService');
     } catch (e) {
       Logger.e('Failed to update leaderboard after quiz', e, null, 'SessionService');
+    }
+  }
+  
+  /// Update leaderboard after XP gain (without incrementing quiz count)
+  Future<void> updateLeaderboardAfterXpGain(int xpGained) async {
+    if ((_user == null && _offlineUser == null) || xpGained <= 0) return;
+    
+    try {
+      final currentXp = _firestoreUserData?['totalXp'] ?? 0;
+      
+      final updates = {
+        'totalXp': currentXp + xpGained,
+      };
+      
+      final firestoreUpdates = {
+        'totalXp': FieldValue.increment(xpGained),
+      };
+      
+      await updateUserData(updates);
+      
+      if (_user != null && !_isOfflineMode) {
+        final userId = _user!.uid;
+        await SyncManager().addOperation(
+          path: 'users/$userId',
+          type: SyncOperationType.update,
+          data: firestoreUpdates,
+        );
+        
+        debugPrint('🔥 DEBUG: Updating leaderboard stats after XP gain - XP: $xpGained');
+        await LeaderboardService().updateUserStats(
+          userId,
+          xpEarned: xpGained,
+          displayName: _user!.displayName ?? 'Anonymous',
+          photoURL: _user!.photoURL,
+        );
+        debugPrint('✅ DEBUG: Leaderboard stats updated successfully after XP gain');
+      }
+      
+      Logger.i('Updated leaderboard after XP gain: $xpGained', 'SessionService');
+    } catch (e) {
+      Logger.e('Failed to update leaderboard after XP gain', e, null, 'SessionService');
     }
   }
   
@@ -1153,6 +1207,14 @@ class SessionService extends ChangeNotifier {
     }
     
     print('🏁 SYNCHRONIZATION TEST COMPLETED');
+  }
+
+  
+  /// Refresh user data from Firebase Auth and notify listeners
+  void refreshUser() {
+    _user = FirebaseAuth.instance.currentUser;
+    notifyListeners();
+    Logger.i('User data refreshed from Firebase Auth', 'SessionService');
   }
 
   /// Dispose resources

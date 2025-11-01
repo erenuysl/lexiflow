@@ -541,9 +541,9 @@ class _DashboardScreenState extends State<DashboardScreen>
                           children: [
                             const Text('🔥', style: TextStyle(fontSize: 20)),
                             const SizedBox(width: AppSpacing.sm),
-                            Consumer<SessionService>(
-                              builder: (context, sessionService, child) {
-                                final streak = sessionService.currentStreak;
+                            Consumer<ProfileStatsProvider>(
+                              builder: (context, profileStatsProvider, child) {
+                                final streak = profileStatsProvider.currentStreak;
                                 return Text(
                                   '$streak',
                                   style: AppTextStyles.title3.copyWith(

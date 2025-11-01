@@ -11,7 +11,9 @@ import 'package:device_info_plus/device_info_plus.dart';
 import '../models/user_stats_model.dart';
 import '../screens/share_preview_screen.dart';
 import '../services/session_service.dart';
+import '../providers/profile_stats_provider.dart';
 import '../widgets/lexiflow_toast.dart';
+import 'package:provider/provider.dart';
 
 class ShareUtils {
   static final GlobalKey _sharePreviewKey = GlobalKey();
@@ -20,11 +22,12 @@ class ShareUtils {
   static Future<void> shareUserStats(BuildContext context) async {
     try {
       final sessionService = SessionService();
+      final profileStatsProvider = context.read<ProfileStatsProvider>();
       
       final userStats = UserStatsModel(
         level: sessionService.level,
         xp: sessionService.totalXp,
-        longestStreak: sessionService.longestStreak,
+        longestStreak: profileStatsProvider.longestStreak,
         learnedWords: sessionService.learnedWordsCount,
         quizzesCompleted: sessionService.totalQuizzesTaken,
       );

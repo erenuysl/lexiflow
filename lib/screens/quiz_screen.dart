@@ -303,23 +303,23 @@ class _QuizScreenState extends State<QuizScreen> {
           }
         }
 
-        // Use WeeklyXpService for comprehensive XP and quiz tracking
+        // XP ve quiz istatistiklerini tek yerde güncelle
         try {
-          // Add XP (includes weekly tracking)
+          // XP ekle (haftalık takip dahil)
           await sessionService.addXp(earnedXp);
           
-          // Add quiz completion (includes weekly tracking)
+          // Quiz tamamlama sayısını ekle (haftalık takip dahil)
           await WeeklyXpService.addQuizCompletion(uid);
           
-          // Log XP and quiz completion
           debugPrint('[XP] +$earnedXp → totalXp with weekly tracking (uid=$uid)');
           debugPrint('[QUIZ] +1 → totalQuizzesCompleted with weekly tracking (uid=$uid)');
         } catch (e) {
           debugPrint('Error updating XP and quiz stats: $e');
         }
 
+        // Leaderboard güncelle (quiz sayısı artırmadan, sadece XP ile)
         try {
-          await sessionService.updateLeaderboardAfterQuiz(_score);
+          await sessionService.updateLeaderboardAfterXpGain(_score);
         } catch (e) {
           // sessiz hata, devam et
         }
@@ -337,7 +337,7 @@ class _QuizScreenState extends State<QuizScreen> {
         await _statistics.recordActivity(
           userId: uid ?? 'guest',
           xpEarned: earnedXp,
-          quizzesCompleted: 1,
+          quizzesCompleted: 0, // quiz sayısını burada artırma
         );
       } catch (e) {
         // sessiz hata, devam et

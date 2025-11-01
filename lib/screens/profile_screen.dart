@@ -32,6 +32,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   // Level-up detection
   int? _lastKnownLevel;
+  
+  // Local state for immediate UI updates
+  String? _currentUsername;
+  String? _currentAvatar;
 
   @override
   void initState() {
@@ -67,6 +71,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: Consumer2<SessionService, ProfileStatsProvider>(
         builder: (context, sessionService, profileStatsProvider, child) {
           // SessionService henüz başlatılmadıysa loading göster
@@ -103,8 +108,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
           }
 
           // Get user profile data (avatar, username) from SessionService
-          final username = sessionService.currentUser?.displayName ?? 'Kullanıcı';
-          final avatar = 'assets/icons/boy.svg'; // Default avatar, can be enhanced later
+          // Initialize local state if null
+          _currentUsername ??= sessionService.currentUser?.displayName;
+          _currentAvatar ??= sessionService.currentUser?.photoURL;
+          
+          final username = _currentUsername ?? 'Kullanıcı';
+          final avatar = _currentAvatar ?? 'assets/icons/boy.svg';
 
           return _buildProfileContent(context, sessionService, stats, username, avatar, userId);
         },
@@ -250,13 +259,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final totalXP = stats.totalXp;
     final learnedCount = stats.learnedWordsCount; 
     final quizzesCompleted = stats.totalQuizzesCompleted; 
-    final favorites = sessionService.favoritesCount; // Keep from SessionService for now
-    final streak = stats.currentStreak; 
-    final longestStreak = stats.longestStreak;
+    final favorites = sessionService.favoritesCount;
+    final streak = profileStatsProvider.currentStreak; 
 
     // XP values for the progress bar - use new level system if available
     final currentXP = levelData?.xpIntoLevel ?? (stats.totalXp % stats.xpToNextLevel);
     final xpToNext = levelData?.xpNeeded ?? stats.xpToNextLevel;
+    final totalXPForNextLevel = levelData?.levelEndXp ?? (stats.totalXp + stats.xpToNextLevel);
 
     // Level-up detection and banner trigger
     if (levelData != null && _lastKnownLevel != null && levelData.level > _lastKnownLevel!) {
@@ -268,85 +277,74 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
     _lastKnownLevel = levelData?.level ?? level;
 
-    // Log profile stats combination
-    debugPrint('[PROFILE] stats <- xp=$totalXP, quizzes=$quizzesCompleted, learned=$learnedCount, level=$level');
-
     return SafeArea(
       child: SingleChildScrollView(
-        padding: const EdgeInsets.only(bottom: 80),
+        physics: const BouncingScrollPhysics(),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Gradient Header
-            _buildGradientHeader(context, username, level, avatar, userId ?? ''),
-            
-            const SizedBox(height: 24),
-            
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                children: [
-                  // Deneyim Kartı
-                  _buildXPCard(context, currentXP, xpToNext),
-                  
-                  const SizedBox(height: 24),
-                  
-                  // Stats Grid - Gerçek zamanlı veri doğrulama ile
-                  _buildStatsGrid(context, userId ?? '', learnedCount, quizzesCompleted, favorites, totalXP),
-                  
-                  const SizedBox(height: 24),
-                  
-                  // Günlük Seri
-                  _buildStreakSection(context, streak, longestStreak),
-                ],
+                    // Header Section (Avatar + Name + Level) - 220-240px
+                    _buildPixelPerfectHeader(context, username, avatar, level, userId),
+                    
+                    const SizedBox(height: 12),
+                    
+                    // Achievement Badges Section
+                    _buildAchievementBadges(context, stats),
+                    
+                    const SizedBox(height: 20),
+                    
+                    // Experience Card - max 130px height
+                    _buildCompactXPCard(context, currentXP, totalXPForNextLevel, xpToNext),
+                    
+                    const SizedBox(height: 16),
+                    
+                    // Stats Grid (2x2) with proper spacing
+                    _buildBalancedStatsGrid(context, learnedCount, quizzesCompleted, favorites, totalXP),
+                    
+                    const SizedBox(height: 16),
+                    
+                    // Daily Streak Card - full width with gradient
+                    _buildStreakCard(context, streak),
+                    
+                    const SizedBox(height: 20), // Bottom padding
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
-      ),
-    );
+            );
   }
 
-  Widget _buildGradientHeader(BuildContext context, String username, int level, String avatar, String userId) {
+  Widget _buildPixelPerfectHeader(BuildContext context, String username, String avatar, int level, String? userId) {
     return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(24),
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Color(0xFF4FACFE), Color(0xFF8E2DE2)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-      ),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // Action Icons Row
+          // Settings icon in top right
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const StatisticsScreen()),
-                  );
-                },
-                icon: const Icon(Icons.bar_chart_outlined, color: Colors.white),
-              ),
-              IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const SettingsScreen()),
-                  );
-                },
-                icon: const Icon(Icons.settings_outlined, color: Colors.white),
+              Padding(
+                padding: const EdgeInsets.only(right: 20, top: 10),
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const SettingsScreen()),
+                    );
+                  },
+                  icon: Icon(
+                    Icons.settings_outlined, 
+                    color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                    size: 24,
+                  ),
+                ),
               ),
             ],
           ),
           
-          const SizedBox(height: 16),
-          
-          // Avatar with Camera Icon
+          // Avatar with camera icon - 90-100px size
           Stack(
             children: [
               Container(
@@ -354,17 +352,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 height: 100,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  border: Border.all(color: Colors.white.withOpacity(0.3), width: 3),
+                  border: Border.all(
+                    color: Theme.of(context).colorScheme.primary.withOpacity(0.7),
+                    width: 3,
+                  ),
                 ),
                 child: ClipOval(
                   child: Container(
-                    color: Colors.white.withOpacity(0.1),
-                    child: SvgPicture.asset(
-                      avatar,
-                      width: 80,
-                      height: 80,
-                      fit: BoxFit.contain,
-                    ),
+                    color: Theme.of(context).colorScheme.surfaceVariant,
+                    child: avatar.isNotEmpty
+                        ? Padding(
+                            padding: const EdgeInsets.all(12),
+                            child: SvgPicture.asset(
+                              avatar,
+                              fit: BoxFit.contain,
+                            ),
+                          )
+                        : Icon(
+                            Icons.person,
+                            size: 40,
+                            color: Theme.of(context).colorScheme.onSurfaceVariant,
+                          ),
                   ),
                 ),
               ),
@@ -372,24 +380,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 bottom: 0,
                 right: 0,
                 child: GestureDetector(
-                  onTap: () => _showAvatarPicker(context, userId),
+                  onTap: () => _showAvatarPicker(context, userId ?? ''),
                   child: Container(
-                    padding: const EdgeInsets.all(8),
+                    width: 28,
+                    height: 28,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Theme.of(context).colorScheme.primary,
                       shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.2),
-                          blurRadius: 4,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
+                      border: Border.all(
+                        color: Theme.of(context).colorScheme.surface, 
+                        width: 2,
+                      ),
                     ),
-                    child: const Icon(
+                    child: Icon(
                       Icons.camera_alt_rounded,
-                      size: 16,
-                      color: Color(0xFF8E2DE2),
+                      size: 14,
+                      color: Theme.of(context).colorScheme.onPrimary,
                     ),
                   ),
                 ),
@@ -397,32 +403,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ],
           ),
           
-          const SizedBox(height: 20),
+          const SizedBox(height: 18), // 16-20px spacing as specified
           
-          // Username with Edit Button
+          // Name with edit icon
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'Merhaba, $username!',
-                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+                username,
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w600,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
-              const SizedBox(width: 8),
-              GestureDetector(
-                onTap: () => _showUsernameEditDialog(context, userId, username),
-                child: Container(
-                  padding: const EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: const Icon(
-                    Icons.edit,
-                    size: 16,
-                    color: Colors.white,
+              Padding(
+                padding: const EdgeInsets.only(left: 6),
+                child: GestureDetector(
+                  onTap: () => _showUsernameEditor(context, userId ?? ''),
+                  child: Icon(
+                    Icons.edit_rounded,
+                    size: 18,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
               ),
@@ -431,26 +434,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
           
           const SizedBox(height: 12),
           
-          // Level Badge
+          // Level chip with star icon
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.white.withOpacity(0.2),
-                  Colors.white.withOpacity(0.1),
-                ],
-              ),
-              borderRadius: BorderRadius.circular(25),
-              border: Border.all(color: Colors.white.withOpacity(0.3)),
+              color: const Color(0xFF6D4AFF).withOpacity(0.15),
+              borderRadius: BorderRadius.circular(20),
             ),
-            child: Text(
-              'Level $level',
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w600,
-                fontSize: 16,
-              ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(
+                  Icons.star_border_rounded,
+                  size: 16,
+                  color: Color(0xFF6D4AFF),
+                ),
+                const SizedBox(width: 4),
+                Text(
+                  'Level $level',
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: Color(0xFF6D4AFF),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -458,275 +466,274 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  Widget _buildXPCard(BuildContext context, int currentXP, int xpToNext) {
-    final progress = currentXP / xpToNext;
-    final xpNeeded = xpToNext - currentXP;
-    
-    return Consumer<SessionService>(
-      builder: (context, sessionService, child) {
-        final weeklyXp = sessionService.weeklyXp;
-        
-        return Card(
-          elevation: 4,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-          child: Container(
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              color: Theme.of(context).colorScheme.primaryContainer.withOpacity(0.3),
+  Widget _buildCompactXPCard(BuildContext context, int currentXP, int totalXPForNextLevel, int xpToNext) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.2),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: Theme.of(context).colorScheme.primary.withOpacity(0.4),
+          width: 1.5,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Deneyim Puanı',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).colorScheme.onSurface,
             ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            '$currentXP / $totalXPForNextLevel XP',
+            style: TextStyle(
+              fontSize: 14,
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+            ),
+          ),
+          const SizedBox(height: 8),
+          LinearProgressIndicator(
+            value: currentXP / totalXPForNextLevel,
+            backgroundColor: Theme.of(context).colorScheme.outline.withOpacity(0.2),
+            valueColor: AlwaysStoppedAnimation<Color>(
+              Theme.of(context).colorScheme.primary,
+            ),
+            minHeight: 8,
+            borderRadius: BorderRadius.circular(8),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Bir sonraki seviyeye $xpToNext XP kaldı!',
+            style: TextStyle(
+              fontSize: 12,
+              color: Theme.of(context).colorScheme.primary,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildBalancedStatsGrid(BuildContext context, int learnedCount, int quizzesCompleted, int favorites, int totalXP) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+      child: GridView.count(
+        crossAxisCount: 2,
+        childAspectRatio: 1.1,
+        crossAxisSpacing: 12,
+        mainAxisSpacing: 12,
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        children: [
+          _buildStatCard(
+            context,
+            icon: Icons.school_rounded,
+            value: learnedCount.toString(),
+            label: 'Öğrenilen Kelime',
+            color: const Color(0xFF4CAF50),
+          ),
+          _buildStatCard(
+            context,
+            icon: Icons.quiz_rounded,
+            value: quizzesCompleted.toString(),
+            label: 'Tamamlanan Quiz',
+            color: const Color(0xFF2196F3),
+          ),
+          _buildStatCard(
+            context,
+            icon: Icons.favorite_rounded,
+            value: favorites.toString(),
+            label: 'Favori Kelime',
+            color: const Color(0xFFE91E63),
+          ),
+          _buildStatCard(
+            context,
+            icon: Icons.stars_rounded,
+            value: totalXP.toString(),
+            label: 'Toplam XP',
+            color: const Color(0xFFFF9800),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildStatCard(BuildContext context, {
+    required IconData icon,
+    required String value,
+    required String label,
+    required Color color,
+  }) {
+    return Container(
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.3),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: color.withOpacity(0.4), width: 1.5),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            icon,
+            size: 30,
+            color: color,
+          ),
+          const SizedBox(height: 6),
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
+          ),
+          const SizedBox(height: 2),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 13,
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildStreakCard(BuildContext context, int streak) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          colors: [Color(0xFFFF6B35), Color(0xFFD32F2F)],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Deneyim Puanı',
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.onSurface,
-                      ),
-                    ),
-                    Text(
-                      '$currentXP / $xpToNext XP',
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.primary,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
-                ),
-                
-                const SizedBox(height: 16),
-                
-                LinearProgressIndicator(
-                  value: progress.clamp(0.0, 1.0),
-                  backgroundColor: Theme.of(context).colorScheme.outline.withOpacity(0.2),
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    Theme.of(context).colorScheme.primary,
-                  ),
-                  minHeight: 8,
-                ),
-                
-                const SizedBox(height: 12),
-                
-                Text(
-                  xpNeeded > 0 ? 'Bir sonraki seviyeye $xpNeeded XP kaldı!' : 'Seviye atlamaya hazır!',
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: Theme.of(context).colorScheme.onSurfaceVariant,
-                  ),
-                ),
-                
-                // haftalık XP bilgisi
-                if (weeklyXp > 0) ...[
-                  const SizedBox(height: 12),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.secondary.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(
-                        color: Theme.of(context).colorScheme.secondary.withOpacity(0.3),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          Icons.calendar_today, // haftalık XP için uygun icon
-                          size: 16,
-                          color: Theme.of(context).colorScheme.secondary,
-                        ),
-                        const SizedBox(width: 6),
-                        Text(
-                          'Bu hafta: $weeklyXp XP',
-                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: Theme.of(context).colorScheme.secondary,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  Widget _buildStatsGrid(BuildContext context, String userId, int learnedWordsCount, 
-      int quizzesCompleted, int favorites, int totalXP) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final isWideScreen = constraints.maxWidth > 600;
-        final crossAxisCount = isWideScreen ? 3 : 2;
-        
-        return Column(
-          children: [
-            // Use ProfileStatsProvider as single source of truth for learned count
-            Consumer<ProfileStatsProvider>(
-              builder: (context, profileProvider, child) {
-                final learnedCount = profileProvider.learnedCount;
-                
-                final stats = [
-                  {
-                    'title': 'Öğrenilen Kelime',
-                    'value': learnedCount.toString(),
-                    'icon': Icons.school_outlined,
-                    'color': Theme.of(context).colorScheme.primary,
-                  },
-                  {
-                    'title': 'Quiz Sayısı',
-                    'value': quizzesCompleted.toString(),
-                    'icon': Icons.quiz_outlined,
-                    'color': Theme.of(context).colorScheme.secondary,
-                  },
-                  {
-                    'title': 'Favoriler',
-                    'value': favorites.toString(),
-                    'icon': Icons.favorite_border_rounded,
-                    'color': Colors.red,
-                  },
-                  {
-                    'title': 'Toplam XP',
-                    'value': totalXP.toString(),
-                    'icon': Icons.star_rounded,
-                    'color': Colors.amber,
-                  },
-                ];
-
-                return GridView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: crossAxisCount,
-                    childAspectRatio: 1.1,
-                    crossAxisSpacing: 12,
-                    mainAxisSpacing: 12,
-                  ),
-                  itemCount: stats.length,
-                  itemBuilder: (context, index) {
-                    final stat = stats[index];
-                    return Card(
-                      elevation: 2,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                      child: Container(
-                        padding: const EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          color: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.3),
-                          border: Border.all(
-                            color: (stat['color'] as Color).withOpacity(0.2),
-                          ),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              stat['icon'] as IconData,
-                              size: 32,
-                              color: stat['color'] as Color,
-                            ),
-                            const SizedBox(height: 8),
-                            Text(
-                              stat['value'] as String,
-                              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                                fontWeight: FontWeight.bold,
-                                color: stat['color'] as Color,
-                              ),
-                            ),
-                            const SizedBox(height: 4),
-                            Text(
-                              stat['title'] as String,
-                              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                color: Theme.of(context).colorScheme.onSurface,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                );
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  Widget _buildStreakSection(BuildContext context, int streak, int longestStreak) {
-    return Card(
-      elevation: 2,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          gradient: LinearGradient(
-            colors: [
-              Colors.orange.withOpacity(0.1),
-              Colors.red.withOpacity(0.1),
-            ],
-          ),
-          border: Border.all(
-            color: Colors.orange.withOpacity(0.3),
-          ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: Colors.orange.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: const Text(
-                    '🔥',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Text(
+                const Text(
                   'Günlük Seri',
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  style: TextStyle(
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.onSurface,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  '$streak gün üst üste!',
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: Colors.white70,
                   ),
                 ),
               ],
             ),
-            
-            const SizedBox(height: 16),
-            
-            Text(
-              '$streak gün üst üste!',
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                fontWeight: FontWeight.w600,
-                color: Colors.orange.shade700,
-              ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.2),
+              borderRadius: BorderRadius.circular(12),
             ),
-            
-            const SizedBox(height: 8),
-            
-            Text(
-              'En uzun seri: $longestStreak gün',
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Theme.of(context).colorScheme.onSurfaceVariant,
-              ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(
+                  Icons.local_fire_department_rounded,
+                  color: Colors.white,
+                  size: 24,
+                ),
+                const SizedBox(width: 4),
+                Text(
+                  streak.toString(),
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  // Username editor dialog method
+  void _showUsernameEditor(BuildContext context, String userId) {
+    final TextEditingController controller = TextEditingController();
+    
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        title: const Text('Kullanıcı Adını Düzenle', style: TextStyle(color: Colors.white)),
+        content: TextField(
+          controller: controller,
+          style: const TextStyle(color: Colors.white),
+          decoration: const InputDecoration(
+            hintText: 'Yeni kullanıcı adı',
+            hintStyle: TextStyle(color: Colors.white54),
+            border: OutlineInputBorder(),
+          ),
         ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('İptal', style: TextStyle(color: Colors.grey)),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              if (controller.text.trim().isNotEmpty) {
+                _updateUsername(context, userId, controller.text.trim(), dialogContext: context);
+                // Navigator.pop satırı silindi - _updateUsername içinde yapılacak
+              }
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Theme.of(context).colorScheme.primary,
+            ),
+            child: const Text('Kaydet', style: TextStyle(color: Colors.white)),
+          ),
+        ],
       ),
     );
   }
@@ -775,7 +782,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 itemBuilder: (context, index) {
                   final avatarPath = _availableAvatars[index];
                   return GestureDetector(
-                    onTap: () => _updateAvatar(context, userId, avatarPath),
+                    onTap: () => _updateAvatar(context, userId, avatarPath, dialogContext: context),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
@@ -807,58 +814,171 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  void _showUsernameEditDialog(BuildContext context, String userId, String currentUsername) {
+  void _showUsernameEditDialog(BuildContext context) {
+    final TextEditingController controller = TextEditingController();
+    
     showDialog(
       context: context,
-      barrierDismissible: true,
-      builder: (context) => UsernameEditDialog(
-        currentUsername: currentUsername,
-        onSave: (newUsername) => _updateUsername(context, userId, newUsername),
-      ),
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Kullanıcı Adını Düzenle'),
+          content: TextField(
+            controller: controller,
+            decoration: const InputDecoration(
+              hintText: 'Yeni kullanıcı adı',
+              border: OutlineInputBorder(),
+            ),
+            maxLength: 20,
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('İptal'),
+            ),
+            TextButton(
+              onPressed: () {
+                if (controller.text.trim().isNotEmpty) {
+                  // TODO: Implement username update logic
+                  Navigator.of(context).pop();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Kullanıcı adı güncellendi')),
+                  );
+                }
+              },
+              child: const Text('Kaydet'),
+            ),
+          ],
+        );
+      },
     );
   }
 
-  Future<void> _updateAvatar(BuildContext context, String userId, String avatarPath) async {
+
+
+  Future<void> _updateAvatar(BuildContext context, String userId, String avatarPath, {required BuildContext dialogContext}) async {
+    // Referansları tanımla
+    final userDocRef = FirebaseFirestore.instance.collection('users').doc(userId);
+    final leaderboardDocRef = FirebaseFirestore.instance.collection('leaderboard_stats').doc(userId);
+
     try {
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(userId)
-          .update({'avatar': avatarPath});
+      // Batch write başlat
+      final batch = FirebaseFirestore.instance.batch();
+
+      // 1. users koleksiyonunu güncelle
+      batch.update(userDocRef, {'photoURL': avatarPath});
+
+      // 2. leaderboard_stats koleksiyonunu güncelle
+      batch.update(leaderboardDocRef, {'photoURL': avatarPath});
       
+      // 3. FirebaseAuth kullanıcısını güncelle (photoURL alanını avatar path'i olarak kullanıyoruz)
+      await FirebaseAuth.instance.currentUser?.updatePhotoURL(avatarPath);
+
+      // Batch işlemlerini uygula
+      await batch.commit();
+      
+      // Servisleri ve local state'i yenile
+      await FirebaseAuth.instance.currentUser?.reload();
+      context.read<SessionService>().refreshUser();
+
       if (mounted) {
-        Navigator.pop(context);
+        setState(() {
+          _currentAvatar = avatarPath; // Anında UI güncellemesi
+        });
+        Navigator.pop(dialogContext);
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Avatar başarıyla güncellendi!'),
-            backgroundColor: Colors.green,
+          SnackBar(
+            behavior: SnackBarBehavior.floating,
+            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            backgroundColor: Colors.greenAccent.shade400,
+            content: const Row(
+              children: [
+                Icon(Icons.check_circle, color: Colors.white),
+                SizedBox(width: 8),
+                Expanded(child: Text('Avatar başarıyla güncellendi!', style: TextStyle(color: Colors.white))),
+              ],
+            ),
+            duration: const Duration(seconds: 2),
           ),
         );
       }
     } catch (e) {
       if (mounted) {
-        Navigator.pop(context);
+        Navigator.pop(dialogContext);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Avatar güncellenirken hata oluştu: $e'),
-            backgroundColor: Colors.red,
+            behavior: SnackBarBehavior.floating,
+            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            backgroundColor: Colors.redAccent,
+            content: Row(
+              children: [
+                const Icon(Icons.error, color: Colors.white),
+                const SizedBox(width: 8),
+                Expanded(child: Text('Avatar güncellenirken hata oluştu: $e', style: const TextStyle(color: Colors.white))),
+              ],
+            ),
+            duration: const Duration(seconds: 2),
           ),
         );
       }
     }
   }
 
-  Future<void> _updateUsername(BuildContext context, String userId, String newUsername) async {
+  Future<void> _updateUsername(BuildContext context, String userId, String newUsername, {required BuildContext dialogContext}) async {
     if (newUsername.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Kullanıcı adı boş olamaz!'),
-          backgroundColor: Colors.red,
+        SnackBar(
+          behavior: SnackBarBehavior.floating,
+          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          backgroundColor: Colors.redAccent,
+          content: const Row(
+            children: [
+              Icon(Icons.error, color: Colors.white),
+              SizedBox(width: 8),
+              Expanded(child: Text('Kullanıcı adı boş olamaz!', style: TextStyle(color: Colors.white))),
+            ],
+          ),
+          duration: Duration(seconds: 2),
         ),
       );
       return;
     }
 
     try {
+      // Kullanıcı adı benzersizlik kontrolü - basit yaklaşım
+      final query = await FirebaseFirestore.instance
+          .collection('users')
+          .where('username', isEqualTo: newUsername)
+          .limit(5) // performans için sınırla
+          .get();
+
+      // Kendi dokümanımızı hariç tut
+      final otherUsersWithSameUsername = query.docs
+          .where((doc) => doc.id != userId)
+          .toList();
+
+      if (otherUsersWithSameUsername.isNotEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            behavior: SnackBarBehavior.floating,
+            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            backgroundColor: Colors.redAccent,
+            content: const Row(
+              children: [
+                Icon(Icons.error, color: Colors.white),
+                SizedBox(width: 8),
+                Expanded(child: Text('Bu kullanıcı adı zaten alınmış!', style: TextStyle(color: Colors.white))),
+              ],
+            ),
+            duration: Duration(seconds: 2),
+          ),
+        );
+        return;
+      }
+
       // Define document references
       final userDataRef = FirebaseFirestore.instance
           .collection('users')
@@ -901,32 +1021,181 @@ class _ProfileScreenState extends State<ProfileScreen> {
           'longestStreak': userData?['longestStreak'] ?? 0,
           'quizzesCompleted': userData?['quizzesCompleted'] ?? 0,
           'learnedWordsCount': userData?['learnedWordsCount'] ?? userData?['wordsLearned'] ?? 0, // fallback for migration
+          'photoURL': FirebaseAuth.instance.currentUser?.photoURL ?? 'assets/icons/boy.svg',
           'lastUpdated': FieldValue.serverTimestamp(),
         });
       }
 
+      // Firebase Auth kullanıcı adını güncelle
+      await FirebaseAuth.instance.currentUser?.updateDisplayName(newUsername);
+      
       // Commit the batch
       await batch.commit();
       
+      // Firebase Auth kullanıcısını yenile
+      await FirebaseAuth.instance.currentUser?.reload();
+      context.read<SessionService>().refreshUser();
+      
       if (mounted) {
-        Navigator.pop(context);
+        setState(() {
+          _currentUsername = newUsername; // Anında UI güncellemesi
+        });
+        Navigator.pop(dialogContext);
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Kullanıcı adı başarıyla güncellendi!'),
-            backgroundColor: Colors.green,
+          SnackBar(
+            behavior: SnackBarBehavior.floating,
+            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            backgroundColor: Colors.greenAccent.shade400,
+            content: const Row(
+              children: [
+                Icon(Icons.check_circle, color: Colors.white),
+                SizedBox(width: 8),
+                Expanded(child: Text('Kullanıcı adı başarıyla güncellendi!', style: TextStyle(color: Colors.white))),
+              ],
+            ),
+            duration: Duration(seconds: 2),
           ),
         );
       }
     } catch (e) {
       if (mounted) {
-        Navigator.pop(context);
+        Navigator.pop(dialogContext);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Kullanıcı adı güncellenirken hata oluştu: $e'),
-            backgroundColor: Colors.red,
+            behavior: SnackBarBehavior.floating,
+            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            backgroundColor: Colors.redAccent,
+            content: Row(
+              children: [
+                const Icon(Icons.error, color: Colors.white),
+                const SizedBox(width: 8),
+                Expanded(child: Text('Kullanıcı adı güncellenirken hata oluştu: $e', style: const TextStyle(color: Colors.white))),
+              ],
+            ),
+            duration: const Duration(seconds: 2),
           ),
         );
       }
     }
+  }
+
+  Widget _buildAchievementBadges(BuildContext context, AggregatedProfileStats stats) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          _buildBadge(
+            context,
+            icon: Icons.military_tech_rounded,
+            label: 'Kelime',
+            color: const Color(0xFFFFC107),
+            currentValue: stats.learnedWordsCount,
+            baseTarget: 100,
+          ),
+          _buildBadge(
+            context,
+            icon: Icons.local_fire_department_rounded,
+            label: 'Gün Seri',
+            color: const Color(0xFFD32F2F),
+            currentValue: stats.currentStreak,
+            baseTarget: 10,
+          ),
+          _buildBadge(
+            context,
+            icon: Icons.quiz_rounded,
+            label: 'Quiz',
+            color: const Color(0xFF1976D2),
+            currentValue: stats.totalQuizzesCompleted,
+            baseTarget: 25,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildBadge(BuildContext context, {
+    required IconData icon, 
+    required String label, 
+    required Color color,
+    required int currentValue,
+    required int baseTarget,
+  }) {
+    // Calculate the current milestone target
+    int currentTarget = baseTarget;
+    while (currentValue >= currentTarget) {
+      currentTarget *= 2;
+    }
+    
+    // Check if the badge is completed
+    bool isCompleted = currentValue >= baseTarget;
+    
+    // Calculate progress for the current milestone
+    double progress = currentValue / currentTarget;
+    
+    return Expanded(
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 4),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.3),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: color.withOpacity(isCompleted ? 1.0 : 0.4),
+            width: 1.5,
+          ),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              icon, 
+              color: color.withOpacity(isCompleted ? 1.0 : 0.4), 
+              size: 28,
+            ),
+            const SizedBox(height: 6),
+            Text(
+              label,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+              ),
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            // Show progress only if not at the first milestone completion
+            if (currentValue < currentTarget) ...[
+              const SizedBox(height: 4),
+              Text(
+                '$currentValue/$currentTarget',
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+                  fontSize: 10,
+                  fontWeight: FontWeight.w400,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 4),
+              Container(
+                height: 3,
+                margin: const EdgeInsets.symmetric(horizontal: 8),
+                child: LinearProgressIndicator(
+                  value: progress,
+                  backgroundColor: Theme.of(context).colorScheme.outline.withOpacity(0.2),
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    color.withOpacity(0.7),
+                  ),
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
   }
 }

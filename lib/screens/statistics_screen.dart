@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:fl_chart/fl_chart.dart';
 import '../services/session_service.dart';
 import '../services/statistics_service.dart';
+import '../providers/profile_stats_provider.dart';
 import '../utils/share_utils.dart';
 import '../widgets/lexiflow_toast.dart';
 
@@ -114,11 +115,15 @@ class _StatisticsScreenState extends State<StatisticsScreen>
                     const SizedBox(height: 24),
 
                     // XP İlerleme Grafiği
-                    _buildXpProgressChart(sessionService, isDark),
+                    _buildXpProgressCard(sessionService, isDark),
                     const SizedBox(height: 24),
 
                     // Başarımlar
-                    _buildAchievementsSection(sessionService, isDark),
+                    Consumer<ProfileStatsProvider>(
+                      builder: (context, profileStatsProvider, child) {
+                        return _buildAchievementsSection(sessionService, profileStatsProvider, isDark);
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -170,10 +175,11 @@ class _StatisticsScreenState extends State<StatisticsScreen>
     int favoritesCount = 0;
 
     try {
+      final profileStatsProvider = context.read<ProfileStatsProvider>();
       currentLevel = session.level;
       totalXp = session.totalXp;
-      currentStreak = session.currentStreak;
-      longestStreak = session.longestStreak;
+      currentStreak = profileStatsProvider.currentStreak;
+      longestStreak = profileStatsProvider.longestStreak;
       learnedWordsCount = session.learnedWordsCount;
       favoritesCount = session.favoritesCount;
     } catch (e) {
@@ -527,82 +533,120 @@ class _StatisticsScreenState extends State<StatisticsScreen>
     );
   }
 
-  Widget _buildXpProgressChart(SessionService session, bool isDark) {
+  Widget _buildXpProgressCard(SessionService session, bool isDark) {
     // Senkron veri kullandığı için bu bileşeni yüklenmiş olarak işaretle
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _onComponentLoaded();
     });
 
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: isDark ? Colors.grey[850] : Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Level İlerlemesi',
-            style: Theme.of(
-              context,
-            ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            'Level ${session.level} → Level ${session.level + 1}',
-            style: TextStyle(
-              color: isDark ? Colors.grey[400] : Colors.grey[600],
+    // Get level data from ProfileStatsProvider exactly as in ProfileScreen
+    final levelData = context.watch<ProfileStatsProvider>().currentLevelData;
+    
+    // Use new level system if available, fallback to old system
+    final currentXP = levelData?.xpIntoLevel ?? (session.totalXp % 100);
+    final xpToNext = levelData?.xpNeeded ?? 100;
+    final progress = levelData?.progressPct ?? (currentXP / xpToNext);
+    final xpNeeded = xpToNext - currentXP;
+    
+    return Consumer<SessionService>(
+      builder: (context, sessionService, child) {
+        final weeklyXp = sessionService.weeklyXp;
+        
+        return Card(
+          elevation: 4,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          child: Container(
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              color: Theme.of(context).colorScheme.primaryContainer.withOpacity(0.3),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Deneyim Puanı',
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).colorScheme.onSurface,
+                      ),
+                    ),
+                    Text(
+                      '$currentXP / $xpToNext XP',
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+                
+                const SizedBox(height: 16),
+                
+                LinearProgressIndicator(
+                  value: progress.clamp(0.0, 1.0),
+                  backgroundColor: Theme.of(context).colorScheme.outline.withOpacity(0.2),
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    Theme.of(context).colorScheme.primary,
+                  ),
+                  minHeight: 8,
+                ),
+                
+                const SizedBox(height: 12),
+                
+                Text(
+                  xpNeeded > 0 ? 'Bir sonraki seviyeye $xpNeeded XP kaldı!' : 'Seviye atlamaya hazır!',
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                  ),
+                ),
+                
+                // haftalık XP bilgisi
+                if (weeklyXp > 0) ...[
+                  const SizedBox(height: 12),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.secondary.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        color: Theme.of(context).colorScheme.secondary.withOpacity(0.3),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.calendar_today,
+                          size: 16,
+                          color: Theme.of(context).colorScheme.secondary,
+                        ),
+                        const SizedBox(width: 6),
+                        Text(
+                          'Bu hafta: $weeklyXp XP',
+                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                            color: Theme.of(context).colorScheme.secondary,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ],
             ),
           ),
-          const SizedBox(height: 20),
-
-          // Progress Bar
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: LinearProgressIndicator(
-              value: (session.totalXp % 100) / 100,
-              minHeight: 12,
-              backgroundColor: isDark ? Colors.grey[700] : Colors.grey[200],
-              valueColor: AlwaysStoppedAnimation<Color>(
-                Theme.of(context).colorScheme.primary,
-              ),
-            ),
-          ),
-          const SizedBox(height: 12),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                '${session.totalXp % 100} XP',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-              ),
-              Text(
-                '${100 - (session.totalXp % 100)} XP kaldı',
-                style: TextStyle(
-                  color: isDark ? Colors.grey[400] : Colors.grey[600],
-                  fontSize: 12,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 
-  Widget _buildAchievementsSection(SessionService session, bool isDark) {
+  Widget _buildAchievementsSection(SessionService session, ProfileStatsProvider profileStatsProvider, bool isDark) {
     // Başarım kategorileri
+    final currentStreak = profileStatsProvider.currentStreak;
     final categories = [
       {
         'id': 'streak',
@@ -614,41 +658,41 @@ class _StatisticsScreenState extends State<StatisticsScreen>
             'icon': Icons.local_fire_department,
             'title': 'İlk Gün',
             'description': 'İlk girişini yaptın',
-            'progress': session.currentStreak.clamp(0, 1),
+            'progress': currentStreak.clamp(0, 1),
             'target': 1,
-            'unlocked': session.currentStreak >= 1,
+            'unlocked': currentStreak >= 1,
           },
           {
             'icon': Icons.local_fire_department,
             'title': '3 Günlük Seri',
             'description': '3 gün üst üste giriş yap',
-            'progress': session.currentStreak.clamp(0, 3),
+            'progress': currentStreak.clamp(0, 3),
             'target': 3,
-            'unlocked': session.currentStreak >= 3,
+            'unlocked': currentStreak >= 3,
           },
           {
             'icon': Icons.local_fire_department,
             'title': 'Haftalık Kahraman',
             'description': '7 gün üst üste giriş yap',
-            'progress': session.currentStreak.clamp(0, 7),
+            'progress': currentStreak.clamp(0, 7),
             'target': 7,
-            'unlocked': session.currentStreak >= 7,
+            'unlocked': currentStreak >= 7,
           },
           {
             'icon': Icons.local_fire_department,
             'title': 'Seri Ustası',
             'description': '14 gün üst üste giriş yap',
-            'progress': session.currentStreak.clamp(0, 14),
+            'progress': currentStreak.clamp(0, 14),
             'target': 14,
-            'unlocked': session.currentStreak >= 14,
+            'unlocked': currentStreak >= 14,
           },
           {
             'icon': Icons.local_fire_department,
             'title': 'Aylık Efsane',
             'description': '30 gün üst üste giriş yap',
-            'progress': session.currentStreak.clamp(0, 30),
+            'progress': currentStreak.clamp(0, 30),
             'target': 30,
-            'unlocked': session.currentStreak >= 30,
+            'unlocked': currentStreak >= 30,
           },
         ],
       },
