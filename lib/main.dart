@@ -14,6 +14,7 @@ import 'models/word_model.dart';
 import 'models/user_data.dart';
 import 'models/daily_log.dart';
 import 'models/user_stats_model.dart';
+import 'services/cloud_sync_service.dart';
 import 'services/word_service.dart';
 import 'services/user_service.dart';
 import 'services/session_service.dart';
@@ -21,8 +22,10 @@ import 'services/migration_integration_service.dart';
 import 'services/ad_service.dart';
 import 'services/notification_service.dart';
 import 'services/learned_words_service.dart';
+import 'services/achievement_service.dart';
 import 'providers/theme_provider.dart';
 import 'providers/profile_stats_provider.dart';
+import 'providers/sync_status_provider.dart';
 import 'utils/design_system.dart';
 import 'widgets/auth_wrapper.dart';
 import 'widgets/mobile_only_guard.dart';
@@ -192,6 +195,7 @@ Future<void> _initializeLocalServices() async {
   Hive.registerAdapter(WordAdapter());
   Hive.registerAdapter(DailyLogAdapter());
   Hive.registerAdapter(UserDataAdapter());
+  Hive.registerAdapter(CachedUserDataAdapter());
   debugPrint('✅ Hive initialized');
 }
 
@@ -261,6 +265,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => locator<ThemeProvider>()),
         ChangeNotifierProvider.value(value: locator<SessionService>()),
         ChangeNotifierProvider(create: (_) => ProfileStatsProvider()),
+        ChangeNotifierProvider(create: (_) => AchievementService()),
+        ChangeNotifierProvider(create: (_) => SyncStatusProvider()),
         Provider.value(value: locator<WordService>()),
         Provider.value(value: locator<UserService>()),
         Provider.value(value: locator<MigrationIntegrationService>()),
@@ -328,30 +334,31 @@ class MyApp extends StatelessWidget {
                 wordService: locator<WordService>(),
                 userService: locator<UserService>(),
               ),
-              '/category-quiz': (context) => const CategoryQuizScreen(
-                category: 'general',
-                categoryName: 'Genel',
-                categoryIcon: '📚',
-              ),
-              '/category-quiz-play': (context) => CategoryQuizPlayScreen(
-                wordService: locator<WordService>(),
-                userService: locator<UserService>(),
-              ),
+              // '/category-quiz': (context) => const CategoryQuizScreen(
+              //   category: 'general',
+              //   categoryName: 'Genel',
+              //   categoryIcon: '📚',
+              // ),
+              // '/category-quiz-play': (context) => CategoryQuizPlayScreen(
+              //   wordService: locator<WordService>(),
+              //   userService: locator<UserService>(),
+              // ),
               if (kDebugMode) '/connectivity-debug': (context) => const ConnectivityDebugWidget(),
             },
             onGenerateRoute: (settings) {
               // Handle dynamic routes like /quiz/category/:key
-              if (settings.name?.startsWith('/quiz/category/') == true) {
-                final categoryKey = settings.name!.split('/').last;
-                return MaterialPageRoute(
-                  builder: (context) => CategoryQuizScreen(
-                    category: categoryKey,
-                    categoryName: _getCategoryName(categoryKey),
-                    categoryIcon: _getCategoryIcon(categoryKey),
-                  ),
-                  settings: settings,
-                );
-              }
+              // Commented out - now using QuizTypeSelectScreen flow
+              // if (settings.name?.startsWith('/quiz/category/') == true) {
+              //   final categoryKey = settings.name!.split('/').last;
+              //   return MaterialPageRoute(
+              //     builder: (context) => CategoryQuizScreen(
+              //       category: categoryKey,
+              //       categoryName: _getCategoryName(categoryKey),
+              //       categoryIcon: _getCategoryIcon(categoryKey),
+              //     ),
+              //     settings: settings,
+              //   );
+              // }
               return null;
             },
             builder: (context, child) {

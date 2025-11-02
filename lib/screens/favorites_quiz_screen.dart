@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/word_model.dart';
+import '../models/category_theme.dart';
 import '../services/word_service.dart';
 import '../services/user_service.dart';
 import '../services/ad_service.dart';
@@ -31,11 +32,20 @@ class _FavoritesQuizScreenState extends State<FavoritesQuizScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // favoriler kategorisi temasını kullan
+    final theme = categoryThemes['favorites'] ?? 
+      const CategoryTheme(
+        emoji: '❤️',
+        color: Colors.pinkAccent,
+        title: 'Favoriler',
+        description: 'Favori kelimelerinle pratik yap!',
+      );
+
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
         title: Text(
-          'Favoriler Quiz',
+          '${theme.emoji} ${theme.title}',
           style: TextStyle(color: Theme.of(context).colorScheme.onSurface),
         ),
         backgroundColor: Theme.of(context).colorScheme.surface,

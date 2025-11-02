@@ -361,6 +361,27 @@ class SessionService extends ChangeNotifier {
     }
   }
   
+  /// Calculate XP based on quiz type and correct answers
+  static int calculateQuizXp(String quizType, int correctAnswers) {
+    switch (quizType.toLowerCase()) {
+      case 'multiple_choice':
+      case 'translation':
+        return correctAnswers * 10; // 10 XP per correct answer
+      case 'fill_blanks':
+        return correctAnswers * 20; // 20 XP per correct answer
+      case 'matching':
+        return correctAnswers * 15; // 15 XP per correct match
+      default:
+        return correctAnswers * 10; // default 10 XP per correct answer
+    }
+  }
+
+  /// Add quiz XP with automatic calculation based on quiz type
+  Future<void> addQuizXp(String quizType, int correctAnswers) async {
+    final earnedXp = calculateQuizXp(quizType, correctAnswers);
+    await addXp(earnedXp);
+  }
+
   /// Add XP to user account
   Future<void> addXp(int amount) async {
     print('🔍 addXp called with amount: $amount');

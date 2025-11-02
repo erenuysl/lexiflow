@@ -6,6 +6,7 @@ import '../services/word_service.dart';
 import '../services/user_service.dart';
 import '../services/migration_integration_service.dart';
 import '../services/ad_service.dart';
+import '../providers/sync_status_provider.dart';
 import '../screens/sign_in_screen.dart';
 import '../screens/migration_screen.dart';
 import 'main_navigation.dart';
@@ -132,6 +133,18 @@ class _AuthWrapperState extends State<AuthWrapper> {
 
         if (sessionService.isAuthenticated) {
           debugPrint('✅ Kullanıcı authenticate - _shouldShowMigration: $_shouldShowMigration');
+          
+          // Initialize SyncStatusProvider when user is authenticated
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            final syncProvider = context.read<SyncStatusProvider>();
+            final user = sessionService.currentUser;
+            if (user != null && !syncProvider.isInitialized) {
+              syncProvider.initialize().then((_) {
+                syncProvider.setUser(user.uid);
+              });
+            }
+          });
+          
           if (_shouldShowMigration) {
             debugPrint('🔄 Migration screen gösteriliyor');
             return const MigrationScreen();

@@ -314,6 +314,12 @@ class FirestoreWordService {
   /// Add custom word
   Future<bool> addCustomWord(String userId, Word word) async {
     try {
+      // Skip syncing if this is a local-only custom word
+      if (word.isCustom == true) {
+        debugPrint('🔒 Skipping Firestore sync for local-only custom word: ${word.word}');
+        return true; // Return success without syncing
+      }
+
       final wordId = _generateWordId(word.word);
       debugPrint('🔍 Adding custom word: ${word.word} (wordId: $wordId)');
 
@@ -347,6 +353,12 @@ class FirestoreWordService {
   /// Update custom word
   Future<bool> updateCustomWord(String userId, String wordId, Word word) async {
     try {
+      // Skip syncing if this is a local-only custom word
+      if (word.isCustom == true) {
+        debugPrint('🔒 Skipping Firestore sync for local-only custom word: ${word.word}');
+        return true; // Return success without syncing
+      }
+
       final wordData = FirestoreSchema.createPublicWord(
         wordId: wordId,
         word: word.word,

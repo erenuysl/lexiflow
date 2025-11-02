@@ -112,21 +112,20 @@ class _DashboardScreenState extends State<DashboardScreen>
 
       // AdService.initialize() kaldırıldı - gereksiz tekrar çağrı
 
-      // Use correct method name and handle the response properly
+      // Use the requested format for daily words loading
       final dailyWordsData = await _dailyWordService.getTodaysWords(user.uid);
       final dailyWordIds = List<String>.from(dailyWordsData['dailyWords'] ?? []);
-      final extraWordIds = List<String>.from(dailyWordsData['extraWords'] ?? []);
-      
-      // Combine daily and extra word IDs
-      final allWordIds = [...dailyWordIds, ...extraWordIds];
       
       // Get actual Word objects from IDs
-      final words = await _dailyWordService.getWordsByIds(allWordIds);
+      var words = await _dailyWordService.getWordsByIds(dailyWordIds);
+      if (words.isEmpty) {
+        debugPrint('Daily words empty → fallback to general category');
+        final fallback = await _wordService.getCategoryWords('general') ?? [];
+        words = fallback.take(10).toList();
+      }
 
       setState(() {
         _dailyWords = words;
-        _allWordIds = allWordIds;
-        _dailyWordsData = dailyWordsData;
         _isLoading = false;
         _isFirstLoaded = true; // mark as loaded
       });
@@ -136,12 +135,25 @@ class _DashboardScreenState extends State<DashboardScreen>
       
       try {
         final words = await _wordService.getRandomWords(5);
-        setState(() {
-          _dailyWords = words;
-          _isLoading = false;
-          _isFirstLoaded = true; // mark as loaded even on fallback
-        });
-        debugPrint('I/flutter: [HOME] firstLoad->$_isFirstLoaded, showingShimmer=${!_isFirstLoaded}');
+        // ek fallback: eğer random words da boşsa general kategorisinden yükle
+        if (words.isEmpty) {
+          debugPrint('Random words also empty, trying general category');
+          final generalWords = await _wordService.getCategoryWords('general');
+          final fallbackWords = generalWords.take(10).toList();
+          setState(() {
+            _dailyWords = fallbackWords;
+            _isLoading = false;
+            _isFirstLoaded = true;
+          });
+          debugPrint('I/flutter: [HOME] Fallback loaded ${fallbackWords.length} words from general');
+        } else {
+          setState(() {
+            _dailyWords = words;
+            _isLoading = false;
+            _isFirstLoaded = true; // mark as loaded even on fallback
+          });
+          debugPrint('I/flutter: [HOME] firstLoad->$_isFirstLoaded, showingShimmer=${!_isFirstLoaded}');
+        }
       } catch (fallbackError) {
         debugPrint('Fallback error: $fallbackError');
         setState(() {

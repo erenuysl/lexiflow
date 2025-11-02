@@ -30,13 +30,14 @@ class WordAdapter extends TypeAdapter<Word> {
       srsLevel: fields[10] as int,
       isCustom: fields[11] as bool,
       category: fields[12] as String?,
+      createdAt: fields[13] as DateTime?,
     );
   }
 
   @override
   void write(BinaryWriter writer, Word obj) {
     writer
-      ..writeByte(13)
+      ..writeByte(14)
       ..writeByte(0)
       ..write(obj.word)
       ..writeByte(1)
@@ -62,7 +63,9 @@ class WordAdapter extends TypeAdapter<Word> {
       ..writeByte(11)
       ..write(obj.isCustom)
       ..writeByte(12)
-      ..write(obj.category);
+      ..write(obj.category)
+      ..writeByte(13)
+      ..write(obj.createdAt);
   }
 
   @override

@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 import '../services/session_service.dart';
 import '../services/level_service.dart';
+import '../services/achievement_service.dart';
 import '../providers/profile_stats_provider.dart';
 import '../models/aggregated_profile_stats.dart';
+import '../models/achievement.dart';
 import '../widgets/username_edit_dialog.dart';
 import '../widgets/level_up_banner.dart';
+import '../widgets/sync_indicator.dart';
+import '../providers/sync_status_provider.dart';
 import 'settings_screen.dart';
 import 'statistics_screen.dart';
 
@@ -290,7 +295,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     const SizedBox(height: 12),
                     
                     // Achievement Badges Section
-                    _buildAchievementBadges(context, stats),
+                    _buildAchievementsSection(context, stats),
+                    
+                    // Test button for achievement popup (development only)
+                    if (kDebugMode) _buildTestAchievementButton(context),
                     
                     const SizedBox(height: 20),
                     
@@ -321,10 +329,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // Settings icon in top right
+          // Settings icon and sync indicator in top right
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
+              // Sync indicator
+              Padding(
+                padding: const EdgeInsets.only(right: 8, top: 10),
+                child: Consumer<SyncStatusProvider>(
+                  builder: (context, syncProvider, child) {
+                    return const SyncIndicator(size: 18.0);
+                  },
+                ),
+              ),
+              // Settings icon
               Padding(
                 padding: const EdgeInsets.only(right: 20, top: 10),
                 child: IconButton(
@@ -1081,60 +1099,43 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
-  Widget _buildAchievementBadges(BuildContext context, AggregatedProfileStats stats) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          _buildBadge(
-            context,
-            icon: Icons.military_tech_rounded,
-            label: 'Kelime',
-            color: const Color(0xFFFFC107),
-            currentValue: stats.learnedWordsCount,
-            baseTarget: 100,
+  Widget _buildAchievementsSection(BuildContext context, AggregatedProfileStats stats) {
+    return Consumer<AchievementService>(
+      builder: (context, achievementService, child) {
+        if (!achievementService.isInitialized) {
+          // Initialize achievement service if not already done
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            achievementService.initialize();
+          });
+          
+          return Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: List.generate(3, (index) => _buildLoadingAchievement(context)),
+            ),
+          );
+        }
+
+        final achievements = achievementService.achievements;
+        if (achievements.isEmpty) {
+          return const SizedBox.shrink();
+        }
+
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: achievements.map((achievement) => 
+              _buildAchievementCard(context, achievement)
+            ).toList(),
           ),
-          _buildBadge(
-            context,
-            icon: Icons.local_fire_department_rounded,
-            label: 'Gün Seri',
-            color: const Color(0xFFD32F2F),
-            currentValue: stats.currentStreak,
-            baseTarget: 10,
-          ),
-          _buildBadge(
-            context,
-            icon: Icons.quiz_rounded,
-            label: 'Quiz',
-            color: const Color(0xFF1976D2),
-            currentValue: stats.totalQuizzesCompleted,
-            baseTarget: 25,
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 
-  Widget _buildBadge(BuildContext context, {
-    required IconData icon, 
-    required String label, 
-    required Color color,
-    required int currentValue,
-    required int baseTarget,
-  }) {
-    // Calculate the current milestone target
-    int currentTarget = baseTarget;
-    while (currentValue >= currentTarget) {
-      currentTarget *= 2;
-    }
-    
-    // Check if the badge is completed
-    bool isCompleted = currentValue >= baseTarget;
-    
-    // Calculate progress for the current milestone
-    double progress = currentValue / currentTarget;
-    
+  Widget _buildLoadingAchievement(BuildContext context) {
     return Expanded(
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 4),
@@ -1143,21 +1144,100 @@ class _ProfileScreenState extends State<ProfileScreen> {
           color: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.3),
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
-            color: color.withOpacity(isCompleted ? 1.0 : 0.4),
+            color: Theme.of(context).colorScheme.outline.withOpacity(0.2),
             width: 1.5,
           ),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              icon, 
-              color: color.withOpacity(isCompleted ? 1.0 : 0.4), 
-              size: 28,
+            Container(
+              width: 28,
+              height: 28,
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.outline.withOpacity(0.2),
+                shape: BoxShape.circle,
+              ),
             ),
             const SizedBox(height: 6),
+            Container(
+              width: 40,
+              height: 12,
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.outline.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(6),
+              ),
+            ),
+            const SizedBox(height: 4),
+            Container(
+              width: 30,
+              height: 10,
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.outline.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(5),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildAchievementCard(BuildContext context, Achievement achievement) {
+    // Define colors for each achievement type
+    Color getAchievementColor() {
+      switch (achievement.id) {
+        case 'learned_words_100':
+          return const Color(0xFFFFC107); // Amber for words
+        case 'streak_10':
+          return const Color(0xFFD32F2F); // Red for streak
+        case 'quizzes_25':
+          return const Color(0xFF1976D2); // Blue for quizzes
+        default:
+          return Theme.of(context).colorScheme.primary;
+      }
+    }
+
+    final color = getAchievementColor();
+    final isUnlocked = achievement.unlocked;
+    final progress = achievement.progressPercentage;
+
+    return Expanded(
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 4),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.3),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: color.withOpacity(isUnlocked ? 1.0 : 0.4),
+            width: 1.5,
+          ),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Icon with grayscale/colored effect
+            ColorFiltered(
+              colorFilter: isUnlocked 
+                ? const ColorFilter.mode(Colors.transparent, BlendMode.multiply)
+                : const ColorFilter.matrix([
+                    0.2126, 0.7152, 0.0722, 0, 0,
+                    0.2126, 0.7152, 0.0722, 0, 0,
+                    0.2126, 0.7152, 0.0722, 0, 0,
+                    0, 0, 0, 1, 0,
+                  ]),
+              child: Icon(
+                achievement.icon,
+                color: color.withOpacity(isUnlocked ? 1.0 : 0.4),
+                size: 28,
+              ),
+            ),
+            const SizedBox(height: 6),
+            
+            // Title
             Text(
-              label,
+              achievement.title,
               style: TextStyle(
                 color: Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
                 fontSize: 12,
@@ -1167,33 +1247,59 @@ class _ProfileScreenState extends State<ProfileScreen> {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
-            // Show progress only if not at the first milestone completion
-            if (currentValue < currentTarget) ...[
-              const SizedBox(height: 4),
-              Text(
-                '$currentValue/$currentTarget',
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
-                  fontSize: 10,
-                  fontWeight: FontWeight.w400,
-                ),
-                textAlign: TextAlign.center,
+            
+            const SizedBox(height: 4),
+            
+            // Progress text
+            Text(
+              '${achievement.progress}/${achievement.target}',
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+                fontSize: 10,
+                fontWeight: FontWeight.w400,
               ),
-              const SizedBox(height: 4),
-              Container(
-                height: 3,
-                margin: const EdgeInsets.symmetric(horizontal: 8),
-                child: LinearProgressIndicator(
-                  value: progress,
-                  backgroundColor: Theme.of(context).colorScheme.outline.withOpacity(0.2),
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    color.withOpacity(0.7),
-                  ),
-                  borderRadius: BorderRadius.circular(2),
+              textAlign: TextAlign.center,
+            ),
+            
+            const SizedBox(height: 4),
+            
+            // Progress bar
+            Container(
+              height: 3,
+              margin: const EdgeInsets.symmetric(horizontal: 8),
+              child: LinearProgressIndicator(
+                value: progress,
+                backgroundColor: Theme.of(context).colorScheme.outline.withOpacity(0.2),
+                valueColor: AlwaysStoppedAnimation<Color>(
+                  color.withOpacity(isUnlocked ? 1.0 : 0.7),
                 ),
+                borderRadius: BorderRadius.circular(2),
               ),
-            ],
+            ),
           ],
+        ),
+      ),
+    );
+  }
+
+  /// Test button for achievement popup (debug mode only)
+  Widget _buildTestAchievementButton(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+      child: SizedBox(
+        width: double.infinity,
+        child: ElevatedButton.icon(
+          onPressed: () async {
+            final achievementService = Provider.of<AchievementService>(context, listen: false);
+            await achievementService.testAchievementPopup(context);
+          },
+          icon: const Icon(Icons.bug_report, size: 16),
+          label: const Text('Test Achievement Popup'),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.orange.withOpacity(0.8),
+            foregroundColor: Colors.white,
+            padding: const EdgeInsets.symmetric(vertical: 8),
+          ),
         ),
       ),
     );

@@ -94,180 +94,175 @@ class _QuizResultsScreenState extends State<QuizResultsScreen>
     final isLearnedQuiz = widget.quizType == 'learned';
 
     return Scaffold(
-      body: Stack(
-        children: [
-          // Arka plan gradyanı - öğrenilen quiz için yeşil, diğerleri için varsayılan
-          Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: isLearnedQuiz 
-                    ? [const Color(0xFF4ADE80), const Color(0xFF16A34A)] // Green gradient for learned quiz
-                    : [const Color(0xFF06D6A0), const Color(0xFF4ECDC4)], // Default gradient
-              ),
-            ),
-          ),
-
-          // Konfeti
-          Align(
-            alignment: Alignment.topCenter,
-            child: ConfettiWidget(
-              confettiController: _confettiController,
-              blastDirectionality: BlastDirectionality.explosive,
-              emissionFrequency: 0.06,
-              numberOfParticles: 40,
-              gravity: 0.12,
-              colors: const [
-                Colors.white,
-                Colors.tealAccent,
-                Colors.lightGreenAccent,
-              ],
-            ),
-          ),
-
-          // İçerik (scroll yok)
-          SafeArea(
-            child: FadeTransition(
-              opacity: _fadeAnimation,
-              child: Padding(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+      body: SafeArea(
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                child: Stack(
                   children: [
-                    const SizedBox(height: 12),
-                    // Başlık ikonu
-                    ScaleTransition(
-                      scale: _scaleAnimation,
-                      child: CircleAvatar(
-                        radius: 38,
-                        backgroundColor: Colors.white24,
-                        child: Icon(
-                          isLearnedQuiz ? Icons.school : Icons.emoji_events,
-                          color: Colors.white,
-                          size: 44,
+                    // Arka plan gradyanı - öğrenilen quiz için yeşil, diğerleri için varsayılan
+                    Container(
+                      height: constraints.maxHeight,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: isLearnedQuiz 
+                              ? [const Color(0xFF4ADE80), const Color(0xFF16A34A)] // Green gradient for learned quiz
+                              : [const Color(0xFF06D6A0), const Color(0xFF4ECDC4)], // Default gradient
                         ),
                       ),
                     ),
-                    const SizedBox(height: 12),
-                    Text(
-                      isLearnedQuiz ? 'Öğrenilenler Quiz Tamamlandı!' : 'Quiz Tamamlandı!',
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w800,
-                        color: Colors.white,
+
+                    // Konfeti
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: ConfettiWidget(
+                        confettiController: _confettiController,
+                        blastDirectionality: BlastDirectionality.explosive,
+                        emissionFrequency: 0.06,
+                        numberOfParticles: 40,
+                        gravity: 0.12,
+                        colors: const [
+                          Colors.white,
+                          Colors.tealAccent,
+                          Colors.lightGreenAccent,
+                        ],
                       ),
                     ),
-                    const SizedBox(height: 6),
-                    Text(
-                      isLearnedQuiz 
-                          ? 'Tebrikler! Öğrendiğin kelimeleri başarıyla hatırladın 🎯'
-                          : _performanceMessage(),
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
+
+                    // İçerik
+                    FadeTransition(
+                      opacity: _fadeAnimation,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            const SizedBox(height: 12),
+                            // Başlık ikonu
+                            ScaleTransition(
+                              scale: _scaleAnimation,
+                              child: CircleAvatar(
+                                radius: 38,
+                                backgroundColor: Colors.white24,
+                                child: Icon(
+                                  isLearnedQuiz ? Icons.school : Icons.emoji_events,
+                                  color: Colors.white,
+                                  size: 44,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 12),
+                            Text(
+                              isLearnedQuiz ? 'Öğrenilenler Quiz Tamamlandı!' : 'Quiz Tamamlandı!',
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.w800,
+                                color: Colors.white,
+                              ),
+                            ),
+                            const SizedBox(height: 6),
+                            Text(
+                              isLearnedQuiz 
+                                  ? 'Tebrikler! Öğrendiğin kelimeleri başarıyla hatırladın 🎯'
+                                  : _performanceMessage(),
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+
+                            // 3 mini istatistik (tek satır)
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: _miniStat(
+                                    icon: Icons.check_circle,
+                                    title: 'Doğru',
+                                    value: '${widget.score}/${widget.totalQuestions}',
+                                  ),
+                                ),
+                                const SizedBox(width: 12),
+                                Expanded(
+                                  child: _miniStat(
+                                    icon: isLearnedQuiz ? Icons.percent : Icons.bolt,
+                                    title: isLearnedQuiz ? 'Başarı' : 'XP',
+                                    value: isLearnedQuiz ? '%$percentage' : '+${widget.earnedXp}',
+                                  ),
+                                ),
+                                const SizedBox(width: 12),
+                                Expanded(
+                                  child: _miniStat(
+                                    icon: isLearnedQuiz 
+                                        ? Icons.quiz 
+                                        : (widget.leveledUp ? Icons.celebration : Icons.military_tech),
+                                    title: isLearnedQuiz ? 'Soru' : 'Seviye',
+                                    value: isLearnedQuiz 
+                                        ? '${widget.totalQuestions}' 
+                                        : 'Lv ${widget.currentLevel}',
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 16),
+                            _progressBar(percentage, perfColor),
+                            // bottom padding için alan bırak
+                            const SizedBox(height: 100),
+                          ],
+                        ),
                       ),
                     ),
-                    const SizedBox(height: 20),
-
-                    // 3 mini istatistik (tek satır)
-                    Row(
-                      children: [
-                        Expanded(
-                          child: _miniStat(
-                            icon: Icons.check_circle,
-                            title: 'Doğru',
-                            value: '${widget.score}/${widget.totalQuestions}',
-                          ),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: _miniStat(
-                            icon: isLearnedQuiz ? Icons.percent : Icons.bolt,
-                            title: isLearnedQuiz ? 'Başarı' : 'XP',
-                            value: isLearnedQuiz ? '%$percentage' : '+${widget.earnedXp}',
-                          ),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: _miniStat(
-                            icon: isLearnedQuiz 
-                                ? Icons.quiz 
-                                : (widget.leveledUp ? Icons.celebration : Icons.military_tech),
-                            title: isLearnedQuiz ? 'Soru' : 'Seviye',
-                            value: isLearnedQuiz 
-                                ? '${widget.totalQuestions}' 
-                                : 'Lv ${widget.currentLevel}',
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 16),
-                    _progressBar(percentage, perfColor),
-
-                    const Spacer(),
-
-                    // Aksiyonlar
-                    Row(
-                      children: [
-                        Expanded(
-                          child: OutlinedButton.icon(
-                            onPressed: widget.onPlayAgain,
-                            icon: const Icon(Icons.replay, color: Colors.white),
-                            label: const FittedBox(
-                              fit: BoxFit.scaleDown,
-                              child: Text(
-                                'Tekrar Dene',
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                            style: OutlinedButton.styleFrom(
-                              side: const BorderSide(color: Colors.white70, width: 1.5),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              padding: const EdgeInsets.symmetric(vertical: 14),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: ElevatedButton.icon(
-                            onPressed: () => Navigator.of(context).popUntil((r) => r.isFirst),
-                            icon: const Icon(Icons.home),
-                            label: const FittedBox(
-                              fit: BoxFit.scaleDown,
-                              child: Text(
-                                'Ana Sayfa',
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              foregroundColor: const Color(0xFF0F766E),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              padding: const EdgeInsets.symmetric(vertical: 14),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 12),
                   ],
                 ),
               ),
-            ),
-          ),
-        ],
+            );
+          },
+        ),
       ),
+      persistentFooterButtons: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Row(
+            children: [
+              Expanded(
+                child: OutlinedButton.icon(
+                  onPressed: widget.onPlayAgain,
+                  icon: const Icon(Icons.replay),
+                  label: const Text('Tekrar Oyna'),
+                  style: OutlinedButton.styleFrom(
+                    side: BorderSide(color: Theme.of(context).colorScheme.primary),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: ElevatedButton.icon(
+                  onPressed: () => Navigator.of(context).popUntil((r) => r.isFirst),
+                  icon: const Icon(Icons.home),
+                  label: const Text('Ana Menü'),
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../services/word_service.dart';
 import '../services/user_service.dart';
 import '../services/ad_service.dart';
+import '../services/achievement_listener_service.dart';
 import '../screens/dashboard_screen.dart';
 import '../screens/favorites_screen.dart';
 import '../screens/quiz_center_screen.dart';
@@ -26,6 +27,22 @@ class MainNavigation extends StatefulWidget {
 
 class _MainNavigationState extends State<MainNavigation> {
   int _currentIndex = 0;
+  final AchievementListenerService _achievementListener = AchievementListenerService();
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize achievement listener to show popups when achievements are unlocked
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _achievementListener.initialize(context);
+    });
+  }
+
+  @override
+  void dispose() {
+    _achievementListener.dispose();
+    super.dispose();
+  }
 
   void _onItemTapped(int index) {
     setState(() {

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import '../services/word_loader.dart';
+import 'package:lexiflow/services/word_loader.dart';
+import 'package:lexiflow/screens/quiz_type_select_screen.dart';
+import 'package:lexiflow/screens/category_quiz_screen.dart';
 
 class QuizCenterScreen extends StatefulWidget {
   const QuizCenterScreen({super.key});
@@ -87,15 +89,13 @@ class _QuizCenterScreenState extends State<QuizCenterScreen> {
   }
 
   void _startCategoryQuiz(String categoryKey) {
-    final categoryData = categories[categoryKey]!;
-    Navigator.pushNamed(
+    Navigator.push(
       context,
-      '/quiz/start',
-      arguments: {
-        'categoryKey': categoryKey,
-        'categoryName': categoryData['name'],
-        'categoryIcon': categoryData['icon'],
-      },
+      MaterialPageRoute(
+        builder: (context) => QuizTypeSelectScreen(
+          category: categoryKey,
+        ),
+      ),
     );
   }
 
@@ -162,7 +162,17 @@ class _QuizCenterScreenState extends State<QuizCenterScreen> {
       ),
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, '/quiz/general');
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CategoryQuizScreen(
+                category: 'common_1k',
+                categoryName: '1K Kelime',
+                categoryIcon: '🎯',
+                categoryColor: Colors.deepOrange,
+              ),
+            ),
+          );
         },
         borderRadius: BorderRadius.circular(24),
         child: Container(
@@ -305,15 +315,17 @@ class _QuizCenterScreenState extends State<QuizCenterScreen> {
         ),
         child: InkWell(
           onTap: () {
-            Navigator.pushNamed(
+            final categoryData = categories[categoryKey]!;
+            Navigator.push(
               context,
-              '/quiz/category/$categoryKey',
-              arguments: {
-                'category': categoryKey,
-                'categoryName': categoryData['name'],
-                'categoryIcon': categoryData['icon'],
-                'color': categoryColor,
-              },
+              MaterialPageRoute(
+                builder: (context) => CategoryQuizScreen(
+                  category: categoryKey,
+                  categoryName: categoryData['name']!,
+                  categoryIcon: categoryData['icon']!,
+                  categoryColor: categoryData['color'],
+                ),
+              ),
             );
           },
           borderRadius: BorderRadius.circular(22),

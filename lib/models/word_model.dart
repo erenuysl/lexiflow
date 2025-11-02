@@ -29,6 +29,8 @@ class Word extends HiveObject {
   bool isCustom; // true if added by user, false if from default word list
   @HiveField(12)
   final String? category; // Category for quiz filtering
+  @HiveField(13)
+  final DateTime? createdAt; // When the word was created/added
 
   Word({
     required this.word,
@@ -44,6 +46,7 @@ class Word extends HiveObject {
     this.srsLevel = 0,
     this.isCustom = false,
     this.category,
+    this.createdAt,
   });
 
   factory Word.fromJson(Map<String, dynamic> json) => Word(
@@ -63,6 +66,9 @@ class Word extends HiveObject {
     srsLevel: json['srsLevel'] ?? 0,
     isCustom: json['isCustom'] ?? false,
     category: json['category'],
+    createdAt: json['createdAt'] != null
+        ? DateTime.tryParse(json['createdAt'])
+        : null,
   );
 
   Map<String, dynamic> toJson() {
@@ -80,6 +86,7 @@ class Word extends HiveObject {
       'srsLevel': srsLevel,
       'isCustom': isCustom,
       'category': category,
+      'createdAt': createdAt?.toIso8601String(),
     };
   }
 }

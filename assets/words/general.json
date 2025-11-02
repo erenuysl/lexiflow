@@ -1,0 +1,5762 @@
+[
+  {
+    "word": "be",
+    "meaning": "to exist or live",
+    "tr": "olmak, var olmak",
+    "exampleSentence": "You can be anything you want to be."
+  },
+  {
+    "word": "have",
+    "meaning": "to own, possess, or hold something",
+    "tr": "sahip olmak, var",
+    "exampleSentence": "I have a new book to read."
+  },
+  {
+    "word": "do",
+    "meaning": "to perform an action or activity",
+    "tr": "yapmak",
+    "exampleSentence": "What did you do over the weekend?"
+  },
+  {
+    "word": "say",
+    "meaning": "to express something in words",
+    "tr": "söylemek, demek",
+    "exampleSentence": "Please say your name clearly."
+  },
+  {
+    "word": "go",
+    "meaning": "to move from one place to another",
+    "tr": "gitmek",
+    "exampleSentence": "We will go to the park tomorrow."
+  },
+  {
+    "word": "get",
+    "meaning": "to receive, obtain, or buy something",
+    "tr": "almak, elde etmek",
+    "exampleSentence": "I need to get some milk from the store."
+  },
+  {
+    "word": "make",
+    "meaning": "to create or produce something",
+    "exampleSentence": "She likes to make her own clothes."
+  },
+  {
+    "word": "know",
+    "meaning": "to have information in your mind",
+    "exampleSentence": "Do you know the way to the station?"
+  },
+  {
+    "word": "think",
+    "meaning": "to have a particular opinion or idea",
+    "exampleSentence": "I think this is a great idea."
+  },
+  {
+    "word": "take",
+    "meaning": "to move or carry something from one place to another",
+    "exampleSentence": "Don't forget to take your umbrella."
+  },
+  {
+    "word": "see",
+    "meaning": "to notice or become aware of someone or something by using your eyes",
+    "exampleSentence": "Did you see the beautiful sunset yesterday?"
+  },
+  {
+    "word": "come",
+    "meaning": "to move or travel towards the speaker or a particular place",
+    "exampleSentence": "Can you come to my party on Friday?"
+  },
+  {
+    "word": "want",
+    "meaning": "to desire a particular thing or to desire to do something",
+    "exampleSentence": "I want a cup of tea, please."
+  },
+  {
+    "word": "look",
+    "meaning": "to direct your eyes in a particular direction",
+    "exampleSentence": "Look at that amazing bird in the sky!"
+  },
+  {
+    "word": "use",
+    "meaning": "to do something with a machine, tool, or object for a particular purpose",
+    "exampleSentence": "You can use my pen if you need one."
+  },
+  {
+    "word": "find",
+    "meaning": "to discover something or someone unexpectedly",
+    "exampleSentence": "I can't find my keys anywhere."
+  },
+  {
+    "word": "give",
+    "meaning": "to offer something to someone",
+    "exampleSentence": "Could you give me that book?"
+  },
+  {
+    "word": "tell",
+    "meaning": "to say something to someone, usually giving them information",
+    "exampleSentence": "Can you tell me a story?"
+  },
+  {
+    "word": "work",
+    "meaning": "to do a job, especially the job you do to earn money",
+    "exampleSentence": "I have to work from 9 to 5 every day."
+  },
+  {
+    "word": "call",
+    "meaning": "to give someone or something a name",
+    "exampleSentence": "They decided to call their new dog 'Buddy'."
+  },
+  {
+    "word": "try",
+    "meaning": "to attempt to do something",
+    "exampleSentence": "You should try this cake, it's delicious."
+  },
+  {
+    "word": "ask",
+    "meaning": "to say something in order to get an answer or information",
+    "exampleSentence": "Don't be afraid to ask for help."
+  },
+  {
+    "word": "need",
+    "meaning": "to require something because it is essential",
+    "exampleSentence": "Plants need water and sunlight to grow."
+  },
+  {
+    "word": "feel",
+    "meaning": "to experience an emotion or a physical sensation",
+    "exampleSentence": "I feel happy when I listen to music."
+  },
+  {
+    "word": "become",
+    "meaning": "to begin to be something",
+    "exampleSentence": "A caterpillar will eventually become a butterfly."
+  },
+  {
+    "word": "leave",
+    "meaning": "to go away from a place or person",
+    "exampleSentence": "We have to leave the house at 8 AM."
+  },
+  {
+    "word": "put",
+    "meaning": "to move something into a particular place or position",
+    "exampleSentence": "Please put the books back on the shelf."
+  },
+  {
+    "word": "mean",
+    "meaning": "to have a particular meaning",
+    "exampleSentence": "What does this complicated word mean?"
+  },
+  {
+    "word": "keep",
+    "meaning": "to continue to have or own something",
+    "exampleSentence": "You can keep the change."
+  },
+  {
+    "word": "let",
+    "meaning": "to allow something to happen or someone to do something",
+    "exampleSentence": "My parents let me stay up late on weekends."
+  },
+  {
+    "word": "begin",
+    "meaning": "to start to do something",
+    "exampleSentence": "The movie will begin in five minutes."
+  },
+  {
+    "word": "seem",
+    "meaning": "to give the effect of being or doing something",
+    "exampleSentence": "You seem tired today."
+  },
+  {
+    "word": "help",
+    "meaning": "to make it easier for someone to do something",
+    "exampleSentence": "Can you help me carry these bags?"
+  },
+  {
+    "word": "talk",
+    "meaning": "to say things to someone as part of a conversation",
+    "exampleSentence": "I need to talk to you about our plans."
+  },
+  {
+    "word": "turn",
+    "meaning": "to move in a circular direction",
+    "exampleSentence": "Turn the page to continue reading."
+  },
+  {
+    "word": "start",
+    "meaning": "to begin doing something",
+    "exampleSentence": "Let's start the meeting."
+  },
+  {
+    "word": "show",
+    "meaning": "to let someone see something",
+    "exampleSentence": "Can you show me your new painting?"
+  },
+  {
+    "word": "hear",
+    "meaning": "to receive or become conscious of a sound using your ears",
+    "exampleSentence": "I can hear music from the next room."
+  },
+  {
+    "word": "play",
+    "meaning": "to spend time doing an enjoyable and amusing activity",
+    "exampleSentence": "The children love to play in the garden."
+  },
+  {
+    "word": "run",
+    "meaning": "to move along, faster than walking, by taking quick steps",
+    "exampleSentence": "He can run a mile in under five minutes."
+  },
+  {
+    "word": "move",
+    "meaning": "to change position",
+    "exampleSentence": "Please move your car from the driveway."
+  },
+  {
+    "word": "like",
+    "meaning": "to enjoy or approve of something or someone",
+    "exampleSentence": "I really like chocolate ice cream."
+  },
+  {
+    "word": "live",
+    "meaning": "to have your home in a particular place",
+    "exampleSentence": "They live in a small house by the sea."
+  },
+  {
+    "word": "believe",
+    "meaning": "to accept that something is true, without any proof",
+    "exampleSentence": "I believe you can achieve your goals."
+  },
+  {
+    "word": "hold",
+    "meaning": "to take and keep something in your hand or arms",
+    "exampleSentence": "Please hold my hand when we cross the street."
+  },
+  {
+    "word": "bring",
+    "meaning": "to take someone or something with you when you go somewhere",
+    "exampleSentence": "Don't forget to bring a gift to the party."
+  },
+  {
+    "word": "happen",
+    "meaning": "to take place, especially without being planned",
+    "exampleSentence": "Accidents can happen at any time."
+  },
+  {
+    "word": "write",
+    "meaning": "to make marks that represent letters, words, or numbers on a surface",
+    "exampleSentence": "She is learning how to write her name."
+  },
+  {
+    "word": "provide",
+    "meaning": "to give something that is needed or wanted to someone",
+    "exampleSentence": "The hotel will provide towels and soap."
+  },
+  {
+    "word": "sit",
+    "meaning": "to be in a position with the weight of your body on your bottom",
+    "exampleSentence": "Let's sit on this bench for a while."
+  },
+  {
+    "word": "stand",
+    "meaning": "to be in a vertical state or to put into a vertical state",
+    "exampleSentence": "Please stand up when the judge enters."
+  },
+  {
+    "word": "lose",
+    "meaning": "to be unable to find something or someone",
+    "exampleSentence": "Be careful not to lose your ticket."
+  },
+  {
+    "word": "pay",
+    "meaning": "to give money to someone for something you have bought",
+    "exampleSentence": "I need to pay the electricity bill today."
+  },
+  {
+    "word": "meet",
+    "meaning": "to see and talk to someone for the first time",
+    "exampleSentence": "It was a pleasure to meet you."
+  },
+  {
+    "word": "include",
+    "meaning": "to contain something as a part of something else",
+    "exampleSentence": "The price will include breakfast."
+  },
+  {
+    "word": "continue",
+    "meaning": "to keep happening, existing, or doing something",
+    "exampleSentence": "Please continue with your story."
+  },
+  {
+    "word": "set",
+    "meaning": "to put something in a particular place or position",
+    "exampleSentence": "She set the table for dinner."
+  },
+  {
+    "word": "learn",
+    "meaning": "to get knowledge or skill in a new subject or activity",
+    "exampleSentence": "I want to learn how to play the guitar."
+  },
+  {
+    "word": "change",
+    "meaning": "to make or become different",
+    "exampleSentence": "The leaves change color in the autumn."
+  },
+  {
+    "word": "lead",
+    "meaning": "to control a group of people, a country, or a situation",
+    "exampleSentence": "A good captain will lead the team to victory."
+  },
+  {
+    "word": "understand",
+    "meaning": "to know the meaning of something that someone says",
+    "exampleSentence": "I don't understand this math problem."
+  },
+  {
+    "word": "watch",
+    "meaning": "to look at something for a period of time",
+    "exampleSentence": "Let's watch a movie tonight."
+  },
+  {
+    "word": "follow",
+    "meaning": "to move behind someone or something",
+    "exampleSentence": "The ducklings follow their mother everywhere."
+  },
+  {
+    "word": "stop",
+    "meaning": "to finish doing something",
+    "exampleSentence": "Please stop making so much noise."
+  },
+  {
+    "word": "create",
+    "meaning": "to make something new, or invent something",
+    "exampleSentence": "An artist can create beautiful paintings."
+  },
+  {
+    "word": "speak",
+    "meaning": "to say words, to use your voice",
+    "exampleSentence": "She can speak three languages fluently."
+  },
+  {
+    "word": "read",
+    "meaning": "to look at and understand the meaning of written words",
+    "exampleSentence": "I love to read books in my free time."
+  },
+  {
+    "word": "allow",
+    "meaning": "to give permission for someone to do something",
+    "exampleSentence": "Smoking is not allowed in this building."
+  },
+  {
+    "word": "add",
+    "meaning": "to put something with something else",
+    "exampleSentence": "Please add some sugar to my coffee."
+  },
+  {
+    "word": "spend",
+    "meaning": "to give money as a payment for something",
+    "exampleSentence": "I plan to spend my vacation at the beach."
+  },
+  {
+    "word": "grow",
+    "meaning": "to increase in size or amount",
+    "exampleSentence": "Children grow so quickly."
+  },
+  {
+    "word": "open",
+    "meaning": "to move a door, window, or lid so that it is no longer closed",
+    "exampleSentence": "Could you please open the window?"
+  },
+  {
+    "word": "walk",
+    "meaning": "to move along by putting one foot in front of the other",
+    "exampleSentence": "I like to walk my dog in the park."
+  },
+  {
+    "word": "win",
+    "meaning": "to achieve first position and/or get a prize in a competition",
+    "exampleSentence": "I hope our team will win the game."
+  },
+  {
+    "word": "offer",
+    "meaning": "to ask someone if they would like to have something",
+    "exampleSentence": "He decided to offer her the job."
+  },
+  {
+    "word": "remember",
+    "meaning": "to be able to bring back a piece of information into your mind",
+    "exampleSentence": "I can't remember his name."
+  },
+  {
+    "word": "love",
+    "meaning": "to have very strong feelings of affection for someone",
+    "exampleSentence": "Parents love their children unconditionally."
+  },
+  {
+    "word": "consider",
+    "meaning": "to think carefully about something",
+    "exampleSentence": "You should consider all the options."
+  },
+  {
+    "word": "appear",
+    "meaning": "to start to be seen or to be present",
+    "exampleSentence": "A rainbow appeared in the sky after the rain."
+  },
+  {
+    "word": "buy",
+    "meaning": "to get something by paying money for it",
+    "exampleSentence": "I need to buy a new pair of shoes."
+  },
+  {
+    "word": "wait",
+    "meaning": "to allow time to go by until a future event happens",
+    "exampleSentence": "Please wait here until I return."
+  },
+  {
+    "word": "serve",
+    "meaning": "to provide food or drinks",
+    "exampleSentence": "The restaurant will serve dinner until 10 PM."
+  },
+  {
+    "word": "die",
+    "meaning": "to stop living",
+    "exampleSentence": "All living things eventually die."
+  },
+  {
+    "word": "send",
+    "meaning": "to cause something to go from one place to another, especially by post or email",
+    "exampleSentence": "I will send you an email with the details."
+  },
+  {
+    "word": "expect",
+    "meaning": "to think that something will happen",
+    "exampleSentence": "I expect to finish the project by Friday."
+  },
+  {
+    "word": "build",
+    "meaning": "to construct something by putting parts or materials together",
+    "exampleSentence": "They plan to build a new bridge."
+  },
+  {
+    "word": "stay",
+    "meaning": "to remain in the same place or condition",
+    "exampleSentence": "You can stay at our house for the weekend."
+  },
+  {
+    "word": "fall",
+    "meaning": "to suddenly go down onto the ground or towards the ground",
+    "exampleSentence": "Be careful not to fall on the ice."
+  },
+  {
+    "word": "cut",
+    "meaning": "to break the surface of something, or to divide or make something smaller, using a sharp tool",
+    "exampleSentence": "She cut the cake into eight pieces."
+  },
+  {
+    "word": "reach",
+    "meaning": "to arrive at a place, especially after spending a long time traveling",
+    "exampleSentence": "We will reach our destination in an hour."
+  },
+  {
+    "word": "kill",
+    "meaning": "to cause someone or something to die",
+    "exampleSentence": "The poison can kill a person in minutes."
+  },
+  {
+    "word": "remain",
+    "meaning": "to stay in the same place or in the same condition",
+    "exampleSentence": "Only two minutes remain in the game."
+  },
+  {
+    "word": "suggest",
+    "meaning": "to mention an idea, possible plan, or action for other people to consider",
+    "exampleSentence": "I suggest we go for a walk."
+  },
+  {
+    "word": "raise",
+    "meaning": "to lift something to a higher position",
+    "exampleSentence": "Please raise your hand if you have a question."
+  },
+  {
+    "word": "pass",
+    "meaning": "to go past something or someone",
+    "exampleSentence": "The car was moving too fast to pass safely."
+  },
+  {
+    "word": "sell",
+    "meaning": "to give something to someone else in return for money",
+    "exampleSentence": "He wants to sell his old guitar."
+  },
+  {
+    "word": "require",
+    "meaning": "to need something or make something necessary",
+    "exampleSentence": "This job will require a lot of hard work."
+  },
+  {
+    "word": "report",
+    "meaning": "to give a description of something or information about it to someone",
+    "exampleSentence": "The witness must report everything she saw."
+  },
+  {
+    "word": "decide",
+    "meaning": "to choose something, especially after thinking carefully about several possibilities",
+    "exampleSentence": "I can't decide which shirt to wear."
+  },
+  {
+    "word": "pull",
+    "meaning": "to move something towards yourself",
+    "exampleSentence": "Pull the door to open it."
+  },
+  {
+    "word": "break",
+    "meaning": "to separate into pieces",
+    "exampleSentence": "Be careful not to break the glass."
+  },
+  {
+    "word": "pick",
+    "meaning": "to choose or select something",
+    "exampleSentence": "Pick your favorite color."
+  },
+  {
+    "word": "wear",
+    "meaning": "to have clothing on your body",
+    "exampleSentence": "What should I wear to the party?"
+  },
+  {
+    "word": "carry",
+    "meaning": "to hold and transport something",
+    "exampleSentence": "Can you help me carry these boxes?"
+  },
+  {
+    "word": "catch",
+    "meaning": "to capture or grab something",
+    "exampleSentence": "Try to catch the ball!"
+  },
+  {
+    "word": "drive",
+    "meaning": "to operate a vehicle",
+    "exampleSentence": "I learned to drive when I was 18."
+  },
+  {
+    "word": "throw",
+    "meaning": "to propel something through the air",
+    "exampleSentence": "Throw the ball to me."
+  },
+  {
+    "word": "return",
+    "meaning": "to come or go back to a place",
+    "exampleSentence": "I will return home by 6 PM."
+  },
+  {
+    "word": "explain",
+    "meaning": "to make something clear or easy to understand",
+    "exampleSentence": "Can you explain this concept to me?"
+  },
+  {
+    "word": "of",
+    "meaning": "expressing the relationship between a part and a whole",
+    "tr": "-ın, -in, -nın, -nin",
+    "exampleSentence": "The color of the sky is blue."
+  },
+  {
+    "word": "to",
+    "meaning": "expressing motion in the direction of a particular location",
+    "tr": "-a, -e (yönelme)",
+    "exampleSentence": "I am going to the store."
+  },
+  {
+    "word": "in",
+    "meaning": "expressing the situation of something that is enclosed or surrounded",
+    "tr": "içinde, -de, -da",
+    "exampleSentence": "The keys are in the drawer."
+  },
+  {
+    "word": "for",
+    "meaning": "intended to be given to or used by someone or something",
+    "tr": "için",
+    "exampleSentence": "This letter is for you."
+  },
+  {
+    "word": "on",
+    "meaning": "physically in contact with and supported by a surface",
+    "tr": "üstünde, -de, -da",
+    "exampleSentence": "The cat is sleeping on the sofa."
+  },
+  {
+    "word": "with",
+    "meaning": "accompanied by someone or something",
+    "tr": "ile, birlikte",
+    "exampleSentence": "She went to the concert with her friends."
+  },
+  {
+    "word": "at",
+    "meaning": "expressing location or arrival in a particular place",
+    "tr": "-de, -da (konum)",
+    "exampleSentence": "Let's meet at the coffee shop."
+  },
+  {
+    "word": "by",
+    "meaning": "indicating the agent performing an action",
+    "tr": "tarafından, ile",
+    "exampleSentence": "The book was written by a famous author."
+  },
+  {
+    "word": "from",
+    "meaning": "indicating the starting point of a journey or action",
+    "tr": "-den, -dan",
+    "exampleSentence": "He is from a small town in Italy."
+  },
+  {
+    "word": "about",
+    "meaning": "on the subject of; concerning",
+    "tr": "hakkında",
+    "exampleSentence": "We were talking about our vacation plans."
+  },
+  {
+    "word": "this",
+    "meaning": "used to identify a specific person or thing close at hand",
+    "tr": "bu",
+    "exampleSentence": "This is my favorite song."
+  },
+  {
+    "word": "that",
+    "meaning": "used to identify a specific person or thing observed by the speaker",
+    "tr": "şu, o",
+    "exampleSentence": "Can you see that bird on the tree?"
+  },
+  {
+    "word": "but",
+    "meaning": "used to introduce a phrase or clause contrasting with what has already been mentioned",
+    "tr": "ama, fakat",
+    "exampleSentence": "I wanted to come, but I was too busy."
+  },
+  {
+    "word": "or",
+    "meaning": "used to link alternatives",
+    "tr": "veya, ya da",
+    "exampleSentence": "Would you like tea or coffee?"
+  },
+  {
+    "word": "if",
+    "meaning": "introducing a conditional clause",
+    "tr": "eğer",
+    "exampleSentence": "If it rains, we will stay home."
+  },
+  {
+    "word": "time",
+    "meaning": "the indefinite continued progress of existence and events",
+    "tr": "zaman, vakit",
+    "exampleSentence": "We don't have much time left."
+  },
+  {
+    "word": "person",
+    "meaning": "a human being",
+    "tr": "kişi, insan",
+    "exampleSentence": "He is a very friendly person."
+  },
+  {
+    "word": "year",
+    "meaning": "the time taken by the earth to make one revolution around the sun",
+    "tr": "yıl, sene",
+    "exampleSentence": "I will graduate next year."
+  },
+  {
+    "word": "way",
+    "meaning": "a method, style, or manner of doing something",
+    "tr": "yol, yöntem",
+    "exampleSentence": "There must be a better way to solve this problem."
+  },
+  {
+    "word": "day",
+    "meaning": "a period of twenty-four hours",
+    "tr": "gün",
+    "exampleSentence": "Have a wonderful day!"
+  },
+  {
+    "word": "thing",
+    "meaning": "an object, action, or idea",
+    "tr": "şey, nesne",
+    "exampleSentence": "What is that thing on your desk?"
+  },
+  {
+    "word": "man",
+    "meaning": "an adult male human being",
+    "tr": "adam, erkek",
+    "exampleSentence": "A man was waiting at the bus stop."
+  },
+  {
+    "word": "world",
+    "meaning": "the earth, together with all of its countries and people",
+    "tr": "dünya",
+    "exampleSentence": "Technology is changing the world."
+  },
+  {
+    "word": "life",
+    "meaning": "the condition that distinguishes animals and plants from inorganic matter",
+    "tr": "hayat, yaşam",
+    "exampleSentence": "Life is a beautiful journey."
+  },
+  {
+    "word": "hand",
+    "meaning": "the end part of a person's arm beyond the wrist",
+    "tr": "el",
+    "exampleSentence": "She held the flower in her hand."
+  },
+  {
+    "word": "part",
+    "meaning": "a piece or portion of something",
+    "tr": "parça, bölüm",
+    "exampleSentence": "The best part of the movie was the ending."
+  },
+  {
+    "word": "child",
+    "meaning": "a young human being below the age of puberty",
+    "tr": "çocuk",
+    "exampleSentence": "Every child deserves to be happy."
+  },
+  {
+    "word": "eye",
+    "meaning": "the organ of sight",
+    "tr": "göz",
+    "exampleSentence": "He has bright blue eyes."
+  },
+  {
+    "word": "woman",
+    "meaning": "an adult female human being",
+    "tr": "kadın",
+    "exampleSentence": "The woman in the red dress is a famous actress."
+  },
+  {
+    "word": "place",
+    "meaning": "a particular position or point in space",
+    "tr": "yer, mekan",
+    "exampleSentence": "This is my favorite place in the city."
+  },
+  {
+    "word": "week",
+    "meaning": "a period of seven days",
+    "tr": "hafta",
+    "exampleSentence": "What are your plans for this week?"
+  },
+  {
+    "word": "case",
+    "meaning": "an instance of a particular situation",
+    "tr": "durum, vaka",
+    "exampleSentence": "In that case, you should call a doctor."
+  },
+  {
+    "word": "point",
+    "meaning": "a particular spot, place, or position in an area or on a map",
+    "tr": "nokta, konu",
+    "exampleSentence": "You made a very good point in your argument."
+  },
+  {
+    "word": "government",
+    "meaning": "the group of people with the authority to govern a country or state",
+    "tr": "hükümet, devlet",
+    "exampleSentence": "The government is working on new reforms."
+  },
+  {
+    "word": "company",
+    "meaning": "a commercial business",
+    "tr": "şirket",
+    "exampleSentence": "She works for a multinational company."
+  },
+  {
+    "word": "number",
+    "meaning": "an arithmetical value, expressed by a word, symbol, or figure",
+    "tr": "sayı, numara",
+    "exampleSentence": "Can you tell me your phone number?"
+  },
+  {
+    "word": "group",
+    "meaning": "a number of people or things that are located close together, or are considered or classed together",
+    "tr": "grup",
+    "exampleSentence": "A group of friends went on a trip together."
+  },
+  {
+    "word": "problem",
+    "meaning": "a matter or situation regarded as unwelcome or harmful",
+    "tr": "sorun, problem",
+    "exampleSentence": "I will find a solution to this problem."
+  },
+  {
+    "word": "fact",
+    "meaning": "a thing that is known or proved to be true",
+    "tr": "gerçek, olgu",
+    "exampleSentence": "It is a scientific fact that water boils at 100 degrees Celsius."
+  },
+  {
+    "word": "good",
+    "meaning": "to be desired or approved of",
+    "tr": "iyi",
+    "exampleSentence": "He did a good job on the project."
+  },
+  {
+    "word": "new",
+    "meaning": "not existing before; made, introduced, or discovered recently",
+    "tr": "yeni",
+    "exampleSentence": "I bought a new phone yesterday."
+  },
+  {
+    "word": "first",
+    "meaning": "coming before all others in time or order",
+    "tr": "ilk, birinci",
+    "exampleSentence": "She was the first to finish the race."
+  },
+  {
+    "word": "last",
+    "meaning": "coming after all others in time or order",
+    "tr": "son, sonuncu",
+    "exampleSentence": "This is the last episode of the series."
+  },
+  {
+    "word": "long",
+    "meaning": "measuring a great distance from end to end",
+    "tr": "uzun",
+    "exampleSentence": "It's a long way to the nearest city."
+  },
+  {
+    "word": "great",
+    "meaning": "of an extent, amount, or intensity considerably above the normal or average",
+    "tr": "harika, büyük",
+    "exampleSentence": "Alexander the Great was a famous conqueror."
+  },
+  {
+    "word": "little",
+    "meaning": "small in size, amount, or degree",
+    "tr": "küçük, az",
+    "exampleSentence": "I only need a little sugar for my coffee."
+  },
+  {
+    "word": "own",
+    "meaning": "used with a possessive to emphasize that something belongs to someone",
+    "tr": "kendi",
+    "exampleSentence": "I would like to have my own business one day."
+  },
+  {
+    "word": "other",
+    "meaning": "used to refer to a person or thing that is different from one already mentioned",
+    "tr": "diğer, başka",
+    "exampleSentence": "Some people like tea, while other people prefer coffee."
+  },
+  {
+    "word": "old",
+    "meaning": "having lived for a long time; no longer young",
+    "tr": "eski, yaşlı",
+    "exampleSentence": "My grandfather is very old but still active."
+  },
+  {
+    "word": "right",
+    "meaning": "morally good, justified, or acceptable",
+    "tr": "doğru, sağ",
+    "exampleSentence": "You did the right thing by telling the truth."
+  },
+  {
+    "word": "big",
+    "meaning": "of considerable size or extent",
+    "tr": "büyük",
+    "exampleSentence": "Elephants are very big animals."
+  },
+  {
+    "word": "high",
+    "meaning": "of great vertical extent",
+    "tr": "yüksek",
+    "exampleSentence": "The airplane is flying high in the sky."
+  },
+  {
+    "word": "different",
+    "meaning": "not the same as another or each other",
+    "tr": "farklı",
+    "exampleSentence": "My brother and I have very different personalities."
+  },
+  {
+    "word": "small",
+    "meaning": "of a size that is less than normal or usual",
+    "tr": "küçük",
+    "exampleSentence": "An ant is a very small insect."
+  },
+  {
+    "word": "large",
+    "meaning": "of considerable or relatively great size, extent, or capacity",
+    "tr": "geniş, büyük",
+    "exampleSentence": "They live in a large house with a beautiful garden."
+  },
+  {
+    "word": "next",
+    "meaning": "coming immediately after the present one in time, order, or space",
+    "tr": "sonraki, bir sonraki",
+    "exampleSentence": "The next train to Ankara will depart from platform 3."
+  },
+  {
+    "word": "early",
+    "meaning": "happening or done before the usual or expected time",
+    "tr": "erken",
+    "exampleSentence": "I have to wake up early for my flight tomorrow."
+  },
+  {
+    "word": "young",
+    "meaning": "having lived or existed for only a short time",
+    "tr": "genç",
+    "exampleSentence": "The young artist showed great talent."
+  },
+  {
+    "word": "important",
+    "meaning": "of great significance or value",
+    "tr": "önemli",
+    "exampleSentence": "It is important to eat a healthy diet."
+  },
+  {
+    "word": "few",
+    "meaning": "a small number of",
+    "tr": "az, bir kaç",
+    "exampleSentence": "Only a few students passed the difficult exam."
+  },
+  {
+    "word": "public",
+    "meaning": "concerning the people as a whole",
+    "tr": "halk, kamu",
+    "exampleSentence": "The city opened a new public library."
+  },
+  {
+    "word": "bad",
+    "meaning": "of poor quality or a low standard",
+    "tr": "kötü",
+    "exampleSentence": "Eating too much junk food is a bad habit."
+  },
+  {
+    "word": "same",
+    "meaning": "identical; not different",
+    "tr": "aynı",
+    "exampleSentence": "We are wearing the same shirt today."
+  },
+  {
+    "word": "able",
+    "meaning": "having the power, skill, means, or opportunity to do something",
+    "tr": "muktedir, -ebilmek",
+    "exampleSentence": "After weeks of practice, she was able to play the song perfectly."
+  },
+  {
+    "word": "so",
+    "meaning": "to such a great extent",
+    "tr": "çok, bu yüzden",
+    "exampleSentence": "It was so cold that the lake froze."
+  },
+  {
+    "word": "up",
+    "meaning": "towards a higher place or position",
+    "tr": "yukarı",
+    "exampleSentence": "The balloon went up into the sky."
+  },
+  {
+    "word": "out",
+    "meaning": "moving or appearing to move away from a particular place",
+    "tr": "dışarı",
+    "exampleSentence": "Please take the garbage out."
+  },
+  {
+    "word": "then",
+    "meaning": "at that time; after that",
+    "tr": "o zaman, sonra",
+    "exampleSentence": "First I will finish my homework, and then I will watch TV."
+  },
+  {
+    "word": "now",
+    "meaning": "at the present time or moment",
+    "tr": "şimdi",
+    "exampleSentence": "We must leave now or we will be late."
+  },
+  {
+    "word": "when",
+    "meaning": "at what time",
+    "tr": "ne zaman",
+    "exampleSentence": "When is your birthday?"
+  },
+  {
+    "word": "more",
+    "meaning": "a greater or additional amount or degree",
+    "tr": "daha fazla",
+    "exampleSentence": "I need more time to finish this task."
+  },
+  {
+    "word": "also",
+    "meaning": "in addition; too",
+    "tr": "ayrıca, de, da",
+    "exampleSentence": "She is a talented musician and also a great painter."
+  },
+  {
+    "word": "here",
+    "meaning": "in, at, or to this place or position",
+    "tr": "burada, buraya",
+    "exampleSentence": "Please sign your name here."
+  },
+  {
+    "word": "just",
+    "meaning": "exactly or only",
+    "tr": "sadece, az önce",
+    "exampleSentence": "I just need five more minutes."
+  },
+  {
+    "word": "very",
+    "meaning": "in a high degree; extremely",
+    "tr": "çok",
+    "exampleSentence": "The movie was very interesting."
+  },
+  {
+    "word": "over",
+    "meaning": "extending directly upwards from",
+    "tr": "üzerinde, bitmiş",
+    "exampleSentence": "The plane flew over the mountains."
+  },
+  {
+    "word": "back",
+    "meaning": "to or toward the rear",
+    "tr": "geri, arka",
+    "exampleSentence": "He looked back but saw nothing."
+  },
+  {
+    "word": "even",
+    "meaning": "used to emphasize something surprising",
+    "tr": "hatta, bile",
+    "exampleSentence": "He can't even remember his own phone number."
+  },
+  {
+    "word": "well",
+    "meaning": "in a good or satisfactory way",
+    "tr": "iyi, peki",
+    "exampleSentence": "She speaks English very well."
+  },
+  {
+    "word": "down",
+    "meaning": "towards or in a lower place or position",
+    "tr": "aşağı",
+    "exampleSentence": "The sun is going down."
+  },
+  {
+    "word": "still",
+    "meaning": "continuing to happen or exist",
+    "tr": "hala",
+    "exampleSentence": "He is 70, but he still works every day."
+  },
+  {
+    "word": "never",
+    "meaning": "at no time in the past or future",
+    "tr": "asla, hiç",
+    "exampleSentence": "I have never been to Japan."
+  },
+  {
+    "word": "always",
+    "meaning": "on all occasions; at all times",
+    "tr": "her zaman, daima",
+    "exampleSentence": "He always drinks coffee in the morning."
+  },
+  {
+    "word": "really",
+    "meaning": "in actual fact, as opposed to what is said or imagined",
+    "tr": "gerçekten",
+    "exampleSentence": "It's a really beautiful day."
+  },
+  {
+    "word": "why",
+    "meaning": "for what reason or purpose",
+    "tr": "neden, niçin",
+    "exampleSentence": "Why did you choose this university?"
+  },
+  {
+    "word": "water",
+    "meaning": "a colorless, transparent, odorless liquid",
+    "tr": "su",
+    "exampleSentence": "It's important to drink plenty of water."
+  },
+  {
+    "word": "money",
+    "meaning": "a current medium of exchange in the form of coins and banknotes",
+    "tr": "para",
+    "exampleSentence": "He is saving money to buy a car."
+  },
+  {
+    "word": "story",
+    "meaning": "an account of imaginary or real people and events told for entertainment",
+    "tr": "hikaye",
+    "exampleSentence": "My grandfather told me a fascinating story."
+  },
+  {
+    "word": "book",
+    "meaning": "a written or printed work consisting of pages glued or sewn together",
+    "tr": "kitap",
+    "exampleSentence": "She is reading a book about history."
+  },
+  {
+    "word": "home",
+    "meaning": "the place where one lives permanently",
+    "tr": "ev",
+    "exampleSentence": "There's no place like home."
+  },
+  {
+    "word": "room",
+    "meaning": "a part or division of a building enclosed by walls, floor, and ceiling",
+    "tr": "oda",
+    "exampleSentence": "My room is on the second floor."
+  },
+  {
+    "word": "area",
+    "meaning": "a region or part of a town, a country, or the world",
+    "tr": "alan, bölge",
+    "exampleSentence": "This is a residential area."
+  },
+  {
+    "word": "job",
+    "meaning": "a paid position of regular employment",
+    "tr": "iş, meslek",
+    "exampleSentence": "He is looking for a new job."
+  },
+  {
+    "word": "family",
+    "meaning": "a group consisting of parents and children living together",
+    "tr": "aile",
+    "exampleSentence": "My family is very important to me."
+  },
+  {
+    "word": "friend",
+    "meaning": "a person whom one knows and with whom one has a bond of mutual affection",
+    "tr": "arkadaş",
+    "exampleSentence": "A good friend is hard to find."
+  },
+  {
+    "word": "school",
+    "meaning": "an institution for educating children",
+    "tr": "okul",
+    "exampleSentence": "The children go to school by bus."
+  },
+  {
+    "word": "student",
+    "meaning": "a person who is studying at a school or college",
+    "tr": "öğrenci",
+    "exampleSentence": "She is a student at a prestigious university."
+  },
+  {
+    "word": "city",
+    "meaning": "a large town",
+    "tr": "şehir",
+    "exampleSentence": "Istanbul is a very crowded city."
+  },
+  {
+    "word": "country",
+    "meaning": "a nation with its own government, occupying a particular territory",
+    "tr": "ülke, kırsal bölge",
+    "exampleSentence": "They moved from the city to the country."
+  },
+  {
+    "word": "car",
+    "meaning": "a road vehicle, typically with four wheels, powered by an internal combustion engine",
+    "tr": "araba",
+    "exampleSentence": "My car needs to be repaired."
+  },
+  {
+    "word": "door",
+    "meaning": "a hinged, sliding, or revolving barrier at the entrance to a building, room, or vehicle",
+    "tr": "kapı",
+    "exampleSentence": "Please close the door behind you."
+  },
+  {
+    "word": "power",
+    "meaning": "the ability or capacity to do something or act in a particular way",
+    "tr": "güç",
+    "exampleSentence": "Knowledge is power."
+  },
+  {
+    "word": "mother",
+    "meaning": "a female parent",
+    "tr": "anne",
+    "exampleSentence": "My mother makes the best cookies."
+  },
+  {
+    "word": "father",
+    "meaning": "a male parent",
+    "tr": "baba",
+    "exampleSentence": "My father taught me how to ride a bike."
+  },
+  {
+    "word": "important",
+    "meaning": "of great significance or value",
+    "tr": "önemli",
+    "exampleSentence": "It is important to listen to others."
+  },
+  {
+    "word": "political",
+    "meaning": "relating to the government or public affairs of a country",
+    "tr": "politik, siyasi",
+    "exampleSentence": "He has a future in a political career."
+  },
+  {
+    "word": "possible",
+    "meaning": "able to be done or achieved",
+    "tr": "mümkün, olası",
+    "exampleSentence": "Is it possible to finish the project by tomorrow?"
+  },
+  {
+    "word": "real",
+    "meaning": "actually existing as a thing or occurring in fact; not imaginary",
+    "tr": "gerçek",
+    "exampleSentence": "This is a story about real life events."
+  },
+  {
+    "word": "sure",
+    "meaning": "completely confident that one is right",
+    "tr": "emin",
+    "exampleSentence": "Are you sure you locked the door?"
+  },
+  {
+    "word": "white",
+    "meaning": "of the color of milk or fresh snow",
+    "tr": "beyaz",
+    "exampleSentence": "She wore a beautiful white dress."
+  },
+  {
+    "word": "black",
+    "meaning": "of the very darkest color owing to the absence of or complete absorption of light",
+    "tr": "siyah",
+    "exampleSentence": "He has a sleek black car."
+  },
+  {
+    "word": "red",
+    "meaning": "of a color at the end of the spectrum next to orange and opposite violet",
+    "tr": "kırmızı",
+    "exampleSentence": "The red apple looked delicious."
+  },
+  {
+    "word": "blue",
+    "meaning": "of a color intermediate between green and violet",
+    "tr": "mavi",
+    "exampleSentence": "The sky is clear and blue today."
+  },
+  {
+    "word": "green",
+    "meaning": "of the color between blue and yellow in the spectrum",
+    "tr": "yeşil",
+    "exampleSentence": "The grass is always greener on the other side."
+  },
+  {
+    "word": "eat",
+    "meaning": "to put or take food into the mouth, chew it, and swallow it",
+    "tr": "yemek yemek",
+    "exampleSentence": "What time do you usually eat dinner?"
+  },
+  {
+    "word": "drink",
+    "meaning": "to take a liquid into the mouth and swallow it",
+    "tr": "içmek",
+    "exampleSentence": "It's important to drink plenty of water."
+  },
+  {
+    "word": "sleep",
+    "meaning": "to rest your mind and body by closing your eyes",
+    "tr": "uyumak",
+    "exampleSentence": "I need to sleep for at least eight hours tonight."
+  },
+  {
+    "word": "idea",
+    "meaning": "a thought or suggestion as to a possible course of action",
+    "tr": "fikir",
+    "exampleSentence": "That's a brilliant idea for the new project."
+  },
+  {
+    "word": "study",
+    "meaning": "the devotion of time and attention to acquiring knowledge",
+    "tr": "ders çalışmak, araştırma",
+    "exampleSentence": "You need to study hard for your final exams."
+  },
+  {
+    "word": "body",
+    "meaning": "the physical structure of a person or an animal",
+    "tr": "vücut, gövde",
+    "exampleSentence": "Regular exercise is good for your body and mind."
+  },
+  {
+    "word": "mind",
+    "meaning": "the element of a person that enables them to be aware of the world and their experiences",
+    "tr": "zihin, akıl",
+    "exampleSentence": "Meditation can help to calm the mind."
+  },
+  {
+    "word": "question",
+    "meaning": "a sentence worded so as to elicit information",
+    "tr": "soru",
+    "exampleSentence": "If you don't understand, please ask a question."
+  },
+  {
+    "word": "answer",
+    "meaning": "a thing said, written, or done to deal with a question, statement, or situation",
+    "tr": "cevap",
+    "exampleSentence": "I'm still waiting for an answer to my email."
+  },
+  {
+    "word": "music",
+    "meaning": "vocal or instrumental sounds combined in such a way as to produce beauty of form, harmony, and expression of emotion",
+    "tr": "müzik",
+    "exampleSentence": "I like to listen to music while I work."
+  },
+  {
+    "word": "air",
+    "meaning": "the invisible gaseous substance surrounding the earth",
+    "tr": "hava",
+    "exampleSentence": "Let's go outside and get some fresh air."
+  },
+  {
+    "word": "fire",
+    "meaning": "combustion or burning, in which substances combine chemically with oxygen from the air and typically give out bright light, heat, and smoke",
+    "tr": "ateş",
+    "exampleSentence": "The campers sat around the fire to stay warm."
+  },
+  {
+    "word": "light",
+    "meaning": "the natural agent that stimulates sight and makes things visible",
+    "tr": "ışık, hafif",
+    "exampleSentence": "Could you please turn on the light?"
+  },
+  {
+    "word": "sound",
+    "meaning": "vibrations that travel through the air or another medium and can be heard when they reach a person's or animal's ear",
+    "tr": "ses",
+    "exampleSentence": "The only sound was the gentle whisper of the wind."
+  },
+  {
+    "word": "picture",
+    "meaning": "a painting, drawing, or photograph of someone or something",
+    "tr": "resim, fotoğraf",
+    "exampleSentence": "She hung a beautiful picture on the wall."
+  },
+  {
+    "word": "animal",
+    "meaning": "a living organism that feeds on organic matter",
+    "tr": "hayvan",
+    "exampleSentence": "The lion is known as the king of the animals."
+  },
+  {
+    "word": "office",
+    "meaning": "a room, set of rooms, or building used as a place for commercial, professional, or bureaucratic work",
+    "tr": "ofis",
+    "exampleSentence": "I have to go to the office early tomorrow."
+  },
+  {
+    "word": "system",
+    "meaning": "a set of things working together as parts of a mechanism or an interconnecting network",
+    "tr": "sistem",
+    "exampleSentence": "The new computer system is much faster."
+  },
+  {
+    "word": "history",
+    "meaning": "the study of past events, particularly in human affairs",
+    "tr": "tarih",
+    "exampleSentence": "I am reading a book about ancient Roman history."
+  },
+  {
+    "word": "information",
+    "meaning": "facts provided or learned about something or someone",
+    "tr": "bilgi",
+    "exampleSentence": "For more information, please visit our website."
+  },
+  {
+    "word": "future",
+    "meaning": "the time or a period of time following the moment of speaking or writing",
+    "tr": "gelecek",
+    "exampleSentence": "We need to save money for the future."
+  },
+  {
+    "word": "past",
+    "meaning": "the time that has gone by",
+    "tr": "geçmiş",
+    "exampleSentence": "It's important to learn from the past."
+  },
+  {
+    "word": "present",
+    "meaning": "the period of time now occurring",
+    "tr": "şimdi, mevcut, hediye",
+    "exampleSentence": "Try to live in the present moment."
+  },
+  {
+    "word": "law",
+    "meaning": "the system of rules which a particular country or community recognizes as regulating the actions of its members",
+    "tr": "hukuk, yasa",
+    "exampleSentence": "No one is above the law."
+  },
+  {
+    "word": "end",
+    "meaning": "a final part of something",
+    "tr": "son",
+    "exampleSentence": "This is the end of the road."
+  },
+  {
+    "word": "happy",
+    "meaning": "feeling or showing pleasure or contentment",
+    "tr": "mutlu",
+    "exampleSentence": "A simple walk on the beach makes me happy."
+  },
+  {
+    "word": "sad",
+    "meaning": "feeling or showing sorrow; unhappy",
+    "tr": "üzgün",
+    "exampleSentence": "She was sad to hear the bad news."
+  },
+  {
+    "word": "beautiful",
+    "meaning": "pleasing the senses or mind aesthetically",
+    "tr": "güzel",
+    "exampleSentence": "The view from the top of the mountain is beautiful."
+  },
+  {
+    "word": "easy",
+    "meaning": "achieved without great effort; presenting few difficulties",
+    "tr": "kolay",
+    "exampleSentence": "The first question on the test was very easy."
+  },
+  {
+    "word": "difficult",
+    "meaning": "needing much effort or skill to accomplish, deal with, or understand",
+    "tr": "zor",
+    "exampleSentence": "Learning a new language can be difficult at first."
+  },
+  {
+    "word": "hard",
+    "meaning": "solid, firm, and rigid; not easily broken, bent, or pierced",
+    "tr": "zor, sert",
+    "exampleSentence": "Diamonds are the hardest natural substance."
+  },
+  {
+    "word": "hot",
+    "meaning": "having a high degree of heat or a high temperature",
+    "tr": "sıcak",
+    "exampleSentence": "Be careful, the soup is very hot."
+  },
+  {
+    "word": "cold",
+    "meaning": "of or at a low or relatively low temperature",
+    "tr": "soğuk",
+    "exampleSentence": "It is a cold day in winter."
+  },
+  {
+    "word": "near",
+    "meaning": "at or to a short distance away; nearby",
+    "tr": "yakın",
+    "exampleSentence": "Is there a supermarket near here?"
+  },
+  {
+    "word": "far",
+    "meaning": "at, to, or by a great distance",
+    "tr": "uzak",
+    "exampleSentence": "The airport is far from the city center."
+  },
+  {
+    "word": "morning",
+    "meaning": "the period of time from sunrise to noon",
+    "tr": "sabah",
+    "exampleSentence": "I enjoy a cup of coffee every morning."
+  },
+  {
+    "word": "night",
+    "meaning": "the period from sunset to sunrise in each twenty-four hours",
+    "tr": "gece",
+    "exampleSentence": "The stars are very bright at night."
+  },
+  {
+    "word": "hour",
+    "meaning": "a period of time equal to sixty minutes",
+    "tr": "saat (süre)",
+    "exampleSentence": "The meeting will last for one hour."
+  },
+  {
+    "word": "minute",
+    "meaning": "a period of time equal to sixty seconds",
+    "tr": "dakika",
+    "exampleSentence": "I will be ready in a few minutes."
+  },
+  {
+    "word": "second",
+    "meaning": "a unit of time equal to one sixtieth of a minute",
+    "tr": "saniye",
+    "exampleSentence": "Wait a second, I forgot my keys."
+  },
+  {
+    "word": "head",
+    "meaning": "the upper part of the human body, containing the brain, eyes, ears, nose, and mouth",
+    "tr": "baş, kafa",
+    "exampleSentence": "He nodded his head in agreement."
+  },
+  {
+    "word": "face",
+    "meaning": "the front part of a person's head from the forehead to the chin",
+    "tr": "yüz",
+    "exampleSentence": "She has a happy smile on her face."
+  },
+  {
+    "word": "foot",
+    "meaning": "the lower extremity of the leg below the ankle",
+    "tr": "ayak",
+    "exampleSentence": "My foot hurts after the long walk."
+  },
+  {
+    "word": "side",
+    "meaning": "a position to the left or right of an object, place, or central point",
+    "tr": "yan, taraf",
+    "exampleSentence": "Please write your name on the right side of the paper."
+  },
+  {
+    "word": "line",
+    "meaning": "a long, narrow mark or band",
+    "tr": "çizgi, sıra",
+    "exampleSentence": "Please stand in a straight line."
+  },
+  {
+    "word": "name",
+    "meaning": "a word or set of words by which a person or thing is known, addressed, or referred to",
+    "tr": "isim, ad",
+    "exampleSentence": "What is your name?"
+  },
+  {
+    "word": "reason",
+    "meaning": "a cause, explanation, or justification for an action or event",
+    "tr": "sebep, neden",
+    "exampleSentence": "There is no reason to be upset."
+  },
+  {
+    "word": "result",
+    "meaning": "a consequence, effect, or outcome of something",
+    "tr": "sonuç",
+    "exampleSentence": "The result of the experiment was successful."
+  },
+  {
+    "word": "effect",
+    "meaning": "a change which is a consequence or result of an action or other cause",
+    "tr": "etki",
+    "exampleSentence": "The new law had a positive effect on the economy."
+  },
+  {
+    "word": "art",
+    "meaning": "the expression of human creative skill and imagination",
+    "tr": "sanat",
+    "exampleSentence": "The museum has a famous collection of modern art."
+  },
+  {
+    "word": "war",
+    "meaning": "a state of armed conflict between different nations or states or different groups within a nation or state",
+    "tr": "savaş",
+    "exampleSentence": "War brings destruction and suffering."
+  },
+  {
+    "word": "peace",
+    "meaning": "freedom from disturbance; tranquility",
+    "tr": "barış",
+    "exampleSentence": "Everyone hopes for world peace."
+  },
+  {
+    "word": "health",
+    "meaning": "the state of being free from illness or injury",
+    "tr": "sağlık",
+    "exampleSentence": "Good health is more valuable than money."
+  },
+  {
+    "word": "food",
+    "meaning": "any nutritious substance that people or animals eat or drink",
+    "tr": "yemek, yiyecek",
+    "exampleSentence": "Italian food is famous all over the world."
+  },
+  {
+    "word": "table",
+    "meaning": "a piece of furniture with a flat top and one or more legs",
+    "tr": "masa",
+    "exampleSentence": "We sat around the table for dinner."
+  },
+  {
+    "word": "chair",
+    "meaning": "a separate seat for one person, typically with a back and four legs",
+    "tr": "sandalye",
+    "exampleSentence": "Please take a chair and sit down."
+  },
+  {
+    "word": "window",
+    "meaning": "an opening in the wall of a building to admit light and air",
+    "tr": "pencere",
+    "exampleSentence": "The cat likes to sit by the window."
+  },
+  {
+    "word": "road",
+    "meaning": "a wide way leading from one place to another, especially one with a specially prepared surface",
+    "tr": "yol",
+    "exampleSentence": "This road leads to the city center."
+  },
+  {
+    "word": "street",
+    "meaning": "a public road in a city or town, typically with houses and buildings on one or both sides",
+    "tr": "cadde, sokak",
+    "exampleSentence": "My new office is on the main street."
+  },
+  {
+    "word": "human",
+    "meaning": "relating to or characteristic of people or human beings",
+    "tr": "insan, insani",
+    "exampleSentence": "To make mistakes is only human."
+  },
+  {
+    "word": "local",
+    "meaning": "relating or restricted to a particular area or neighborhood",
+    "tr": "yerel",
+    "exampleSentence": "We buy our vegetables from a local market."
+  },
+  {
+    "word": "late",
+    "meaning": "doing something or happening after the expected, proper, or usual time",
+    "tr": "geç",
+    "exampleSentence": "He apologized for being late to the meeting."
+  },
+  {
+    "word": "main",
+    "meaning": "chief in size or importance",
+    "tr": "ana, temel",
+    "exampleSentence": "The main reason for his success is hard work."
+  },
+  {
+    "word": "general",
+    "meaning": "affecting or concerning all or most people or things",
+    "tr": "genel",
+    "exampleSentence": "The general opinion is that the new policy is a good idea."
+  },
+  {
+    "word": "specific",
+    "meaning": "clearly defined or identified",
+    "tr": "özel, belirli",
+    "exampleSentence": "Can you give me a specific example?"
+  },
+  {
+    "word": "strong",
+    "meaning": "having the power to move heavy weights or perform other physically demanding tasks",
+    "tr": "güçlü",
+    "exampleSentence": "He is strong enough to lift that box."
+  },
+  {
+    "word": "weak",
+    "meaning": "lacking the power to perform physically demanding tasks",
+    "tr": "zayıf, güçsüz",
+    "exampleSentence": "After the illness, she felt very weak."
+  },
+  {
+    "word": "free",
+    "meaning": "able to act or be done as one wishes; not under the control of another",
+    "tr": "özgür, bedava",
+    "exampleSentence": "Admission to the museum is free on Sundays."
+  },
+  {
+    "word": "clear",
+    "meaning": "easy to perceive, understand, or interpret",
+    "tr": "açık, net",
+    "exampleSentence": "Her instructions were very clear."
+  },
+  {
+    "word": "whole",
+    "meaning": "all of; entire",
+    "tr": "bütün, tüm",
+    "exampleSentence": "He ate the whole pizza by himself."
+  },
+  {
+    "word": "forget",
+    "meaning": "to fail to remember",
+    "tr": "unutmak",
+    "exampleSentence": "Don't forget to call me when you arrive."
+  },
+  {
+    "word": "receive",
+    "meaning": "to be given, presented with, or paid something",
+    "tr": "almak, teslim almak",
+    "exampleSentence": "Did you receive my letter?"
+  },
+  {
+    "word": "choose",
+    "meaning": "to pick out or select (someone or something) as being the best or most appropriate of two or more alternatives",
+    "tr": "seçmek",
+    "exampleSentence": "You have to choose between these two options."
+  },
+  {
+    "word": "describe",
+    "meaning": "to give a detailed account in words of",
+    "tr": "tanımlamak, betimlemek",
+    "exampleSentence": "Can you describe the person you saw?"
+  },
+  {
+    "word": "develop",
+    "meaning": "to grow or cause to grow and become more mature, advanced, or elaborate",
+    "tr": "geliştirmek, gelişmek",
+    "exampleSentence": "The company plans to develop new software."
+  },
+  {
+    "word": "support",
+    "meaning": "to bear all or part of the weight of; hold up",
+    "tr": "desteklemek",
+    "exampleSentence": "I will always support my friends."
+  },
+  {
+    "word": "agree",
+    "meaning": "to have the same opinion about something; concur",
+    "tr": "aynı fikirde olmak, katılmak",
+    "exampleSentence": "I agree with you completely."
+  },
+  {
+    "word": "often",
+    "meaning": "frequently; many times",
+    "tr": "sık sık",
+    "exampleSentence": "We often go for a walk after dinner."
+  },
+  {
+    "word": "sometimes",
+    "meaning": "occasionally, rather than all of the time",
+    "tr": "bazen",
+    "exampleSentence": "Sometimes I prefer to stay home and read a book."
+  },
+  {
+    "word": "usually",
+    "meaning": "under normal conditions; generally",
+    "tr": "genellikle",
+    "exampleSentence": "I usually get up at 7 AM."
+  },
+  {
+    "word": "quickly",
+    "meaning": "at a fast speed; rapidly",
+    "tr": "hızlıca",
+    "exampleSentence": "She finished her homework quickly."
+  },
+  {
+    "word": "slowly",
+    "meaning": "at a slow speed; not quickly",
+    "tr": "yavaşça",
+    "exampleSentence": "He walked slowly because of his injury."
+  },
+  {
+    "word": "together",
+    "meaning": "with or in proximity to another person or people",
+    "tr": "birlikte",
+    "exampleSentence": "The family always eats dinner together."
+  },
+  {
+    "word": "language",
+    "meaning": "the method of human communication, either spoken or written",
+    "tr": "dil, lisan",
+    "exampleSentence": "Learning a new language opens up a new world."
+  },
+  {
+    "word": "community",
+    "meaning": "a group of people living in the same place or having a particular characteristic in common",
+    "tr": "topluluk",
+    "exampleSentence": "He is a respected leader in his community."
+  },
+  {
+    "word": "knowledge",
+    "meaning": "facts, information, and skills acquired through experience or education",
+    "tr": "bilgi",
+    "exampleSentence": "The internet is a vast source of knowledge."
+  },
+  {
+    "word": "education",
+    "meaning": "the process of receiving or giving systematic instruction, especially at a school or university",
+    "tr": "eğitim",
+    "exampleSentence": "A good education is essential for a successful career."
+  },
+  {
+    "word": "market",
+    "meaning": "a place where things are bought and sold",
+    "tr": "pazar, piyasa",
+    "exampleSentence": "The stock market can be very unpredictable."
+  },
+  {
+    "word": "science",
+    "meaning": "the intellectual and practical activity encompassing the systematic study of the structure and behavior of the physical and natural world",
+    "tr": "bilim",
+    "exampleSentence": "Science has made incredible advances in the last century."
+  },
+  {
+    "word": "president",
+    "meaning": "the elected head of a republican state",
+    "tr": "başkan",
+    "exampleSentence": "The president will give a speech tonight."
+  },
+  {
+    "word": "voice",
+    "meaning": "the sound produced in a person's larynx and uttered through the mouth",
+    "tr": "ses",
+    "exampleSentence": "She has a beautiful singing voice."
+  },
+  {
+    "word": "police",
+    "meaning": "the civil force of a state, responsible for the prevention and detection of crime",
+    "tr": "polis",
+    "exampleSentence": "You should call the police in an emergency."
+  },
+  {
+    "word": "letter",
+    "meaning": "a written, typed, or printed communication, sent in an envelope by post or messenger",
+    "tr": "mektup, harf",
+    "exampleSentence": "I received a letter from an old friend."
+  },
+  {
+    "word": "paper",
+    "meaning": "material manufactured in thin sheets from the pulp of wood or other fibrous substances",
+    "tr": "kağıt, gazete",
+    "exampleSentence": "I need a piece of paper to write a note."
+  },
+  {
+    "word": "team",
+    "meaning": "a group of players forming one side in a competitive game or sport",
+    "tr": "takım",
+    "exampleSentence": "Teamwork is crucial for success."
+  },
+  {
+    "word": "level",
+    "meaning": "a position on a real or imaginary scale of amount, quantity, extent, or quality",
+    "tr": "seviye",
+    "exampleSentence": "Her English is at an advanced level."
+  },
+  {
+    "word": "control",
+    "meaning": "the power to influence or direct people's behavior or the course of events",
+    "tr": "kontrol",
+    "exampleSentence": "He has no control over the situation."
+  },
+  {
+    "word": "love",
+    "meaning": "an intense feeling of deep affection",
+    "tr": "aşk, sevgi",
+    "exampleSentence": "Love is a powerful emotion."
+  },
+  {
+    "word": "age",
+    "meaning": "the length of time that a person has lived or a thing has existed",
+    "tr": "yaş",
+    "exampleSentence": "What is the legal driving age in your country?"
+  },
+  {
+    "word": "moment",
+    "meaning": "a very brief period of time",
+    "tr": "an",
+    "exampleSentence": "Could you wait for just a moment?"
+  },
+  {
+    "word": "plan",
+    "meaning": "a detailed proposal for doing or achieving something",
+    "tr": "plan",
+    "exampleSentence": "Do you have any plans for the weekend?"
+  },
+  {
+    "word": "full",
+    "meaning": "containing or holding as much or as many as possible",
+    "tr": "dolu, tam",
+    "exampleSentence": "The bottle is full of water."
+  },
+  {
+    "word": "short",
+    "meaning": "measuring a small distance from end to end",
+    "tr": "kısa",
+    "exampleSentence": "I only have a short break for lunch."
+  },
+  {
+    "word": "special",
+    "meaning": "better, greater, or otherwise different from what is usual",
+    "tr": "özel",
+    "exampleSentence": "Today is a very special day for our family."
+  },
+  {
+    "word": "easy",
+    "meaning": "achieved without great effort",
+    "tr": "kolay",
+    "exampleSentence": "The exam was surprisingly easy."
+  },
+  {
+    "word": "final",
+    "meaning": "coming at the end of a series",
+    "tr": "final, son",
+    "exampleSentence": "This is the final chapter of the book."
+  },
+  {
+    "word": "personal",
+    "meaning": "concerning one's private life, relationships, and emotions",
+    "tr": "kişisel",
+    "exampleSentence": "Please do not read my personal diary."
+  },
+  {
+    "word": "national",
+    "meaning": "relating to a nation; common to a whole nation",
+    "tr": "ulusal",
+    "exampleSentence": "Football is the national sport of Brazil."
+  },
+  {
+    "word": "social",
+    "meaning": "relating to society or its organization",
+    "tr": "sosyal",
+    "exampleSentence": "Humans are social creatures."
+  },
+  {
+    "word": "wrong",
+    "meaning": "not correct or true; incorrect",
+    "tr": "yanlış",
+    "exampleSentence": "I think you took the wrong turn."
+  },
+  {
+    "word": "ready",
+    "meaning": "in a suitable state for an action or situation; fully prepared",
+    "tr": "hazır",
+    "exampleSentence": "Dinner is ready, please come to the table."
+  },
+  {
+    "word": "simple",
+    "meaning": "easily understood or done; presenting no difficulty",
+    "tr": "basit, sade",
+    "exampleSentence": "Sometimes the most simple solution is the best."
+  },
+  {
+    "word": "achieve",
+    "meaning": "to successfully bring about or reach by effort, skill, or courage",
+    "tr": "başarmak, elde etmek",
+    "exampleSentence": "With hard work, you can achieve anything."
+  },
+  {
+    "word": "avoid",
+    "meaning": "to keep away from or stop oneself from doing (something)",
+    "tr": "kaçınmak, sakınmak",
+    "exampleSentence": "You should avoid eating too much sugar."
+  },
+  {
+    "word": "imagine",
+    "meaning": "to form a mental image or concept of",
+    "tr": "hayal etmek",
+    "exampleSentence": "Can you imagine a world without technology?"
+  },
+  {
+    "word": "prepare",
+    "meaning": "to make (something) ready for use or consideration",
+    "tr": "hazırlamak",
+    "exampleSentence": "I need to prepare a presentation for tomorrow's meeting."
+  },
+  {
+    "word": "reduce",
+    "meaning": "to make smaller or less in amount, degree, or size",
+    "tr": "azaltmak",
+    "exampleSentence": "We must reduce our carbon footprint to help the environment."
+  },
+  {
+    "word": "improve",
+    "meaning": "to make or become better",
+    "tr": "geliştirmek, iyileştirmek",
+    "exampleSentence": "He is taking lessons to improve his English."
+  },
+  {
+    "word": "remember",
+    "meaning": "to have in or be able to bring to one's mind an awareness of (someone or something that one has seen, known, or experienced in the past)",
+    "tr": "hatırlamak",
+    "exampleSentence": "I always remember to lock the door."
+  },
+  {
+    "word": "however",
+    "meaning": "used to introduce a statement that contrasts with or seems to contradict something that has been said previously",
+    "tr": "ancak, bununla birlikte",
+    "exampleSentence": "He is very tired; however, he must finish his work."
+  },
+  {
+    "word": "therefore",
+    "meaning": "for that reason; consequently",
+    "tr": "bu nedenle, dolayısıyla",
+    "exampleSentence": "She was late, and therefore she missed the start of the movie."
+  },
+  {
+    "word": "perhaps",
+    "meaning": "used to express uncertainty or possibility",
+    "tr": "belki",
+    "exampleSentence": "Perhaps we can go for a walk later."
+  },
+  {
+    "word": "once",
+    "meaning": "on one occasion or for one time only",
+    "tr": "bir kere, bir zamanlar",
+    "exampleSentence": "I have only visited that city once."
+  },
+  {
+    "word": "price",
+    "meaning": "the amount of money expected, required, or given in payment for something",
+    "tr": "fiyat, ücret",
+    "exampleSentence": "The price of gasoline has increased recently."
+  },
+  {
+    "word": "cost",
+    "meaning": "an amount that has to be paid or spent to buy or obtain something",
+    "tr": "maliyet",
+    "exampleSentence": "We need to calculate the total cost of the project."
+  },
+  {
+    "word": "value",
+    "meaning": "the regard that something is held to deserve; the importance, worth, or usefulness of something",
+    "tr": "değer",
+    "exampleSentence": "The value of a good education cannot be overstated."
+  },
+  {
+    "word": "industry",
+    "meaning": "economic activity concerned with the processing of raw materials and manufacture of goods in factories",
+    "tr": "endüstri, sanayi",
+    "exampleSentence": "The tourism industry is vital for the country's economy."
+  },
+  {
+    "word": "business",
+    "meaning": "a person's regular occupation, profession, or trade",
+    "tr": "iş, işletme",
+    "exampleSentence": "She started her own business two years ago."
+  },
+  {
+    "word": "trade",
+    "meaning": "the action of buying and selling goods and services",
+    "tr": "ticaret",
+    "exampleSentence": "International trade helps countries grow."
+  },
+  {
+    "word": "product",
+    "meaning": "an article or substance that is manufactured or refined for sale",
+    "tr": "ürün",
+    "exampleSentence": "The company is launching a new product next month."
+  },
+  {
+    "word": "service",
+    "meaning": "the action of helping or doing work for someone",
+    "tr": "hizmet, servis",
+    "exampleSentence": "The customer service at this hotel is excellent."
+  },
+  {
+    "word": "experience",
+    "meaning": "practical contact with and observation of facts or events",
+    "tr": "deneyim, tecrübe",
+    "exampleSentence": "Traveling to other countries is a great experience."
+  },
+  {
+    "word": "research",
+    "meaning": "the systematic investigation into and study of materials and sources in order to establish facts and reach new conclusions",
+    "tr": "araştırma",
+    "exampleSentence": "Scientists are conducting research to find a cure."
+  },
+  {
+    "word": "policy",
+    "meaning": "a course or principle of action adopted or proposed by a government, party, business, or individual",
+    "tr": "politika, ilke",
+    "exampleSentence": "It is against company policy to share passwords."
+  },
+  {
+    "word": "process",
+    "meaning": "a series of actions or steps taken in order to achieve a particular end",
+    "tr": "süreç, işlem",
+    "exampleSentence": "Learning a language is a long process."
+  },
+  {
+    "word": "technology",
+    "meaning": "the application of scientific knowledge for practical purposes",
+    "tr": "teknoloji",
+    "exampleSentence": "Technology has changed the way we live and work."
+  },
+  {
+    "word": "computer",
+    "meaning": "an electronic device for storing and processing data",
+    "tr": "bilgisayar",
+    "exampleSentence": "My new computer is much faster than the old one."
+  },
+  {
+    "word": "phone",
+    "meaning": "a telephone",
+    "tr": "telefon",
+    "exampleSentence": "I need to charge my phone."
+  },
+  {
+    "word": "internet",
+    "meaning": "a global computer network providing a variety of information and communication facilities",
+    "tr": "internet",
+    "exampleSentence": "You can find almost anything on the internet."
+  },
+  {
+    "word": "website",
+    "meaning": "a set of related web pages located under a single domain name",
+    "tr": "web sitesi",
+    "exampleSentence": "The company launched its new website yesterday."
+  },
+  {
+    "word": "data",
+    "meaning": "facts and statistics collected together for reference or analysis",
+    "tr": "veri, data",
+    "exampleSentence": "We need to analyze the data to understand the trend."
+  },
+  {
+    "word": "society",
+    "meaning": "the aggregate of people living together in a more or less ordered community",
+    "tr": "toplum",
+    "exampleSentence": "Education plays a vital role in society."
+  },
+  {
+    "word": "culture",
+    "meaning": "the arts and other manifestations of human intellectual achievement regarded collectively",
+    "tr": "kültür",
+    "exampleSentence": "I am interested in learning about different cultures."
+  },
+  {
+    "word": "church",
+    "meaning": "a building used for public Christian worship",
+    "tr": "kilise",
+    "exampleSentence": "The old church in the village is a historic landmark."
+  },
+  {
+    "word": "member",
+    "meaning": "a person who belongs to a group or an organization",
+    "tr": "üye",
+    "exampleSentence": "He is a member of the local sports club."
+  },
+  {
+    "word": "player",
+    "meaning": "a person taking part in a sport or game",
+    "tr": "oyuncu",
+    "exampleSentence": "He is the best player on the team."
+  },
+  {
+    "word": "career",
+    "meaning": "an occupation undertaken for a significant period of a person's life and with opportunities for progress",
+    "tr": "kariyer",
+    "exampleSentence": "She decided to change her career path."
+  },
+  {
+    "word": "material",
+    "meaning": "the matter from which a thing is or can be made",
+    "tr": "malzeme, materyal",
+    "exampleSentence": "This shirt is made of a very soft material."
+  },
+  {
+    "word": "century",
+    "meaning": "a period of one hundred years",
+    "tr": "yüzyıl",
+    "exampleSentence": "We are living in the 21st century."
+  },
+  {
+    "word": "evidence",
+    "meaning": "the available body of facts or information indicating whether a belief or proposition is true or valid",
+    "tr": "kanıt, delil",
+    "exampleSentence": "The police found new evidence in the case."
+  },
+  {
+    "word": "opportunity",
+    "meaning": "a set of circumstances that makes it possible to do something",
+    "tr": "fırsat, imkan",
+    "exampleSentence": "This job is a great opportunity for career growth."
+  },
+  {
+    "word": "choice",
+    "meaning": "an act of selecting or making a decision when faced with two or more possibilities",
+    "tr": "seçim, tercih",
+    "exampleSentence": "You have the choice to either accept or reject the offer."
+  },
+  {
+    "word": "relationship",
+    "meaning": "the way in which two or more people or things are connected",
+    "tr": "ilişki",
+    "exampleSentence": "Honesty is very important in a relationship."
+  },
+  {
+    "word": "available",
+    "meaning": "able to be used or obtained; at someone's disposal",
+    "tr": "mevcut, müsait",
+    "exampleSentence": "Are there any tickets available for tonight's show?"
+  },
+  {
+    "word": "economic",
+    "meaning": "relating to trade, industry, and money",
+    "tr": "ekonomik",
+    "exampleSentence": "The country is facing economic difficulties."
+  },
+  {
+    "word": "financial",
+    "meaning": "relating to finance",
+    "tr": "finansal",
+    "exampleSentence": "You should seek financial advice before investing."
+  },
+  {
+    "word": "medical",
+    "meaning": "relating to the science or practice of medicine",
+    "tr": "tıbbi",
+    "exampleSentence": "He is a student at a medical school."
+  },
+  {
+    "word": "professional",
+    "meaning": "relating to or belonging to a profession",
+    "tr": "profesyonel",
+    "exampleSentence": "She has a very professional attitude at work."
+  },
+  {
+    "word": "international",
+    "meaning": "existing or occurring between two or more nations",
+    "tr": "uluslararası",
+    "exampleSentence": "She works for an international organization."
+  },
+  {
+    "word": "beautiful",
+    "meaning": "pleasing the senses or mind aesthetically",
+    "tr": "güzel",
+    "exampleSentence": "What a beautiful painting!"
+  },
+  {
+    "word": "difficult",
+    "meaning": "needing much effort or skill to accomplish, deal with, or understand",
+    "tr": "zor",
+    "exampleSentence": "This is a very difficult problem to solve."
+  },
+  {
+    "word": "happy",
+    "meaning": "feeling or showing pleasure or contentment",
+    "tr": "mutlu",
+    "exampleSentence": "I'm so happy to see you."
+  },
+  {
+    "word": "effort",
+    "meaning": "a vigorous or determined attempt",
+    "tr": "çaba, gayret",
+    "exampleSentence": "Success requires a lot of hard work and effort."
+  },
+  {
+    "word": "success",
+    "meaning": "the accomplishment of an aim or purpose",
+    "tr": "başarı",
+    "exampleSentence": "Her success was the result of years of dedication."
+  },
+  {
+    "word": "failure",
+    "meaning": "lack of success",
+    "tr": "başarısızlık",
+    "exampleSentence": "Failure is an opportunity to begin again more intelligently."
+  },
+  {
+    "word": "goal",
+    "meaning": "the object of a person's ambition or effort; an aim or desired result",
+    "tr": "hedef, amaç",
+    "exampleSentence": "My main goal is to improve my English skills."
+  },
+  {
+    "word": "project",
+    "meaning": "an individual or collaborative enterprise that is carefully planned to achieve a particular aim",
+    "tr": "proje",
+    "exampleSentence": "We are working on a new marketing project."
+  },
+  {
+    "word": "method",
+    "meaning": "a particular form of procedure for accomplishing or approaching something",
+    "tr": "metot, yöntem",
+    "exampleSentence": "We need to find a more efficient method of working."
+  },
+  {
+    "word": "source",
+    "meaning": "a place, person, or thing from which something comes or can be obtained",
+    "tr": "kaynak",
+    "exampleSentence": "The library is a great source of information."
+  },
+  {
+    "word": "resource",
+    "meaning": "a stock or supply of money, materials, staff, and other assets that can be drawn on by a person or organization",
+    "tr": "kaynak",
+    "exampleSentence": "The country is rich in natural resources."
+  },
+  {
+    "word": "field",
+    "meaning": "a particular branch of study or sphere of activity or interest",
+    "tr": "alan, saha",
+    "exampleSentence": "He is an expert in the field of artificial intelligence."
+  },
+  {
+    "word": "university",
+    "meaning": "a high-level educational institution in which students study for degrees",
+    "tr": "üniversite",
+    "exampleSentence": "She is studying medicine at a top university."
+  },
+  {
+    "word": "college",
+    "meaning": "an educational institution or establishment, in particular one providing higher education or specialized professional or vocational training",
+    "tr": "kolej, yüksekokul",
+    "exampleSentence": "After high school, he went to a community college."
+  },
+  {
+    "word": "article",
+    "meaning": "a piece of writing included with others in a newspaper, magazine, or other publication",
+    "tr": "makale",
+    "exampleSentence": "I read an interesting article about climate change."
+  },
+  {
+    "word": "news",
+    "meaning": "newly received or noteworthy information, especially about recent events",
+    "tr": "haber, haberler",
+    "exampleSentence": "Have you watched the news today?"
+  },
+  {
+    "word": "season",
+    "meaning": "each of the four divisions of the year (spring, summer, autumn, and winter)",
+    "tr": "mevsim, sezon",
+    "exampleSentence": "My favorite season is autumn."
+  },
+  {
+    "word": "weather",
+    "meaning": "the state of the atmosphere at a place and time as regards heat, dryness, sunshine, wind, rain, etc.",
+    "tr": "hava durumu",
+    "exampleSentence": "The weather is very unpredictable in the mountains."
+  },
+  {
+    "word": "temperature",
+    "meaning": "the degree or intensity of heat present in a substance or object",
+    "tr": "sıcaklık",
+    "exampleSentence": "The temperature dropped to below freezing last night."
+  },
+  {
+    "word": "nature",
+    "meaning": "the physical world collectively, including plants, animals, the landscape, and other features and products of the earth",
+    "tr": "doğa",
+    "exampleSentence": "I love spending time in nature."
+  },
+  {
+    "word": "environment",
+    "meaning": "the surroundings or conditions in which a person, animal, or plant lives or operates",
+    "tr": "çevre",
+    "exampleSentence": "We must protect the environment for future generations."
+  },
+  {
+    "word": "space",
+    "meaning": "a continuous area or expanse which is free, available, or unoccupied",
+    "tr": "boşluk, alan, uzay",
+    "exampleSentence": "There is not enough space for another chair in this room."
+  },
+  {
+    "word": "ground",
+    "meaning": "the solid surface of the earth",
+    "tr": "yer, zemin",
+    "exampleSentence": "The ground was wet after the rain."
+  },
+  {
+    "word": "form",
+    "meaning": "the visible shape or configuration of something",
+    "tr": "form, şekil",
+    "exampleSentence": "Please fill out this application form."
+  },
+  {
+    "word": "shape",
+    "meaning": "the external form or appearance characteristic of someone or something",
+    "tr": "şekil",
+    "exampleSentence": "The table is in the shape of a circle."
+  },
+  {
+    "word": "size",
+    "meaning": "the relative extent of something; a thing's overall dimensions or magnitude",
+    "tr": "boyut, beden",
+    "exampleSentence": "What size of shoes do you wear?"
+  },
+  {
+    "word": "character",
+    "meaning": "the mental and moral qualities distinctive to an individual",
+    "tr": "karakter",
+    "exampleSentence": "Honesty is an important part of a person's character."
+  },
+  {
+    "word": "quality",
+    "meaning": "the standard of something as measured against other things of a similar kind; the degree of excellence of something",
+    "tr": "kalite",
+    "exampleSentence": "This brand is known for its high-quality products."
+  },
+  {
+    "word": "ability",
+    "meaning": "possession of the means or skill to do something",
+    "tr": "yetenek, kabiliyet",
+    "exampleSentence": "She has a remarkable ability to learn languages."
+  },
+  {
+    "word": "skill",
+    "meaning": "the ability to do something well; expertise",
+    "tr": "beceri, yetenek",
+    "exampleSentence": "Communication is a very important skill in any job."
+  },
+  {
+    "word": "department",
+    "meaning": "a division of a large organization such as a government, university, or business",
+    "tr": "departman, bölüm",
+    "exampleSentence": "He works in the sales department."
+  },
+  {
+    "word": "management",
+    "meaning": "the process of dealing with or controlling things or people",
+    "tr": "yönetim",
+    "exampleSentence": "The company has a new management team."
+  },
+  {
+    "word": "employee",
+    "meaning": "a person employed for wages or salary",
+    "tr": "çalışan, personel",
+    "exampleSentence": "The company has over 500 employees."
+  },
+  {
+    "word": "recognize",
+    "meaning": "to identify someone or something from having encountered them before",
+    "tr": "tanımak, fark etmek",
+    "exampleSentence": "I didn't recognize you with your new haircut."
+  },
+  {
+    "word": "discuss",
+    "meaning": "to talk about (something) with another person or group of people",
+    "tr": "tartışmak, görüşmek",
+    "exampleSentence": "We need to discuss our plans for the project."
+  },
+  {
+    "word": "argue",
+    "meaning": "to give reasons or cite evidence in support of an idea, action, or theory, typically with the aim of persuading others to share one's view",
+    "tr": "tartışmak (kavga etmek), savunmak",
+    "exampleSentence": "They always argue about money."
+  },
+  {
+    "word": "explain",
+    "meaning": "to make (an idea, situation, or problem) clear to someone by describing it in more detail or revealing relevant facts or ideas",
+    "tr": "açıklamak",
+    "exampleSentence": "Can you explain how this machine works?"
+  },
+  {
+    "word": "current",
+    "meaning": "belonging to the present time; happening or being used or done now",
+    "tr": "mevcut, güncel",
+    "exampleSentence": "What is your current address?"
+  },
+  {
+    "word": "serious",
+    "meaning": "demanding or characterized by careful consideration or application",
+    "tr": "ciddi",
+    "exampleSentence": "This is a serious matter that requires our full attention."
+  },
+  {
+    "word": "common",
+    "meaning": "occurring, found, or done often; prevalent",
+    "tr": "yaygın, ortak",
+    "exampleSentence": "It is a common mistake to misspell that word."
+  },
+  {
+    "word": "several",
+    "meaning": "more than two but not many",
+    "tr": "birkaç",
+    "exampleSentence": "I have read several books on this topic."
+  },
+  {
+    "word": "behavior",
+    "meaning": "the way in which one acts or conducts oneself, especially toward others",
+    "tr": "davranış",
+    "exampleSentence": "His behavior in class has improved a lot."
+  },
+  {
+    "word": "attitude",
+    "meaning": "a settled way of thinking or feeling about someone or something",
+    "tr": "tavır, tutum",
+    "exampleSentence": "A positive attitude can make a big difference."
+  },
+  {
+    "word": "influence",
+    "meaning": "the capacity to have an effect on the character, development, or behavior of someone or something",
+    "tr": "etki",
+    "exampleSentence": "Peer pressure can have a strong influence on teenagers."
+  },
+  {
+    "word": "opinion",
+    "meaning": "a view or judgment formed about something, not necessarily based on fact or knowledge",
+    "tr": "görüş, fikir",
+    "exampleSentence": "In my opinion, this is the best restaurant in town."
+  },
+  {
+    "word": "belief",
+    "meaning": "an acceptance that a statement is true or that something exists",
+    "tr": "inanç",
+    "exampleSentence": "Everyone is entitled to their own religious beliefs."
+  },
+  {
+    "word": "memory",
+    "meaning": "the faculty by which the mind stores and remembers information",
+    "tr": "hafıza, anı",
+    "exampleSentence": "I have many happy memories of my childhood."
+  },
+  {
+    "word": "emotion",
+    "meaning": "a strong feeling deriving from one's circumstances, mood, or relationships with others",
+    "tr": "duygu",
+    "exampleSentence": "Fear is a powerful human emotion."
+  },
+  {
+    "word": "feeling",
+    "meaning": "an emotional state or reaction",
+    "tr": "his",
+    "exampleSentence": "I have a strange feeling that something is about to happen."
+  },
+  {
+    "word": "thought",
+    "meaning": "an idea or opinion produced by thinking, or occurring suddenly in the mind",
+    "tr": "düşünce",
+    "exampleSentence": "The first thought that came to my mind was to call for help."
+  },
+  {
+    "word": "decision",
+    "meaning": "a conclusion or resolution reached after consideration",
+    "tr": "karar",
+    "exampleSentence": "It was a difficult decision to move to another country."
+  },
+  {
+    "word": "action",
+    "meaning": "the fact or process of doing something, typically to achieve an aim",
+    "tr": "eylem, hareket",
+    "exampleSentence": "Actions speak louder than words."
+  },
+  {
+    "word": "movement",
+    "meaning": "an act of changing physical location or position",
+    "tr": "hareket",
+    "exampleSentence": "The dance was full of graceful movements."
+  },
+  {
+    "word": "event",
+    "meaning": "a thing that happens, especially one of importance",
+    "tr": "olay, etkinlik",
+    "exampleSentence": "The wedding was a memorable event."
+  },
+  {
+    "word": "situation",
+    "meaning": "a set of circumstances in which one finds oneself; a state of affairs",
+    "tr": "durum",
+    "exampleSentence": "We need to assess the current situation carefully."
+  },
+  {
+    "word": "condition",
+    "meaning": "the state of something with regard to its appearance, quality, or working order",
+    "tr": "durum, koşul",
+    "exampleSentence": "The car is in excellent condition."
+  },
+  {
+    "word": "position",
+    "meaning": "a place where someone or something is located or has been put",
+    "tr": "pozisyon, konum",
+    "exampleSentence": "He held a high position in the company."
+  },
+  {
+    "word": "activity",
+    "meaning": "the condition in which things are happening or being done",
+    "tr": "aktivite, faaliyet",
+    "exampleSentence": "There is a lot of economic activity in the city center."
+  },
+  {
+    "word": "organization",
+    "meaning": "an organized group of people with a particular purpose, such as a business or government department",
+    "tr": "organizasyon, kuruluş",
+    "exampleSentence": "She works for a non-profit organization."
+  },
+  {
+    "word": "structure",
+    "meaning": "the arrangement of and relations between the parts or elements of something complex",
+    "tr": "yapı",
+    "exampleSentence": "The structure of the building is very modern."
+  },
+  {
+    "word": "network",
+    "meaning": "a group or system of interconnected people or things",
+    "tr": "ağ",
+    "exampleSentence": "Building a professional network is important for your career."
+  },
+  {
+    "word": "security",
+    "meaning": "the state of being free from danger or threat",
+    "tr": "güvenlik",
+    "exampleSentence": "Airport security has become much stricter."
+  },
+  {
+    "word": "risk",
+    "meaning": "a situation involving exposure to danger",
+    "tr": "risk",
+    "exampleSentence": "There is a high risk of an avalanche in these mountains."
+  },
+  {
+    "word": "benefit",
+    "meaning": "an advantage or profit gained from something",
+    "tr": "fayda, yarar",
+    "exampleSentence": "What are the benefits of regular exercise?"
+  },
+  {
+    "word": "advantage",
+    "meaning": "a condition or circumstance that puts one in a favorable or superior position",
+    "tr": "avantaj",
+    "exampleSentence": "His height gives him an advantage in basketball."
+  },
+  {
+    "word": "disadvantage",
+    "meaning": "an unfavorable circumstance or condition that reduces the chances of success or effectiveness",
+    "tr": "dezavantaj",
+    "exampleSentence": "The main disadvantage of this plan is the high cost."
+  },
+  {
+    "word": "cause",
+    "meaning": "a person or thing that gives rise to an action, phenomenon, or condition",
+    "tr": "sebep, neden olmak",
+    "exampleSentence": "The police are still investigating the cause of the accident."
+  },
+  {
+    "word": "kind",
+    "meaning": "a class or type of people or things having similar characteristics",
+    "tr": "tür, çeşit, nazik",
+    "exampleSentence": "What kind of music do you like?"
+  },
+  {
+    "word": "type",
+    "meaning": "a category of people or things having common characteristics",
+    "tr": "tip, tür",
+    "exampleSentence": "This is a new type of computer."
+  },
+  {
+    "word": "sort",
+    "meaning": "a category of things or people with a common feature; a type",
+    "tr": "çeşit, tür",
+    "exampleSentence": "What sort of books do you enjoy reading?"
+  },
+  {
+    "word": "model",
+    "meaning": "a three-dimensional representation of a person or thing or of a proposed structure",
+    "tr": "model",
+    "exampleSentence": "He built a scale model of the ship."
+  },
+  {
+    "word": "design",
+    "meaning": "a plan or drawing produced to show the look and function of a building, garment, or other object before it is made",
+    "tr": "tasarım, tasarlamak",
+    "exampleSentence": "I love the modern design of this furniture."
+  },
+  {
+    "word": "approach",
+    "meaning": "a way of dealing with a situation or problem",
+    "tr": "yaklaşım",
+    "exampleSentence": "We need a new approach to solve this issue."
+  },
+  {
+    "word": "blood",
+    "meaning": "the red liquid that circulates in the arteries and veins of humans and other vertebrate animals",
+    "tr": "kan",
+    "exampleSentence": "The hospital is in urgent need of blood donations."
+  },
+  {
+    "word": "heart",
+    "meaning": "a hollow muscular organ that pumps the blood through the circulatory system",
+    "tr": "kalp",
+    "exampleSentence": "A healthy diet is good for your heart."
+  },
+  {
+    "word": "pain",
+    "meaning": "highly unpleasant physical sensation caused by illness or injury",
+    "tr": "ağrı, acı",
+    "exampleSentence": "He felt a sharp pain in his back."
+  },
+  {
+    "word": "pressure",
+    "meaning": "the use of persuasion, influence, or intimidation to make someone do something",
+    "tr": "basınç, baskı",
+    "exampleSentence": "He is under a lot of pressure at work."
+  },
+  {
+    "word": "message",
+    "meaning": "a verbal, written, or recorded communication sent to or left for a recipient who cannot be contacted directly",
+    "tr": "mesaj",
+    "exampleSentence": "I sent you a message, did you receive it?"
+  },
+  {
+    "word": "media",
+    "meaning": "the main means of mass communication (broadcasting, publishing, and the internet) regarded collectively",
+    "tr": "medya",
+    "exampleSentence": "The event was widely covered by the media."
+  },
+  {
+    "word": "press",
+    "meaning": "newspapers or journalists viewed collectively",
+    "tr": "basın",
+    "exampleSentence": "The press is waiting for a statement from the minister."
+  },
+  {
+    "word": "speech",
+    "meaning": "the expression of or the ability to express thoughts and feelings by articulate sounds",
+    "tr": "konuşma",
+    "exampleSentence": "He gave an inspiring speech at the graduation ceremony."
+  },
+  {
+    "word": "statement",
+    "meaning": "a definite or clear expression of something in speech or writing",
+    "tr": "ifade, beyan",
+    "exampleSentence": "The company issued a public statement about the incident."
+  },
+  {
+    "word": "publish",
+    "meaning": "to prepare and issue (a book, journal, piece of music, or other work) for public sale",
+    "tr": "yayımlamak",
+    "exampleSentence": "She is hoping to publish her first novel next year."
+  },
+  {
+    "word": "share",
+    "meaning": "to have a portion of (something) with another or others",
+    "tr": "paylaşmak",
+    "exampleSentence": "It's important to share your feelings with someone you trust."
+  },
+  {
+    "word": "measure",
+    "meaning": "to ascertain the size, amount, or degree of (something) by using an instrument or device",
+    "tr": "ölçmek",
+    "exampleSentence": "We need to measure the room before buying furniture."
+  },
+  {
+    "word": "weight",
+    "meaning": "a body's relative mass or the quantity of matter contained by it",
+    "tr": "ağırlık",
+    "exampleSentence": "The box has a weight of 10 kilograms."
+  },
+  {
+    "word": "height",
+    "meaning": "the measurement from base to top or (of a standing person) from head to foot",
+    "tr": "yükseklik, boy",
+    "exampleSentence": "What is the height of the Eiffel Tower?"
+  },
+  {
+    "word": "length",
+    "meaning": "the measurement or extent of something from end to end",
+    "tr": "uzunluk",
+    "exampleSentence": "The length of the bridge is over a kilometer."
+  },
+  {
+    "word": "width",
+    "meaning": "the measurement or extent of something from side to side",
+    "tr": "genişlik",
+    "exampleSentence": "Please measure the width of the window."
+  },
+  {
+    "word": "amount",
+    "meaning": "a quantity of something, especially the total of a thing or things in number, size, value, or extent",
+    "tr": "miktar",
+    "exampleSentence": "A large amount of money was invested in the project."
+  },
+  {
+    "word": "total",
+    "meaning": "comprising the whole number or amount",
+    "tr": "toplam",
+    "exampleSentence": "The total cost of the trip was 500 dollars."
+  },
+  {
+    "word": "average",
+    "meaning": "a number expressing the central or typical value in a set of data",
+    "tr": "ortalama",
+    "exampleSentence": "The average temperature in summer is 30 degrees."
+  },
+  {
+    "word": "accept",
+    "meaning": "to consent to receive (a thing offered)",
+    "tr": "kabul etmek",
+    "exampleSentence": "I am happy to accept your invitation."
+  },
+  {
+    "word": "refuse",
+    "meaning": "to indicate or show that one is not willing to do something",
+    "tr": "reddetmek",
+    "exampleSentence": "He is expected to refuse the offer."
+  },
+  {
+    "word": "promise",
+    "meaning": "to assure someone that one will definitely do, give, or arrange something",
+    "tr": "söz vermek",
+    "exampleSentence": "She promised to help me with my homework."
+  },
+  {
+    "word": "recommend",
+    "meaning": "to suggest (someone or something) as being good or suitable for a particular purpose",
+    "tr": "tavsiye etmek",
+    "exampleSentence": "Can you recommend a good restaurant in this area?"
+  },
+  {
+    "word": "prevent",
+    "meaning": "to keep (something) from happening",
+    "tr": "önlemek, engellemek",
+    "exampleSentence": "Regular hand washing can help prevent the spread of germs."
+  },
+  {
+    "word": "protect",
+    "meaning": "to keep safe from harm or injury",
+    "tr": "korumak",
+    "exampleSentence": "Sunscreen helps to protect your skin from the sun."
+  },
+  {
+    "word": "notice",
+    "meaning": "to become aware of",
+    "tr": "fark etmek",
+    "exampleSentence": "Did you notice that she was wearing a new dress?"
+  },
+  {
+    "word": "realize",
+    "meaning": "to become fully aware of (something) as a fact; understand clearly",
+    "tr": "farkına varmak, idrak etmek",
+    "exampleSentence": "I didn't realize how late it was."
+  },
+  {
+    "word": "suppose",
+    "meaning": "to think that something is likely to be the case",
+    "tr": "varsaymak, sanmak",
+    "exampleSentence": "I suppose you are right."
+  },
+  {
+    "word": "guess",
+    "meaning": "to estimate or suppose (something) without sufficient information to be sure of being correct",
+    "tr": "tahmin etmek",
+    "exampleSentence": "Can you guess how old I am?"
+  },
+  {
+    "word": "variety",
+    "meaning": "the quality or state of being different or diverse; the absence of uniformity",
+    "tr": "çeşitlilik",
+    "exampleSentence": "The store sells a wide variety of products."
+  },
+  {
+    "word": "range",
+    "meaning": "the area of variation between upper and lower limits on a particular scale",
+    "tr": "aralık, menzil",
+    "exampleSentence": "The hotel offers a wide range of facilities."
+  },
+  {
+    "word": "surface",
+    "meaning": "the outside part or uppermost layer of something",
+    "tr": "yüzey",
+    "exampleSentence": "The surface of the table was smooth and polished."
+  },
+  {
+    "word": "bottom",
+    "meaning": "the lowest point or part of something",
+    "tr": "alt, dip",
+    "exampleSentence": "There is some sugar at the bottom of my cup."
+  },
+  {
+    "word": "edge",
+    "meaning": "the outside limit of an object, area, or surface",
+    "tr": "kenar",
+    "exampleSentence": "Be careful not to fall off the edge of the cliff."
+  },
+  {
+    "word": "corner",
+    "meaning": "a place or angle where two or more sides or edges meet",
+    "tr": "köşe",
+    "exampleSentence": "The shop is on the corner of the street."
+  },
+  {
+    "word": "truth",
+    "meaning": "that which is true or in accordance with fact or reality",
+    "tr": "gerçek, hakikat",
+    "exampleSentence": "It is important to always tell the truth."
+  },
+  {
+    "word": "lie",
+    "meaning": "an intentionally false statement",
+    "tr": "yalan",
+    "exampleSentence": "He told a lie about where he was last night."
+  },
+  {
+    "word": "difficulty",
+    "meaning": "a thing that is hard to accomplish, deal with, or understand",
+    "tr": "zorluk",
+    "exampleSentence": "He had no difficulty passing the exam."
+  },
+  {
+    "word": "challenge",
+    "meaning": "a task or situation that tests someone's abilities",
+    "tr": "meydan okuma, zorlu görev",
+    "exampleSentence": "Climbing that mountain was a great challenge."
+  },
+  {
+    "word": "official",
+    "meaning": "relating to an authority or public body and its duties, actions, and responsibilities",
+    "tr": "resmi",
+    "exampleSentence": "An official announcement will be made tomorrow."
+  },
+  {
+    "word": "private",
+    "meaning": "for or concerning an individual person or group rather than the public",
+    "tr": "özel",
+    "exampleSentence": "This is a private conversation."
+  },
+  {
+    "word": "normal",
+    "meaning": "conforming to a standard; usual, typical, or expected",
+    "tr": "normal",
+    "exampleSentence": "It's normal to feel nervous before an exam."
+  },
+  {
+    "word": "strange",
+    "meaning": "unusual or surprising in a way that is unsettling or difficult to understand",
+    "tr": "garip, tuhaf",
+    "exampleSentence": "I heard a strange noise outside last night."
+  },
+  {
+    "word": "foreign",
+    "meaning": "of, from, in, or characteristic of a country or language other than one's own",
+    "tr": "yabancı",
+    "exampleSentence": "She is fluent in several foreign languages."
+  },
+  {
+    "word": "knowledge",
+    "meaning": "facts, information, and skills acquired by a person through experience or education",
+    "tr": "bilgi, ilim",
+    "exampleSentence": "The book contains a wealth of knowledge on the subject."
+  },
+  {
+    "word": "power",
+    "meaning": "the ability or capacity to do something or act in a particular way",
+    "tr": "güç, iktidar",
+    "exampleSentence": "He used his power to make positive changes."
+  },
+  {
+    "word": "ability",
+    "meaning": "possession of the means or skill to do something",
+    "tr": "yetenek, kabiliyet",
+    "exampleSentence": "She has a unique ability to connect with people."
+  },
+  {
+    "word": "theory",
+    "meaning": "a supposition or a system of ideas intended to explain something",
+    "tr": "teori",
+    "exampleSentence": "Einstein's theory of relativity changed physics."
+  },
+  {
+    "word": "law",
+    "meaning": "the system of rules which a particular country or community recognizes as regulating the actions of its members",
+    "tr": "yasa, hukuk",
+    "exampleSentence": "It is important for everyone to respect the law."
+  },
+  {
+    "word": "rule",
+    "meaning": "one of a set of explicit or understood regulations or principles governing conduct within a particular activity or sphere",
+    "tr": "kural",
+    "exampleSentence": "You must follow the rules of the game."
+  },
+  {
+    "word": "term",
+    "meaning": "a word or phrase used to describe a thing or to express a concept",
+    "tr": "terim, dönem",
+    "exampleSentence": "What does this technical term mean?"
+  },
+  {
+    "word": "test",
+    "meaning": "a procedure intended to establish the quality, performance, or reliability of something",
+    "tr": "test, sınav",
+    "exampleSentence": "The students are preparing for their final test."
+  },
+  {
+    "word": "analysis",
+    "meaning": "detailed examination of the elements or structure of something",
+    "tr": "analiz",
+    "exampleSentence": "A detailed analysis of the data is required."
+  },
+  {
+    "word": "example",
+    "meaning": "a thing characteristic of its kind or illustrating a general rule",
+    "tr": "örnek",
+    "exampleSentence": "Can you give me an example of what you mean?"
+  },
+  {
+    "word": "pattern",
+    "meaning": "a repeated decorative design",
+    "tr": "desen, model, düzen",
+    "exampleSentence": "The carpet has a beautiful geometric pattern."
+  },
+  {
+    "word": "series",
+    "meaning": "a number of similar or related events or things, one following another",
+    "tr": "dizi, seri",
+    "exampleSentence": "I am watching a new TV series on Netflix."
+  },
+  {
+    "word": "property",
+    "meaning": "a thing or things belonging to someone; possessions collectively",
+    "tr": "mülk, özellik",
+    "exampleSentence": "This property is not for sale."
+  },
+  {
+    "word": "staff",
+    "meaning": "all the people employed by a particular organization",
+    "tr": "personel, kadro",
+    "exampleSentence": "The hotel staff were very helpful."
+  },
+  {
+    "word": "union",
+    "meaning": "the action or fact of joining or being joined, especially in a political context",
+    "tr": "birlik, sendika",
+    "exampleSentence": "The workers formed a union to protect their rights."
+  },
+  {
+    "word": "agreement",
+    "meaning": "harmony or accordance in opinion or feeling",
+    "tr": "anlaşma",
+    "exampleSentence": "They finally reached an agreement after a long discussion."
+  },
+  {
+    "word": "tax",
+    "meaning": "a compulsory contribution to state revenue, levied by the government on workers' income and business profits",
+    "tr": "vergi",
+    "exampleSentence": "Everyone has to pay their taxes on time."
+  },
+  {
+    "word": "production",
+    "meaning": "the action of making or manufacturing from components or raw materials",
+    "tr": "üretim",
+    "exampleSentence": "The factory increased its production by 20%."
+  },
+  {
+    "word": "investment",
+    "meaning": "the action or process of investing money for profit or material result",
+    "tr": "yatırım",
+    "exampleSentence": "Real estate can be a good long-term investment."
+  },
+  {
+    "word": "capital",
+    "meaning": "wealth in the form of money or other assets owned by a person or organization",
+    "tr": "sermaye, başkent",
+    "exampleSentence": "They need to raise more capital for their new business."
+  },
+  {
+    "word": "attack",
+    "meaning": "to take aggressive action against (a place or enemy forces) with weapons or armed force",
+    "tr": "saldırı, saldırmak",
+    "exampleSentence": "The army prepared to attack at dawn."
+  },
+  {
+    "word": "defend",
+    "meaning": "to resist an attack made on (someone or something); protect from harm or danger",
+    "tr": "savunmak",
+    "exampleSentence": "The soldiers had to defend the castle."
+  },
+  {
+    "word": "perform",
+    "meaning": "to carry out, accomplish, or fulfill (an action, task, or function)",
+    "tr": "performans sergilemek, yapmak",
+    "exampleSentence": "The actor will perform on stage tonight."
+  },
+  {
+    "word": "suffer",
+    "meaning": "to experience or be subjected to (something bad or unpleasant)",
+
+    "tr": "acı çekmek, muzdarip olmak",
+    "exampleSentence": "Many people suffer from a lack of clean water."
+  },
+  {
+    "word": "express",
+    "meaning": "to convey (a thought or feeling) in words or by gestures and conduct",
+    "tr": "ifade etmek",
+    "exampleSentence": "It's important to express your feelings."
+  },
+  {
+    "word": "discover",
+    "meaning": "to find (something or someone) unexpectedly or in the course of a search",
+    "tr": "keşfetmek",
+    "exampleSentence": "Scientists hope to discover new planets."
+  },
+  {
+    "word": "assume",
+    "meaning": "to suppose to be the case, without proof",
+    "tr": "varsaymak",
+    "exampleSentence": "I assume everyone has read the report."
+  },
+  {
+    "word": "compare",
+    "meaning": "to estimate, measure, or note the similarity or dissimilarity between",
+    "tr": "karşılaştırmak",
+    "exampleSentence": "Don't compare yourself to others."
+  },
+  {
+    "word": "introduce",
+    "meaning": "to bring (something, especially a product, measure, or concept) into use or operation for the first time",
+    "tr": "tanıtmak, tanıştırmak",
+    "exampleSentence": "Let me introduce you to my colleague."
+  },
+  {
+    "word": "perfect",
+    "meaning": "having all the required or desirable elements, qualities, or characteristics; as good as it is possible to be",
+    "tr": "mükemmel",
+    "exampleSentence": "Nobody is perfect."
+  },
+  {
+    "word": "natural",
+    "meaning": "existing in or caused by nature; not made or caused by humankind",
+    "tr": "doğal",
+    "exampleSentence": "This juice is made from all-natural ingredients."
+  },
+  {
+    "word": "physical",
+    "meaning": "relating to the body as opposed to the mind",
+    "tr": "fiziksel",
+    "exampleSentence": "Physical exercise is important for health."
+  },
+  {
+    "word": "mental",
+    "meaning": "relating to the mind",
+    "tr": "zihinsel, akli",
+    "exampleSentence": "Mental health is as important as physical health."
+  },
+  {
+    "word": "complete",
+    "meaning": "having all the necessary or appropriate parts",
+    "tr": "tam, tamamlamak",
+    "exampleSentence": "Please complete the form before you leave."
+  },
+  {
+    "word": "necessary",
+    "meaning": "required to be done, achieved, or present; needed; essential",
+    "tr": "gerekli",
+    "exampleSentence": "Is it really necessary to work late tonight?"
+  },
+  {
+    "word": "popular",
+    "meaning": "liked, admired, or enjoyed by many people or by a particular person or group",
+    "tr": "popüler",
+    "exampleSentence": "This is one of the most popular songs of the year."
+  },
+  {
+    "word": "traditional",
+    "meaning": "existing in or as part of a tradition; long-established",
+    "tr": "geleneksel",
+    "exampleSentence": "They served a traditional Turkish dinner."
+  },
+  {
+    "word": "cultural",
+    "meaning": "relating to the ideas, customs, and social behavior of a society",
+    "tr": "kültürel",
+    "exampleSentence": "The city has a rich cultural heritage."
+  },
+  {
+    "word": "similar",
+    "meaning": "resembling without being identical",
+    "tr": "benzer",
+    "exampleSentence": "My sister and I have very similar tastes in music."
+  },
+  {
+    "word": "various",
+    "meaning": "different from one another; of different kinds or sorts",
+    "tr": "çeşitli, farklı",
+    "exampleSentence": "The store offers various payment options."
+  },
+  {
+    "word": "determine",
+    "meaning": "to discover or establish something exactly, typically as a result of research or calculation",
+    "tr": "belirlemek, saptamak",
+    "exampleSentence": "We need to determine the cause of the problem."
+  },
+  {
+    "word": "manage",
+    "meaning": "to succeed in dealing with something, especially something difficult",
+    "tr": "yönetmek, başa çıkmak",
+    "exampleSentence": "How do you manage to stay so organized?"
+  },
+  {
+    "word": "organize",
+    "meaning": "to arrange systematically; order",
+    "tr": "organize etmek, düzenlemek",
+    "exampleSentence": "She helped to organize the company event."
+  },
+  {
+    "word": "mention",
+    "meaning": "to refer to something briefly and without going into detail",
+    "tr": "bahsetmek, değinmek",
+    "exampleSentence": "Did he mention my name during the meeting?"
+  },
+  {
+    "word": "respond",
+    "meaning": "to say something in reply",
+    "tr": "yanıtlamak, karşılık vermek",
+    "exampleSentence": "He has not yet responded to my email."
+  },
+  {
+    "word": "contain",
+    "meaning": "to have or hold (someone or something) within",
+    "tr": "içermek",
+    "exampleSentence": "This box contains old photographs."
+  },
+  {
+    "word": "exist",
+    "meaning": "to have objective reality or being",
+    "tr": "var olmak, mevcut olmak",
+    "exampleSentence": "Do you believe ghosts really exist?"
+  },
+  {
+    "word": "depend",
+    "meaning": "to be controlled or determined by",
+    "tr": "bağlı olmak",
+    "exampleSentence": "Our plans depend on the weather."
+  },
+  {
+    "word": "court",
+    "meaning": "a body of people presided over by a judge, judges, or magistrate in civil and criminal cases",
+    "tr": "mahkeme",
+    "exampleSentence": "The case will be heard in court next week."
+  },
+  {
+    "word": "judge",
+    "meaning": "a public official appointed to decide cases in a court of law",
+    "tr": "yargıç, hakim",
+    "exampleSentence": "The judge announced the final verdict."
+  },
+  {
+    "word": "lawyer",
+    "meaning": "a person who practices or studies law",
+    "tr": "avukat",
+    "exampleSentence": "You should consult a lawyer before signing the contract."
+  },
+  {
+    "word": "crime",
+    "meaning": "an action or omission that constitutes an offense that may be prosecuted by the state",
+    "tr": "suç",
+    "exampleSentence": "The police are working to reduce crime in the city."
+  },
+  {
+    "word": "proof",
+    "meaning": "evidence or argument establishing or helping to establish a fact or the truth of a statement",
+    "tr": "kanıt, ispat",
+    "exampleSentence": "Do you have any proof that he was there?"
+  },
+  {
+    "word": "officer",
+    "meaning": "a person holding a position of authority, especially one with a commission",
+    "tr": "memur, subay",
+    "exampleSentence": "A police officer helped us find the lost child."
+  },
+  {
+    "word": "tree",
+    "meaning": "a woody perennial plant, typically having a single stem or trunk",
+    "tr": "ağaç",
+    "exampleSentence": "That old oak tree has been here for centuries."
+  },
+  {
+    "word": "plant",
+    "meaning": "a living organism of the kind exemplified by trees, shrubs, herbs, etc.",
+    "tr": "bitki",
+    "exampleSentence": "She has a lot of beautiful plants in her garden."
+  },
+  {
+    "word": "flower",
+    "meaning": "the seed-bearing part of a plant, consisting of reproductive organs",
+    "tr": "çiçek",
+    "exampleSentence": "He gave her a single red flower."
+  },
+  {
+    "word": "river",
+    "meaning": "a large natural stream of water flowing in a channel to the sea, a lake, or another river",
+    "tr": "nehir, ırmak",
+    "exampleSentence": "The Nile is the longest river in the world."
+  },
+  {
+    "word": "mountain",
+    "meaning": "a large natural elevation of the earth's surface rising abruptly from the surrounding level",
+    "tr": "dağ",
+    "exampleSentence": "Climbing a mountain requires a lot of preparation."
+  },
+  {
+    "word": "sea",
+    "meaning": "the expanse of salt water that covers most of the earth's surface and surrounds its landmasses",
+    "tr": "deniz",
+    "exampleSentence": "We spent the whole day swimming in the sea."
+  },
+  {
+    "word": "ocean",
+    "meaning": "a very large expanse of sea, in particular each of the main areas into which the sea is divided geographically",
+    "tr": "okyanus",
+    "exampleSentence": "The Pacific Ocean is the largest ocean on Earth."
+  },
+  {
+    "word": "floor",
+    "meaning": "the lower surface of a room, on which one may walk",
+    "tr": "zemin, kat",
+    "exampleSentence": "Please be careful, the floor is wet."
+  },
+  {
+    "word": "wall",
+    "meaning": "a continuous vertical brick or stone structure that encloses or divides an area",
+    "tr": "duvar",
+    "exampleSentence": "He hung a painting on the living room wall."
+  },
+  {
+    "word": "roof",
+    "meaning": "the structure forming the upper covering of a building",
+    "tr": "çatı",
+    "exampleSentence": "The heavy rain was leaking through the roof."
+  },
+  {
+    "word": "kitchen",
+    "meaning": "a room or area equipped for preparing and cooking food",
+    "tr": "mutfak",
+    "exampleSentence": "My mother is cooking dinner in the kitchen."
+  },
+  {
+    "word": "bedroom",
+    "meaning": "a room for sleeping in",
+    "tr": "yatak odası",
+    "exampleSentence": "My bedroom has a great view of the city."
+  },
+  {
+    "word": "garden",
+    "meaning": "a piece of ground, often near a house, used for growing flowers, fruit, or vegetables",
+    "tr": "bahçe",
+    "exampleSentence": "We grow our own vegetables in our garden."
+  },
+  {
+    "word": "heavy",
+    "meaning": "of great weight; difficult to lift or move",
+    "tr": "ağır",
+    "exampleSentence": "This suitcase is too heavy for me to carry."
+  },
+  {
+    "word": "light",
+    "meaning": "of little weight; not heavy",
+    "tr": "hafif",
+    "exampleSentence": "This box is surprisingly light."
+  },
+  {
+    "word": "dark",
+    "meaning": "with little or no light",
+    "tr": "karanlık",
+    "exampleSentence": "It's too dark to see anything without a flashlight."
+  },
+  {
+    "word": "bright",
+    "meaning": "giving out or reflecting a lot of light; shining",
+    "tr": "parlak",
+    "exampleSentence": "The future looks bright for the company."
+  },
+  {
+    "word": "direct",
+    "meaning": "extending or moving from one place to another by the shortest way without changing direction",
+    "tr": "doğrudan",
+    "exampleSentence": "There is a direct train from here to the airport."
+  },
+  {
+    "word": "indirect",
+    "meaning": "not directly caused by or resulting from something",
+    "tr": "dolaylı",
+    "exampleSentence": "The speech was an indirect criticism of the government."
+  },
+  {
+    "word": "central",
+    "meaning": "of, at, or forming the center",
+    "tr": "merkezi",
+    "exampleSentence": "Our hotel is in a central location."
+  },
+  {
+    "word": "positive",
+    "meaning": "consisting in or characterized by the presence of features rather than their absence",
+    "tr": "pozitif, olumlu",
+    "exampleSentence": "Try to have a positive outlook on life."
+  },
+  {
+    "word": "negative",
+    "meaning": "consisting in or characterized by the absence rather than the presence of distinguishing features",
+    "tr": "negatif, olumsuz",
+    "exampleSentence": "He has a very negative attitude towards everything."
+  },
+  {
+    "word": "initial",
+    "meaning": "existing or occurring at the beginning",
+    "tr": "ilk, başlangıçtaki",
+    "exampleSentence": "My initial reaction was one of surprise."
+  },
+  {
+    "word": "previous",
+    "meaning": "existing or occurring before in time or order",
+    "tr": "önceki",
+    "exampleSentence": "The previous owner of the house was an artist."
+  },
+  {
+    "word": "recent",
+    "meaning": "having happened, begun, or been done not long ago",
+    "tr": "yakın zamandaki, son",
+    "exampleSentence": "A recent study shows the benefits of exercise."
+  },{
+    "word": "bank",
+    "meaning": "a financial establishment that invests money deposited by customers",
+    "tr": "banka",
+    "exampleSentence": "I need to go to the bank to deposit this check."
+  },
+  {
+    "word": "account",
+    "meaning": "a record or statement of financial expenditure and receipts",
+    "tr": "hesap",
+    "exampleSentence": "He has a savings account with a local bank."
+  },
+  {
+    "word": "credit",
+    "meaning": "the ability of a customer to obtain goods or services before payment",
+    "tr": "kredi",
+    "exampleSentence": "She bought the new TV on credit."
+  },
+  {
+    "word": "debt",
+    "meaning": "something, typically money, that is owed or due",
+    "tr": "borç",
+    "exampleSentence": "Many students graduate with a significant amount of debt."
+  },
+  {
+    "word": "budget",
+    "meaning": "an estimate of income and expenditure for a set period of time",
+    "tr": "bütçe",
+    "exampleSentence": "We need to create a realistic budget for our household expenses."
+  },
+  {
+    "word": "income",
+    "meaning": "money received, especially on a regular basis, for work or through investments",
+    "tr": "gelir",
+    "exampleSentence": "His monthly income is not enough to cover all his expenses."
+  },
+  {
+    "word": "expense",
+    "meaning": "the cost required for something; the money spent on something",
+    "tr": "masraf, gider",
+    "exampleSentence": "Travel is our biggest expense this year."
+  },
+  {
+    "word": "profit",
+    "meaning": "a financial gain, especially the difference between the amount earned and the amount spent",
+    "tr": "kar, kazanç",
+    "exampleSentence": "The company made a huge profit last quarter."
+  },
+  {
+    "word": "loss",
+    "meaning": "an amount of money lost by a business or organization",
+    "tr": "zarar, kayıp",
+    "exampleSentence": "The company reported a net loss of 2 million dollars."
+  },
+  {
+    "word": "contract",
+    "meaning": "a written or spoken agreement, especially one concerning employment or sales",
+    "tr": "sözleşme, kontrat",
+    "exampleSentence": "You should read the contract carefully before signing it."
+  },
+  {
+    "word": "deal",
+    "meaning": "an agreement entered into by two or more parties for their mutual benefit",
+    "tr": "anlaşma",
+    "exampleSentence": "They finally made a deal after weeks of negotiation."
+  },
+  {
+    "word": "client",
+    "meaning": "a person or organization using the services of a lawyer or other professional person or company",
+    "tr": "müşteri, müvekkil",
+    "exampleSentence": "The lawyer is meeting with a new client this afternoon."
+  },
+  {
+    "word": "customer",
+    "meaning": "a person who buys goods or services from a shop or business",
+    "tr": "müşteri",
+    "exampleSentence": "The customer is always right."
+  },
+  {
+    "word": "patient",
+    "meaning": "a person receiving or registered to receive medical treatment",
+    "tr": "hasta",
+    "exampleSentence": "The doctor is examining the patient."
+  },
+  {
+    "word": "drug",
+    "meaning": "a medicine or other substance which has a physiological effect when ingested",
+    "tr": "ilaç",
+    "exampleSentence": "This drug is very effective for headaches."
+  },
+  {
+    "word": "medicine",
+    "meaning": "the science or practice of the diagnosis, treatment, and prevention of disease",
+    "tr": "tıp, ilaç",
+    "exampleSentence": "He is studying to become a doctor of medicine."
+  },
+  {
+    "word": "disease",
+    "meaning": "a disorder of structure or function in a human, animal, or plant",
+    "tr": "hastalık",
+    "exampleSentence": "Researchers are working to find a cure for the disease."
+  },
+  {
+    "word": "treatment",
+    "meaning": "medical care given to a patient for an illness or injury",
+    "tr": "tedavi",
+    "exampleSentence": "The new treatment has a high success rate."
+  },
+  {
+    "word": "factor",
+    "meaning": "a circumstance, fact, or influence that contributes to a result",
+    "tr": "faktör, etken",
+    "exampleSentence": "Price is a major factor in most purchasing decisions."
+  },
+  {
+    "word": "feature",
+    "meaning": "a distinctive attribute or aspect of something",
+    "tr": "özellik",
+    "exampleSentence": "The new phone has many advanced features."
+  },
+  {
+    "word": "instance",
+    "meaning": "an example or single occurrence of something",
+    "tr": "örnek, vaka",
+    "exampleSentence": "For instance, you could try a different approach."
+  },
+  {
+    "word": "element",
+    "meaning": "a part or aspect of something abstract, especially one that is essential or characteristic",
+    "tr": "element, unsur",
+    "exampleSentence": "Trust is a key element of any successful relationship."
+  },
+  {
+    "word": "component",
+    "meaning": "a part or element of a larger whole",
+    "tr": "bileşen",
+    "exampleSentence": "The machine is made of several different components."
+  },
+  {
+    "word": "wide",
+    "meaning": "of great or more than average width",
+    "tr": "geniş",
+    "exampleSentence": "The river is very wide at this point."
+  },
+  {
+    "word": "deep",
+    "meaning": "extending far down from the top or surface",
+    "tr": "derin",
+    "exampleSentence": "The ocean is very deep in some areas."
+  },
+  {
+    "word": "flat",
+    "meaning": "having a level surface; without raised areas or indentations",
+    "tr": "düz",
+    "exampleSentence": "The pancake should be thin and flat."
+  },
+  {
+    "word": "round",
+    "meaning": "shaped like or approximately like a circle or cylinder",
+    "tr": "yuvarlak",
+    "exampleSentence": "The Earth is not perfectly round."
+  },
+  {
+    "word": "sharp",
+    "meaning": "having an edge or point that is able to cut or pierce something",
+    "tr": "keskin",
+    "exampleSentence": "Be careful, that knife is very sharp."
+  },
+  {
+    "word": "soft",
+    "meaning": "easy to mold, cut, compress, or fold; not hard or firm to the touch",
+    "tr": "yumuşak",
+    "exampleSentence": "The cat's fur is very soft."
+  },
+  {
+    "word": "smooth",
+    "meaning": "having an even and regular surface or consistency; free from perceptible projections or lumps",
+    "tr": "pürüzsüz",
+    "exampleSentence": "The surface of the lake was as smooth as glass."
+  },
+  {
+    "word": "rough",
+    "meaning": "having an uneven or irregular surface; not smooth or level",
+    "tr": "pürüzlü, kaba",
+    "exampleSentence": "The old stone wall felt rough to the touch."
+  },
+  {
+    "word": "clean",
+    "meaning": "free from dirt, marks, or stains",
+    "tr": "temiz",
+    "exampleSentence": "Please make sure your room is clean."
+  },
+  {
+    "word": "dirty",
+    "meaning": "covered or marked with an unclean substance",
+    "tr": "kirli",
+    "exampleSentence": "Your shoes are dirty after playing in the mud."
+  },
+  {
+    "word": "dry",
+    "meaning": "free from moisture or liquid",
+    "tr": "kuru",
+    "exampleSentence": "Make sure the clothes are completely dry before you put them away."
+  },
+  {
+    "word": "wet",
+    "meaning": "covered or saturated with water or another liquid",
+    "tr": "ıslak",
+    "exampleSentence": "My umbrella is still wet from the rain."
+  },
+  {
+    "word": "poor",
+    "meaning": "lacking sufficient money to live at a standard considered comfortable or normal in a society",
+    "tr": "fakir, yoksul",
+    "exampleSentence": "He came from a poor family but worked hard to succeed."
+  },
+  {
+    "word": "rich",
+    "meaning": "having a great deal of money or assets",
+    "tr": "zengin",
+    "exampleSentence": "She became a rich and famous actress."
+  },
+  {
+    "word": "individual",
+    "meaning": "single; separate",
+    "tr": "bireysel",
+    "exampleSentence": "Each individual has a unique set of fingerprints."
+  },
+  {
+    "word": "entire",
+    "meaning": "with no part left out; whole",
+    "tr": "tüm, bütün",
+    "exampleSentence": "He ate the entire cake by himself."
+  },{
+    "word": "claim",
+    "meaning": "to state or assert that something is the case, typically without providing evidence or proof",
+    "tr": "iddia etmek",
+    "exampleSentence": "The company claims that its product can make you lose weight in a week."
+  },
+  {
+    "word": "admit",
+    "meaning": "to confess to be true or to be the case",
+    "tr": "itiraf etmek, kabul etmek",
+    "exampleSentence": "He was reluctant to admit his mistake."
+  },
+  {
+    "word": "deny",
+    "meaning": "to state that one refuses to admit the truth or existence of",
+    "tr": "inkar etmek",
+    "exampleSentence": "The suspect continued to deny any involvement in the crime."
+  },
+  {
+    "word": "confirm",
+    "meaning": "to establish the truth or correctness of (something previously believed or suspected to be the case)",
+    "tr": "doğrulamak, teyit etmek",
+    "exampleSentence": "Can you please confirm your flight reservation?"
+  },
+  {
+    "word": "army",
+    "meaning": "an organized military force equipped for fighting on land",
+    "tr": "ordu",
+    "exampleSentence": "He joined the army when he was eighteen."
+  },
+  {
+    "word": "military",
+    "meaning": "relating to or characteristic of soldiers or armed forces",
+    "tr": "askeri",
+    "exampleSentence": "The country has a strong military presence in the region."
+  },
+  {
+    "word": "soldier",
+    "meaning": "a person who serves in an army",
+    "tr": "asker",
+    "exampleSentence": "The soldier stood bravely at his post."
+  },
+  {
+    "word": "standard",
+    "meaning": "a level of quality or attainment",
+    "tr": "standart",
+    "exampleSentence": "Her work is of a very high standard."
+  },
+  {
+    "word": "region",
+    "meaning": "an area, especially part of a country or the world having definable characteristics but not always fixed boundaries",
+    "tr": "bölge",
+    "exampleSentence": "This region is known for its excellent wine."
+  },
+  {
+    "word": "village",
+    "meaning": "a group of houses and associated buildings, larger than a hamlet and smaller than a town, situated in a rural area",
+    "tr": "köy",
+    "exampleSentence": "She grew up in a quiet fishing village."
+  },
+  {
+    "word": "town",
+    "meaning": "a built-up area with a name, defined boundaries, and local government, that is larger than a village and generally smaller than a city",
+    "tr": "kasaba",
+    "exampleSentence": "It's a small town with a friendly community."
+  },
+  {
+    "word": "district",
+    "meaning": "an area of a country or city, especially one characterized by a particular feature or activity",
+    "tr": "ilçe, semt",
+    "exampleSentence": "The financial district is very busy during the day."
+  },
+  {
+    "word": "degree",
+    "meaning": "a unit of measurement of angles, or a unit in a scale for measuring temperature",
+    "tr": "derece, diploma",
+    "exampleSentence": "She has a degree in economics."
+  },
+  {
+    "word": "rate",
+    "meaning": "a measure, quantity, or frequency, typically one measured against some other quantity or measure",
+    "tr": "oran, hız",
+    "exampleSentence": "The crime rate has decreased this year."
+  },
+  {
+    "word": "score",
+    "meaning": "the number of points, goals, runs, etc. achieved in a game or competition",
+    "tr": "skor, puan",
+    "exampleSentence": "He got a high score on the final exam."
+  },
+  {
+    "word": "damage",
+    "meaning": "physical harm caused to something in such a way as to impair its value, usefulness, or normal function",
+    "tr": "hasar, zarar vermek",
+    "exampleSentence": "The earthquake caused severe damage to the city."
+  },
+  {
+    "word": "destroy",
+    "meaning": "to end the existence of (something) by damaging or attacking it",
+    "tr": "yok etmek, imha etmek",
+    "exampleSentence": "The historic building was completely destroyed by the fire."
+  },
+  {
+    "word": "survive",
+    "meaning": "to continue to live or exist, especially in spite of danger or hardship",
+    "tr": "hayatta kalmak",
+    "exampleSentence": "It is difficult to survive in the desert without water."
+  },
+  {
+    "word": "respect",
+    "meaning": "a feeling of deep admiration for someone or something elicited by their abilities, qualities, or achievements",
+    "tr": "saygı duymak",
+    "exampleSentence": "It is important to treat everyone with respect."
+  },
+  {
+    "word": "appreciate",
+    "meaning": "to recognize the full worth of",
+    "tr": "takdir etmek",
+    "exampleSentence": "I really appreciate your help and support."
+  },
+  {
+    "word": "blame",
+    "meaning": "to feel or declare that (someone or something) is responsible for a fault or wrong",
+    "tr": "suçlamak",
+    "exampleSentence": "It's easy to blame others for our own mistakes."
+  },
+  {
+    "word": "complain",
+    "meaning": "to express dissatisfaction or annoyance about something",
+    "tr": "şikayet etmek",
+    "exampleSentence": "He called the manager to complain about the poor service."
+  },
+  {
+    "word": "succeed",
+    "meaning": "to achieve the desired aim or result",
+    "tr": "başarmak",
+    "exampleSentence": "If you keep trying, you will eventually succeed."
+  },
+  {
+    "word": "fail",
+    "meaning": "to be unsuccessful in achieving one's goal",
+    "tr": "başarısız olmak",
+    "exampleSentence": "Even if you fail, you should not give up."
+  },
+  {
+    "word": "legal",
+    "meaning": "relating to the law",
+    "tr": "yasal, hukuki",
+    "exampleSentence": "You should seek legal advice before making a decision."
+  },
+  {
+    "word": "illegal",
+    "meaning": "contrary to or forbidden by law",
+    "tr": "yasa dışı",
+    "exampleSentence": "It is illegal to sell cigarettes to minors."
+  },
+  {
+    "word": "dead",
+    "meaning": "no longer alive",
+    "tr": "ölü",
+    "exampleSentence": "The tree in our garden is dead."
+  },
+  {
+    "word": "alive",
+    "meaning": "living, not dead",
+    "tr": "canlı, hayatta",
+    "exampleSentence": "The doctors worked hard to keep the patient alive."
+  },
+  {
+    "word": "single",
+    "meaning": "only one; not one of several",
+    "tr": "tek, bekar",
+    "exampleSentence": "She raised her children as a single parent."
+  },
+  {
+    "word": "married",
+    "meaning": "united in marriage",
+    "tr": "evli",
+    "exampleSentence": "My married sister lives in another city."
+  },
+  {
+    "word": "ancient",
+    "meaning": "belonging to the very distant past and no longer in existence",
+    "tr": "antik",
+    "exampleSentence": "We visited the ancient ruins of Ephesus."
+  },
+  {
+    "word": "modern",
+    "meaning": "relating to the present or recent times as opposed to the remote past",
+    "tr": "modern",
+    "exampleSentence": "Modern architecture often uses a lot of glass and steel."
+  },
+  {
+    "word": "original",
+    "meaning": "present or existing from the beginning; first or earliest",
+    "tr": "orijinal",
+    "exampleSentence": "The museum displays the original manuscript of the book."
+  },
+  {
+    "word": "copy",
+    "meaning": "a thing made to be similar or identical to another",
+    "tr": "kopya",
+    "exampleSentence": "Please make a copy of this document for me."
+  },
+  {
+    "word": "funny",
+    "meaning": "causing laughter or amusement; humorous",
+    "tr": "komik, eğlenceli",
+    "exampleSentence": "He told a funny story that made everyone laugh."
+  },
+  {
+    "word": "boring",
+    "meaning": "not interesting; tedious",
+    "tr": "sıkıcı",
+    "exampleSentence": "I found the lecture to be extremely boring."
+  },
+  {
+    "word": "exciting",
+    "meaning": "causing great enthusiasm and eagerness",
+    "tr": "heyecan verici",
+    "exampleSentence": "Watching the final match of the tournament was very exciting."
+  },
+  {
+    "word": "famous",
+    "meaning": "known about by many people",
+    "tr": "ünlü",
+    "exampleSentence": "Paris is famous for its art museums."
+  },
+  {
+    "word": "quiet",
+    "meaning": "making little or no noise",
+    "tr": "sessiz, sakin",
+    "exampleSentence": "I prefer to study in a quiet library."
+  },
+  {
+    "word": "noisy",
+    "meaning": "making or given to making a lot of noise",
+    "tr": "gürültülü",
+    "exampleSentence": "The classroom became noisy when the teacher left."
+  },
+  {
+    "word": "issue",
+    "meaning": "an important topic or problem for debate or discussion",
+    "tr": "konu, mesele",
+    "exampleSentence": "Climate change is a major global issue."
+  },
+  {
+    "word": "aspect",
+    "meaning": "a particular part or feature of something",
+    "tr": "yön, taraf",
+    "exampleSentence": "We need to consider every aspect of the problem."
+  },
+  {
+    "word": "principle",
+    "meaning": "a fundamental truth or proposition that serves as the foundation for a system of belief or behavior",
+    "tr": "prensip, ilke",
+    "exampleSentence": "He is a man of high moral principles."
+  },
+  {
+    "word": "function",
+    "meaning": "an activity or purpose natural to or intended for a person or thing",
+    "tr": "işlev, fonksiyon",
+    "exampleSentence": "The main function of the heart is to pump blood."
+  },
+  {
+    "word": "procedure",
+    "meaning": "an established or official way of doing something",
+    "tr": "prosedür, işlem",
+    "exampleSentence": "You must follow the correct safety procedure."
+  },
+  {
+    "word": "technique",
+    "meaning": "a way of carrying out a particular task, especially the execution or performance of an artistic work or a scientific procedure",
+    "tr": "teknik",
+    "exampleSentence": "She has developed a unique painting technique."
+  },
+  {
+    "word": "strategy",
+    "meaning": "a plan of action designed to achieve a long-term or overall aim",
+    "tr": "strateji",
+    "exampleSentence": "The company needs a new marketing strategy to attract customers."
+  },
+  {
+    "word": "objective",
+    "meaning": "a thing aimed at or sought; a goal",
+    "tr": "hedef, amaç, objektif",
+    "exampleSentence": "Our primary objective is to increase sales by 10%."
+  },
+  {
+    "word": "solution",
+    "meaning": "a means of solving a problem or dealing with a difficult situation",
+    "tr": "çözüm",
+    "exampleSentence": "There is no easy solution to this complex problem."
+  },
+  {
+    "word": "consequence",
+    "meaning": "a result or effect of an action or condition",
+    "tr": "sonuç, netice",
+    "exampleSentence": "Every action has a consequence."
+  },
+  {
+    "word": "impact",
+    "meaning": "a marked effect or influence",
+    "tr": "etki",
+    "exampleSentence": "The new technology will have a huge impact on our lives."
+  },
+  {
+    "word": "implication",
+    "meaning": "the conclusion that can be drawn from something, although it is not explicitly stated",
+    "tr": "ima, çıkarım",
+    "exampleSentence": "The implication was that he was not telling the truth."
+  },
+  {
+    "word": "perspective",
+    "meaning": "a particular attitude toward or way of regarding something; a point of view",
+    "tr": "perspektif, bakış açısı",
+    "exampleSentence": "Try to see the situation from a different perspective."
+  },
+  {
+    "word": "viewpoint",
+    "meaning": "a person's opinion or point of view",
+    "tr": "görüş açısı",
+    "exampleSentence": "From my viewpoint, the decision was correct."
+  },
+  {
+    "word": "assumption",
+    "meaning": "a thing that is accepted as true or as certain to happen, without proof",
+    "tr": "varsayım",
+    "exampleSentence": "Your conclusion is based on a false assumption."
+  },
+  {
+    "word": "hypothesis",
+    "meaning": "a supposition or proposed explanation made on the basis of limited evidence as a starting point for further investigation",
+    "tr": "hipotez",
+    "exampleSentence": "The scientist will test the hypothesis with an experiment."
+  },
+  {
+    "word": "significant",
+    "meaning": "sufficiently great or important to be worthy of attention; noteworthy",
+    "tr": "önemli, anlamlı",
+    "exampleSentence": "There has been a significant increase in prices."
+  },
+  {
+    "word": "relevant",
+    "meaning": "closely connected or appropriate to what is being done or considered",
+    "tr": "ilgili, alakalı",
+    "exampleSentence": "Please only include information that is relevant to the topic."
+  },
+  {
+    "word": "accurate",
+    "meaning": "(of information, measurements, or predictions) correct in all details; exact",
+    "tr": "doğru, kesin",
+    "exampleSentence": "The report provides an accurate description of the events."
+  },
+  {
+    "word": "precise",
+    "meaning": "marked by exactness and accuracy of expression or detail",
+    "tr": "tam, kesin",
+    "exampleSentence": "Can you give me a more precise location?"
+  },
+  {
+    "word": "valid",
+    "meaning": "(of an argument or point) having a sound basis in logic or fact; reasonable",
+    "tr": "geçerli",
+    "exampleSentence": "You must have a valid passport to travel abroad."
+  },
+  {
+    "word": "consistent",
+    "meaning": "acting or done in the same way over time, especially so as to be fair or accurate",
+    "tr": "tutarlı",
+    "exampleSentence": "Her actions are not consistent with her words."
+  },
+  {
+    "word": "complex",
+    "meaning": "consisting of many different and connected parts",
+    "tr": "karmaşık",
+    "exampleSentence": "The instructions were too complex to understand."
+  },
+  {
+    "word": "obvious",
+    "meaning": "easily perceived or understood; clear, self-evident, or apparent",
+    "tr": "bariz, apaçık",
+    "exampleSentence": "The answer to the question was obvious."
+  },
+  {
+    "word": "apparent",
+    "meaning": "clearly visible or understood; obvious",
+    "tr": "görünürde, bariz",
+    "exampleSentence": "It was apparent that he was not happy with the decision."
+  },
+  {
+    "word": "potential",
+    "meaning": "having or showing the capacity to become or develop into something in the future",
+    "tr": "potansiyel",
+    "exampleSentence": "The new employee shows great potential."
+  },
+  {
+    "word": "major",
+    "meaning": "important, serious, or significant",
+    "tr": "büyük, ana",
+    "exampleSentence": "She played a major role in the project's success."
+  },
+  {
+    "word": "minor",
+    "meaning": "lesser in importance, seriousness, or significance",
+    "tr": "küçük, önemsiz",
+    "exampleSentence": "He suffered only minor injuries in the accident."
+  },
+  {
+    "word": "primary",
+    "meaning": "of chief importance; principal",
+    "tr": "birincil, temel",
+    "exampleSentence": "Our primary concern is the safety of our customers."
+  },
+  {
+    "word": "secondary",
+    "meaning": "coming after, less important than, or resulting from someone or something else that is primary",
+    "tr": "ikincil",
+    "exampleSentence": "The economic impact is a secondary consideration."
+  },
+  {
+    "word": "internal",
+    "meaning": "of or situated on the inside",
+    "tr": "iç, dahili",
+    "exampleSentence": "The company conducted an internal investigation."
+  },
+  {
+    "word": "external",
+    "meaning": "of or forming the outside of something",
+    "tr": "dış, harici",
+    "exampleSentence": "The building's external walls need painting."
+  },
+  {
+    "word": "global",
+    "meaning": "relating to the whole world; worldwide",
+    "tr": "küresel",
+    "exampleSentence": "Climate change is a global problem."
+  },
+  {
+    "word": "domestic",
+    "meaning": "relating to the running of a home or to family relations",
+    "tr": "iç, yerel",
+    "exampleSentence": "The airline offers both domestic and international flights."
+  },
+  {
+    "word": "urban",
+    "meaning": "in, relating to, or characteristic of a town or city",
+    "tr": "kentsel",
+    "exampleSentence": "Many people are moving from rural to urban areas."
+  },
+  {
+    "word": "rural",
+    "meaning": "in, relating to, or characteristic of the countryside rather than the town",
+    "tr": "kırsal",
+    "exampleSentence": "He enjoys the peace and quiet of rural life."
+  },
+  {
+    "word": "establish",
+    "meaning": "to set up (an organization, system, or set of rules) on a firm or permanent basis",
+    "tr": "kurmak, tesis etmek",
+    "exampleSentence": "The company was established in 1950."
+  },
+  {
+    "word": "generate",
+    "meaning": "to produce or create",
+    "tr": "üretmek, oluşturmak",
+    "exampleSentence": "The new power plant will generate electricity for the entire region."
+  },
+  {
+    "word": "indicate",
+    "meaning": "to point out; show",
+    "tr": "göstermek, belirtmek",
+    "exampleSentence": "The road signs indicate that we should turn left."
+  },{
+    "word": "argue",
+    "meaning": "to give reasons or cite evidence in support of an idea, action, or theory",
+    "tr": "tartışmak, savunmak",
+    "exampleSentence": "He tried to argue his point, but no one would listen."
+  },
+  {
+    "word": "debate",
+    "meaning": "a formal discussion on a particular topic in which opposing arguments are put forward",
+    "tr": "tartışmak (münazara)",
+    "exampleSentence": "The candidates will debate the key issues on television tonight."
+  },
+  {
+    "word": "conclude",
+    "meaning": "to arrive at a judgment or opinion by reasoning",
+    "tr": "sonuçlandırmak, sonuca varmak",
+    "exampleSentence": "From the evidence, we can conclude that he is guilty."
+  },
+  {
+    "word": "summarize",
+    "meaning": "to give a brief statement of the main points of (something)",
+    "tr": "özetlemek",
+    "exampleSentence": "Can you summarize the main points of the article in a few sentences?"
+  },
+  {
+    "word": "define",
+    "meaning": "to state or describe exactly the nature, scope, or meaning of",
+    "tr": "tanımlamak",
+    "exampleSentence": "It is difficult to define the concept of 'happiness'."
+  },
+  {
+    "word": "interpret",
+    "meaning": "to explain the meaning of (information, words, or actions)",
+    "tr": "yorumlamak",
+    "exampleSentence": "How would you interpret this poem?"
+  },
+  {
+    "word": "illustrate",
+    "meaning": "to explain or make something clear by using examples, charts, or pictures",
+    "tr": "örneklemek, resimlemek",
+    "exampleSentence": "Let me give you an example to illustrate the point."
+  },
+  {
+    "word": "reveal",
+    "meaning": "to make (previously unknown or secret information) known to others",
+    "tr": "ortaya çıkarmak, ifşa etmek",
+    "exampleSentence": "The investigation revealed some shocking facts."
+  },
+  {
+    "word": "conceal",
+    "meaning": "to not allow to be seen; hide",
+    "tr": "gizlemek",
+    "exampleSentence": "He tried to conceal his disappointment with a smile."
+  },
+  {
+    "word": "involve",
+    "meaning": "to have or include (something) as a necessary part or result",
+    "tr": "içermek, kapsamak",
+    "exampleSentence": "The job will involve a lot of travel."
+  },
+  {
+    "word": "require",
+    "meaning": "to need for a particular purpose",
+    "tr": "gerektirmek",
+    "exampleSentence": "This recipe requires at least three eggs."
+  },
+  {
+    "word": "demand",
+    "meaning": "an insistent and peremptory request, made as if by right",
+    "tr": "talep etmek",
+    "exampleSentence": "The workers are planning to demand higher wages."
+  },
+  {
+    "word": "supply",
+    "meaning": "a stock of a resource from which a person or place can be provided with the necessary amount of that resource",
+    "tr": "arz, tedarik etmek",
+    "exampleSentence": "The demand for the product is higher than the supply."
+  },
+  {
+    "word": "gain",
+    "meaning": "to obtain or secure (something desired, favorable, or profitable)",
+    "tr": "kazanmak, elde etmek",
+    "exampleSentence": "He hopes to gain more experience in his new job."
+  },
+  {
+    "word": "earn",
+    "meaning": "to obtain (money) in return for labor or services",
+    "tr": "kazanmak (para, hak)",
+    "exampleSentence": "How much do you earn a month?"
+  },
+  {
+    "word": "context",
+    "meaning": "the circumstances that form the setting for an event, statement, or idea",
+    "tr": "bağlam",
+    "exampleSentence": "You have to understand the historical context of the novel."
+  },
+  {
+    "word": "concept",
+    "meaning": "an abstract idea; a general notion",
+    "tr": "kavram",
+    "exampleSentence": "It is a difficult concept to grasp at first."
+  },
+  {
+    "word": "notion",
+    "meaning": "a conception of or belief about something",
+    "tr": "fikir, kanı",
+    "exampleSentence": "I have only a vague notion of what she does for a living."
+  },
+  {
+    "word": "insight",
+    "meaning": "the capacity to gain an accurate and deep intuitive understanding of a person or thing",
+    "tr": "içgörü, anlayış",
+    "exampleSentence": "The book provides a fascinating insight into the author's life."
+  },
+  {
+    "word": "philosophy",
+    "meaning": "the study of the fundamental nature of knowledge, reality, and existence",
+    "tr": "felsefe",
+    "exampleSentence": "He is studying ancient Greek philosophy."
+  },
+  {
+    "word": "psychology",
+    "meaning": "the scientific study of the human mind and its functions",
+    "tr": "psikoloji",
+    "exampleSentence": "She has a degree in psychology."
+  },
+  {
+    "word": "sociology",
+    "meaning": "the study of the development, structure, and functioning of human society",
+    "tr": "sosyoloji",
+    "exampleSentence": "Sociology helps us understand social behavior."
+  },
+  {
+    "word": "detail",
+    "meaning": "an individual feature, fact, or item",
+    "tr": "detay, ayrıntı",
+    "exampleSentence": "The report was very thorough and full of detail."
+  },
+  {
+    "word": "summary",
+    "meaning": "a brief statement or account of the main points of something",
+    "tr": "özet",
+    "exampleSentence": "Could you give me a quick summary of the meeting?"
+  },
+  {
+    "word": "chapter",
+    "meaning": "a main division of a book",
+    "tr": "bölüm (kitap)",
+    "exampleSentence": "I read the first two chapters of the book last night."
+  },
+  {
+    "word": "section",
+    "meaning": "any of the more or less distinct parts into which something is or may be divided",
+    "tr": "bölüm, kısım",
+    "exampleSentence": "The final section of the exam was the most difficult."
+  },
+  {
+    "word": "paragraph",
+    "meaning": "a distinct section of a piece of writing, usually dealing with a single theme",
+    "tr": "paragraf",
+    "exampleSentence": "Please write a short paragraph about your hobbies."
+  },
+  {
+    "word": "sentence",
+    "meaning": "a set of words that is complete in itself, typically containing a subject and predicate",
+    "tr": "cümle",
+    "exampleSentence": "Try to write clear and simple sentences."
+  },
+  {
+    "word": "phrase",
+    "meaning": "a small group of words standing together as a conceptual unit",
+    "tr": "ifade, sözcük grubu",
+    "exampleSentence": "The phrase 'once upon a time' often starts a fairy tale."
+  },
+  {
+    "word": "item",
+    "meaning": "an individual article or unit, especially one that is part of a list",
+    "tr": "öğe, madde",
+    "exampleSentence": "There are ten items on the shopping list."
+  },
+  {
+    "word": "list",
+    "meaning": "a number of connected items or names written or printed consecutively",
+    "tr": "liste",
+    "exampleSentence": "I made a list of things to do today."
+  },
+  {
+    "word": "category",
+    "meaning": "a class or division of people or things regarded as having particular shared characteristics",
+    "tr": "kategori",
+    "exampleSentence": "The books are organized into different categories."
+  },
+  {
+    "word": "topic",
+    "meaning": "a matter dealt with in a text, discourse, or conversation; a subject",
+    "tr": "konu",
+    "exampleSentence": "The main topic of our discussion was the environment."
+  },
+  {
+    "word": "subject",
+    "meaning": "a person or thing that is being discussed, described, or dealt with",
+    "tr": "konu, özne",
+    "exampleSentence": "My favorite subject in school was history."
+  },
+  {
+    "word": "object",
+    "meaning": "a material thing that can be seen and touched",
+    "tr": "nesne, obje",
+    "exampleSentence": "What is that strange object in the corner of the room?"
+  },
+  {
+    "word": "figure",
+    "meaning": "a number, especially one which forms part of official statistics",
+    "tr": "rakam, şekil",
+    "exampleSentence": "The latest sales figures are very promising."
+  },
+  {
+    "word": "chart",
+    "meaning": "a sheet of information in the form of a table, graph, or diagram",
+    "tr": "grafik, çizelge",
+    "exampleSentence": "This chart shows the company's growth over the last five years."
+  },
+  {
+    "word": "graph",
+    "meaning": "a diagram showing the relation between variable quantities",
+    "tr": "grafik",
+    "exampleSentence": "The graph clearly illustrates the increase in population."
+  },
+  {
+    "word": "diagram",
+    "meaning": "a simplified drawing showing the appearance, structure, or workings of something",
+    "tr": "diyagram, şema",
+    "exampleSentence": "The teacher used a diagram to explain the process."
+  },
+  {
+    "word": "map",
+    "meaning": "a diagrammatic representation of an area of land or sea showing physical features, cities, roads, etc.",
+    "tr": "harita",
+    "exampleSentence": "I need a map to find my way around the city."
+  },{
+    "word": "agreement",
+    "meaning": "a negotiated and typically legally binding arrangement between parties",
+    "tr": "anlaşma, sözleşme",
+    "exampleSentence": "Both sides have finally signed the peace agreement."
+  },
+  {
+    "word": "authority",
+    "meaning": "the power or right to give orders, make decisions, and enforce obedience",
+    "tr": "otorite, yetki",
+    "exampleSentence": "Only the manager has the authority to approve this request."
+  },
+  {
+    "word": "responsibility",
+    "meaning": "the state or fact of having a duty to deal with something or of having control over someone",
+    "tr": "sorumluluk",
+    "exampleSentence": "It is our collective responsibility to protect the environment."
+  },
+  {
+    "word": "duty",
+    "meaning": "a moral or legal obligation; a responsibility",
+    "tr": "görev, vazife",
+    "exampleSentence": "It is a soldier's duty to serve their country."
+  },
+  {
+    "word": "right",
+    "meaning": "a moral or legal entitlement to have or obtain something or to act in a certain way",
+    "tr": "hak",
+    "exampleSentence": "Everyone has the right to freedom of speech."
+  },
+  {
+    "word": "freedom",
+    "meaning": "the power or right to act, speak, or think as one wants without hindrance or restraint",
+    "tr": "özgürlük",
+    "exampleSentence": "Freedom of the press is a cornerstone of democracy."
+  },
+  {
+    "word": "liberty",
+    "meaning": "the state of being free within society from oppressive restrictions imposed by authority",
+    "tr": "hürriyet",
+    "exampleSentence": "The statue of Liberty is a symbol of freedom."
+  },
+  {
+    "word": "justice",
+    "meaning": "just behavior or treatment",
+    "tr": "adalet",
+    "exampleSentence": "The victims are seeking justice for what happened."
+  },
+  {
+    "word": "court",
+    "meaning": "a body of people presided over by a judge in civil and criminal cases",
+    "tr": "mahkeme",
+    "exampleSentence": "He will appear in court tomorrow morning."
+  },
+  {
+    "word": "trial",
+    "meaning": "a formal examination of evidence before a judge, and typically before a jury, in order to decide guilt in a case of criminal or civil proceedings",
+    "tr": "duruşma, dava",
+    "exampleSentence": "The trial is expected to last for several weeks."
+  },
+  {
+    "word": "evidence",
+    "meaning": "the available body of facts or information indicating whether a belief is true or valid",
+    "tr": "kanıt, delil",
+    "exampleSentence": "There was not enough evidence to convict him."
+  },
+  {
+    "word": "sentence",
+    "meaning": "the punishment assigned to a defendant found guilty by a court",
+    "tr": "ceza, hüküm",
+    "exampleSentence": "The judge gave him a long prison sentence."
+  },
+  {
+    "word": "punishment",
+    "meaning": "the infliction or imposition of a penalty as retribution for an offense",
+    "tr": "ceza",
+    "exampleSentence": "The punishment for this crime is very severe."
+  },
+  {
+    "word": "weapon",
+    "meaning": "a thing designed or used for inflicting bodily harm or physical damage",
+    "tr": "silah",
+    "exampleSentence": "He was arrested for carrying an illegal weapon."
+  },
+  {
+    "word": "violence",
+    "meaning": "behavior involving physical force intended to hurt, damage, or kill someone or something",
+    "tr": "şiddet",
+    "exampleSentence": "The movie contained scenes of graphic violence."
+  },
+  {
+    "word": "conflict",
+    "meaning": "a serious disagreement or argument, typically a protracted one",
+    "tr": "çatışma, anlaşmazlık",
+    "exampleSentence": "The two countries have been in conflict for years."
+  },
+  {
+    "word": "peace",
+    "meaning": "freedom from disturbance; tranquility",
+    "tr": "barış",
+    "exampleSentence": "They are working to achieve peace in the region."
+  },
+  {
+    "word": "negotiation",
+    "meaning": "discussion aimed at reaching an agreement",
+    "tr": "müzakere",
+    "exampleSentence": "The negotiations between the two sides have broken down."
+  },
+  {
+    "word": "treaty",
+    "meaning": "a formally concluded and ratified agreement between countries",
+    "tr": "antlaşma",
+    "exampleSentence": "The two nations signed a peace treaty."
+  },
+  {
+    "word": "election",
+    "meaning": "a formal and organized choice by vote of a person for a political office or other position",
+    "tr": "seçim",
+    "exampleSentence": "The presidential election will be held next year."
+  },
+  {
+    "word": "vote",
+    "meaning": "a formal indication of a choice between two or more candidates or courses of action",
+    "tr": "oy, oy kullanmak",
+    "exampleSentence": "Every citizen has the right to vote."
+  },
+  {
+    "word": "candidate",
+    "meaning": "a person who applies for a job or is nominated for election",
+    "tr": "aday",
+    "exampleSentence": "There are three candidates running for mayor."
+  },
+  {
+    "word": "campaign",
+    "meaning": "an organized course of action to achieve a particular goal",
+    "tr": "kampanya",
+    "exampleSentence": "She is running a successful election campaign."
+  },
+  {
+    "word": "citizen",
+    "meaning": "a legally recognized subject or national of a state or commonwealth",
+    "tr": "vatandaş",
+    "exampleSentence": "He is proud to be a citizen of his country."
+  },
+  {
+    "word": "population",
+    "meaning": "all the inhabitants of a particular town, area, or country",
+    "tr": "nüfus",
+    "exampleSentence": "The population of the world is constantly increasing."
+  },
+  {
+    "word": "generation",
+    "meaning": "all of the people born and living at about the same time, regarded collectively",
+    "tr": "nesil, kuşak",
+    "exampleSentence": "The younger generation is very tech-savvy."
+  },
+  {
+    "word": "adult",
+    "meaning": "a person who is fully grown or developed",
+    "tr": "yetişkin",
+    "exampleSentence": "This movie is for adults only."
+  },
+  {
+    "word": "teenager",
+    "meaning": "a person aged between 13 and 19 years",
+    "tr": "genç, ergen",
+    "exampleSentence": "It can be difficult to be a teenager."
+  },
+  {
+    "word": "infant",
+    "meaning": "a very young child or baby",
+    "tr": "bebek",
+    "exampleSentence": "The infant was sleeping peacefully in his crib."
+  },
+  {
+    "word": "growth",
+    "meaning": "the process of increasing in physical size",
+    "tr": "büyüme",
+    "exampleSentence": "The company has seen rapid growth in the last year."
+  },
+  {
+    "word": "development",
+    "meaning": "the process of developing or being developed",
+    "tr": "gelişim, gelişme",
+    "exampleSentence": "Early childhood development is very important."
+  },
+  {
+    "word": "progress",
+    "meaning": "forward or onward movement toward a destination",
+    "tr": "ilerleme",
+    "exampleSentence": "We are making good progress on the project."
+  },
+  {
+    "word": "improvement",
+    "meaning": "a change or process of change that makes something better",
+    "tr": "gelişme, iyileşme",
+    "exampleSentence": "There has been a significant improvement in her health."
+  },
+  {
+    "word": "expand",
+    "meaning": "to become or make larger or more extensive",
+    "tr": "genişlemek, büyümek",
+    "exampleSentence": "The company is planning to expand its operations."
+  },
+  {
+    "word": "increase",
+    "meaning": "to become or make greater in size, amount, or degree",
+    "tr": "artmak, artırmak",
+    "exampleSentence": "The population of the city continues to increase."
+  },
+  {
+    "word": "decrease",
+    "meaning": "to make or become smaller or fewer in size, amount, or degree",
+    "tr": "azalmak, azaltmak",
+    "exampleSentence": "We need to decrease our spending."
+  },
+  {
+    "word": "reduce",
+    "meaning": "to make smaller or less in amount, degree, or size",
+    "tr": "azaltmak",
+    "exampleSentence": "Try to reduce the amount of sugar in your diet."
+  },
+  {
+    "word": "connect",
+    "meaning": "to bring together or into contact so that a real or notional link is established",
+    "tr": "bağlanmak, bağlamak",
+    "exampleSentence": "I need to connect my laptop to the internet."
+  },
+  {
+    "word": "separate",
+    "meaning": "to cause to move or be apart",
+    "tr": "ayırmak, ayrı",
+    "exampleSentence": "Please separate the recyclable items from the trash."
+  },
+  {
+    "word": "combine",
+    "meaning": "to unite; merge",
+    "tr": "birleştirmek",
+    "exampleSentence": "The chef will combine all the ingredients to make the sauce."
+  },{
+    "word": "conference",
+    "meaning": "a formal meeting for discussion",
+    "tr": "konferans",
+    "exampleSentence": "She will be speaking at an international conference next week."
+  },
+  {
+    "word": "meeting",
+    "meaning": "an occasion when people come together to discuss or decide something",
+    "tr": "toplantı",
+    "exampleSentence": "We have a team meeting every Monday morning."
+  },
+  {
+    "word": "committee",
+    "meaning": "a group of people appointed for a specific function",
+    "tr": "komite, kurul",
+    "exampleSentence": "The committee will make its final decision tomorrow."
+  },
+  {
+    "word": "agency",
+    "meaning": "a business or organization providing a particular service",
+    "tr": "ajans, acente",
+    "exampleSentence": "He found a job through an employment agency."
+  },
+  {
+    "word": "institution",
+    "meaning": "a large important organization such as a university, bank, etc.",
+    "tr": "kurum, enstitü",
+    "exampleSentence": "This is a well-respected financial institution."
+  },
+  {
+    "word": "facility",
+    "meaning": "a place, amenity, or piece of equipment provided for a particular purpose",
+    "tr": "tesis, olanak",
+    "exampleSentence": "The hotel has excellent sports facilities."
+  },
+  {
+    "word": "access",
+    "meaning": "the means or opportunity to approach or enter a place",
+    "tr": "erişim",
+    "exampleSentence": "You need a password to get access to the system."
+  },
+  {
+    "word": "contact",
+    "meaning": "the state of physical touching or communication",
+    "tr": "temas, iletişim",
+    "exampleSentence": "Please provide your contact details."
+  },
+  {
+    "word": "review",
+    "meaning": "a formal assessment of something with the intention of instituting change if necessary",
+    "tr": "gözden geçirme, inceleme",
+    "exampleSentence": "The manager will review your performance at the end of the year."
+  },
+  {
+    "word": "comment",
+    "meaning": "a verbal or written remark expressing an opinion or reaction",
+    "tr": "yorum",
+    "exampleSentence": "He made a positive comment about my presentation."
+  },
+  {
+    "word": "response",
+    "meaning": "a verbal or written answer",
+    "tr": "yanıt, tepki",
+    "exampleSentence": "I am still waiting for a response to my email."
+  },
+  {
+    "word": "reaction",
+    "meaning": "an action performed or a feeling experienced in response to a situation or event",
+    "tr": "tepki, reaksiyon",
+    "exampleSentence": "What was his reaction to the news?"
+  },
+  {
+    "word": "focus",
+    "meaning": "the center of interest or activity",
+    "tr": "odaklanmak, odak",
+    "exampleSentence": "You need to focus on your studies if you want to pass."
+  },
+  {
+    "word": "concentrate",
+    "meaning": "to focus all one's attention on a particular object or activity",
+    "tr": "konsantre olmak",
+    "exampleSentence": "I can't concentrate with all this noise."
+  },
+  {
+    "word": "ignore",
+    "meaning": "to refuse to take notice of or acknowledge; disregard intentionally",
+    "tr": "görmezden gelmek, umursamamak",
+    "exampleSentence": "She decided to ignore his rude comments."
+  },
+  {
+    "word": "escape",
+    "meaning": "to break free from confinement or control",
+    "tr": "kaçmak",
+    "exampleSentence": "The prisoner managed to escape from jail."
+  },
+  {
+    "word": "hide",
+    "meaning": "to put or keep out of sight",
+    "tr": "saklanmak, gizlemek",
+    "exampleSentence": "The children were playing a game of hide and seek."
+  },
+  {
+    "word": "surround",
+    "meaning": "to be all around (someone or something)",
+    "tr": "çevrelemek, kuşatmak",
+    "exampleSentence": "The castle is surrounded by a high wall."
+  },
+  {
+    "word": "consist",
+    "meaning": "to be composed or made up of",
+    "tr": "oluşmak",
+    "exampleSentence": "The team consists of ten members."
+  },
+  {
+    "word": "settle",
+    "meaning": "to resolve a dispute or argument",
+    "tr": "çözmek, yerleşmek",
+    "exampleSentence": "They finally settled their differences."
+  },
+  {
+    "word": "arrange",
+    "meaning": "to put (things) in a neat, attractive, or required order",
+    "tr": "düzenlemek, ayarlamak",
+    "exampleSentence": "Can you arrange a meeting for next Tuesday?"
+  },
+  {
+    "word": "handle",
+    "meaning": "to manage (a situation or problem)",
+    "tr": "üstesinden gelmek, ele almak",
+    "exampleSentence": "She knows how to handle difficult customers."
+  },
+  {
+    "word": "operate",
+    "meaning": "to (of a person) control the functioning of (a machine, process, or system)",
+    "tr": "çalıştırmak, işletmek",
+    "exampleSentence": "You need a special license to operate this machinery."
+  },
+  {
+    "word": "touch",
+    "meaning": "to come so as to be in contact with",
+    "tr": "dokunmak",
+    "exampleSentence": "Please do not touch the paintings in the museum."
+  },
+  {
+    "word": "taste",
+    "meaning": "the sensation of flavor perceived in the mouth and throat on contact with a substance",
+    "tr": "tat, tatmak",
+    "exampleSentence": "This soup has a strange taste."
+  },
+  {
+    "word": "smell",
+    "meaning": "the faculty or power of perceiving odors or scents by means of the organs in the nose",
+    "tr": "koku, koklamak",
+    "exampleSentence": "I can smell something burning in the kitchen."
+  },
+  {
+    "word": "sense",
+    "meaning": "a faculty by which the body perceives an external stimulus; one of the faculties of sight, smell, hearing, taste, and touch",
+    "tr": "duyu, his",
+    "exampleSentence": "Dogs have a very good sense of smell."
+  },
+  {
+    "word": "mood",
+    "meaning": "a temporary state of mind or feeling",
+    "tr": "ruh hali",
+    "exampleSentence": "He is in a very good mood today."
+  },
+  {
+    "word": "spirit",
+    "meaning": "the nonphysical part of a person which is the seat of emotions and character",
+    "tr": "ruh",
+    "exampleSentence": "The team showed great spirit and won the game."
+  },
+  {
+    "word": "soul",
+    "meaning": "the spiritual or immaterial part of a human being or animal, regarded as immortal",
+    "tr": "ruh, can",
+    "exampleSentence": "Some people believe the soul continues to exist after death."
+  },
+  {
+    "word": "brain",
+    "meaning": "an organ of soft nervous tissue contained in the skull of vertebrates, functioning as the coordinating center of sensation and intellectual and nervous activity",
+    "tr": "beyin",
+    "exampleSentence": "The human brain is an incredibly complex organ."
+  },
+  {
+    "word": "dream",
+    "meaning": "a series of thoughts, images, and sensations occurring in a person's mind during sleep",
+    "tr": "rüya, hayal",
+    "exampleSentence": "I had a strange dream last night."
+  },
+  {
+    "word": "reality",
+    "meaning": "the state of things as they actually exist, as opposed to an idealistic or notional idea of them",
+    "tr": "gerçeklik",
+    "exampleSentence": "You need to face the reality of the situation."
+  },
+  {
+    "word": "fiction",
+    "meaning": "literature in the form of prose, especially novels, that describes imaginary events and people",
+    "tr": "kurgu",
+    "exampleSentence": "I prefer reading fiction to non-fiction."
+  },
+  {
+    "word": "literature",
+    "meaning": "written works, especially those considered of superior or lasting artistic merit",
+    "tr": "edebiyat",
+    "exampleSentence": "She is studying English literature at university."
+  },
+  {
+    "word": "novel",
+    "meaning": "a fictitious prose narrative of book length, typically representing character and action with some degree of realism",
+    "tr": "roman",
+    "exampleSentence": "Have you read the latest novel by that author?"
+  },
+  {
+    "word": "poetry",
+    "meaning": "literary work in which special intensity is given to the expression of feelings and ideas by the use of distinctive style and rhythm",
+    "tr": "şiir",
+    "exampleSentence": "He writes beautiful poetry in his free time."
+  },
+  {
+    "word": "chapter",
+    "meaning": "a main division of a book",
+    "tr": "bölüm (kitap)",
+    "exampleSentence": "The book is divided into twelve chapters."
+  },
+  {
+    "word": "page",
+    "meaning": "one side of a sheet of paper in a collection of papers",
+    "tr": "sayfa",
+    "exampleSentence": "Please turn to page 42 in your textbooks."
+  },
+  {
+    "word": "cover",
+    "meaning": "to put something on top of or in front of (something), especially to protect or conceal it",
+    "tr": "örtmek, kapak",
+    "exampleSentence": "She covered her face with her hands."
+  },{
+    "word": "experiment",
+    "meaning": "a scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact",
+    "tr": "deney",
+    "exampleSentence": "The students conducted an experiment in the chemistry lab."
+  },
+  {
+    "word": "laboratory",
+    "meaning": "a room or building equipped for scientific experiments, research, or teaching",
+    "tr": "laboratuvar",
+    "exampleSentence": "Safety is the first priority in a laboratory."
+  },
+  {
+    "word": "observation",
+    "meaning": "the action or process of observing something or someone carefully in order to gain information",
+    "tr": "gözlem",
+    "exampleSentence": "The scientist made a detailed observation of the animal's behavior."
+  },
+  {
+    "word": "conclusion",
+    "meaning": "a judgment or decision reached by reasoning",
+    "tr": "sonuç, çıkarım",
+    "exampleSentence": "What is the main conclusion of your research?"
+  },
+  {
+    "word": "discovery",
+    "meaning": "the action or process of discovering or being discovered",
+    "tr": "keşif",
+    "exampleSentence": "The discovery of penicillin changed modern medicine."
+  },
+  {
+    "word": "measurement",
+    "meaning": "the action of measuring something",
+    "tr": "ölçüm",
+    "exampleSentence": "Accurate measurement is crucial for scientific experiments."
+  },
+  {
+    "word": "quantity",
+    "meaning": "the amount or number of a material or abstract thing",
+    "tr": "nicelik, miktar",
+    "exampleSentence": "A large quantity of food was prepared for the party."
+  },
+  {
+    "word": "volume",
+    "meaning": "the amount of space that a substance or object occupies",
+    "tr": "hacim",
+    "exampleSentence": "Can you calculate the volume of this cylinder?"
+  },
+  {
+    "word": "mass",
+    "meaning": "a large body of matter with no definite shape",
+    "tr": "kütle",
+    "exampleSentence": "The mass of the object was measured in kilograms."
+  },
+  {
+    "word": "speed",
+    "meaning": "the rate at which someone or something is able to move or operate",
+    "tr": "hız",
+    "exampleSentence": "The car was traveling at a high speed."
+  },
+  {
+    "word": "distance",
+    "meaning": "an amount of space between two things or people",
+    "tr": "mesafe",
+    "exampleSentence": "The distance between the two cities is 200 kilometers."
+  },
+  {
+    "word": "chemical",
+    "meaning": "relating to chemistry, or the interactions of substances",
+    "tr": "kimyasal",
+    "exampleSentence": "A chemical reaction occurred when the two substances were mixed."
+  },
+  {
+    "word": "biological",
+    "meaning": "relating to biology or living organisms",
+    "tr": "biyolojik",
+    "exampleSentence": "DNA is the biological blueprint for life."
+  },
+  {
+    "word": "digital",
+    "meaning": "involving or relating to the use of computer technology",
+    "tr": "dijital",
+    "exampleSentence": "We are living in a digital age."
+  },
+  {
+    "word": "virtual",
+    "meaning": "not physically existing as such but made by software to appear to do so",
+    "tr": "sanal",
+    "exampleSentence": "They held a virtual meeting online."
+  },
+  {
+    "word": "actual",
+    "meaning": "existing in fact; real",
+    "tr": "gerçek, fiili",
+    "exampleSentence": "The actual cost was much higher than the estimate."
+  },
+  {
+    "word": "regular",
+    "meaning": "arranged in or constituting a constant or definite pattern",
+    "tr": "düzenli",
+    "exampleSentence": "Regular exercise is beneficial for your health."
+  },
+  {
+    "word": "irregular",
+    "meaning": "not even or balanced in shape or arrangement",
+    "tr": "düzensiz",
+    "exampleSentence": "The coastline is highly irregular."
+  },
+  {
+    "word": "formal",
+    "meaning": "done in accordance with rules of convention or etiquette",
+    "tr": "resmi",
+    "exampleSentence": "The event requires formal attire."
+  },
+  {
+    "word": "informal",
+    "meaning": "having a relaxed, friendly, or unofficial style, manner, or nature",
+    "tr": "gayriresmi, samimi",
+    "exampleSentence": "We had an informal chat over a cup of coffee."
+  },
+  {
+    "word": "presence",
+    "meaning": "the state or fact of existing, occurring, or being present in a place or thing",
+    "tr": "varlık, mevcudiyet",
+    "exampleSentence": "His presence in the room made everyone feel safe."
+  },
+  {
+    "word": "absence",
+    "meaning": "the state of being away from a place or person",
+    "tr": "yokluk",
+    "exampleSentence": "In the absence of the manager, I will be in charge."
+  },
+  {
+    "word": "certainty",
+    "meaning": "firm conviction that something is the case",
+    "tr": "kesinlik",
+    "exampleSentence": "I cannot say with any certainty what will happen."
+  },
+  {
+    "word": "doubt",
+    "meaning": "a feeling of uncertainty or lack of conviction",
+    "tr": "şüphe, kuşku",
+    "exampleSentence": "There is no doubt that he is the best player."
+  },
+  {
+    "word": "possibility",
+    "meaning": "a thing that may happen or be the case",
+    "tr": "olasılık, imkan",
+    "exampleSentence": "There is a strong possibility of rain tomorrow."
+  },
+  {
+    "word": "probability",
+    "meaning": "the extent to which an event is likely to occur",
+    "tr": "olasılık, ihtimal",
+    "exampleSentence": "The probability of winning the lottery is very low."
+  },
+  {
+    "word": "glass",
+    "meaning": "a hard, brittle substance, typically transparent or translucent",
+    "tr": "cam, bardak",
+    "exampleSentence": "He accidentally broke the glass."
+  },
+  {
+    "word": "metal",
+    "meaning": "a solid material which is typically hard, shiny, malleable, fusible, and ductile",
+    "tr": "metal",
+    "exampleSentence": "Gold is a precious metal."
+  },
+  {
+    "word": "wood",
+    "meaning": "the hard fibrous material that forms the main substance of the trunk or branches of a tree",
+    "tr": "ahşap, odun",
+    "exampleSentence": "The table is made of solid wood."
+  },
+  {
+    "word": "plastic",
+    "meaning": "a synthetic material made from a wide range of organic polymers",
+    "tr": "plastik",
+    "exampleSentence": "We should try to reduce our use of single-use plastic."
+  },
+  {
+    "word": "stone",
+    "meaning": "hard solid nonmetallic mineral matter of which rock is made",
+    "tr": "taş",
+    "exampleSentence": "The ancient temple was built with large stones."
+  },
+  {
+    "word": "oil",
+    "meaning": "a viscous liquid derived from petroleum, especially for use as a fuel or lubricant",
+    "tr": "petrol, yağ",
+    "exampleSentence": "The price of oil has a major effect on the global economy."
+  },
+  {
+    "word": "gas",
+    "meaning": "a substance in a state like air that is not solid or liquid",
+    "tr": "gaz",
+    "exampleSentence": "Natural gas is used for heating and cooking."
+  },
+  {
+    "word": "examine",
+    "meaning": "to inspect (someone or something) in detail to determine their nature or condition",
+    "tr": "incelemek, muayene etmek",
+    "exampleSentence": "The doctor will examine the patient."
+  },
+  {
+    "word": "investigate",
+    "meaning": "to carry out a systematic or formal inquiry to discover and examine the facts of (an incident, allegation, etc.)",
+    "tr": "araştırmak, soruşturmak",
+    "exampleSentence": "The police are investigating the cause of the accident."
+  },
+  {
+    "word": "calculate",
+    "meaning": "to determine (the amount or number of something) mathematically",
+    "tr": "hesaplamak",
+    "exampleSentence": "Can you calculate the total cost for me?"
+  },
+  {
+    "word": "estimate",
+    "meaning": "to roughly calculate or judge the value, number, quantity, or extent of",
+    "tr": "tahmin etmek",
+    "exampleSentence": "I estimate that the project will take about six months."
+  },
+  {
+    "word": "demonstrate",
+    "meaning": "to clearly show the existence or truth of (something) by giving proof or evidence",
+    "tr": "göstermek, kanıtlamak",
+    "exampleSentence": "The experiment will demonstrate the effects of gravity."
+  },
+  {
+    "word": "prove",
+    "meaning": "to demonstrate the truth or existence of (something) by evidence or argument",
+    "tr": "kanıtlamak, ispatlamak",
+    "exampleSentence": "You need to prove your identity with a valid ID."
+  },
+  {
+    "word": "link",
+    "meaning": "a relationship between two things or situations, especially where one affects the other",
+    "tr": "bağlantı",
+    "exampleSentence": "There is a strong link between smoking and lung cancer."
+  },
+  {
+    "word": "audience",
+    "meaning": "the assembled spectators or listeners at a public event, such as a play, movie, concert, or meeting",
+    "tr": "izleyici, seyirci",
+    "exampleSentence": "The audience applauded loudly at the end of the performance."
+  },
+  {
+    "word": "spectator",
+    "meaning": "a person who watches at a show, game, or other event",
+    "tr": "seyirci (spor vb.)",
+    "exampleSentence": "The stadium was full of excited spectators."
+  },
+  {
+    "word": "viewer",
+    "meaning": "a person who watches something, especially television",
+    "tr": "izleyici (TV vb.)",
+    "exampleSentence": "Millions of viewers watched the live broadcast."
+  },
+  {
+    "word": "listener",
+    "meaning": "a person who listens to something, such as a radio program",
+    "tr": "dinleyici",
+    "exampleSentence": "The radio show has a large number of loyal listeners."
+  },
+  {
+    "word": "reader",
+    "meaning": "a person who reads or who is fond of reading",
+    "tr": "okur, okuyucu",
+    "exampleSentence": "She is an avid reader of historical novels."
+  },
+  {
+    "word": "interview",
+    "meaning": "a meeting of people face to face, especially for consultation",
+    "tr": "röportaj, mülakat",
+    "exampleSentence": "He has a job interview tomorrow morning."
+  },
+  {
+    "word": "discussion",
+    "meaning": "the action or process of talking about something in order to reach a decision or to exchange ideas",
+    "tr": "tartışma, müzakere",
+    "exampleSentence": "We had a long discussion about our future plans."
+  },
+  {
+    "word": "conversation",
+    "meaning": "a talk, especially an informal one, between two or more people",
+    "tr": "sohbet, konuşma",
+    "exampleSentence": "I had an interesting conversation with my neighbor."
+  },
+  {
+    "word": "communication",
+    "meaning": "the imparting or exchanging of information by speaking, writing, or using some other medium",
+    "tr": "iletişim",
+    "exampleSentence": "Good communication is key to a healthy relationship."
+  },
+  {
+    "word": "expression",
+    "meaning": "the process of making known one's thoughts or feelings",
+    "tr": "ifade",
+    "exampleSentence": "Art is a form of personal expression."
+  },
+  {
+    "word": "impression",
+    "meaning": "an idea, feeling, or opinion about something or someone, especially one formed without conscious thought",
+    "tr": "izlenim",
+    "exampleSentence": "He made a very good first impression on my parents."
+  },
+  {
+    "word": "perception",
+    "meaning": "the ability to see, hear, or become aware of something through the senses",
+    "tr": "algı",
+    "exampleSentence": "Our perception of reality is influenced by our beliefs."
+  },
+  {
+    "word": "awareness",
+    "meaning": "knowledge or perception of a situation or fact",
+    "tr": "farkındalık",
+    "exampleSentence": "There is a growing awareness of environmental issues."
+  },
+  {
+    "word": "understanding",
+    "meaning": "the ability to understand something; comprehension",
+    "tr": "anlayış",
+    "exampleSentence": "Mutual understanding is important for any partnership."
+  },
+  {
+    "word": "interpretation",
+    "meaning": "the action of explaining the meaning of something",
+    "tr": "yorum",
+    "exampleSentence": "The interpretation of the dream was quite complex."
+  },
+  {
+    "word": "creativity",
+    "meaning": "the use of the imagination or original ideas, especially in the production of an artistic work",
+    "tr": "yaratıcılık",
+    "exampleSentence": "The job requires a high level of creativity."
+  },
+  {
+    "word": "imagination",
+    "meaning": "the faculty or action of forming new ideas, or images or concepts of external objects not present to the senses",
+    "tr": "hayal gücü",
+    "exampleSentence": "A good writer needs a vivid imagination."
+  },
+  {
+    "word": "inspiration",
+    "meaning": "the process of being mentally stimulated to do or feel something, especially to do something creative",
+    "tr": "ilham",
+    "exampleSentence": "Nature is a great source of inspiration for many artists."
+  },
+  {
+    "word": "talent",
+    "meaning": "natural aptitude or skill",
+    "tr": "yetenek",
+    "exampleSentence": "She has a natural talent for music."
+  },
+  {
+    "word": "genius",
+    "meaning": "exceptional intellectual or creative power or other natural ability",
+    "tr": "dahi",
+    "exampleSentence": "Albert Einstein is considered a scientific genius."
+  },
+  {
+    "word": "masterpiece",
+    "meaning": "a work of outstanding artistry, skill, or workmanship",
+    "tr": "şaheser",
+    "exampleSentence": "The Mona Lisa is a timeless masterpiece."
+  },
+  {
+    "word": "collection",
+    "meaning": "a group of things that have been collected",
+    "tr": "koleksiyon",
+    "exampleSentence": "He has an impressive collection of old coins."
+  },
+  {
+    "word": "exhibition",
+    "meaning": "a public display of works of art or items of interest, held in an art gallery or museum or at a trade fair",
+    "tr": "sergi",
+    "exampleSentence": "We visited an art exhibition at the local gallery."
+  },
+  {
+    "word": "performance",
+    "meaning": "an act of staging or presenting a play, concert, or other form of entertainment",
+    "tr": "performans",
+    "exampleSentence": "The actor's performance was simply breathtaking."
+  },
+  {
+    "word": "balance",
+    "meaning": "an even distribution of weight enabling someone or something to remain upright and steady",
+    "tr": "denge",
+    "exampleSentence": "It's important to find a balance between work and life."
+  },
+  {
+    "word": "contrast",
+    "meaning": "the state of being strikingly different from something else in juxtaposition or close association",
+    "tr": "zıtlık, kontrast",
+    "exampleSentence": "There is a sharp contrast between the two brothers' personalities."
+  },
+  {
+    "word": "variety",
+    "meaning": "the quality or state of being different or diverse; the absence of uniformity",
+    "tr": "çeşitlilik",
+    "exampleSentence": "It's important to eat a variety of foods to stay healthy."
+  },
+  {
+    "word": "diversity",
+    "meaning": "the state of being diverse; variety",
+    "tr": "çeşitlilik, farklılık",
+    "exampleSentence": "The city is known for its cultural diversity."
+  },
+  {
+    "word": "unity",
+    "meaning": "the state of being united or joined as a whole",
+    "tr": "birlik",
+    "exampleSentence": "The team showed great unity and spirit."
+  },
+  {
+    "word": "harmony",
+    "meaning": "the quality of forming a pleasing and consistent whole",
+    "tr": "uyum, armoni",
+    "exampleSentence": "The colors in the painting create a beautiful harmony."
+  },
+  {
+    "word": "chaos",
+    "meaning": "complete disorder and confusion",
+    "tr": "kaos",
+    "exampleSentence": "The room was in a state of chaos after the party."
+  },
+  {
+    "word": "order",
+    "meaning": "the arrangement or disposition of people or things in relation to each other according to a particular sequence, pattern, or method",
+    "tr": "düzen, sıra, sipariş",
+    "exampleSentence": "Please put the books in alphabetical order."
+  },
+  {
+    "word": "mess",
+    "meaning": "a dirty or untidy state of things or of a place",
+    "tr": "dağınıklık, karmaşa",
+    "exampleSentence": "Your room is a complete mess!"
+  },
+  {
+    "word": "silence",
+    "meaning": "complete absence of sound",
+    "tr": "sessizlik",
+    "exampleSentence": "A deep silence fell over the room."
+  },
+  {
+    "word": "noise",
+    "meaning": "a sound, especially one that is loud or unpleasant or that causes disturbance",
+    "tr": "gürültü",
+    "exampleSentence": "The noise from the construction site is unbearable."
+  },
+  {
+    "word": "calm",
+    "meaning": "not showing or feeling nervousness, anger, or other strong emotions",
+    "tr": "sakin",
+    "exampleSentence": "Try to stay calm and tell me what happened."
+  },
+  {
+    "word": "anxious",
+    "meaning": "experiencing worry, unease, or nervousness",
+    "tr": "endişeli, kaygılı",
+    "exampleSentence": "I feel anxious about the upcoming exam."
+  },
+  {
+    "word": "confident",
+    "meaning": "feeling or showing confidence in oneself; self-assured",
+    "tr": "kendine güvenen",
+    "exampleSentence": "She feels confident that she will win the competition."
+  },
+  {
+    "word": "nervous",
+    "meaning": "easily agitated or alarmed; tending to be anxious; highly strung",
+    "tr": "gergin, sinirli",
+    "exampleSentence": "It's normal to feel nervous before a job interview."
+  },
+  {
+    "word": "brave",
+    "meaning": "ready to face and endure danger or pain; showing courage",
+    "tr": "cesur",
+    "exampleSentence": "The brave firefighter rescued the cat from the tree."
+  },
+  {
+    "word": "afraid",
+    "meaning": "feeling fear or anxiety; frightened",
+    "tr": "korkmuş",
+    "exampleSentence": "Many children are afraid of the dark."
+  },{
+    "word": "journey",
+    "meaning": "an act of traveling from one place to another",
+    "tr": "yolculuk",
+    "exampleSentence": "Life itself is a long and exciting journey."
+  },
+  {
+    "word": "trip",
+    "meaning": "a journey or excursion, especially for pleasure",
+    "tr": "gezi, seyahat",
+    "exampleSentence": "We are planning a trip to the mountains next month."
+  },
+  {
+    "word": "travel",
+    "meaning": "to make a journey, typically of some length or abroad",
+    "tr": "seyahat etmek",
+    "exampleSentence": "I love to travel and explore new cultures."
+  },
+  {
+    "word": "flight",
+    "meaning": "the action or process of flying through the air",
+    "tr": "uçuş",
+    "exampleSentence": "Our flight was delayed due to bad weather."
+  },
+  {
+    "word": "passenger",
+    "meaning": "a traveler on a public or private conveyance other than the driver, pilot, or crew",
+    "tr": "yolcu",
+    "exampleSentence": "All passengers must fasten their seatbelts."
+  },
+  {
+    "word": "ticket",
+    "meaning": "a piece of paper or small card that gives the holder a certain right, as to enter a place, travel by public transport, or participate in an event",
+    "tr": "bilet",
+    "exampleSentence": "Have you bought your train ticket yet?"
+  },
+  {
+    "word": "luggage",
+    "meaning": "suitcases or other bags in which to pack personal belongings for traveling",
+    "tr": "bagaj",
+    "exampleSentence": "Please do not leave your luggage unattended."
+  },
+  {
+    "word": "destination",
+    "meaning": "the place to which someone or something is going or being sent",
+    "tr": "varış noktası, destinasyon",
+    "exampleSentence": "Our final destination is Paris."
+  },
+  {
+    "word": "route",
+    "meaning": "a way or course taken in getting from a starting point to a destination",
+    "tr": "rota, güzergah",
+    "exampleSentence": "Which is the fastest route to the airport?"
+  },
+  {
+    "word": "vehicle",
+    "meaning": "a thing used for transporting people or goods, especially on land, such as a car, truck, or cart",
+    "tr": "araç, taşıt",
+    "exampleSentence": "Electric vehicles are becoming more popular."
+  },
+  {
+    "word": "traffic",
+    "meaning": "vehicles moving on a road or public highway",
+    "tr": "trafik",
+    "exampleSentence": "I was stuck in traffic for over an hour."
+  },
+  {
+    "word": "highway",
+    "meaning": "a main road, especially one connecting major towns or cities",
+    "tr": "otoyol",
+    "exampleSentence": "The new highway reduces travel time by half."
+  },
+  {
+    "word": "direction",
+    "meaning": "a course along which someone or something moves",
+    "tr": "yön",
+    "exampleSentence": "Can you give me directions to the nearest post office?"
+  },
+  {
+    "word": "location",
+    "meaning": "a particular place or position",
+    "tr": "konum",
+    "exampleSentence": "The hotel is in a beautiful location overlooking the sea."
+  },
+  {
+    "word": "curious",
+    "meaning": "eager to know or learn something",
+    "tr": "meraklı",
+    "exampleSentence": "Cats are naturally curious animals."
+  },
+  {
+    "word": "generous",
+    "meaning": "showing a readiness to give more of something, as money or time, than is strictly necessary or expected",
+    "tr": "cömert",
+    "exampleSentence": "It was very generous of you to pay for everyone."
+  },
+  {
+    "word": "selfish",
+    "meaning": "lacking consideration for other people; concerned chiefly with one's own personal profit or pleasure",
+    "tr": "bencil",
+    "exampleSentence": "A selfish person rarely thinks about others' feelings."
+  },
+  {
+    "word": "honest",
+    "meaning": "free of deceit and untruthfulness; sincere",
+    "tr": "dürüst",
+    "exampleSentence": "To be honest, I don't really like this movie."
+  },
+  {
+    "word": "dishonest",
+    "meaning": "behaving or prone to behave in an untrustworthy or fraudulent way",
+    "tr": "dürüst olmayan",
+    "exampleSentence": "He was fired for his dishonest actions."
+  },
+  {
+    "word": "loyal",
+    "meaning": "giving or showing firm and constant support or allegiance to a person or institution",
+    "tr": "sadık",
+    "exampleSentence": "Dogs are known to be very loyal pets."
+  },
+  {
+    "word": "jealous",
+    "meaning": "feeling or showing envy of someone or their achievements and advantages",
+    "tr": "kıskanç",
+    "exampleSentence": "He felt jealous of his friend's success."
+  },
+  {
+    "word": "proud",
+    "meaning": "feeling deep pleasure or satisfaction as a result of one's own achievements, qualities, or possessions",
+    "tr": "gururlu",
+    "exampleSentence": "My parents are very proud of me."
+  },
+  {
+    "word": "ashamed",
+    "meaning": "embarrassed or guilty because of one's actions, characteristics, or associations",
+    "tr": "utanmış",
+    "exampleSentence": "She was ashamed to admit her mistake."
+  },
+  {
+    "word": "grateful",
+    "meaning": "feeling or showing an appreciation of kindness; thankful",
+    "tr": "minnettar",
+    "exampleSentence": "I am very grateful for all your help."
+  },
+  {
+    "word": "patient",
+    "meaning": "able to accept or tolerate delays, problems, or suffering without becoming annoyed or anxious",
+    "tr": "sabırlı",
+    "exampleSentence": "You need to be patient with children."
+  },
+  {
+    "word": "impatient",
+    "meaning": "having or showing a tendency to be quickly irritated or provoked",
+    "tr": "sabırsız",
+    "exampleSentence": "He gets impatient when he has to wait in line."
+  },
+  {
+    "word": "lazy",
+    "meaning": "unwilling to work or use energy",
+    "tr": "tembel",
+    "exampleSentence": "It's a lazy Sunday afternoon."
+  },
+  {
+    "word": "active",
+    "meaning": "engaging or ready to engage in physically energetic pursuits",
+    "tr": "aktif, hareketli",
+    "exampleSentence": "Despite his age, he remains very active."
+  },
+  {
+    "word": "serious",
+    "meaning": "solemn or thoughtful in character or manner",
+    "tr": "ciddi",
+    "exampleSentence": "She has a very serious expression on her face."
+  },
+  {
+    "word": "humorous",
+    "meaning": "causing lighthearted laughter and amusement; comic",
+    "tr": "esprili, komik",
+    "exampleSentence": "He has a humorous way of telling stories."
+  },
+  {
+    "word": "wonder",
+    "meaning": "to desire or be curious to know something",
+    "tr": "merak etmek",
+    "exampleSentence": "I wonder what he will do next."
+  },
+  {
+    "word": "hesitate",
+    "meaning": "to pause before saying or doing something, especially through uncertainty",
+    "tr": "tereddüt etmek",
+    "exampleSentence": "Don't hesitate to ask if you have any questions."
+  },
+  {
+    "word": "insist",
+    "meaning": "to demand something forcefully, not accepting refusal",
+    "tr": "ısrar etmek",
+    "exampleSentence": "He insists on paying for everyone's dinner."
+  },
+  {
+    "word": "persuade",
+    "meaning": "to cause (someone) to do something through reasoning or argument",
+    "tr": "ikna etmek",
+    "exampleSentence": "I tried to persuade him to join our team."
+  },
+  {
+    "word": "remind",
+    "meaning": "to cause (someone) to remember someone or something",
+    "tr": "hatırlatmak",
+    "exampleSentence": "Could you please remind me to call him later?"
+  },
+  {
+    "word": "regret",
+    "meaning": "to feel sad, repentant, or disappointed over (something that has happened or been done)",
+    "tr": "pişman olmak",
+    "exampleSentence": "I regret not studying harder for the exam."
+  },
+  {
+    "word": "apologize",
+    "meaning": "to express regret for something that one has done wrong",
+    "tr": "özür dilemek",
+    "exampleSentence": "You should apologize for your rude behavior."
+  },
+  {
+    "word": "forgive",
+    "meaning": "to stop feeling angry or resentful toward (someone) for an offense, flaw, or mistake",
+    "tr": "affetmek",
+    "exampleSentence": "It is important to forgive others for their mistakes."
+  },
+  {
+    "word": "celebrate",
+    "meaning": "to acknowledge (a significant or happy day or event) with a social gathering or enjoyable activity",
+    "tr": "kutlamak",
+    "exampleSentence": "We are going to celebrate her birthday tonight."
+  },
+  {
+    "word": "complain",
+    "meaning": "to express dissatisfaction or annoyance about a state of affairs or an event",
+    "tr": "şikayet etmek",
+    "exampleSentence": "He's always complaining about the weather."
+  },{
+    "word": "satisfy",
+    "meaning": "to meet the expectations, needs, or desires of (someone)",
+    "tr": "tatmin etmek",
+    "exampleSentence": "The delicious meal satisfied my hunger."
+  },
+  {
+    "word": "disappoint",
+    "meaning": "to fail to fulfill the hopes or expectations of",
+    "tr": "hayal kırıklığına uğratmak",
+    "exampleSentence": "I don't want to disappoint my parents."
+  },
+  {
+    "word": "encourage",
+    "meaning": "to give support, confidence, or hope to (someone)",
+    "tr": "teşvik etmek, cesaretlendirmek",
+    "exampleSentence": "My teacher always encourages me to do my best."
+  },
+  {
+    "word": "discourage",
+    "meaning": "to cause (someone) to lose confidence or enthusiasm",
+    "tr": "cesaretini kırmak",
+    "exampleSentence": "Don't let a small failure discourage you."
+  },
+  {
+    "word": "participate",
+    "meaning": "to take part in",
+    "tr": "katılmak",
+    "exampleSentence": "Everyone is welcome to participate in the event."
+  },
+  {
+    "word": "contribute",
+    "meaning": "to give (something, especially money) in order to help achieve or provide something",
+    "tr": "katkıda bulunmak",
+    "exampleSentence": "He decided to contribute to the local charity."
+  },
+  {
+    "word": "volunteer",
+    "meaning": "to freely offer to do something",
+    "tr": "gönüllü olmak",
+    "exampleSentence": "She volunteers at the animal shelter on weekends."
+  },
+  {
+    "word": "volunteer",
+    "meaning": "a person who freely offers to take part in an enterprise or undertake a task",
+    "tr": "gönüllü",
+    "exampleSentence": "The organization is looking for more volunteers."
+  },
+  {
+    "word": "expert",
+    "meaning": "a person who has a comprehensive and authoritative knowledge of or skill in a particular area",
+    "tr": "uzman",
+    "exampleSentence": "He is a leading expert in the field of robotics."
+  },
+  {
+    "word": "amateur",
+    "meaning": "a person who engages in a pursuit, especially a sport, on an unpaid basis",
+    "tr": "amatör",
+    "exampleSentence": "The competition is open to both professional and amateur photographers."
+  },
+  {
+    "word": "professional",
+    "meaning": "a person engaged or qualified in a profession",
+    "tr": "profesyonel",
+    "exampleSentence": "You should hire a professional to fix the plumbing."
+  },
+  {
+    "word": "leader",
+    "meaning": "the person who leads or commands a group, organization, or country",
+    "tr": "lider",
+    "exampleSentence": "A good leader inspires confidence in others."
+  },
+  {
+    "word": "follower",
+    "meaning": "a person who supports and admires a particular person or set of ideas",
+    "tr": "takipçi",
+    "exampleSentence": "He has a large number of followers on social media."
+  },
+  {
+    "word": "enemy",
+    "meaning": "a person who is actively opposed or hostile to someone or something",
+    "tr": "düşman",
+    "exampleSentence": "He made a lot of enemies during his political career."
+  },
+  {
+    "word": "ally",
+    "meaning": "a state formally cooperating with another for a military or other purpose",
+    "tr": "müttefik",
+    "exampleSentence": "The two countries have been close allies for decades."
+  },
+  {
+    "word": "opponent",
+    "meaning": "someone who competes against or fights another in a contest, game, or argument",
+    "tr": "rakip",
+    "exampleSentence": "She defeated her opponent in the final match."
+  },
+  {
+    "word": "competitor",
+    "meaning": "a person who takes part in an athletic contest",
+    "tr": "yarışmacı, rakip",
+    "exampleSentence": "There are over a hundred competitors in the marathon."
+  },
+  {
+    "word": "rival",
+    "meaning": "a person or thing competing with another for the same objective or for superiority",
+    "tr": "rakip (ezeli)",
+    "exampleSentence": "The two companies are arch rivals in the market."
+  },
+  {
+    "word": "victim",
+    "meaning": "a person harmed, injured, or killed as a result of a crime, accident, or other event",
+    "tr": "kurban, mağdur",
+    "exampleSentence": "The victim was taken to the hospital immediately."
+  },
+  {
+    "word": "survivor",
+    "meaning": "a person who survives, especially a person remaining alive after an event in which others have died",
+    "tr": "hayatta kalan",
+    "exampleSentence": "He was the sole survivor of the plane crash."
+  },
+  {
+    "word": "witness",
+    "meaning": "a person who sees an event, typically a crime or accident, take place",
+    "tr": "tanık, şahit",
+    "exampleSentence": "The police are looking for a witness to the robbery."
+  },
+  {
+    "word": "suspect",
+    "meaning": "a person thought to be guilty of a crime or offense",
+    "tr": "şüpheli",
+    "exampleSentence": "The main suspect was arrested this morning."
+  },
+  {
+    "word": "guilty",
+    "meaning": "justly chargeable with a particular fault or error",
+    "tr": "suçlu",
+    "exampleSentence": "The jury found the defendant guilty."
+  },
+  {
+    "word": "innocent",
+    "meaning": "not guilty of a crime or offense",
+    "tr": "masum",
+    "exampleSentence": "He claimed to be innocent of all charges."
+  },
+  {
+    "word": "guilt",
+    "meaning": "the fact of having committed a specified or implied offense or crime",
+    "tr": "suçluluk",
+    "exampleSentence": "His face was filled with guilt and remorse."
+  },
+  {
+    "word": "innocence",
+    "meaning": "the state, quality, or fact of being innocent of a crime or offense",
+    "tr": "masumiyet",
+    "exampleSentence": "The lawyer's job is to prove her client's innocence."
+  },
+  {
+    "word": "justice",
+    "meaning": "just behavior or treatment",
+    "tr": "adalet",
+    "exampleSentence": "They are fighting for social justice and equality."
+  },
+  {
+    "word": "injustice",
+    "meaning": "lack of fairness or justice",
+    "tr": "adaletsizlik",
+    "exampleSentence": "She dedicated her life to fighting against injustice."
+  },
+  {
+    "word": "theory",
+    "meaning": "a set of ideas intended to explain something",
+    "tr": "teori",
+    "exampleSentence": "The theory of evolution is a cornerstone of modern biology."
+  },
+  {
+    "word": "practice",
+    "meaning": "the actual application or use of an idea, belief, or method",
+    "tr": "pratik, uygulama",
+    "exampleSentence": "In theory it's a good idea, but in practice it doesn't work."
+  },
+  {
+    "word": "logic",
+    "meaning": "reasoning conducted or assessed according to strict principles of validity",
+    "tr": "mantık",
+    "exampleSentence": "There is a certain logic to his argument."
+  },
+  {
+    "word": "reason",
+    "meaning": "the power of the mind to think, understand, and form judgments logically",
+    "tr": "akıl, mantık",
+    "exampleSentence": "Humans have the ability to reason."
+  },
+  {
+    "word": "analysis",
+    "meaning": "detailed examination of the elements or structure of something",
+    "tr": "analiz",
+    "exampleSentence": "The results of the analysis will be published soon."
+  },
+  {
+    "word": "synthesis",
+    "meaning": "the combination of components or elements to form a connected whole",
+    "tr": "sentez",
+    "exampleSentence": "The report is a synthesis of several different studies."
+  },
+  {
+    "word": "complex",
+    "meaning": "consisting of many different and connected parts",
+    "tr": "karmaşık",
+    "exampleSentence": "The human brain is a highly complex organ."
+  },
+  {
+    "word": "simple",
+    "meaning": "easily understood or done; presenting no difficulty",
+    "tr": "basit, sade",
+    "exampleSentence": "The instructions are written in simple English."
+  },
+  {
+    "word": "abstract",
+    "meaning": "existing in thought or as an idea but not having a physical or concrete existence",
+    "tr": "soyut",
+    "exampleSentence": "Love and hate are abstract concepts."
+  },
+  {
+    "word": "concrete",
+    "meaning": "existing in a material or physical form; real or solid",
+    "tr": "somut",
+    "exampleSentence": "We need concrete evidence, not just theories."
+  },
+  {
+    "word": "general",
+    "meaning": "affecting or concerning all or most people, places, or things; widespread",
+    "tr": "genel",
+    "exampleSentence": "The general consensus is that we should proceed."
+  },
+  {
+    "word": "specific",
+    "meaning": "clearly defined or identified",
+    "tr": "spesifik, özel",
+    "exampleSentence": "Could you be more specific about what you need?"
+  },
+  {
+    "word": "universal",
+    "meaning": "of, affecting, or done by all people or things in the world or in a particular group",
+    "tr": "evrensel",
+    "exampleSentence": "Music is often called the universal language."
+  }
+
+
+]
