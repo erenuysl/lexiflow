@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+
 import '../models/word_model.dart';
-import '../services/word_service.dart';
-import '../services/user_service.dart';
 import '../services/ad_service.dart';
 import '../services/analytics_service.dart';
+import '../services/user_service.dart';
+import '../services/word_service.dart';
 import '../utils/logger.dart';
 import 'quiz_screen.dart';
 
@@ -31,20 +32,22 @@ class _LearnedQuizScreenState extends State<LearnedQuizScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.surface,
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
         title: Text(
-          'Öğrenilenler Quiz',
-          style: TextStyle(color: Theme.of(context).colorScheme.onSurface),
+          'Learned Quiz',
+          style: TextStyle(color: colorScheme.onSurface),
         ),
-        backgroundColor: Theme.of(context).colorScheme.surface,
+        backgroundColor: colorScheme.surface,
         elevation: 0,
-        iconTheme: IconThemeData(
-          color: Theme.of(context).colorScheme.onSurface,
-        ),
+        iconTheme: IconThemeData(color: colorScheme.onSurface),
       ),
       body: SafeArea(
+        bottom: false,
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(24),
@@ -55,61 +58,55 @@ class _LearnedQuizScreenState extends State<LearnedQuizScreen> {
                   padding: const EdgeInsets.all(32),
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
-                      colors: [
-                        Color(0xFF4ADE80),
-                        Color(0xFF16A34A),
-                      ],
+                      colors: [Color(0xFF4ADE80), Color(0xFF16A34A)],
                     ),
                     shape: BoxShape.circle,
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFF4ADE80).withOpacity(0.3),
+                        color: const Color(0xFF16A34A).withOpacity(0.25),
                         blurRadius: 20,
                         offset: const Offset(0, 8),
                       ),
                     ],
                   ),
                   child: const Icon(
-                    Icons.check,
+                    Icons.task_alt_rounded,
                     size: 80,
                     color: Colors.white,
                   ),
                 ),
                 const SizedBox(height: 32),
-
                 Text(
-                  'Öğrenilenler Quiz',
-                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                        color: Theme.of(context).colorScheme.onSurface,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  'Learned Quiz',
+                  style: textTheme.headlineLarge?.copyWith(
+                    color: colorScheme.onSurface,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const SizedBox(height: 16),
-
                 Text(
-                  'Öğrendiğin kelimelerle kendini test et!',
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
-                      ),
+                  'Test yourself with the words you\'ve already mastered.',
+                  style: textTheme.titleMedium?.copyWith(
+                    color: colorScheme.onSurface.withOpacity(0.72),
+                  ),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 24),
-
                 Card(
                   elevation: 8,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                  color: colorScheme.surfaceContainerHighest,
                   child: Padding(
                     padding: const EdgeInsets.all(24),
                     child: Column(
                       children: [
                         Row(
                           children: [
-                            Icon(
-                              Icons.school,
-                              color: const Color(0xFF16A34A),
+                            const Icon(
+                              Icons.check_circle_rounded,
+                              color: Color(0xFF16A34A),
                               size: 32,
                             ),
                             const SizedBox(width: 16),
@@ -118,17 +115,19 @@ class _LearnedQuizScreenState extends State<LearnedQuizScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    '${widget.learnedWords.length} Öğrenilen Kelime',
-                                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                          fontWeight: FontWeight.bold,
-                                          color: Theme.of(context).colorScheme.onSurface,
-                                        ),
+                                    '${widget.learnedWords.length} Learned Words',
+                                    style: textTheme.titleLarge?.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      color: colorScheme.onSurface,
+                                    ),
                                   ),
                                   Text(
-                                    'Öğrendiğin kelimelerle quiz çöz',
-                                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
-                                        ),
+                                    'Refresh what you know with a focused quiz.',
+                                    style: textTheme.bodyMedium?.copyWith(
+                                      color: colorScheme.onSurface.withOpacity(
+                                        0.7,
+                                      ),
+                                    ),
                                   ),
                                 ],
                               ),
@@ -136,31 +135,27 @@ class _LearnedQuizScreenState extends State<LearnedQuizScreen> {
                           ],
                         ),
                         const SizedBox(height: 24),
-
                         Container(
                           padding: const EdgeInsets.all(16),
                           decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                const Color(0xFF4ADE80).withOpacity(0.1),
-                                const Color(0xFF16A34A).withOpacity(0.1),
-                              ],
+                            gradient: const LinearGradient(
+                              colors: [Color(0xFFDCFCE7), Color(0xFFC4F4D7)],
                             ),
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Row(
                             children: [
                               const Icon(
-                                Icons.info_outline,
-                                color: Color(0xFF16A34A),
+                                Icons.menu_book_rounded,
+                                color: Color(0xFF166534),
                               ),
                               const SizedBox(width: 12),
                               Expanded(
                                 child: Text(
-                                  'Sadece öğrendiğin kelimelerden rastgele sorular oluşturulur.',
-                                  style: TextStyle(
+                                  'Keep your streak alive by reviewing mastered vocabulary.',
+                                  style: textTheme.bodyMedium?.copyWith(
                                     fontWeight: FontWeight.w600,
-                                    color: const Color(0xFF16A34A),
+                                    color: const Color(0xFF166534),
                                   ),
                                 ),
                               ),
@@ -172,65 +167,46 @@ class _LearnedQuizScreenState extends State<LearnedQuizScreen> {
                   ),
                 ),
                 const SizedBox(height: 32),
-
                 if (_isLoading)
-                  CircularProgressIndicator(
-                    color: const Color(0xFF16A34A),
+                  const CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      Color(0xFF16A34A),
+                    ),
                   )
                 else
                   SizedBox(
                     width: double.infinity,
                     child: Container(
                       decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: widget.learnedWords.length >= 4
-                              ? [
-                                  const Color(0xFF34D399),
-                                  const Color(0xFF059669),
-                                ]
-                              : [
-                                  Colors.grey.shade400,
-                                  Colors.grey.shade500,
-                                ],
+                        gradient: const LinearGradient(
+                          colors: [Color(0xFF16A34A), Color(0xFF22C55E)],
                         ),
                         borderRadius: BorderRadius.circular(16),
-                        boxShadow: widget.learnedWords.length >= 4
-                            ? [
-                                BoxShadow(
-                                  color: const Color(0xFF34D399).withOpacity(0.3),
-                                  blurRadius: 12,
-                                  offset: const Offset(0, 4),
-                                ),
-                              ]
-                            : [],
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color(0xFF16A34A).withOpacity(0.3),
+                            blurRadius: 12,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
                       ),
                       child: ElevatedButton.icon(
-                        onPressed: widget.learnedWords.length >= 4 ? _startQuiz : null,
-                        icon: Icon(
-                          widget.learnedWords.length >= 4 
-                              ? Icons.school_rounded 
-                              : Icons.lock_outline,
-                          size: 28,
-                        ),
-                        label: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 16),
+                        onPressed: _startQuiz,
+                        icon: const Icon(Icons.play_arrow_rounded, size: 28),
+                        label: const Padding(
+                          padding: EdgeInsets.symmetric(vertical: 16),
                           child: Text(
-                            widget.learnedWords.length >= 4 
-                                ? '🎓 Quiz Başlat'
-                                : 'Quiz için ${4 - widget.learnedWords.length} kelime daha gerekli',
-                            style: const TextStyle(
+                            'Start Learned Quiz',
+                            style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
+                              color: Colors.white,
                             ),
                           ),
                         ),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.transparent,
-                          foregroundColor: Colors.white,
                           shadowColor: Colors.transparent,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16),
-                          ),
                         ),
                       ),
                     ),
@@ -244,8 +220,11 @@ class _LearnedQuizScreenState extends State<LearnedQuizScreen> {
   }
 
   Future<void> _startQuiz() async {
-    Logger.i('Starting learned quiz with ${widget.learnedWords.length} words', _tag);
-    
+    Logger.i(
+      'Starting learned quiz with ${widget.learnedWords.length} words',
+      _tag,
+    );
+
     setState(() => _isLoading = true);
 
     try {
@@ -253,39 +232,41 @@ class _LearnedQuizScreenState extends State<LearnedQuizScreen> {
         if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: const Row(
-              children: [
+            content: Row(
+              children: const [
                 Icon(Icons.error_outline, color: Colors.white),
                 SizedBox(width: 12),
-                Expanded(child: Text('Öğrenilen kelime bulunamadı.')),
+                Expanded(child: Text('No learned words found.')),
               ],
             ),
             behavior: SnackBarBehavior.floating,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
           ),
         );
         setState(() => _isLoading = false);
         return;
       }
 
-      // favori olmayan öğrenilen kelimeleri filtrele
-      final filteredLearnedWords = widget.learnedWords
-          .where((word) => !word.isFavorite)
-          .toList();
+      final filteredLearnedWords =
+          widget.learnedWords.where((word) => !word.isFavorite).toList();
 
       if (filteredLearnedWords.length < 4) {
         if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: const Row(
-              children: [
+            content: Row(
+              children: const [
                 Icon(Icons.error_outline, color: Colors.white),
                 SizedBox(width: 12),
-                Expanded(child: Text('Quiz için yeterli öğrenilen kelime yok.')),
+                Expanded(child: Text('Not enough learned words for a quiz.')),
               ],
             ),
             behavior: SnackBarBehavior.floating,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
           ),
         );
         setState(() => _isLoading = false);
@@ -293,24 +274,28 @@ class _LearnedQuizScreenState extends State<LearnedQuizScreen> {
       }
 
       Logger.d('Attempting to show rewarded ad', _tag);
-      
       final adShown = await widget.adService.showRewardedAd();
-      
+
       if (!adShown) {
         Logger.w('Rewarded ad not available or failed to show', _tag);
-        
         if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: const Row(
-              children: [
+            content: Row(
+              children: const [
                 Icon(Icons.error_outline, color: Colors.white),
                 SizedBox(width: 12),
-                Expanded(child: Text('Reklam hazır değil. Lütfen tekrar dene.')),
+                Expanded(
+                  child: Text(
+                    'Rewarded ad is not ready yet. Please try again soon.',
+                  ),
+                ),
               ],
             ),
             behavior: SnackBarBehavior.floating,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
           ),
         );
         setState(() => _isLoading = false);
@@ -318,7 +303,7 @@ class _LearnedQuizScreenState extends State<LearnedQuizScreen> {
       }
 
       Logger.success('Rewarded ad shown successfully', _tag);
-      
+
       if (!mounted) return;
 
       filteredLearnedWords.shuffle();
@@ -329,27 +314,42 @@ class _LearnedQuizScreenState extends State<LearnedQuizScreen> {
         wordCount: quizWords.length,
       );
 
-      Logger.i('Navigating to quiz screen with ${quizWords.length} learned words', _tag);
-      
+      Logger.i(
+        'Navigating to quiz screen with ${quizWords.length} learned words',
+        _tag,
+      );
+
       await Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => QuizScreen(
-            wordService: widget.wordService,
-            userService: widget.userService,
-            quizWords: quizWords,
-            quizType: 'learned',
-          ),
+          builder:
+              (context) => QuizScreen(
+                wordService: widget.wordService,
+                userService: widget.userService,
+                quizWords: quizWords,
+                quizType: 'learned',
+              ),
         ),
       );
+
       Logger.d('Returned from quiz screen', _tag);
     } catch (e, stackTrace) {
       Logger.e('Failed to start learned quiz', e, stackTrace, _tag);
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Hata: $e'),
-          backgroundColor: Colors.red,
+          content: Row(
+            children: [
+              const Icon(Icons.error_outline, color: Colors.white),
+              const SizedBox(width: 12),
+              Expanded(child: Text('Something went wrong: $e')),
+            ],
+          ),
+          backgroundColor: Colors.redAccent,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
         ),
       );
     } finally {

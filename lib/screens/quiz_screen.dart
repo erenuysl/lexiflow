@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:confetti/confetti.dart';
 import '../models/word_model.dart';
 import '../services/word_service.dart';
@@ -19,12 +20,14 @@ import 'package:flutter/services.dart';
 import '../widgets/guest_login_prompt.dart';
 import '../widgets/lexiflow_toast.dart';
 import '../di/locator.dart';
+import '../services/learned_words_service.dart';
 
 class QuizScreen extends StatefulWidget {
   final WordService wordService;
   final UserService userService;
   final List<Word>? quizWords;
   final String? quizType;
+  final String? categoryKey;
 
   const QuizScreen({
     super.key,
@@ -32,6 +35,7 @@ class QuizScreen extends StatefulWidget {
     required this.userService,
     this.quizWords,
     this.quizType,
+    this.categoryKey,
   });
 
   @override
@@ -50,13 +54,14 @@ class _QuizScreenState extends State<QuizScreen> {
   bool _hasError = false;
   String _errorMessage = '';
   late ConfettiController _confettiController;
+  bool _isProcessingResults = false;
 
   final Map<Word, bool> _quizResults = {};
   final Map<Word, int> _responseTimesMs = {};
   final Map<Word, int> _qualities = {};
   DateTime? _questionShownAt;
   final StatisticsService _statistics = StatisticsService();
-  
+
   // kalite sorusu her 4 doğru cevapta bir sorulur
   int _correctAnswerCount = 0;
 
@@ -87,7 +92,7 @@ class _QuizScreenState extends State<QuizScreen> {
         _quizWords = List.from(widget.quizWords!);
       } else {
         final favorites = widget.wordService.getFavoriteWords();
-        
+
         if (favorites.length >= 4) {
           _quizWords = widget.wordService.getRandomFavorites(
             min(10, favorites.length),
@@ -98,14 +103,19 @@ class _QuizScreenState extends State<QuizScreen> {
       if (_quizWords.isNotEmpty) {
         _quizWords.shuffle();
         _generateQuestion();
-        
-        final quizType = widget.quizType ?? (widget.quizWords != null ? 'custom' : 'favorites');
+
+        final quizType =
+            widget.quizType ??
+            (widget.quizWords != null ? 'custom' : 'favorites');
         AnalyticsService.logQuizStarted(
           quizType: quizType,
           wordCount: _quizWords.length,
         );
-        Logger.i('Quiz started: $quizType with ${_quizWords.length} words', 'QuizScreen');
-        
+        Logger.i(
+          'Quiz started: $quizType with ${_quizWords.length} words',
+          'QuizScreen',
+        );
+
         setState(() {
           _isInitializing = false;
         });
@@ -134,7 +144,8 @@ class _QuizScreenState extends State<QuizScreen> {
       _correctWord = _quizWords[_currentIndex];
 
       final allWords = widget.wordService.getAllWords();
-      final wrongWords = allWords.where((w) => w.word != _correctWord!.word).toList();
+      final wrongWords =
+          allWords.where((w) => w.word != _correctWord!.word).toList();
 
       if (wrongWords.length < 3) {
         setState(() {
@@ -179,9 +190,10 @@ class _QuizScreenState extends State<QuizScreen> {
 
     final isCorrect = selectedWord.word == _correctWord!.word;
     final now = DateTime.now();
-    final rtMs = _questionShownAt != null
-        ? now.difference(_questionShownAt!).inMilliseconds
-        : 0;
+    final rtMs =
+        _questionShownAt != null
+            ? now.difference(_questionShownAt!).inMilliseconds
+            : 0;
 
     try {
       if (isCorrect) {
@@ -206,15 +218,22 @@ class _QuizScreenState extends State<QuizScreen> {
     if (isCorrect) {
       if (FeatureFlags.fsrsQualityPromptEnabled) {
         final promptRatio = RemoteConfigService.getFsrsPromptRatio();
-        
+
         if (_correctAnswerCount % promptRatio == 0) {
           final chosen = await _showQualityPrompt();
           _qualities[_correctWord!] = chosen ?? 2;
-          Logger.d('Quality prompt shown (every ${promptRatio}th correct): $_correctAnswerCount', 'QuizScreen');
+          Logger.d(
+            'Quality prompt shown (every ${promptRatio}th correct): $_correctAnswerCount',
+            'QuizScreen',
+          );
         } else {
           _qualities[_correctWord!] = 2;
-          final nextPrompt = ((_correctAnswerCount ~/ promptRatio) + 1) * promptRatio;
-          Logger.d('Quality prompt skipped: $_correctAnswerCount (ask at $nextPrompt)', 'QuizScreen');
+          final nextPrompt =
+              ((_correctAnswerCount ~/ promptRatio) + 1) * promptRatio;
+          Logger.d(
+            'Quality prompt skipped: $_correctAnswerCount (ask at $nextPrompt)',
+            'QuizScreen',
+          );
         }
       } else {
         _qualities[_correctWord!] = 2;
@@ -227,7 +246,7 @@ class _QuizScreenState extends State<QuizScreen> {
       final session = locator<SessionService>();
       final uid = session.currentUser?.uid;
       final q = _qualities[_correctWord!] ?? (isCorrect ? 2 : 0);
-      
+
       if (uid != null && _correctWord != null) {
         await _statistics.logReviewAnswered(
           userId: uid,
@@ -254,142 +273,143 @@ class _QuizScreenState extends State<QuizScreen> {
     }
   }
 
-  void _finishQuiz() async {
-    final earnedXp = _score * 10;
+  Future<void> _markLearnedWords() async {
+    if (kDebugMode)
+      print(
+        '[QUIZ_DEBUG] entering _markLearnedWords, results=${_quizResults.length}',
+      );
+    final learnedWordsService = locator<LearnedWordsService>();
+    final session = locator<SessionService>();
+    final userId = session.currentUser?.uid;
 
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(
-        builder: (context) => QuizResultsScreen(
-          score: _score,
-          totalQuestions: _quizWords.length,
-          earnedXp: earnedXp,
-          leveledUp: false, // seviye sistemi henüz yok
-          currentLevel: 1, // seviye sistemi henüz yok
-          quizType: widget.quizType,
-          onPlayAgain: () {
-            Navigator.of(context).pushReplacement(
-              MaterialPageRoute(
-                builder: (context) => QuizScreen(
-                  wordService: widget.wordService,
-                  userService: widget.userService,
-                  quizWords: widget.quizWords,
-                  quizType: widget.quizType,
-                ),
-              ),
-            );
-          },
-          onBackToFavorites: () {
-            Navigator.of(context).pop();
-          },
-        ),
-      ),
-    );
+    if (userId == null) {
+      if (kDebugMode)
+        print('[QUIZ_DEBUG] Skipped learned marking — user not logged in.');
+      return;
+    }
+
+    if (_quizResults.isEmpty) {
+      if (kDebugMode) print('[QUIZ_DEBUG] No results to mark.');
+      return;
+    }
+
+    int added = 0;
+    for (final entry in _quizResults.entries) {
+      final word = entry.key;
+      final isCorrect = entry.value;
+
+      if (isCorrect) {
+        // ✅ Safe Learned Word Construction (prevents empty fields & invalid Firestore paths)
+        final original = word;
+        final learnedWord = Word(
+          word:
+              original.word.trim().isNotEmpty
+                  ? original.word.trim()
+                  : 'unknown_word',
+          meaning:
+              original.meaning.trim().isNotEmpty
+                  ? original.meaning.trim()
+                  : 'No meaning provided',
+          tr: original.tr.trim(),
+          example:
+              original.example.trim().isNotEmpty
+                  ? original.example.trim()
+                  : 'No example available',
+          exampleSentence:
+              original.exampleSentence.trim().isNotEmpty
+                  ? original.exampleSentence.trim()
+                  : (original.example.trim().isNotEmpty
+                      ? original.example.trim()
+                      : 'No example available'),
+          category:
+              widget.categoryKey?.trim().isNotEmpty == true
+                  ? widget.categoryKey!.trim()
+                  : (original.category?.trim() ?? ''),
+          isCustom: original.isCustom,
+        );
+
+        await learnedWordsService.markWordAsLearned(userId, learnedWord);
+        added++;
+      }
+    }
+
+    if (kDebugMode) {
+      print(
+        '[QUIZ_DEBUG] Marked $added learned words (category: ${widget.categoryKey ?? "unknown"})',
+      );
+    }
+  }
+
+  void _finishQuiz() async {
+    if (_isProcessingResults) return;
+
+    setState(() {
+      _isProcessingResults = true;
+    });
 
     try {
+      await _markLearnedWords();
+
+      final earnedXp = _score * 10;
+
+      if (mounted) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder:
+                (context) => QuizResultsScreen(
+                  score: _score,
+                  totalQuestions: _quizWords.length,
+                  earnedXp: earnedXp,
+                  leveledUp: false,
+                  currentLevel: 1,
+                  quizType: widget.quizType,
+                  onPlayAgain: () {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder:
+                            (context) => QuizScreen(
+                              wordService: widget.wordService,
+                              userService: widget.userService,
+                              quizWords: widget.quizWords,
+                              quizType: widget.quizType,
+                              categoryKey: widget.categoryKey,
+                            ),
+                      ),
+                    );
+                  },
+                  onBackToFavorites: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+          ),
+        );
+      }
+
       final sessionService = locator<SessionService>();
       final uid = sessionService.currentUser?.uid;
 
       if (uid != null) {
-        for (final entry in _quizResults.entries) {
-          final word = entry.key;
-          final isCorrect = entry.value;
-          
-          if (isCorrect) {
-            try {
-              await widget.wordService.addToLearnedWords(word, uid);
-            } catch (e) {
-              // sessiz hata, devam et
-            }
-          }
-        }
-
-        // XP ve quiz istatistiklerini tek yerde güncelle
         try {
-          // XP ekle (haftalık takip dahil)
           await sessionService.addXp(earnedXp);
-          
-          // Quiz tamamlama sayısını ekle (haftalık takip dahil)
           await WeeklyXpService.addQuizCompletion(uid);
-          
-          debugPrint('[XP] +$earnedXp → totalXp with weekly tracking (uid=$uid)');
-          debugPrint('[QUIZ] +1 → totalQuizzesCompleted with weekly tracking (uid=$uid)');
+          debugPrint(
+            '[XP] +$earnedXp → totalXp with weekly tracking (uid=$uid)',
+          );
+          debugPrint(
+            '[QUIZ] +1 → totalQuizzesCompleted with weekly tracking (uid=$uid)',
+          );
         } catch (e) {
           debugPrint('Error updating XP and quiz stats: $e');
         }
-
-        // Leaderboard güncelle (quiz sayısı artırmadan, sadece XP ile)
-        try {
-          await sessionService.updateLeaderboardAfterXpGain(_score);
-        } catch (e) {
-          // sessiz hata, devam et
-        }
-
-        if (mounted) {
-          showLexiflowToast(
-            context,
-            ToastType.success,
-            'Quiz tamamlandı! +$earnedXp XP kazandınız',
-          );
-        }
       }
-
-      try {
-        await _statistics.recordActivity(
-          userId: uid ?? 'guest',
-          xpEarned: earnedXp,
-          quizzesCompleted: 0, // quiz sayısını burada artırma
-        );
-      } catch (e) {
-        // sessiz hata, devam et
-      }
-
-      if (uid != null) {
-        try {
-          await _statistics.logSessionComplete(
-            userId: uid,
-            totalWords: _quizWords.length,
-            sessionTime: Duration(milliseconds: DateTime.now().millisecondsSinceEpoch - (_questionShownAt?.millisecondsSinceEpoch ?? DateTime.now().millisecondsSinceEpoch)),
-          );
-        } catch (e) {
-          // sessiz hata, devam et
-        }
-      } else {
-        final accuracy = ((_score / _quizWords.length) * 100).round();
-        AnalyticsService.logQuizCompleted(
-          totalQuestions: _quizWords.length,
-          correctAnswers: _score,
-          accuracy: accuracy,
-          earnedXp: earnedXp,
-        );
-      }
-
-      _quizResults.forEach((word, isCorrect) async {
-        try {
-          final rt = _responseTimesMs[word] ?? 0;
-          final quality = _qualities[word] ?? (isCorrect ? 2 : 0);
-          
-          await SRSService.updateAfterAnswer(
-            word: word,
-            quality: quality,
-            responseTimeMs: rt,
-          );
-          
-          Logger.d(
-            'SRS updated: ${word.word} - quality: $quality, rt: ${rt}ms',
-            'QuizScreen',
-          );
-        } catch (e) {
-          Logger.e('Failed to update SRS for ${word.word}: $e', 'QuizScreen');
-        }
-      });
     } catch (e) {
-      if (!mounted) return;
-      
-      showLexiflowToast(
-        context,
-        ToastType.error,
-        'Quiz tamamlandı ancak XP kaydedilemedi',
-      );
+      debugPrint('Error in quiz completion: $e');
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isProcessingResults = false;
+        });
+      }
     }
   }
 
@@ -402,19 +422,36 @@ class _QuizScreenState extends State<QuizScreen> {
     return showDialog<int>(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        title: const Text('Bu kelimeyi ne kadar iyi biliyorsunuz?'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _buildQualityOption(0, 'Hiç bilmiyorum', Icons.sentiment_very_dissatisfied),
-            _buildQualityOption(1, 'Zor hatırlıyorum', Icons.sentiment_dissatisfied),
-            _buildQualityOption(2, 'İyi biliyorum', Icons.sentiment_satisfied),
-            _buildQualityOption(3, 'Çok iyi biliyorum', Icons.sentiment_very_satisfied),
-          ],
-        ),
-      ),
+      builder:
+          (context) => AlertDialog(
+            backgroundColor: Theme.of(context).colorScheme.surface,
+            title: const Text('Bu kelimeyi ne kadar iyi biliyorsunuz?'),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _buildQualityOption(
+                  0,
+                  'Hiç bilmiyorum',
+                  Icons.sentiment_very_dissatisfied,
+                ),
+                _buildQualityOption(
+                  1,
+                  'Zor hatırlıyorum',
+                  Icons.sentiment_dissatisfied,
+                ),
+                _buildQualityOption(
+                  2,
+                  'İyi biliyorum',
+                  Icons.sentiment_satisfied,
+                ),
+                _buildQualityOption(
+                  3,
+                  'Çok iyi biliyorum',
+                  Icons.sentiment_very_satisfied,
+                ),
+              ],
+            ),
+          ),
     );
   }
 
@@ -431,7 +468,7 @@ class _QuizScreenState extends State<QuizScreen> {
     final sessionService = locator<SessionService>();
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
-    
+
     if (sessionService.isGuest) {
       return const GuestLoginPrompt(
         title: 'Giriş Yapın',
@@ -455,9 +492,7 @@ class _QuizScreenState extends State<QuizScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CircularProgressIndicator(
-                  color: theme.colorScheme.primary,
-                ),
+                CircularProgressIndicator(color: theme.colorScheme.primary),
                 const SizedBox(height: 16),
                 Text(
                   'Quiz hazırlanıyor...',
@@ -494,7 +529,9 @@ class _QuizScreenState extends State<QuizScreen> {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  _errorMessage.isNotEmpty ? _errorMessage : 'Failed to load quiz',
+                  _errorMessage.isNotEmpty
+                      ? _errorMessage
+                      : 'Failed to load quiz',
                   style: theme.textTheme.bodyLarge?.copyWith(
                     color: theme.colorScheme.error,
                   ),
@@ -615,7 +652,10 @@ class _QuizScreenState extends State<QuizScreen> {
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 16,
+                  ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -697,7 +737,8 @@ class _QuizScreenState extends State<QuizScreen> {
                             Text(
                               'What does this mean?',
                               style: theme.textTheme.bodyLarge?.copyWith(
-                                color: theme.colorScheme.onPrimaryContainer.withOpacity(0.8),
+                                color: theme.colorScheme.onPrimaryContainer
+                                    .withOpacity(0.8),
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -710,65 +751,75 @@ class _QuizScreenState extends State<QuizScreen> {
                         builder: (context) {
                           final optionCount = _options.length;
                           const spacing = 12.0;
-                          
+
                           return ListView.builder(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             itemCount: _options.length,
                             itemBuilder: (context, index) {
                               final option = _options[index];
-                              final isCorrect = option.word == _correctWord!.word;
-                              final isSelected = _selectedWord?.word == option.word;
-                              
+                              final isCorrect =
+                                  option.word == _correctWord!.word;
+                              final isSelected =
+                                  _selectedWord?.word == option.word;
+
                               Color? backgroundColor;
                               Color? borderColor;
                               if (_isAnswered) {
                                 if (isCorrect) {
-                                  backgroundColor = Colors.green.withOpacity(0.1);
+                                  backgroundColor = Colors.green.withOpacity(
+                                    0.1,
+                                  );
                                   borderColor = Colors.green;
                                 } else if (isSelected) {
                                   backgroundColor = Colors.red.withOpacity(0.1);
                                   borderColor = Colors.red;
                                 }
                               }
-                              
+
                               return Container(
                                 margin: EdgeInsets.only(
-                                  bottom: index < _options.length - 1 ? spacing : 0,
+                                  bottom:
+                                      index < _options.length - 1 ? spacing : 0,
                                 ),
                                 child: Material(
                                   color: Colors.transparent,
                                   child: InkWell(
-                                    onTap: _isAnswered
-                                        ? null
-                                        : () => _checkAnswer(option),
+                                    onTap:
+                                        _isAnswered
+                                            ? null
+                                            : () => _checkAnswer(option),
                                     borderRadius: BorderRadius.circular(12),
                                     child: Container(
                                       padding: const EdgeInsets.all(16),
                                       decoration: BoxDecoration(
-                                        color: backgroundColor ??
+                                        color:
+                                            backgroundColor ??
                                             (_isAnswered && isCorrect
                                                 ? Colors.green.withOpacity(0.1)
                                                 : _isAnswered && isSelected
-                                                    ? Colors.red.withOpacity(0.1)
-                                                    : theme.colorScheme.surface),
+                                                ? Colors.red.withOpacity(0.1)
+                                                : theme.colorScheme.surface),
                                         border: Border.all(
-                                          color: borderColor ??
-                                              (_isAnswered &&
-                                                  isCorrect
+                                          color:
+                                              borderColor ??
+                                              (_isAnswered && isCorrect
                                                   ? Colors.green
                                                   : _isAnswered && isSelected
-                                                      ? Colors.red
-                                                      : theme.colorScheme.outline.withOpacity(0.3)),
+                                                  ? Colors.red
+                                                  : theme.colorScheme.outline
+                                                      .withOpacity(0.3)),
                                           width: 1.5,
                                         ),
                                         borderRadius: BorderRadius.circular(12),
                                       ),
                                       child: Text(
                                         option.meaning,
-                                        style: theme.textTheme.bodyLarge?.copyWith(
-                                          color: theme.colorScheme.onSurface,
-                                        ),
+                                        style: theme.textTheme.bodyLarge
+                                            ?.copyWith(
+                                              color:
+                                                  theme.colorScheme.onSurface,
+                                            ),
                                         textAlign: TextAlign.center,
                                       ),
                                     ),
@@ -801,6 +852,31 @@ class _QuizScreenState extends State<QuizScreen> {
                 ],
               ),
             ),
+            if (_isProcessingResults) ...[
+              ModalBarrier(
+                dismissible: false,
+                color: Colors.black.withOpacity(isDark ? 0.6 : 0.45),
+              ),
+              Positioned.fill(
+                child: Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                          theme.colorScheme.primary,
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      const Text(
+                        'Saving quiz results...',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ],
         ),
       ),

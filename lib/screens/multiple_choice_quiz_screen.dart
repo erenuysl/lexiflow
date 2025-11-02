@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'dart:math';
 import '../models/word_model.dart';
 import '../services/word_loader.dart';
 import '../services/session_service.dart';
 import '../utils/logger.dart';
+import '../services/learned_words_service.dart';
+import '../di/locator.dart';
 
 class MultipleChoiceQuizScreen extends StatefulWidget {
   final String category;
 
-  const MultipleChoiceQuizScreen({
-    super.key,
-    required this.category,
-  });
+  const MultipleChoiceQuizScreen({super.key, required this.category});
 
   @override
-  State<MultipleChoiceQuizScreen> createState() => _MultipleChoiceQuizScreenState();
+  State<MultipleChoiceQuizScreen> createState() =>
+      _MultipleChoiceQuizScreenState();
 }
 
 class _MultipleChoiceQuizScreenState extends State<MultipleChoiceQuizScreen> {
@@ -28,6 +29,7 @@ class _MultipleChoiceQuizScreenState extends State<MultipleChoiceQuizScreen> {
   int? _selectedAnswerIndex;
   bool _showResult = false;
   bool _isAnswered = false;
+  final List<Word> _correctlyAnsweredWords = [];
 
   @override
   void initState() {
@@ -43,12 +45,15 @@ class _MultipleChoiceQuizScreenState extends State<MultipleChoiceQuizScreen> {
       });
 
       // kategori kelimelerini yükle
-      List<Word> categoryWords = await WordLoader.loadCategoryWords(widget.category);
-      
+      List<Word> categoryWords = await WordLoader.loadCategoryWords(
+        widget.category,
+      );
+
       if (categoryWords.length < 10) {
         setState(() {
           _hasError = true;
-          _errorMessage = 'Bu kategoride yeterli kelime yok. En az 10 kelime gerekli.';
+          _errorMessage =
+              'Bu kategoride yeterli kelime yok. En az 10 kelime gerekli.';
           _isLoading = false;
         });
         return;
@@ -65,7 +70,9 @@ class _MultipleChoiceQuizScreenState extends State<MultipleChoiceQuizScreen> {
         _isLoading = false;
       });
 
-      Logger.i('Quiz başlatıldı: ${_words.length} soru, kategori: ${widget.category}');
+      Logger.i(
+        'Quiz başlatıldı: ${_words.length} soru, kategori: ${widget.category}',
+      );
     } catch (e) {
       Logger.e('Quiz yükleme hatası: $e');
       setState(() {
@@ -78,43 +85,48 @@ class _MultipleChoiceQuizScreenState extends State<MultipleChoiceQuizScreen> {
 
   void _generateQuestions() {
     _questions.clear();
-    
+
     for (int i = 0; i < _words.length; i++) {
       Word correctWord = _words[i];
-      
+
       // yanlış cevaplar için diğer kelimelerden 3 tane seç
-      List<Word> otherWords = _words.where((w) => w.word != correctWord.word).toList();
+      List<Word> otherWords =
+          _words.where((w) => w.word != correctWord.word).toList();
       otherWords.shuffle();
       List<Word> wrongAnswers = otherWords.take(3).toList();
-      
+
       // 4 seçeneği karıştır
       List<String> options = [
         correctWord.meaning,
         ...wrongAnswers.map((w) => w.meaning),
       ];
       options.shuffle();
-      
+
       int correctIndex = options.indexOf(correctWord.meaning);
-      
-      _questions.add(QuizQuestion(
-        word: correctWord.word,
-        correctAnswer: correctWord.meaning,
-        options: options,
-        correctIndex: correctIndex,
-      ));
+
+      _questions.add(
+        QuizQuestion(
+          word: correctWord.word,
+          correctAnswer: correctWord.meaning,
+          options: options,
+          correctIndex: correctIndex,
+        ),
+      );
     }
   }
 
   void _selectAnswer(int index) {
     if (_isAnswered) return;
-    
+
     setState(() {
       _selectedAnswerIndex = index;
       _isAnswered = true;
       _showResult = true;
-      
+
       if (index == _questions[_currentQuestionIndex].correctIndex) {
         _correctAnswers++;
+        // Bu sorunun doğru kelimesini learned listesine ekle
+        _correctlyAnsweredWords.add(_words[_currentQuestionIndex]);
       }
     });
   }
@@ -134,28 +146,85 @@ class _MultipleChoiceQuizScreenState extends State<MultipleChoiceQuizScreen> {
 
   void _finishQuiz() async {
     // quiz tamamlandı, sonuç ekranına git
-    int earnedXp = SessionService.calculateQuizXp('multiple_choice', _correctAnswers);
-    
+    int earnedXp = SessionService.calculateQuizXp(
+      'multiple_choice',
+      _correctAnswers,
+    );
+
     // XP'yi ekle
     await SessionService().addQuizXp('multiple_choice', _correctAnswers);
-    
-    Logger.i('Quiz tamamlandı: $_correctAnswers/${_questions.length} doğru, $earnedXp XP kazanıldı');
-    
+
+    Logger.i(
+      'Quiz tamamlandı: $_correctAnswers/${_questions.length} doğru, $earnedXp XP kazanıldı',
+    );
+
+    // Quiz tamamlandı logundan hemen sonra learned words işaretleme
+    try {
+      if (kDebugMode)
+        print(
+          '[QUIZ_DEBUG] entering _markLearnedWords, results=${_correctlyAnsweredWords.length}',
+        );
+      final learnedWordsService = locator<LearnedWordsService>();
+      final session = locator<SessionService>();
+      final userId = session.currentUser?.uid;
+
+      if (userId != null && _correctlyAnsweredWords.isNotEmpty) {
+        int added = 0;
+        for (final w in _correctlyAnsweredWords) {
+          // ✅ Safe Learned Word Construction
+          final learnedWord = Word(
+            word: w.word.trim().isNotEmpty ? w.word.trim() : 'unknown_word',
+            meaning:
+                w.meaning.trim().isNotEmpty
+                    ? w.meaning.trim()
+                    : 'No meaning provided',
+            tr: w.tr.trim(),
+            example:
+                w.example.trim().isNotEmpty
+                    ? w.example.trim()
+                    : 'No example available',
+            exampleSentence:
+                w.exampleSentence.trim().isNotEmpty
+                    ? w.exampleSentence.trim()
+                    : (w.example.trim().isNotEmpty
+                        ? w.example.trim()
+                        : 'No example available'),
+            category:
+                widget.category.trim().isNotEmpty
+                    ? widget.category.trim()
+                    : (w.category ?? ''),
+            isCustom: w.isCustom,
+          );
+
+          await learnedWordsService.markWordAsLearned(userId, learnedWord);
+          added++;
+        }
+        if (kDebugMode) {
+          print(
+            '[QUIZ_DEBUG] Marked $added learned words (category: ${widget.category})',
+          );
+        }
+      } else {
+        if (kDebugMode)
+          print('[QUIZ_DEBUG] Skipped marking (uid or results missing)');
+      }
+    } catch (e) {
+      if (kDebugMode) print('[QUIZ_DEBUG] Error marking learned words: $e');
+    }
+
     if (mounted) {
       Navigator.pushReplacement(
         context,
         PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) => QuizResultScreen(
-            correctAnswers: _correctAnswers,
-            totalQuestions: _questions.length,
-            earnedXp: earnedXp,
-            category: widget.category,
-          ),
+          pageBuilder:
+              (context, animation, secondaryAnimation) => QuizResultScreen(
+                correctAnswers: _correctAnswers,
+                totalQuestions: _questions.length,
+                earnedXp: earnedXp,
+                category: widget.category,
+              ),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeTransition(
-              opacity: animation,
-              child: child,
-            );
+            return FadeTransition(opacity: animation, child: child);
           },
           transitionDuration: const Duration(milliseconds: 500),
         ),
@@ -178,9 +247,7 @@ class _MultipleChoiceQuizScreenState extends State<MultipleChoiceQuizScreen> {
           color: Theme.of(context).colorScheme.onSurface,
         ),
       ),
-      body: SafeArea(
-        child: _buildBody(),
-      ),
+      body: SafeArea(child: _buildBody()),
     );
   }
 
@@ -229,7 +296,9 @@ class _MultipleChoiceQuizScreenState extends State<MultipleChoiceQuizScreen> {
               Text(
                 _errorMessage,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onSurface.withOpacity(0.7),
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -249,7 +318,7 @@ class _MultipleChoiceQuizScreenState extends State<MultipleChoiceQuizScreen> {
 
   Widget _buildQuizContent() {
     QuizQuestion question = _questions[_currentQuestionIndex];
-    
+
     return Padding(
       padding: const EdgeInsets.all(24),
       child: Column(
@@ -261,7 +330,9 @@ class _MultipleChoiceQuizScreenState extends State<MultipleChoiceQuizScreen> {
               Text(
                 'Soru ${_currentQuestionIndex + 1}/${_questions.length}',
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onSurface.withOpacity(0.7),
                 ),
               ),
               const Spacer(),
@@ -277,7 +348,8 @@ class _MultipleChoiceQuizScreenState extends State<MultipleChoiceQuizScreen> {
           const SizedBox(height: 8),
           LinearProgressIndicator(
             value: (_currentQuestionIndex + 1) / _questions.length,
-            backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
+            backgroundColor:
+                Theme.of(context).colorScheme.surfaceContainerHighest,
             valueColor: AlwaysStoppedAnimation<Color>(
               Theme.of(context).colorScheme.primary,
             ),
@@ -299,7 +371,9 @@ class _MultipleChoiceQuizScreenState extends State<MultipleChoiceQuizScreen> {
                 Text(
                   'Bu kelimenin anlamı nedir?',
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.onSurface.withOpacity(0.7),
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -321,7 +395,11 @@ class _MultipleChoiceQuizScreenState extends State<MultipleChoiceQuizScreen> {
             child: ListView.builder(
               itemCount: question.options.length,
               itemBuilder: (context, index) {
-                return _buildOptionCard(index, question.options[index], question.correctIndex);
+                return _buildOptionCard(
+                  index,
+                  question.options[index],
+                  question.correctIndex,
+                );
               },
             ),
           ),
@@ -340,7 +418,9 @@ class _MultipleChoiceQuizScreenState extends State<MultipleChoiceQuizScreen> {
                 ),
               ),
               child: Text(
-                _currentQuestionIndex < _questions.length - 1 ? 'Sonraki Soru' : 'Sonuçları Gör',
+                _currentQuestionIndex < _questions.length - 1
+                    ? 'Sonraki Soru'
+                    : 'Sonuçları Gör',
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -377,12 +457,14 @@ class _MultipleChoiceQuizScreenState extends State<MultipleChoiceQuizScreen> {
         textColor = Theme.of(context).colorScheme.onSurface.withOpacity(0.5);
       }
     } else {
-      backgroundColor = isSelected 
-        ? Theme.of(context).colorScheme.primary.withOpacity(0.1)
-        : Theme.of(context).colorScheme.surfaceContainerHighest;
-      borderColor = isSelected 
-        ? Theme.of(context).colorScheme.primary
-        : Theme.of(context).colorScheme.outline.withOpacity(0.2);
+      backgroundColor =
+          isSelected
+              ? Theme.of(context).colorScheme.primary.withOpacity(0.1)
+              : Theme.of(context).colorScheme.surfaceContainerHighest;
+      borderColor =
+          isSelected
+              ? Theme.of(context).colorScheme.primary
+              : Theme.of(context).colorScheme.outline.withOpacity(0.2);
       textColor = Theme.of(context).colorScheme.onSurface;
     }
 
@@ -405,28 +487,35 @@ class _MultipleChoiceQuizScreenState extends State<MultipleChoiceQuizScreen> {
                 height: 24,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: showColors && isCorrect 
-                    ? Colors.green 
-                    : showColors && isSelected && !isCorrect
-                      ? Colors.red
-                      : isSelected 
-                        ? Theme.of(context).colorScheme.primary
-                        : Colors.transparent,
+                  color:
+                      showColors && isCorrect
+                          ? Colors.green
+                          : showColors && isSelected && !isCorrect
+                          ? Colors.red
+                          : isSelected
+                          ? Theme.of(context).colorScheme.primary
+                          : Colors.transparent,
                   border: Border.all(
-                    color: showColors && isCorrect 
-                      ? Colors.green 
-                      : showColors && isSelected && !isCorrect
-                        ? Colors.red
-                        : Theme.of(context).colorScheme.outline,
+                    color:
+                        showColors && isCorrect
+                            ? Colors.green
+                            : showColors && isSelected && !isCorrect
+                            ? Colors.red
+                            : Theme.of(context).colorScheme.outline,
                   ),
                 ),
-                child: showColors && isCorrect
-                  ? const Icon(Icons.check, color: Colors.white, size: 16)
-                  : showColors && isSelected && !isCorrect
-                    ? const Icon(Icons.close, color: Colors.white, size: 16)
-                    : isSelected
-                      ? Icon(Icons.circle, color: Theme.of(context).colorScheme.onPrimary, size: 12)
-                      : null,
+                child:
+                    showColors && isCorrect
+                        ? const Icon(Icons.check, color: Colors.white, size: 16)
+                        : showColors && isSelected && !isCorrect
+                        ? const Icon(Icons.close, color: Colors.white, size: 16)
+                        : isSelected
+                        ? Icon(
+                          Icons.circle,
+                          color: Theme.of(context).colorScheme.onPrimary,
+                          size: 12,
+                        )
+                        : null,
               ),
               const SizedBox(width: 16),
               Expanded(
@@ -434,7 +523,8 @@ class _MultipleChoiceQuizScreenState extends State<MultipleChoiceQuizScreen> {
                   option,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: textColor,
-                    fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                    fontWeight:
+                        isSelected ? FontWeight.bold : FontWeight.normal,
                   ),
                 ),
               ),
@@ -507,9 +597,14 @@ class QuizResultScreen extends StatelessWidget {
                         padding: const EdgeInsets.all(40),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                          color:
+                              Theme.of(
+                                context,
+                              ).colorScheme.surfaceContainerHighest,
                           border: Border.all(
-                            color: _getPerformanceColor(percentage).withOpacity(0.3),
+                            color: _getPerformanceColor(
+                              percentage,
+                            ).withOpacity(0.3),
                             width: 3,
                           ),
                         ),
@@ -523,7 +618,9 @@ class QuizResultScreen extends StatelessWidget {
                       // başlık
                       Text(
                         'Quiz Tamamlandı!',
-                        style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                        style: Theme.of(
+                          context,
+                        ).textTheme.headlineLarge?.copyWith(
                           color: Theme.of(context).colorScheme.onSurface,
                           fontWeight: FontWeight.bold,
                         ),
@@ -572,7 +669,9 @@ class QuizResultScreen extends StatelessWidget {
                       Text(
                         'Kategori: $category',
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.onSurface.withOpacity(0.5),
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -611,7 +710,9 @@ class QuizResultScreen extends StatelessWidget {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MultipleChoiceQuizScreen(category: category),
+                        builder:
+                            (context) =>
+                                MultipleChoiceQuizScreen(category: category),
                       ),
                     );
                   },
@@ -633,16 +734,19 @@ class QuizResultScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildResultCard(BuildContext context, String title, String value, Color color, IconData icon) {
+  Widget _buildResultCard(
+    BuildContext context,
+    String title,
+    String value,
+    Color color,
+    IconData icon,
+  ) {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surfaceContainerHighest,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: color.withOpacity(0.2),
-          width: 2,
-        ),
+        border: Border.all(color: color.withOpacity(0.2), width: 2),
       ),
       child: Row(
         children: [
@@ -662,7 +766,9 @@ class QuizResultScreen extends StatelessWidget {
                 Text(
                   title,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.onSurface.withOpacity(0.7),
                   ),
                 ),
                 const SizedBox(height: 4),

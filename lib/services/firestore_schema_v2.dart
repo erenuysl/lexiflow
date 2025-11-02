@@ -7,40 +7,79 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 /// Removes public_words collection, focuses on user progress and daily selections
 /// Uses 1kwords.json as the single source of truth for word content
 class FirestoreSchemaV2 {
-  
   // ===========================================
   // LEARNED WORDS COLLECTION
   // ===========================================
-  
+
   static const String learnedWordsSubcollection = 'learned_words';
-  
-  /// Create learned word document (minimal data)
+
+  /// Create learned word document with optional descriptive fields.
   static Map<String, dynamic> createLearnedWord({
     required String wordId,
+    String? category,
     DateTime? learnedAt,
+    String? word,
+    String? meaning,
+    String? tr,
+    String? example,
+    String? exampleSentence,
+    bool? isCustom,
+    bool includeCreatedAt = true,
   }) {
-    return {
+    final data = <String, dynamic>{
       'wordId': wordId.toLowerCase(), // Normalize for consistency
-      'learnedAt': learnedAt != null 
-          ? Timestamp.fromDate(learnedAt) 
-          : FieldValue.serverTimestamp(),
-      'createdAt': FieldValue.serverTimestamp(),
+      'learnedAt':
+          learnedAt != null
+              ? Timestamp.fromDate(learnedAt)
+              : FieldValue.serverTimestamp(),
     };
+
+    if (category != null) {
+      final normalizedCategory = category.trim().toLowerCase();
+      if (normalizedCategory.isNotEmpty) {
+        data['category'] = normalizedCategory;
+      }
+    }
+
+    if (includeCreatedAt) {
+      data['createdAt'] = FieldValue.serverTimestamp();
+    }
+
+    if (word != null && word.trim().isNotEmpty) {
+      data['word'] = word.trim();
+    }
+    if (meaning != null && meaning.trim().isNotEmpty) {
+      data['meaning'] = meaning.trim();
+    }
+    if (tr != null && tr.trim().isNotEmpty) {
+      data['tr'] = tr.trim();
+    }
+    if (example != null && example.trim().isNotEmpty) {
+      data['example'] = example.trim();
+    }
+    if (exampleSentence != null && exampleSentence.trim().isNotEmpty) {
+      data['exampleSentence'] = exampleSentence.trim();
+    }
+    if (isCustom != null) {
+      data['isCustom'] = isCustom;
+    }
+
+    return data;
   }
-  
+
   /// Get learned words path
   static String getLearnedWordsPath(String userId, String wordId) {
     final safeUserId = _sanitizeDocumentId(userId);
     final safeWordId = _sanitizeDocumentId(wordId.toLowerCase());
     return 'users/$safeUserId/$learnedWordsSubcollection/$safeWordId';
   }
-  
+
   // ===========================================
   // DAILY WORDS COLLECTION
   // ===========================================
-  
+
   static const String dailyWordsSubcollection = 'daily_words';
-  
+
   /// Create daily words document
   static Map<String, dynamic> createDailyWords({
     required String date,
@@ -51,7 +90,8 @@ class FirestoreSchemaV2 {
   }) {
     return {
       'date': date,
-      'dailyWords': dailyWords.map((w) => w.toLowerCase()).toList(), // Normalize
+      'dailyWords':
+          dailyWords.map((w) => w.toLowerCase()).toList(), // Normalize
       'extraWords': extraWords.map((w) => w.toLowerCase()).toList(),
       'completedWords': completedWords.map((w) => w.toLowerCase()).toList(),
       'hasWatchedAd': hasWatchedAd,
@@ -59,19 +99,19 @@ class FirestoreSchemaV2 {
       'updatedAt': FieldValue.serverTimestamp(),
     };
   }
-  
+
   /// Get daily words path
   static String getDailyWordsPath(String userId, String date) {
     final safeUserId = _sanitizeDocumentId(userId);
     return 'users/$safeUserId/$dailyWordsSubcollection/$date';
   }
-  
+
   // ===========================================
   // WORD PROGRESS COLLECTION (SRS)
   // ===========================================
-  
+
   static const String wordProgressSubcollection = 'word_progress';
-  
+
   /// Create word progress document for SRS
   static Map<String, dynamic> createWordProgress({
     required String wordId,
@@ -92,28 +132,29 @@ class FirestoreSchemaV2 {
       'nextReview': nextReview != null ? Timestamp.fromDate(nextReview) : null,
       'correctAnswers': correctAnswers,
       'wrongAnswers': wrongAnswers,
-      'lastReviewed': lastReviewed != null ? Timestamp.fromDate(lastReviewed) : null,
+      'lastReviewed':
+          lastReviewed != null ? Timestamp.fromDate(lastReviewed) : null,
       'mastered': mastered,
       'streak': streak,
       'confidence': confidence,
       'difficulty': difficulty, // FSRS-Lite parameter
-      'stability': stability,   // FSRS-Lite parameter
+      'stability': stability, // FSRS-Lite parameter
       'createdAt': FieldValue.serverTimestamp(),
       'updatedAt': FieldValue.serverTimestamp(),
     };
   }
-  
+
   /// Get word progress path
   static String getWordProgressPath(String userId, String wordId) {
     final safeUserId = _sanitizeDocumentId(userId);
     final safeWordId = _sanitizeDocumentId(wordId.toLowerCase());
     return 'users/$safeUserId/$wordProgressSubcollection/$safeWordId';
   }
-  
+
   // ===========================================
   // USER STATS COLLECTION
   // ===========================================
-  
+
   /// Create user stats document
   static Map<String, dynamic> createUserStats({
     int xp = 0,
@@ -140,9 +181,10 @@ class FirestoreSchemaV2 {
       'totalCorrectAnswers': totalCorrectAnswers,
       'totalWrongAnswers': totalWrongAnswers,
       'accuracy': accuracy,
-      'lastActivityDate': lastActivityDate != null 
-          ? Timestamp.fromDate(lastActivityDate) 
-          : null,
+      'lastActivityDate':
+          lastActivityDate != null
+              ? Timestamp.fromDate(lastActivityDate)
+              : null,
       'dailyActivity': dailyActivity,
       'weeklyActivity': weeklyActivity,
       'monthlyActivity': monthlyActivity,
@@ -150,26 +192,26 @@ class FirestoreSchemaV2 {
       'updatedAt': FieldValue.serverTimestamp(),
     };
   }
-  
+
   /// Get user stats path
   static String getUserStatsPath(String userId) {
     final safeUserId = _sanitizeDocumentId(userId);
     return 'users/$safeUserId';
   }
-  
+
   // ===========================================
   // USER ACTIVITY COLLECTION
   // ===========================================
-  
+
   static const String userActivitySubcollection = 'activity';
-  
+
   // Activity types
   static const String activityTypeQuizCompleted = 'quiz_completed';
   static const String activityTypeWordLearned = 'word_learned';
   static const String activityTypeStreakUpdated = 'streak_updated';
   static const String activityTypeLevelUp = 'level_up';
   static const String activityTypeDailyWordsCompleted = 'daily_words_completed';
-  
+
   /// Create user activity document
   static Map<String, dynamic> createUserActivity({
     required String type,
@@ -193,19 +235,19 @@ class FirestoreSchemaV2 {
       'timestamp': FieldValue.serverTimestamp(),
     };
   }
-  
+
   /// Get user activity path
   static String getUserActivityPath(String userId, String activityId) {
     final safeUserId = _sanitizeDocumentId(userId);
     return 'users/$safeUserId/$userActivitySubcollection/$activityId';
   }
-  
+
   // ===========================================
   // LEADERBOARD COLLECTION (OPTIONAL)
   // ===========================================
-  
+
   static const String leaderboardCollection = 'leaderboard_stats';
-  
+
   /// Create leaderboard stats document
   static Map<String, dynamic> createLeaderboardStats({
     required String userId,
@@ -223,46 +265,51 @@ class FirestoreSchemaV2 {
       'xp': xp,
       'level': level,
       'streak': streak,
-      'lastUpdated': lastUpdated != null 
-          ? Timestamp.fromDate(lastUpdated) 
-          : FieldValue.serverTimestamp(),
+      'lastUpdated':
+          lastUpdated != null
+              ? Timestamp.fromDate(lastUpdated)
+              : FieldValue.serverTimestamp(),
     };
   }
-  
+
   // ===========================================
   // MIGRATION HELPERS
   // ===========================================
-  
+
   /// Migration helper: Check if user has old public_words dependencies
   static Future<bool> hasPublicWordsDependencies(String userId) async {
     try {
       final firestore = FirebaseFirestore.instance;
-      
+
       // Check if user has any word_progress documents
-      final progressSnapshot = await firestore
-          .collection('users')
-          .doc(userId)
-          .collection(wordProgressSubcollection)
-          .limit(1)
-          .get();
-      
+      final progressSnapshot =
+          await firestore
+              .collection('users')
+              .doc(userId)
+              .collection(wordProgressSubcollection)
+              .limit(1)
+              .get();
+
       return progressSnapshot.docs.isNotEmpty;
     } catch (e) {
       return false;
     }
   }
-  
+
   /// Migration helper: Get user's current progress for migration
-  static Future<List<Map<String, dynamic>>> getUserProgressForMigration(String userId) async {
+  static Future<List<Map<String, dynamic>>> getUserProgressForMigration(
+    String userId,
+  ) async {
     try {
       final firestore = FirebaseFirestore.instance;
-      
-      final snapshot = await firestore
-          .collection('users')
-          .doc(userId)
-          .collection('word_progress') // Old collection name
-          .get();
-      
+
+      final snapshot =
+          await firestore
+              .collection('users')
+              .doc(userId)
+              .collection('word_progress') // Old collection name
+              .get();
+
       return snapshot.docs.map((doc) {
         final data = doc.data();
         data['wordId'] = doc.id;
@@ -272,49 +319,50 @@ class FirestoreSchemaV2 {
       return [];
     }
   }
-  
+
   // ===========================================
   // UTILITY METHODS
   // ===========================================
-  
+
   /// Sanitize document ID to be Firestore-safe
   static String _sanitizeDocumentId(String id) {
     // Remove invalid characters and ensure valid length
-    String sanitized = id
-        .replaceAll(RegExp(r'[/\\]'), '_')
-        .replaceAll(RegExp(r'[^\w\-._~]'), '_')
-        .toLowerCase();
-    
+    String sanitized =
+        id
+            .replaceAll(RegExp(r'[/\\]'), '_')
+            .replaceAll(RegExp(r'[^\w\-._~]'), '_')
+            .toLowerCase();
+
     // Ensure it's not empty and not too long
     if (sanitized.isEmpty) sanitized = 'unknown';
     if (sanitized.length > 1500) sanitized = sanitized.substring(0, 1500);
-    
+
     return sanitized;
   }
-  
+
   /// Validate document path
   static void _validateDocumentPath(String path) {
     if (path.split('/').length % 2 != 0) {
       throw ArgumentError('Invalid document path: $path');
     }
   }
-  
+
   /// Get current date string for daily operations
   static String getCurrentDateString() {
     final now = DateTime.now().toUtc();
     return '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
   }
-  
+
   /// Get date string from DateTime
   static String getDateString(DateTime date) {
     final utcDate = date.toUtc();
     return '${utcDate.year}-${utcDate.month.toString().padLeft(2, '0')}-${utcDate.day.toString().padLeft(2, '0')}';
   }
-  
+
   // ===========================================
   // BATCH OPERATIONS
   // ===========================================
-  
+
   /// Create batch operation for multiple learned words
   static WriteBatch createLearnedWordsBatch(
     FirebaseFirestore firestore,
@@ -322,15 +370,15 @@ class FirestoreSchemaV2 {
     List<String> wordIds,
   ) {
     final batch = firestore.batch();
-    
+
     for (final wordId in wordIds) {
       final docRef = firestore.doc(getLearnedWordsPath(userId, wordId));
       batch.set(docRef, createLearnedWord(wordId: wordId));
     }
-    
+
     return batch;
   }
-  
+
   /// Create batch operation for word progress updates
   static WriteBatch createWordProgressBatch(
     FirebaseFirestore firestore,
@@ -338,19 +386,19 @@ class FirestoreSchemaV2 {
     Map<String, Map<String, dynamic>> progressUpdates,
   ) {
     final batch = firestore.batch();
-    
+
     progressUpdates.forEach((wordId, progress) {
       final docRef = firestore.doc(getWordProgressPath(userId, wordId));
       batch.set(docRef, progress, SetOptions(merge: true));
     });
-    
+
     return batch;
   }
-  
+
   // ===========================================
   // QUERY HELPERS
   // ===========================================
-  
+
   /// Get learned words query
   static Query<Map<String, dynamic>> getLearnedWordsQuery(String userId) {
     return FirebaseFirestore.instance
@@ -358,18 +406,24 @@ class FirestoreSchemaV2 {
         .doc(_sanitizeDocumentId(userId))
         .collection(learnedWordsSubcollection);
   }
-  
+
   /// Get words for review query
-  static Query<Map<String, dynamic>> getWordsForReviewQuery(String userId, DateTime beforeDate) {
+  static Query<Map<String, dynamic>> getWordsForReviewQuery(
+    String userId,
+    DateTime beforeDate,
+  ) {
     return FirebaseFirestore.instance
         .collection('users')
         .doc(_sanitizeDocumentId(userId))
         .collection(wordProgressSubcollection)
-        .where('nextReview', isLessThanOrEqualTo: Timestamp.fromDate(beforeDate))
+        .where(
+          'nextReview',
+          isLessThanOrEqualTo: Timestamp.fromDate(beforeDate),
+        )
         .where('mastered', isEqualTo: false)
         .orderBy('nextReview');
   }
-  
+
   /// Get daily words query
   static Query<Map<String, dynamic>> getDailyWordsQuery(String userId) {
     return FirebaseFirestore.instance

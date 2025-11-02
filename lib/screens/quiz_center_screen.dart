@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:lexiflow/services/word_loader.dart';
 import 'package:lexiflow/screens/quiz_type_select_screen.dart';
 import 'package:lexiflow/screens/category_quiz_screen.dart';
+import 'package:lexiflow/services/category_progress_service.dart';
+import 'package:lexiflow/di/locator.dart';
+import 'package:lexiflow/services/session_service.dart';
 
 class QuizCenterScreen extends StatefulWidget {
   const QuizCenterScreen({super.key});
@@ -18,49 +22,49 @@ class _QuizCenterScreenState extends State<QuizCenterScreen> {
   // Category data with Turkish names, emojis, and colors
   static const Map<String, Map<String, dynamic>> categories = {
     'biology': {
-      'name': 'Biyoloji', 
+      'name': 'Biyoloji',
       'icon': '🧬',
       'color': Color(0xFF4CAF50), // Green
       'lightColor': Color(0xFFE8F5E8),
     },
     'technology': {
-      'name': 'Teknoloji', 
+      'name': 'Teknoloji',
       'icon': '⚙️',
       'color': Color(0xFF607D8B), // Blue Grey
       'lightColor': Color(0xFFECEFF1),
     },
     'history': {
-      'name': 'Tarih', 
+      'name': 'Tarih',
       'icon': '📜',
       'color': Color(0xFF8D6E63), // Brown
       'lightColor': Color(0xFFF3E5AB),
     },
     'geography': {
-      'name': 'Coğrafya', 
+      'name': 'Coğrafya',
       'icon': '🌍',
       'color': Color(0xFF00BCD4), // Cyan
       'lightColor': Color(0xFFE0F7FA),
     },
     'psychology': {
-      'name': 'Psikoloji', 
+      'name': 'Psikoloji',
       'icon': '🧠',
       'color': Color(0xFF9C27B0), // Purple
       'lightColor': Color(0xFFF3E5F5),
     },
     'business': {
-      'name': 'İş Dünyası', 
+      'name': 'İş Dünyası',
       'icon': '💼',
       'color': Color(0xFF795548), // Brown
       'lightColor': Color(0xFFEFEBE9),
     },
     'communication': {
-      'name': 'İletişim', 
+      'name': 'İletişim',
       'icon': '💬',
       'color': Color(0xFF2196F3), // Blue
       'lightColor': Color(0xFFE3F2FD),
     },
     'everyday_english': {
-      'name': 'Günlük İngilizce', 
+      'name': 'Günlük İngilizce',
       'icon': '🗣️',
       'color': Color(0xFFFF9800), // Orange
       'lightColor': Color(0xFFFFF3E0),
@@ -73,13 +77,35 @@ class _QuizCenterScreenState extends State<QuizCenterScreen> {
     _loadCategoryWordCounts();
   }
 
+  // Kategoriye göre renk belirleyen yardımcı fonksiyon
+  Color _getCategoryColor(String category) {
+    switch (category) {
+      case 'biology':
+        return Colors.greenAccent;
+      case 'history':
+        return Colors.brown;
+      case 'technology':
+        return Colors.blueAccent;
+      case 'psychology':
+        return Colors.purpleAccent;
+      case 'business':
+        return Colors.orangeAccent;
+      case 'communication':
+        return Colors.tealAccent;
+      case 'everyday_english':
+        return Colors.amberAccent;
+      default:
+        return Colors.grey;
+    }
+  }
+
   Future<void> _loadCategoryWordCounts() async {
     final Map<String, int> counts = {};
-    
+
     for (String category in categories.keys) {
       counts[category] = await WordLoader.getCategoryWordCount(category);
     }
-    
+
     if (mounted) {
       setState(() {
         categoryWordCounts = counts;
@@ -92,9 +118,7 @@ class _QuizCenterScreenState extends State<QuizCenterScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => QuizTypeSelectScreen(
-          category: categoryKey,
-        ),
+        builder: (context) => QuizTypeSelectScreen(category: categoryKey),
       ),
     );
   }
@@ -105,6 +129,7 @@ class _QuizCenterScreenState extends State<QuizCenterScreen> {
     final textTheme = Theme.of(context).textTheme;
 
     return SafeArea(
+      bottom: false,
       child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
@@ -123,11 +148,11 @@ class _QuizCenterScreenState extends State<QuizCenterScreen> {
               ),
             ),
             const SizedBox(height: 24),
-            
+
             // General Quiz Card
             _buildGeneralQuizCard(colorScheme, textTheme),
             const SizedBox(height: 32),
-            
+
             // Categories Section Title
             Text(
               'Kategorilere Göre Quizler',
@@ -136,7 +161,7 @@ class _QuizCenterScreenState extends State<QuizCenterScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            
+
             // Categories Grid
             if (isLoading)
               const Center(
@@ -147,9 +172,9 @@ class _QuizCenterScreenState extends State<QuizCenterScreen> {
               )
             else
               _buildCategoriesGrid(colorScheme, textTheme),
-            ],
-          ),
+          ],
         ),
+      ),
     );
   }
 
@@ -157,20 +182,19 @@ class _QuizCenterScreenState extends State<QuizCenterScreen> {
     return Card(
       elevation: 6,
       shadowColor: colorScheme.shadow.withOpacity(0.2),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(24),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
       child: InkWell(
         onTap: () {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => CategoryQuizScreen(
-                category: 'common_1k',
-                categoryName: '1K Kelime',
-                categoryIcon: '🎯',
-                categoryColor: Colors.deepOrange,
-              ),
+              builder:
+                  (context) => CategoryQuizScreen(
+                    category: 'common_1k',
+                    categoryName: '1K Kelime',
+                    categoryIcon: '🎯',
+                    categoryColor: Colors.deepOrange,
+                  ),
             ),
           );
         },
@@ -273,120 +297,190 @@ class _QuizCenterScreenState extends State<QuizCenterScreen> {
     TextTheme textTheme,
   ) {
     final categoryColor = categoryData['color'] as Color;
-    
-    // Strengthen gradients with more vibrant colors
-    List<Color> gradientColors;
-    switch (categoryKey) {
-      case 'biology':
-        gradientColors = [Colors.greenAccent.withOpacity(0.4), Colors.green.withOpacity(0.2)];
-        break;
-      case 'history':
-        gradientColors = [Colors.orangeAccent.withOpacity(0.4), Colors.orange.withOpacity(0.2)];
-        break;
-      case 'geography':
-        gradientColors = [Colors.lightBlueAccent.withOpacity(0.4), Colors.lightBlue.withOpacity(0.2)];
-        break;
-      case 'technology':
-        gradientColors = [Colors.blueGrey.withOpacity(0.4), Colors.blueGrey.withOpacity(0.2)];
-        break;
-      case 'psychology':
-        gradientColors = [Colors.purpleAccent.withOpacity(0.4), Colors.purple.withOpacity(0.2)];
-        break;
-      case 'business':
-        gradientColors = [Colors.brown.withOpacity(0.4), Colors.brown.withOpacity(0.2)];
-        break;
-      case 'communication':
-        gradientColors = [Colors.blueAccent.withOpacity(0.4), Colors.blue.withOpacity(0.2)];
-        break;
-      case 'everyday_english':
-        gradientColors = [Colors.orangeAccent.withOpacity(0.4), Colors.orange.withOpacity(0.2)];
-        break;
-      default:
-        gradientColors = [categoryColor.withOpacity(0.4), categoryColor.withOpacity(0.2)];
-    }
-    
-    return Hero(
-      tag: 'category_$categoryKey',
+    final session = locator<SessionService>();
+    final userId = session.currentUser?.uid;
+    final cps = locator<CategoryProgressService>();
+
+    return SizedBox(
+      height: 180,
       child: Card(
-        elevation: 8,
-        shadowColor: Theme.of(context).shadowColor.withOpacity(0.15),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(22),
-        ),
+        color: Colors.grey.shade900,
+        clipBehavior: Clip.hardEdge,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         child: InkWell(
           onTap: () {
             final categoryData = categories[categoryKey]!;
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => CategoryQuizScreen(
-                  category: categoryKey,
-                  categoryName: categoryData['name']!,
-                  categoryIcon: categoryData['icon']!,
-                  categoryColor: categoryData['color'],
-                ),
+                builder:
+                    (context) => CategoryQuizScreen(
+                      category: categoryKey,
+                      categoryName: categoryData['name']!,
+                      categoryIcon: categoryData['icon']!,
+                      categoryColor: categoryData['color'],
+                    ),
               ),
             );
           },
-          borderRadius: BorderRadius.circular(22),
-          child: AnimatedScale(
-            scale: 1.0,
-            duration: const Duration(milliseconds: 150),
-            child: Container(
-            padding: const EdgeInsets.all(14),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: gradientColors,
+          borderRadius: BorderRadius.circular(16),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // mevcut emoji tabanlı ikon kullanımı
+                      Text(
+                        categoryData['icon']!,
+                        style: const TextStyle(
+                          fontSize: 40,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        categoryData['name']!,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.center,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Text(
+                        '$wordCount kelime',
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: Colors.white70,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-              borderRadius: BorderRadius.circular(22),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  categoryData['icon']!,
-                  style: const TextStyle(fontSize: 36),
-                ),
-                Text(
-                  categoryData['name']!,
-                  style: textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: categoryColor.withOpacity(0.9),
+              if (userId != null)
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 10,
                   ),
-                  textAlign: TextAlign.center,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                Text(
-                  '$wordCount kelime',
-                  style: textTheme.bodySmall?.copyWith(
-                    color: colorScheme.secondary,
-                    fontWeight: FontWeight.w500,
+                  child: StreamBuilder<double>(
+                    stream: cps.watchProgressPercent(userId, categoryKey),
+                    builder: (context, snapshot) {
+                      final percent = snapshot.data ?? 0.0;
+                      final ownerId = (userId ?? 'guest').trim();
+                      final heroOwner = ownerId.isEmpty ? 'guest' : ownerId;
+                      final normalizedCategory = categoryKey
+                          .trim()
+                          .toLowerCase()
+                          .replaceAll(RegExp(r'\s+'), '_');
+                      final heroCategory =
+                          normalizedCategory.isEmpty
+                              ? 'unknown'
+                              : normalizedCategory;
+                      final progressHeroTag =
+                          'progress_${heroOwner}_$heroCategory';
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          // Animated percentage label (overflow-safe)
+                          AnimatedOpacity(
+                            opacity: percent > 0 ? 1 : 0.7,
+                            duration: const Duration(milliseconds: 500),
+                            child: Text(
+                              percent == 0
+                                  ? 'Not learned yet'
+                                  : '${percent.toStringAsFixed(1)}% learned',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 12,
+                                color:
+                                    percent == 0
+                                        ? Colors.grey.shade400
+                                        : Colors.white70,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          // Animated progress bar (Hero) with unique tag to avoid collisions
+                          Hero(
+                            tag: progressHeroTag,
+                            flightShuttleBuilder: (
+                              context,
+                              animation,
+                              direction,
+                              fromContext,
+                              toContext,
+                            ) {
+                              return FadeTransition(
+                                opacity: animation.drive(
+                                  Tween<double>(begin: 0.6, end: 1.0),
+                                ),
+                                child: toContext.widget,
+                              );
+                            },
+                            child: TweenAnimationBuilder<double>(
+                              tween: Tween<double>(
+                                begin: 0,
+                                end: percent / 100,
+                              ),
+                              duration: const Duration(milliseconds: 500),
+                              curve: Curves.easeOutCubic,
+                              builder: (context, value, _) {
+                                return ClipRRect(
+                                  borderRadius: BorderRadius.circular(8),
+                                  child: LinearProgressIndicator(
+                                    value: value,
+                                    minHeight: 6,
+                                    backgroundColor: Colors.grey.shade800,
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      _getCategoryColor(categoryKey),
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      );
+                    },
                   ),
                 ),
-                const SizedBox(height: 4),
-                FilledButton.icon(
-                  icon: const Icon(Icons.play_arrow_rounded, size: 18),
-                  label: const Text('Quiz Başlat'),
-                  style: FilledButton.styleFrom(
-                    backgroundColor: categoryColor,
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
-                    minimumSize: const Size(double.infinity, 36),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  onPressed: () => _startCategoryQuiz(categoryKey),
-                ),
-              ],
-            ),
+            ],
           ),
         ),
       ),
-    ),
     );
+  }
+}
+
+// Kategori rengine göre premium görünüm sağlayan yardımcı fonksiyon
+Color _getCategoryColor(String category) {
+  switch (category) {
+    case 'biology':
+      return Colors.greenAccent;
+    case 'technology':
+      return Colors.blueAccent;
+    case 'history':
+      return Colors.brown;
+    case 'geography':
+      return Colors.lightBlueAccent;
+    case 'psychology':
+      return Colors.purpleAccent;
+    case 'business':
+      return Colors.orangeAccent;
+    case 'communication':
+      return Colors.tealAccent;
+    case 'everyday_english':
+      return Colors.amberAccent;
+    default:
+      return Colors.grey;
   }
 }

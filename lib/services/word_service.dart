@@ -43,18 +43,23 @@ class WordService {
 
     await _loadWordsFromJson();
     await _hydrateFromFsrsMeta();
-    
+
     // başlangıçta duplicate favorileri temizle
-    final duplicatesRemoved = await FavoritesCleanupService.cleanupDuplicateFavorites();
+    final duplicatesRemoved =
+        await FavoritesCleanupService.cleanupDuplicateFavorites();
     if (duplicatesRemoved > 0) {
       if (kDebugMode) {
-        print('🧹 Removed $duplicatesRemoved duplicate favorites during initialization');
+        print(
+          '🧹 Removed $duplicatesRemoved duplicate favorites during initialization',
+        );
       }
     }
-    
+
     final stats = FavoritesCleanupService.getFavoritesStats();
     if (kDebugMode) {
-      print('📊 Favorites stats: ${stats['total']} total, ${stats['unique']} unique, ${stats['duplicates']} duplicates');
+      print(
+        '📊 Favorites stats: ${stats['total']} total, ${stats['unique']} unique, ${stats['duplicates']} duplicates',
+      );
     }
   }
 
@@ -175,17 +180,17 @@ class WordService {
       // favorilerden çıkar - duplicate'ları önlemek için tümünü sil
       final keys = favBox.keys.toList();
       final keysToDelete = <dynamic>[];
-      
+
       for (final key in keys) {
         if (favBox.get(key) == wordKey) {
           keysToDelete.add(key);
         }
       }
-      
+
       for (final key in keysToDelete) {
         await favBox.delete(key);
       }
-      
+
       word.isFavorite = false;
     } else {
       // favorilere ekle - duplicate kontrolü yap
@@ -249,12 +254,15 @@ class WordService {
 
       if (words.isEmpty && favoriteKeys.isNotEmpty) {
         if (kDebugMode) {
-          print('⚠️ [FIX] Keys exist but no words mapped. Checking _allWords...');
+          print(
+            '⚠️ [FIX] Keys exist but no words mapped. Checking _allWords...',
+          );
           print('📚 [FIX] Total words in memory: ${_allWords.length}');
 
           // DEBUG: key'lerin kelimelerle eşleşip eşleşmediğini kontrol et
           for (final key in favoriteKeys.take(3)) {
-            final matchingWords = _allWords.where((w) => w.word == key).toList();
+            final matchingWords =
+                _allWords.where((w) => w.word == key).toList();
             print('🔍 [FIX] Key "$key" matches ${matchingWords.length} words');
           }
         }
@@ -377,7 +385,7 @@ class WordService {
         (w) => w.word.toLowerCase() == word.word.toLowerCase(),
         orElse: () => Word(word: '', meaning: '', example: ''),
       );
-      
+
       if (existingWord.word.isNotEmpty) {
         throw Exception('duplicate: Bu kelime zaten mevcut');
       }
@@ -394,7 +402,7 @@ class WordService {
       if (!favoritesBox.values.contains(word.word)) {
         await favoritesBox.add(word.word);
       }
-      
+
       print('✅ Custom word added successfully: ${word.word}');
     } catch (e) {
       print('❌ Error in addCustomWord: $e');
@@ -520,31 +528,51 @@ class WordService {
   /// favori key'leri memory'deki Word objelerine eşle
   List<Word> mapFavoriteKeysToWords(Set<String> keys) {
     if (keys.isEmpty) return [];
-    
+
     // duplicate'ları önlemek için Map kullan
     final Map<String, Word> uniqueWords = {};
-    
+
     for (final word in _allWords) {
       if (keys.contains(word.word) && !uniqueWords.containsKey(word.word)) {
         uniqueWords[word.word] = word;
       }
     }
-    
+
     return uniqueWords.values.toList();
   }
 
   /// öğrenilen kelime key'lerini memory'deki Word objelerine eşle
   List<Word> mapLearnedKeysToWords(Set<String> keys) {
     if (keys.isEmpty) return [];
-    
-    final words = <Word>[];
-    for (final key in keys) {
-      final word = _allWords.where((w) => w.word == key).firstOrNull;
-      if (word != null) {
-        words.add(word);
+
+    final normalizedKeys =
+        keys
+            .map((key) => key.trim().toLowerCase())
+            .where((key) => key.isNotEmpty)
+            .toSet();
+
+    final Map<String, Word> uniqueWords = {};
+    for (final word in _allWords) {
+      final normalizedWord = word.word.trim().toLowerCase();
+      if (normalizedKeys.contains(normalizedWord) &&
+          !uniqueWords.containsKey(normalizedWord)) {
+        uniqueWords[normalizedWord] = word;
       }
     }
-    return words;
+
+    return uniqueWords.values.toList();
+  }
+
+  Word? findWordByText(String wordText) {
+    final normalized = wordText.trim().toLowerCase();
+    if (normalized.isEmpty) return null;
+
+    for (final word in _allWords) {
+      if (word.word.trim().toLowerCase() == normalized) {
+        return word;
+      }
+    }
+    return null;
   }
 
   Future<List<Word>> getLearnedWordsFirestore(String userId) async {
@@ -607,10 +635,14 @@ class WordService {
     int count,
   ) async {
     try {
-      print('🎯 [LEARNED] Getting $count random learned words for user: $userId');
+      print(
+        '🎯 [LEARNED] Getting $count random learned words for user: $userId',
+      );
 
       final learnedWords = await getLearnedWordsFirestore(userId);
-      print('🎯 [LEARNED] Total learned words available: ${learnedWords.length}');
+      print(
+        '🎯 [LEARNED] Total learned words available: ${learnedWords.length}',
+      );
 
       if (learnedWords.isEmpty) {
         print('❌ [LEARNED] No learned words found');
@@ -644,9 +676,7 @@ class WordService {
         .collection('favorites')
         .doc(word.word);
 
-    final statsRef = firestore
-        .collection('users')
-        .doc(userId);
+    final statsRef = firestore.collection('users').doc(userId);
 
     try {
       await firestore.runTransaction((tx) async {
@@ -673,7 +703,9 @@ class WordService {
         }
 
         if (nextCount < 0) nextCount = 0; // savunma amaçlı clamp
-        tx.set(statsRef, {'favoritesCount': nextCount}, SetOptions(merge: true));
+        tx.set(statsRef, {
+          'favoritesCount': nextCount,
+        }, SetOptions(merge: true));
       });
     } finally {
       // ekstra tıklamaları absorbe etmek için kısa debounce
@@ -826,7 +858,9 @@ class WordService {
   Future<List<Word>> getCategoryWords(String categoryKey) async {
     try {
       final categoryWords = await WordLoader.loadCategoryWords(categoryKey);
-      debugPrint('📚 Loaded ${categoryWords.length} words for category: $categoryKey');
+      debugPrint(
+        '📚 Loaded ${categoryWords.length} words for category: $categoryKey',
+      );
       return categoryWords;
     } catch (e) {
       debugPrint('❌ Error loading category words for $categoryKey: $e');

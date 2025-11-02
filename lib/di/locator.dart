@@ -1,6 +1,7 @@
 // lib/di/locator.dart
 
 import 'package:get_it/get_it.dart';
+import 'package:lexiflow/services/category_progress_service.dart';
 import '../services/word_service.dart';
 import '../services/user_service.dart';
 import '../services/session_service.dart';
@@ -32,28 +33,41 @@ Future<void> setupLocator() async {
   // Core services - initialized first
   locator.registerLazySingleton<WordService>(() => WordService());
   locator.registerLazySingleton<UserService>(() => UserService());
-  
+
   // Session service depends on UserService
   locator.registerLazySingleton<SessionService>(() {
     final sessionService = SessionService();
     sessionService.setUserService(locator<UserService>());
     return sessionService;
   });
-  
+
   // Network and connectivity services
-  locator.registerLazySingleton<ConnectivityService>(() => ConnectivityService());
+  locator.registerLazySingleton<ConnectivityService>(
+    () => ConnectivityService(),
+  );
   locator.registerLazySingleton<SyncManager>(() => SyncManager());
-  locator.registerLazySingleton<NetworkMonitorService>(() => NetworkMonitorService());
-  
+  locator.registerLazySingleton<NetworkMonitorService>(
+    () => NetworkMonitorService(),
+  );
+
   // Storage services
-  locator.registerLazySingleton<OfflineStorageManager>(() => OfflineStorageManager());
+  locator.registerLazySingleton<OfflineStorageManager>(
+    () => OfflineStorageManager(),
+  );
   locator.registerLazySingleton<OfflineAuthService>(() => OfflineAuthService());
-  
+
   // Enhanced services
-  locator.registerLazySingleton<EnhancedSessionService>(() => EnhancedSessionService());
-  
+  locator.registerLazySingleton<EnhancedSessionService>(
+    () => EnhancedSessionService(),
+  );
+
   // Business logic services
-  locator.registerLazySingleton<LearnedWordsService>(() => LearnedWordsService());
+  locator.registerLazySingleton<LearnedWordsService>(
+    () => LearnedWordsService(),
+  );
+  locator.registerLazySingleton<CategoryProgressService>(
+    () => CategoryProgressService(),
+  );
   locator.registerLazySingleton<LeaderboardService>(() => LeaderboardService());
   locator.registerLazySingleton<AnalyticsService>(() => AnalyticsService());
   locator.registerLazySingleton<StatisticsService>(() => StatisticsService());
@@ -61,20 +75,26 @@ Future<void> setupLocator() async {
   locator.registerLazySingleton<ProgressService>(() => ProgressService());
   locator.registerLazySingleton<ActivityService>(() => ActivityService());
   locator.registerLazySingleton<SRSService>(() => SRSService());
-  
+
   // UI services
   locator.registerLazySingleton<AdService>(() => AdService());
-  locator.registerLazySingleton<NotificationService>(() => NotificationService());
-  
+  locator.registerLazySingleton<NotificationService>(
+    () => NotificationService(),
+  );
+
   // Configuration services
-  locator.registerLazySingleton<RemoteConfigService>(() => RemoteConfigService());
-  
+  locator.registerLazySingleton<RemoteConfigService>(
+    () => RemoteConfigService(),
+  );
+
   // Migration service
-  locator.registerLazySingleton<MigrationIntegrationService>(() => MigrationIntegrationService());
-  
+  locator.registerLazySingleton<MigrationIntegrationService>(
+    () => MigrationIntegrationService(),
+  );
+
   // Providers
   locator.registerLazySingleton<ThemeProvider>(() => ThemeProvider());
-  
+
   // Firebase bağımlı servislerin initialization'ı kaldırıldı
   // Bu servisler ilk kullanımda otomatik olarak initialize edilecek
 }

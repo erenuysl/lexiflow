@@ -38,7 +38,13 @@ service cloud.firestore {
       allow read: if request.auth != null;
       allow write: if false; // Only admin can write
     }
-    
+
+    // Global daily word entries for notifications
+    match /daily_words/{document} {
+      allow read: if request.auth != null;
+      allow write: if false; // Only admin can write
+    }
+
     // Public words collection for daily word selection
     match /public_words/{document} {
       allow read: if request.auth != null;

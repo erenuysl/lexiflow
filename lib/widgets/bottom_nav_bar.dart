@@ -27,11 +27,12 @@ class CustomBottomNavBar extends StatelessWidget {
             offset: const Offset(0, -5),
           ),
         ],
-        borderRadius: const BorderRadius.vertical(
-          top: Radius.circular(20),
-        ),
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
       ),
       child: SafeArea(
+        top: false,
+        left: false,
+        right: false,
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: AppSpacing.md,
@@ -83,7 +84,7 @@ class CustomBottomNavBar extends StatelessWidget {
     required bool isSelected,
   }) {
     final theme = Theme.of(context);
-    
+
     return LayoutBuilder(
       builder: (context, constraints) {
         return GestureDetector(
@@ -102,9 +103,10 @@ class CustomBottomNavBar extends StatelessWidget {
               vertical: AppSpacing.sm,
             ),
             decoration: BoxDecoration(
-              color: isSelected
-                  ? theme.colorScheme.primary.withOpacity(0.1)
-                  : Colors.transparent,
+              color:
+                  isSelected
+                      ? theme.colorScheme.primary.withOpacity(0.1)
+                      : Colors.transparent,
               borderRadius: BorderRadius.circular(12),
             ),
             child: Column(
@@ -113,17 +115,19 @@ class CustomBottomNavBar extends StatelessWidget {
                 Icon(
                   icon,
                   size: 24,
-                  color: isSelected
-                      ? theme.colorScheme.primary
-                      : theme.colorScheme.onSurface.withOpacity(0.6),
+                  color:
+                      isSelected
+                          ? theme.colorScheme.primary
+                          : theme.colorScheme.onSurface.withOpacity(0.6),
                 ),
                 const SizedBox(height: 4),
                 AnimatedDefaultTextStyle(
                   duration: const Duration(milliseconds: 200),
                   style: AppTextStyles.caption.copyWith(
-                    color: isSelected
-                        ? theme.colorScheme.primary
-                        : theme.colorScheme.onSurface.withOpacity(0.6),
+                    color:
+                        isSelected
+                            ? theme.colorScheme.primary
+                            : theme.colorScheme.onSurface.withOpacity(0.6),
                     fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
                   ),
                   child: Text(label),

@@ -23,6 +23,7 @@ class _CategoryQuizPlayScreenState extends State<CategoryQuizPlayScreen> {
   QuizData? _quizData;
   bool _isLoading = true;
   String? _error;
+  String? _categoryKey;
 
   @override
   void didChangeDependencies() {
@@ -31,12 +32,14 @@ class _CategoryQuizPlayScreenState extends State<CategoryQuizPlayScreen> {
   }
 
   Future<void> _loadQuizData() async {
-    final args = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
-    
+    final args =
+        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
+
     if (args?['quizData'] != null) {
       // Quiz data already generated, use it directly
       setState(() {
         _quizData = args!['quizData'] as QuizData;
+        _categoryKey = args['categoryKey'] as String?;
         _isLoading = false;
       });
     } else {
@@ -66,6 +69,7 @@ class _CategoryQuizPlayScreenState extends State<CategoryQuizPlayScreen> {
         );
         setState(() {
           _quizData = quizData;
+          _categoryKey = categoryKey;
           _isLoading = false;
         });
       } catch (e) {
@@ -96,14 +100,13 @@ class _CategoryQuizPlayScreenState extends State<CategoryQuizPlayScreen> {
       userService: widget.userService,
       quizWords: _quizData!.questions.map((q) => q.correctWord).toList(),
       quizType: 'category_quiz',
+      categoryKey: _categoryKey,
     );
   }
 
   Widget _buildLoadingScreen(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Quiz Hazırlanıyor'),
-      ),
+      appBar: AppBar(title: const Text('Quiz Hazırlanıyor')),
       body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -122,20 +125,14 @@ class _CategoryQuizPlayScreenState extends State<CategoryQuizPlayScreen> {
     final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Quiz Hatası'),
-      ),
+      appBar: AppBar(title: const Text('Quiz Hatası')),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(24),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
-                Icons.error_outline,
-                size: 80,
-                color: colorScheme.error,
-              ),
+              Icon(Icons.error_outline, size: 80, color: colorScheme.error),
               const SizedBox(height: 24),
               Text(
                 'Quiz Başlatılamadı',

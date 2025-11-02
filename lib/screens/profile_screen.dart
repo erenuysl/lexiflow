@@ -128,6 +128,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Widget _buildLoadingState() {
     return const SafeArea(
+      bottom: false,
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -143,6 +144,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Widget _buildErrorState(String error, VoidCallback onRetry) {
     return SafeArea(
+      bottom: false,
       child: Center(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
@@ -193,6 +195,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Widget _buildInitializingState() {
     return const SafeArea(
+      bottom: false,
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -208,6 +211,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Widget _buildAuthLoadingState() {
     return const SafeArea(
+      bottom: false,
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -225,6 +229,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Widget _buildPermissionErrorState() {
     return SafeArea(
+      bottom: false,
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -283,6 +288,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     _lastKnownLevel = levelData?.level ?? level;
 
     return SafeArea(
+      bottom: false,
       child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
@@ -943,8 +949,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
-  Future<void> _updateUsername(BuildContext context, String userId, String newUsername, {required BuildContext dialogContext}) async {
-    if (newUsername.isEmpty) {
+    Future<void> _updateUsername(BuildContext context, String userId, String newUsername, {required BuildContext dialogContext}) async {
+    final trimmedUsername = newUsername.trim();
+
+    if (trimmedUsername.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           behavior: SnackBarBehavior.floating,
@@ -955,30 +963,71 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: [
               Icon(Icons.error, color: Colors.white),
               SizedBox(width: 8),
-              Expanded(child: Text('Kullanıcı adı boş olamaz!', style: TextStyle(color: Colors.white))),
+              Expanded(child: Text('Kullan�c� ad� bo� olamaz!', style: TextStyle(color: Colors.white))),
             ],
           ),
-          duration: Duration(seconds: 2),
+          duration: const Duration(seconds: 2),
         ),
       );
       return;
     }
 
+    final messenger = ScaffoldMessenger.of(context);
+    final rootNavigator = Navigator.of(context, rootNavigator: true);
+    var loaderVisible = false;
+
+    void hideLoader() {
+      if (loaderVisible) {
+        rootNavigator.pop();
+        loaderVisible = false;
+      }
+    }
+
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      barrierColor: Colors.black.withOpacity(0.35),
+      builder: (_) => Dialog(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        child: Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: const Color(0xF21F2937),
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+              ),
+              SizedBox(height: 16),
+              Text(
+                'Updating username...',
+                style: TextStyle(color: Colors.white),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+    loaderVisible = true;
+
     try {
-      // Kullanıcı adı benzersizlik kontrolü - basit yaklaşım
       final query = await FirebaseFirestore.instance
           .collection('users')
-          .where('username', isEqualTo: newUsername)
-          .limit(5) // performans için sınırla
+          .where('username', isEqualTo: trimmedUsername)
+          .limit(5)
           .get();
 
-      // Kendi dokümanımızı hariç tut
       final otherUsersWithSameUsername = query.docs
           .where((doc) => doc.id != userId)
           .toList();
 
       if (otherUsersWithSameUsername.isNotEmpty) {
-        ScaffoldMessenger.of(context).showSnackBar(
+        hideLoader();
+        messenger.showSnackBar(
           SnackBar(
             behavior: SnackBarBehavior.floating,
             margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
@@ -988,49 +1037,38 @@ class _ProfileScreenState extends State<ProfileScreen> {
               children: [
                 Icon(Icons.error, color: Colors.white),
                 SizedBox(width: 8),
-                Expanded(child: Text('Bu kullanıcı adı zaten alınmış!', style: TextStyle(color: Colors.white))),
+                Expanded(child: Text('Bu kullan�c� ad� zaten al�nm��!', style: TextStyle(color: Colors.white))),
               ],
             ),
-            duration: Duration(seconds: 2),
+            duration: const Duration(seconds: 2),
           ),
         );
         return;
       }
 
-      // Define document references
-      final userDataRef = FirebaseFirestore.instance
-          .collection('users')
-          .doc(userId);
-      
-      final leaderboardRef = FirebaseFirestore.instance
-          .collection('leaderboard_stats')
-          .doc(userId);
+      final userDataRef = FirebaseFirestore.instance.collection('users').doc(userId);
+      final leaderboardRef = FirebaseFirestore.instance.collection('leaderboard_stats').doc(userId);
 
-      // PHASE 1: Perform all reads first (before batch operations)
       final userDataDoc = await userDataRef.get();
       final leaderboardDoc = await leaderboardRef.get();
 
-      // PHASE 2: Create batch and perform all writes
       final batch = FirebaseFirestore.instance.batch();
 
-      // Update user_data stats
       batch.update(userDataRef, {
-        'username': newUsername,
+        'username': trimmedUsername,
         'lastUpdated': FieldValue.serverTimestamp(),
       });
 
-      // Update or create leaderboard_stats document
       if (leaderboardDoc.exists) {
         batch.update(leaderboardRef, {
-          'displayName': newUsername,
+          'displayName': trimmedUsername,
           'lastUpdated': FieldValue.serverTimestamp(),
         });
       } else {
-        // Create leaderboard entry with current user data if it doesn't exist
         final userData = userDataDoc.data() as Map<String, dynamic>?;
         batch.set(leaderboardRef, {
           'userId': userId,
-          'displayName': newUsername,
+          'displayName': trimmedUsername,
           'currentLevel': userData?['level'] ?? 1,
           'highestLevel': userData?['level'] ?? 1,
           'totalXp': userData?['totalXp'] ?? 0,
@@ -1038,28 +1076,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
           'currentStreak': userData?['currentStreak'] ?? 0,
           'longestStreak': userData?['longestStreak'] ?? 0,
           'quizzesCompleted': userData?['quizzesCompleted'] ?? 0,
-          'learnedWordsCount': userData?['learnedWordsCount'] ?? userData?['wordsLearned'] ?? 0, // fallback for migration
+          'learnedWordsCount': userData?['learnedWordsCount'] ?? userData?['wordsLearned'] ?? 0,
           'photoURL': FirebaseAuth.instance.currentUser?.photoURL ?? 'assets/icons/boy.svg',
           'lastUpdated': FieldValue.serverTimestamp(),
         });
       }
 
-      // Firebase Auth kullanıcı adını güncelle
-      await FirebaseAuth.instance.currentUser?.updateDisplayName(newUsername);
-      
-      // Commit the batch
+      await FirebaseAuth.instance.currentUser?.updateDisplayName(trimmedUsername);
+
       await batch.commit();
-      
-      // Firebase Auth kullanıcısını yenile
       await FirebaseAuth.instance.currentUser?.reload();
       context.read<SessionService>().refreshUser();
-      
+
+      hideLoader();
+
       if (mounted) {
         setState(() {
-          _currentUsername = newUsername; // Anında UI güncellemesi
+          _currentUsername = trimmedUsername;
         });
         Navigator.pop(dialogContext);
-        ScaffoldMessenger.of(context).showSnackBar(
+        messenger.showSnackBar(
           SnackBar(
             behavior: SnackBarBehavior.floating,
             margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
@@ -1069,17 +1105,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
               children: [
                 Icon(Icons.check_circle, color: Colors.white),
                 SizedBox(width: 8),
-                Expanded(child: Text('Kullanıcı adı başarıyla güncellendi!', style: TextStyle(color: Colors.white))),
+                Expanded(child: Text('Kullan�c� ad� ba�ar�yla g�ncellendi!', style: TextStyle(color: Colors.white))),
               ],
             ),
-            duration: Duration(seconds: 2),
+            duration: const Duration(seconds: 2),
           ),
         );
       }
     } catch (e) {
+      hideLoader();
       if (mounted) {
         Navigator.pop(dialogContext);
-        ScaffoldMessenger.of(context).showSnackBar(
+        messenger.showSnackBar(
           SnackBar(
             behavior: SnackBarBehavior.floating,
             margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
@@ -1089,16 +1126,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
               children: [
                 const Icon(Icons.error, color: Colors.white),
                 const SizedBox(width: 8),
-                Expanded(child: Text('Kullanıcı adı güncellenirken hata oluştu: $e', style: const TextStyle(color: Colors.white))),
+                Expanded(child: Text('Kullan�c� ad� g�ncellenirken hata olu�tu: $e', style: const TextStyle(color: Colors.white))),
               ],
             ),
             duration: const Duration(seconds: 2),
           ),
         );
       }
+    } finally {
+      hideLoader();
     }
   }
-
   Widget _buildAchievementsSection(BuildContext context, AggregatedProfileStats stats) {
     return Consumer<AchievementService>(
       builder: (context, achievementService, child) {

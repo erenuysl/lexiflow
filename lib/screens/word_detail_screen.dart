@@ -68,11 +68,15 @@ class _WordDetailScreenState extends State<WordDetailScreen>
   Future<void> _checkIfWordIsLearned() async {
     final sessionService = Provider.of<SessionService>(context, listen: false);
     final userId = sessionService.currentUser?.uid;
-    
+
     if (userId == null) return;
-    
+
     try {
-      final isLearned = await _learnedWordsService.isWordLearned(userId, widget.word.word);
+      final isLearned = await _learnedWordsService.isWordLearned(
+        userId,
+        widget.word.word,
+        word: widget.word,
+      );
       if (mounted) {
         setState(() {
           _isLearned = isLearned;
@@ -87,26 +91,30 @@ class _WordDetailScreenState extends State<WordDetailScreen>
   Future<void> _toggleWordLearned() async {
     final sessionService = Provider.of<SessionService>(context, listen: false);
     final userId = sessionService.currentUser?.uid;
-    
+
     if (userId == null || _isMarkingLearned) return;
-    
+
     setState(() {
       _isMarkingLearned = true;
     });
-    
+
     try {
       bool success = false;
-      
+
       if (_isLearned) {
         // Unlearn the word
-        success = await _learnedWordsService.unmarkWordAsLearned(userId, widget.word.word);
-        
+        success = await _learnedWordsService.unmarkWordAsLearned(
+          userId,
+          widget.word.word,
+          word: widget.word,
+        );
+
         if (mounted && success) {
           setState(() {
             _isLearned = false;
             _isMarkingLearned = false;
           });
-          
+
           // Show success feedback
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -118,14 +126,17 @@ class _WordDetailScreenState extends State<WordDetailScreen>
         }
       } else {
         // Learn the word
-        success = await _learnedWordsService.markWordAsLearned(userId, widget.word);
-        
+        success = await _learnedWordsService.markWordAsLearned(
+          userId,
+          widget.word,
+        );
+
         if (mounted && success) {
           setState(() {
             _isLearned = true;
             _isMarkingLearned = false;
           });
-          
+
           // Show success feedback
           showLexiflowToast(
             context,
@@ -134,7 +145,7 @@ class _WordDetailScreenState extends State<WordDetailScreen>
           );
         }
       }
-      
+
       if (mounted && !success) {
         setState(() {
           _isMarkingLearned = false;
@@ -145,7 +156,7 @@ class _WordDetailScreenState extends State<WordDetailScreen>
         setState(() {
           _isMarkingLearned = false;
         });
-        
+
         showLexiflowToast(
           context,
           ToastType.error,
@@ -168,11 +179,14 @@ class _WordDetailScreenState extends State<WordDetailScreen>
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     // ✅ USING APP COLOR SYSTEM - NO CUSTOM COLORS
-    final backgroundColor = isDark ? AppDarkColors.background : AppColors.background;
+    final backgroundColor =
+        isDark ? AppDarkColors.background : AppColors.background;
     final surfaceColor = isDark ? AppDarkColors.surface : AppColors.surface;
     final primaryColor = isDark ? AppDarkColors.primary : AppColors.primary;
-    final textColor = isDark ? AppDarkColors.textPrimary : AppColors.textPrimary;
-    final secondaryTextColor = isDark ? AppDarkColors.textSecondary : AppColors.textSecondary;
+    final textColor =
+        isDark ? AppDarkColors.textPrimary : AppColors.textPrimary;
+    final secondaryTextColor =
+        isDark ? AppDarkColors.textSecondary : AppColors.textSecondary;
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -297,14 +311,15 @@ class _WordDetailScreenState extends State<WordDetailScreen>
     // ✅ USING APP COLOR SYSTEM
     final primaryColor = isDark ? AppDarkColors.primary : AppColors.primary;
     final surfaceColor = isDark ? AppDarkColors.surface : AppColors.surface;
-    final textColor = isDark ? AppDarkColors.textPrimary : AppColors.textPrimary;
+    final textColor =
+        isDark ? AppDarkColors.textPrimary : AppColors.textPrimary;
     final borderColor = isDark ? AppDarkColors.border : AppColors.border;
 
     return Container(
       padding: const EdgeInsets.all(AppSpacing.xl),
       decoration: BoxDecoration(
         color: surfaceColor,
-        borderRadius: BorderRadius.circular(16),  // ✅ Rounded corners
+        borderRadius: BorderRadius.circular(16), // ✅ Rounded corners
         border: Border.all(
           color: isDark ? borderColor : AppColors.borderLight,
           width: 1,
@@ -416,8 +431,10 @@ class _WordDetailScreenState extends State<WordDetailScreen>
     final surfaceColor = isDark ? AppDarkColors.surface : AppColors.surface;
     final primaryColor = isDark ? AppDarkColors.primary : AppColors.primary;
     final borderColor = isDark ? AppDarkColors.border : AppColors.border;
-    final textColor = isDark ? AppDarkColors.textPrimary : AppColors.textPrimary;
-    final secondaryTextColor = isDark ? AppDarkColors.textSecondary : AppColors.textSecondary;
+    final textColor =
+        isDark ? AppDarkColors.textPrimary : AppColors.textPrimary;
+    final secondaryTextColor =
+        isDark ? AppDarkColors.textSecondary : AppColors.textSecondary;
 
     return DefaultTabController(
       length: 3,
@@ -428,10 +445,7 @@ class _WordDetailScreenState extends State<WordDetailScreen>
             decoration: BoxDecoration(
               color: surfaceColor,
               borderRadius: BorderRadius.circular(16),
-              border: Border.all(
-                color: borderColor,
-                width: 1,
-              ),
+              border: Border.all(color: borderColor, width: 1),
               boxShadow: isDark ? [AppShadows.medium] : null,
             ),
             child: TabBar(
@@ -602,7 +616,8 @@ class _WordDetailScreenState extends State<WordDetailScreen>
   }) {
     // ✅ USING APP COLOR SYSTEM
     final backgroundColor = isDark ? AppDarkColors.surface : AppColors.surface;
-    final textColor = isDark ? AppDarkColors.textPrimary : AppColors.textPrimary;
+    final textColor =
+        isDark ? AppDarkColors.textPrimary : AppColors.textPrimary;
     final borderColor = isDark ? AppDarkColors.border : AppColors.borderLight;
 
     return TweenAnimationBuilder<double>(
@@ -620,11 +635,8 @@ class _WordDetailScreenState extends State<WordDetailScreen>
         padding: const EdgeInsets.all(AppSpacing.lg),
         decoration: BoxDecoration(
           color: backgroundColor,
-          borderRadius: BorderRadius.circular(16),  // ✅ Rounded corners
-          border: Border.all(
-            color: borderColor,
-            width: 1,
-          ),
+          borderRadius: BorderRadius.circular(16), // ✅ Rounded corners
+          border: Border.all(color: borderColor, width: 1),
           boxShadow: [
             BoxShadow(
               color:
@@ -681,7 +693,7 @@ class _WordDetailScreenState extends State<WordDetailScreen>
   /// Build the learned button with animation
   Widget _buildLearnedButton(bool isDark) {
     final sessionService = Provider.of<SessionService>(context);
-    
+
     // Don't show for guests or anonymous users
     if (sessionService.isGuest || sessionService.isAnonymous) {
       return const SizedBox.shrink();
@@ -689,7 +701,8 @@ class _WordDetailScreenState extends State<WordDetailScreen>
 
     final primaryColor = isDark ? AppDarkColors.primary : AppColors.primary;
     final successColor = isDark ? AppDarkColors.success : AppColors.success;
-    final textColor = isDark ? AppDarkColors.textPrimary : AppColors.textPrimary;
+    final textColor =
+        isDark ? AppDarkColors.textPrimary : AppColors.textPrimary;
     final surfaceColor = isDark ? AppDarkColors.surface : AppColors.surface;
 
     return AnimatedSwitcher(
@@ -697,97 +710,107 @@ class _WordDetailScreenState extends State<WordDetailScreen>
       transitionBuilder: (Widget child, Animation<double> animation) {
         return ScaleTransition(scale: animation, child: child);
       },
-      child: _isLearned
-          ? GestureDetector(
-              key: const ValueKey('learned'),
-              onTap: _isMarkingLearned ? null : _toggleWordLearned,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                decoration: BoxDecoration(
-                  color: successColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(25),
-                  border: Border.all(
-                    color: successColor.withOpacity(0.3),
-                    width: 2,
+      child:
+          _isLearned
+              ? GestureDetector(
+                key: const ValueKey('learned'),
+                onTap: _isMarkingLearned ? null : _toggleWordLearned,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 12,
+                  ),
+                  decoration: BoxDecoration(
+                    color: successColor.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(25),
+                    border: Border.all(
+                      color: successColor.withOpacity(0.3),
+                      width: 2,
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      if (_isMarkingLearned)
+                        SizedBox(
+                          width: 16,
+                          height: 16,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              successColor,
+                            ),
+                          ),
+                        )
+                      else
+                        Icon(Icons.check_circle, color: successColor, size: 20),
+                      const SizedBox(width: 8),
+                      Text(
+                        _isMarkingLearned ? 'İşleniyor...' : 'Öğrenildi',
+                        style: TextStyle(
+                          color: successColor,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    if (_isMarkingLearned)
-                      SizedBox(
-                        width: 16,
-                        height: 16,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          valueColor: AlwaysStoppedAnimation<Color>(successColor),
-                        ),
-                      )
-                    else
-                      Icon(
-                        Icons.check_circle,
-                        color: successColor,
-                        size: 20,
-                      ),
-                    const SizedBox(width: 8),
-                    Text(
-                      _isMarkingLearned ? 'İşleniyor...' : 'Öğrenildi',
-                      style: TextStyle(
-                        color: successColor,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                      ),
+              )
+              : GestureDetector(
+                key: const ValueKey('not_learned'),
+                onTap: _isMarkingLearned ? null : _toggleWordLearned,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 12,
+                  ),
+                  decoration: BoxDecoration(
+                    color:
+                        _isMarkingLearned
+                            ? primaryColor.withOpacity(0.05)
+                            : primaryColor.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(25),
+                    border: Border.all(
+                      color: primaryColor.withOpacity(0.3),
+                      width: 2,
                     ),
-                  ],
-                ),
-              ),
-            )
-          : GestureDetector(
-              key: const ValueKey('not_learned'),
-              onTap: _isMarkingLearned ? null : _toggleWordLearned,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                decoration: BoxDecoration(
-                  color: _isMarkingLearned 
-                      ? primaryColor.withOpacity(0.05)
-                      : primaryColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(25),
-                  border: Border.all(
-                    color: primaryColor.withOpacity(0.3),
-                    width: 2,
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      if (_isMarkingLearned)
+                        SizedBox(
+                          width: 16,
+                          height: 16,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              primaryColor,
+                            ),
+                          ),
+                        )
+                      else
+                        Icon(
+                          Icons.check_circle_outline,
+                          color: primaryColor,
+                          size: 20,
+                        ),
+                      const SizedBox(width: 8),
+                      Text(
+                        _isMarkingLearned
+                            ? 'İşaretleniyor...'
+                            : 'Bu kelimeyi öğrendim',
+                        style: TextStyle(
+                          color: primaryColor,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    if (_isMarkingLearned)
-                      SizedBox(
-                        width: 16,
-                        height: 16,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          valueColor: AlwaysStoppedAnimation<Color>(primaryColor),
-                        ),
-                      )
-                    else
-                      Icon(
-                        Icons.check_circle_outline,
-                        color: primaryColor,
-                        size: 20,
-                      ),
-                    const SizedBox(width: 8),
-                    Text(
-                      _isMarkingLearned ? 'İşaretleniyor...' : 'Bu kelimeyi öğrendim',
-                      style: TextStyle(
-                        color: primaryColor,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
-                ),
               ),
-            ),
     );
   }
 }

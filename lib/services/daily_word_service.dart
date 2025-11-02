@@ -335,6 +335,71 @@ class DailyWordService {
     }
   }
 
+  /// Fetch the global Word of the Day stored under /daily_words/{date}.
+  /// Returns null when the document is missing or invalid.
+  Future<Word?> getGlobalWordOfDay({DateTime? date}) async {
+    final target = (date ?? DateTime.now()).toUtc();
+    final docId =
+        '${target.year}-${target.month.toString().padLeft(2, '0')}-${target.day.toString().padLeft(2, '0')}';
+
+    try {
+      final doc = await _firestore.collection('daily_words').doc(docId).get();
+
+      if (!doc.exists) {
+        debugPrint('[DailyWordService] No global daily word found for $docId');
+        return null;
+      }
+
+      final data = doc.data();
+      if (data == null) {
+        return null;
+      }
+
+      // Support nested wordData payloads as well as flat documents.
+      Map<String, dynamic> wordData;
+      final dynamicPayload = data['wordData'];
+      if (dynamicPayload is Map<String, dynamic>) {
+        wordData = Map<String, dynamic>.from(dynamicPayload);
+      } else {
+        wordData = Map<String, dynamic>.from(data);
+      }
+
+      final wordText = (wordData['word'] ?? '').toString().trim();
+      if (wordText.isEmpty) {
+        debugPrint(
+          '[DailyWordService] Skipping global daily word for $docId with empty "word" field',
+        );
+        return null;
+      }
+
+      final meaning = (wordData['meaning'] ?? '').toString();
+      final exampleSentence =
+          (wordData['exampleSentence'] ?? wordData['example'] ?? '').toString();
+      final translation = (wordData['tr'] ?? '').toString();
+      final category = (wordData['category'] ?? '').toString();
+
+      return Word(
+        word: wordText,
+        meaning: meaning,
+        example: exampleSentence,
+        tr: translation,
+        exampleSentence: exampleSentence,
+        isFavorite: false,
+        nextReviewDate: null,
+        interval: 1,
+        correctStreak: 0,
+        tags: const [],
+        srsLevel: 0,
+        isCustom: false,
+        category: category.isEmpty ? null : category,
+        createdAt: null,
+      );
+    } catch (e) {
+      debugPrint('[DailyWordService] Error fetching global daily word: $e');
+      return null;
+    }
+  }
+
   /// Get word details by ID
   Future<Word?> getWordById(String wordId) async {
     try {

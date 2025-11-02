@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
@@ -8,6 +10,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'firebase_options.dart';
 import 'models/word_model.dart';
@@ -38,6 +41,7 @@ import 'screens/profile_screen.dart';
 import 'screens/privacy_policy_screen.dart';
 import 'screens/terms_of_service_screen.dart';
 import 'screens/share_preview_screen.dart';
+import 'screens/word_detail_screen.dart';
 import 'screens/quiz_center_screen.dart';
 import 'screens/category_quiz_screen.dart';
 import 'screens/category_quiz_play_screen.dart';
@@ -51,6 +55,19 @@ import 'debug/connectivity_debug.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.light,
+      statusBarBrightness: Brightness.dark,
+      systemNavigationBarColor: Colors.black,
+      systemNavigationBarIconBrightness: Brightness.light,
+      systemNavigationBarDividerColor: Colors.transparent,
+      systemNavigationBarContrastEnforced: false,
+    ),
+  );
   await dotenv.load(fileName: ".env");
 
   // Firebase güvenli başlatma
@@ -70,19 +87,21 @@ Future<void> main() async {
 
   // Firebase servisleri Firebase core'dan sonra başlat
   await _initializeFirebaseServices();
-  
+
   // Dependency Injection'ı Firebase'den sonra kur
   await setupLocator();
-  
+
   // Hive ve yerel veri servislerini başlat
   await _initializeLocalServices();
-  
+
   // Kritik servisleri başlat
   await _initializeCriticalServices();
-  
+
+  await _initializeFirebaseMessaging();
+
   // Uygulamayı çalıştır
   runApp(const MyApp());
-  
+
   // Kritik olmayan servisleri arka planda başlat
   debugPrint('I/flutter: [MAIN] Starting non-critical services in background');
   _initializeNonCriticalServices();
@@ -95,17 +114,22 @@ Future<void> _initializeFirebaseServices() async {
   // Firebase Crashlytics'i başlat
   debugPrint('📊 Initializing Firebase Crashlytics...');
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
-  
+
   if (kDebugMode) {
     debugPrint('🧠 Bellek izleme etkinleştirildi');
     FlutterError.onError = (details) {
       FlutterError.presentError(details);
       FirebaseCrashlytics.instance.recordFlutterFatalError(details);
-      Logger.e('Flutter Error', details.exception, details.stack, 'FlutterError');
+      Logger.e(
+        'Flutter Error',
+        details.exception,
+        details.stack,
+        'FlutterError',
+      );
       Logger.logMemoryUsage('Flutter Error Occurred');
     };
   }
-  
+
   PlatformDispatcher.instance.onError = (error, stack) {
     FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
     return true;
@@ -120,15 +144,15 @@ Future<void> _initializeFirebaseServices() async {
   // Firebase Remote Config'i başlat
   debugPrint('⚙️ Initializing Firebase Remote Config...');
   final remoteConfig = FirebaseRemoteConfig.instance;
-  await remoteConfig.setConfigSettings(RemoteConfigSettings(
-    fetchTimeout: const Duration(seconds: 10),
-    minimumFetchInterval: const Duration(hours: 1),
-  ));
-  
-  await remoteConfig.setDefaults(const {
-    'fsrs_prompt_ratio': 4,
-  });
-  
+  await remoteConfig.setConfigSettings(
+    RemoteConfigSettings(
+      fetchTimeout: const Duration(seconds: 10),
+      minimumFetchInterval: const Duration(hours: 1),
+    ),
+  );
+
+  await remoteConfig.setDefaults(const {'fsrs_prompt_ratio': 4});
+
   try {
     await remoteConfig.fetchAndActivate();
     debugPrint('✅ Remote Config initialized and fetched');
@@ -138,6 +162,60 @@ Future<void> _initializeFirebaseServices() async {
 }
 
 // Helper functions for category metadata
+@pragma('vm:entry-point')
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+}
+
+Future<void> _initializeFirebaseMessaging() async {
+  await NotificationService().init();
+  final messaging = FirebaseMessaging.instance;
+  try {
+    final settings = await messaging.requestPermission();
+    debugPrint(
+      '[FirebaseMessaging] Permission status: ${settings.authorizationStatus}',
+    );
+  } catch (e) {
+    debugPrint('[FirebaseMessaging] Error requesting permission: $e');
+  }
+
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
+    final notification = message.notification;
+    final payload = message.data.isNotEmpty ? jsonEncode(message.data) : null;
+    if (notification != null) {
+      await NotificationService().showInstant(
+        title: notification.title ?? 'LexiFlow',
+        body: notification.body ?? '',
+        payload: payload,
+      );
+    }
+  });
+
+  FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+    if (message.data.isNotEmpty) {
+      NotificationService().handleMessageNavigation(message.data);
+    }
+  });
+
+  try {
+    final token = await messaging.getToken();
+    if (token != null) {
+      debugPrint('[FirebaseMessaging] Token: $token');
+    }
+  } catch (e) {
+    debugPrint('[FirebaseMessaging] Failed to obtain token: $e');
+  }
+
+  try {
+    final initialMessage = await messaging.getInitialMessage();
+    if (initialMessage != null && initialMessage.data.isNotEmpty) {
+      NotificationService().handleMessageNavigation(initialMessage.data);
+    }
+  } catch (e) {
+    debugPrint('[FirebaseMessaging] Failed to fetch initial message: $e');
+  }
+}
+
 String _getCategoryName(String categoryKey) {
   const categoryNames = {
     'biology': 'Biyoloji',
@@ -202,7 +280,7 @@ Future<void> _initializeLocalServices() async {
 Future<void> _initializeCriticalServices() async {
   // Kritik servisler artık DI locator tarafından yönetiliyor
   debugPrint('🔧 Initializing critical services via DI...');
-  
+
   final wordService = locator<WordService>();
   await wordService.init();
   debugPrint('✅ WordService initialized');
@@ -223,7 +301,7 @@ Future<void> _initializeNonCriticalServices() async {
   try {
     final userService = locator<UserService>();
     userService.updateStreak();
-    
+
     // AdMob'u başlat (opsiyonel, kritik değil)
     try {
       debugPrint('📱 Initializing AdMob in background...');
@@ -232,12 +310,13 @@ Future<void> _initializeNonCriticalServices() async {
     } catch (e) {
       debugPrint('⚠️ AdMob initialization failed (non-critical): $e');
     }
-    
+
     // Bildirimleri başlat
     debugPrint('🔔 Initializing NotificationService in background...');
     final notificationService = NotificationService();
     await notificationService.init();
-    await notificationService.applySchedulesFromPrefs();
+    final currentUserId = locator<SessionService>().currentUser?.uid;
+    await notificationService.applySchedulesFromPrefs(userId: currentUserId);
     debugPrint('✅ NotificationService initialized');
 
     // LearnedWordsService'i başlat
@@ -245,11 +324,13 @@ Future<void> _initializeNonCriticalServices() async {
     final learnedWordsService = LearnedWordsService();
     await learnedWordsService.initialize();
     debugPrint('✅ LearnedWordsService initialized');
-    
+
     // SessionService handles its own non-critical initialization (LeaderboardService, real-time listeners)
     debugPrint('ℹ️ SessionService non-critical services handled internally');
-    
-    debugPrint('🎉 All main.dart non-critical services initialized successfully');
+
+    debugPrint(
+      '🎉 All main.dart non-critical services initialized successfully',
+    );
   } catch (e) {
     debugPrint('⚠️ Error initializing non-critical services: $e');
   }
@@ -276,64 +357,86 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             title: 'LexiFlow',
             debugShowCheckedModeBanner: false,
+            navigatorKey: NotificationService().navigatorKey,
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
             themeMode: themeProvider.themeMode,
-            home: MobileOnlyGuard(child: AuthWrapper(
-              wordService: locator<WordService>(),
-              userService: locator<UserService>(),
-              migrationIntegrationService: locator<MigrationIntegrationService>(),
-              adService: locator<AdService>(),
-            )),
+            home: MobileOnlyGuard(
+              child: AuthWrapper(
+                wordService: locator<WordService>(),
+                userService: locator<UserService>(),
+                migrationIntegrationService:
+                    locator<MigrationIntegrationService>(),
+                adService: locator<AdService>(),
+              ),
+            ),
             routes: {
-              '/splash': (context) => SplashScreen(
-                wordService: locator<WordService>(),
-                userService: locator<UserService>(),
-                migrationIntegrationService: locator<MigrationIntegrationService>(),
-                adService: locator<AdService>(),
-              ),
-              '/dashboard': (context) => DashboardScreen(
-                wordService: locator<WordService>(),
-                userService: locator<UserService>(),
-                adService: locator<AdService>(),
-              ),
-              '/favorites': (context) => FavoritesScreen(
-                wordService: locator<WordService>(),
-                userService: locator<UserService>(),
-                adService: locator<AdService>(),
-              ),
-              '/daily-challenge': (context) => DailyChallengeScreen(
-                wordService: locator<WordService>(),
-                userService: locator<UserService>(),
-                adService: locator<AdService>(),
-              ),
+              '/splash':
+                  (context) => SplashScreen(
+                    wordService: locator<WordService>(),
+                    userService: locator<UserService>(),
+                    migrationIntegrationService:
+                        locator<MigrationIntegrationService>(),
+                    adService: locator<AdService>(),
+                  ),
+              '/dashboard':
+                  (context) => DashboardScreen(
+                    wordService: locator<WordService>(),
+                    userService: locator<UserService>(),
+                    adService: locator<AdService>(),
+                  ),
+              '/favorites':
+                  (context) => FavoritesScreen(
+                    wordService: locator<WordService>(),
+                    userService: locator<UserService>(),
+                    adService: locator<AdService>(),
+                  ),
+              '/daily-challenge':
+                  (context) => DailyChallengeScreen(
+                    wordService: locator<WordService>(),
+                    userService: locator<UserService>(),
+                    adService: locator<AdService>(),
+                  ),
               '/daily-word': (context) => const DailyWordScreen(),
+              '/word-detail': (context) {
+                final args = ModalRoute.of(context)?.settings.arguments;
+                if (args is Word) {
+                  return WordDetailScreen(word: args);
+                }
+                return const Scaffold(
+                  body: Center(child: Text('Word not found')),
+                );
+              },
               '/profile': (context) => const ProfileScreen(),
               '/privacy-policy': (context) => const PrivacyPolicyScreen(),
               '/terms-of-service': (context) => const TermsOfServiceScreen(),
-              '/share-preview': (context) => SharePreviewScreen(
-                userStats: UserStatsModel(
-                  level: 1,
-                  xp: 0,
-                  longestStreak: 0,
-                  learnedWords: 0,
-                  quizzesCompleted: 0,
-                ),
-              ),
+              '/share-preview':
+                  (context) => SharePreviewScreen(
+                    userStats: UserStatsModel(
+                      level: 1,
+                      xp: 0,
+                      longestStreak: 0,
+                      learnedWords: 0,
+                      quizzesCompleted: 0,
+                    ),
+                  ),
               '/quiz-center': (context) => const QuizCenterScreen(),
               '/quiz/general': (context) => const GeneralQuizScreen(),
               '/quiz/start': (context) {
-                final args = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
+                final args =
+                    ModalRoute.of(context)?.settings.arguments
+                        as Map<String, dynamic>?;
                 return QuizStartScreen(
                   categoryKey: args?['categoryKey'] as String?,
                   categoryName: args?['categoryName'] as String?,
                   categoryIcon: args?['categoryIcon'] as String?,
                 );
               },
-              '/quiz/play': (context) => CategoryQuizPlayScreen(
-                wordService: locator<WordService>(),
-                userService: locator<UserService>(),
-              ),
+              '/quiz/play':
+                  (context) => CategoryQuizPlayScreen(
+                    wordService: locator<WordService>(),
+                    userService: locator<UserService>(),
+                  ),
               // '/category-quiz': (context) => const CategoryQuizScreen(
               //   category: 'general',
               //   categoryName: 'Genel',
@@ -343,7 +446,9 @@ class MyApp extends StatelessWidget {
               //   wordService: locator<WordService>(),
               //   userService: locator<UserService>(),
               // ),
-              if (kDebugMode) '/connectivity-debug': (context) => const ConnectivityDebugWidget(),
+              if (kDebugMode)
+                '/connectivity-debug':
+                    (context) => const ConnectivityDebugWidget(),
             },
             onGenerateRoute: (settings) {
               // Handle dynamic routes like /quiz/category/:key
@@ -362,9 +467,7 @@ class MyApp extends StatelessWidget {
               return null;
             },
             builder: (context, child) {
-              return ConnectionStatusWidget(
-                child: child!,
-              );
+              return ConnectionStatusWidget(child: child!);
             },
           );
         },
@@ -372,4 +475,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

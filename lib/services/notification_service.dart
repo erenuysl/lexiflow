@@ -1,30 +1,45 @@
-﻿import 'dart:io';
+import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
+
+import '../di/locator.dart';
+import '../models/word_model.dart';
+import '../services/word_service.dart';
+import '../services/daily_word_service.dart';
 
 class NotificationService {
   NotificationService._();
   static final NotificationService _instance = NotificationService._();
   factory NotificationService() => _instance;
 
-  final FlutterLocalNotificationsPlugin _plugin = FlutterLocalNotificationsPlugin();
+  final FlutterLocalNotificationsPlugin _plugin =
+      FlutterLocalNotificationsPlugin();
   bool _initialized = false;
   GlobalKey<NavigatorState>? _navigatorKey;
+
+  GlobalKey<NavigatorState> get navigatorKey {
+    _navigatorKey ??= GlobalKey<NavigatorState>();
+    return _navigatorKey!;
+  }
 
   void registerNavigatorKey(GlobalKey<NavigatorState> key) {
     _navigatorKey = key;
   }
 
   // Channel definitions
-  static const AndroidNotificationChannel _defaultChannel = AndroidNotificationChannel(
-    'lexiflow_general',
-    'LexiFlow Bildirimleri',
-    description: 'Genel uygulama bildirimleri',
-    importance: Importance.defaultImportance,
-  );
+  static const AndroidNotificationChannel _defaultChannel =
+      AndroidNotificationChannel(
+        'lexiflow_general',
+        'LexiFlow Bildirimleri',
+        description: 'Genel uygulama bildirimleri',
+        importance: Importance.defaultImportance,
+      );
 
   // Fixed IDs for scheduled notifications
   static const int idDailyWord = 1001;
@@ -48,7 +63,10 @@ class NotificationService {
 
     const androidInit = AndroidInitializationSettings('@mipmap/ic_launcher');
     const iosInit = DarwinInitializationSettings();
-    const initSettings = InitializationSettings(android: androidInit, iOS: iosInit);
+    const initSettings = InitializationSettings(
+      android: androidInit,
+      iOS: iosInit,
+    );
 
     await _plugin.initialize(
       initSettings,
@@ -63,7 +81,9 @@ class NotificationService {
     // Create default channel on Android
     if (Platform.isAndroid) {
       await _plugin
-          .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
+          .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin
+          >()
           ?.createNotificationChannel(_defaultChannel);
     }
 
@@ -72,17 +92,35 @@ class NotificationService {
 
   Future<bool> requestPermission() async {
     if (Platform.isAndroid) {
-      final androidImpl = _plugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
-      final granted = await androidImpl?.requestNotificationsPermission() ?? true; // pre-Android 13 returns null
+      final androidImpl =
+          _plugin
+              .resolvePlatformSpecificImplementation<
+                AndroidFlutterLocalNotificationsPlugin
+              >();
+      final granted =
+          await androidImpl?.requestNotificationsPermission() ??
+          true; // pre-Android 13 returns null
       return granted;
     } else {
-      final ios = _plugin.resolvePlatformSpecificImplementation<IOSFlutterLocalNotificationsPlugin>();
-      final result = await ios?.requestPermissions(alert: true, badge: true, sound: true);
+      final ios =
+          _plugin
+              .resolvePlatformSpecificImplementation<
+                IOSFlutterLocalNotificationsPlugin
+              >();
+      final result = await ios?.requestPermissions(
+        alert: true,
+        badge: true,
+        sound: true,
+      );
       return result ?? false;
     }
   }
 
-  Future<void> showInstant({required String title, required String body, String? payload}) async {
+  Future<void> showInstant({
+    required String title,
+    required String body,
+    String? payload,
+  }) async {
     final android = AndroidNotificationDetails(
       _defaultChannel.id,
       _defaultChannel.name,
@@ -92,7 +130,13 @@ class NotificationService {
     );
     const ios = DarwinNotificationDetails();
     final details = NotificationDetails(android: android, iOS: ios);
-    await _plugin.show(DateTime.now().millisecondsSinceEpoch.remainder(100000), title, body, details, payload: payload);
+    await _plugin.show(
+      DateTime.now().millisecondsSinceEpoch.remainder(100000),
+      title,
+      body,
+      details,
+      payload: payload,
+    );
   }
 
   Future<void> scheduleDaily({
@@ -115,7 +159,14 @@ class NotificationService {
 
     if (weekdays == null || weekdays.isEmpty) {
       final now = tz.TZDateTime.now(tz.local);
-      var scheduled = tz.TZDateTime(tz.local, now.year, now.month, now.day, time.hour, time.minute);
+      var scheduled = tz.TZDateTime(
+        tz.local,
+        now.year,
+        now.month,
+        now.day,
+        time.hour,
+        time.minute,
+      );
       if (scheduled.isBefore(now)) {
         scheduled = scheduled.add(const Duration(days: 1));
       }
@@ -138,9 +189,9 @@ class NotificationService {
           title,
           body,
           scheduled,
-        details,
-        androidScheduleMode: AndroidScheduleMode.inexact,
-        matchDateTimeComponents: DateTimeComponents.dayOfWeekAndTime,
+          details,
+          androidScheduleMode: AndroidScheduleMode.inexact,
+          matchDateTimeComponents: DateTimeComponents.dayOfWeekAndTime,
           payload: payload,
         );
       }
@@ -149,7 +200,14 @@ class NotificationService {
 
   tz.TZDateTime _nextInstanceOfWeekday(TimeOfDay time, int weekday) {
     final now = tz.TZDateTime.now(tz.local);
-    var scheduled = tz.TZDateTime(tz.local, now.year, now.month, now.day, time.hour, time.minute);
+    var scheduled = tz.TZDateTime(
+      tz.local,
+      now.year,
+      now.month,
+      now.day,
+      time.hour,
+      time.minute,
+    );
     while (scheduled.weekday != weekday || scheduled.isBefore(now)) {
       scheduled = scheduled.add(const Duration(days: 1));
     }
@@ -164,6 +222,8 @@ class NotificationService {
   static const _kDailyWordHour = 'notif_daily_word_hour';
   static const _kDailyWordMin = 'notif_daily_word_min';
   static const _kDailyWordWeekdaysOnly = 'notif_daily_word_weekdays_only';
+  static const _kDailyWordScheduledDate = 'notif_daily_word_scheduled_date';
+  static const _kDailyWordPayload = 'notif_daily_word_payload';
 
   static const _kStreakEnabled = 'notif_streak_enabled';
   static const _kStreakHour = 'notif_streak_hour';
@@ -194,13 +254,20 @@ class NotificationService {
     final min = sp.getInt(_kDailyWordMin) ?? 0;
     return (enabled, TimeOfDay(hour: hour, minute: min));
   }
+
   Future<void> saveDailyWordWeekdaysOnly(bool weekdaysOnly) async {
     final sp = await SharedPreferences.getInstance();
     await sp.setBool(_kDailyWordWeekdaysOnly, weekdaysOnly);
   }
+
   Future<bool> loadDailyWordWeekdaysOnly() async {
     final sp = await SharedPreferences.getInstance();
     return sp.getBool(_kDailyWordWeekdaysOnly) ?? false;
+  }
+
+  String _todayKey() {
+    final now = DateTime.now().toUtc();
+    return '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
   }
 
   Future<void> saveStreakPref(bool enabled, TimeOfDay time) async {
@@ -217,10 +284,12 @@ class NotificationService {
     final min = sp.getInt(_kStreakMin) ?? 0;
     return (enabled, TimeOfDay(hour: hour, minute: min));
   }
+
   Future<void> saveStreakWeekdaysOnly(bool weekdaysOnly) async {
     final sp = await SharedPreferences.getInstance();
     await sp.setBool(_kStreakWeekdaysOnly, weekdaysOnly);
   }
+
   Future<bool> loadStreakWeekdaysOnly() async {
     final sp = await SharedPreferences.getInstance();
     return sp.getBool(_kStreakWeekdaysOnly) ?? false;
@@ -240,10 +309,12 @@ class NotificationService {
     final min = sp.getInt(_kReviewMin) ?? 0;
     return (enabled, TimeOfDay(hour: hour, minute: min));
   }
+
   Future<void> saveReviewWeekdaysOnly(bool weekdaysOnly) async {
     final sp = await SharedPreferences.getInstance();
     await sp.setBool(_kReviewWeekdaysOnly, weekdaysOnly);
   }
+
   Future<bool> loadReviewWeekdaysOnly() async {
     final sp = await SharedPreferences.getInstance();
     return sp.getBool(_kReviewWeekdaysOnly) ?? false;
@@ -256,6 +327,7 @@ class NotificationService {
     await sp.setInt(_kQuietEndHour, end.hour);
     await sp.setInt(_kQuietEndMin, end.minute);
   }
+
   Future<(TimeOfDay start, TimeOfDay end)> loadQuietHours() async {
     final sp = await SharedPreferences.getInstance();
     final sh = sp.getInt(_kQuietStartHour) ?? 23;
@@ -265,7 +337,63 @@ class NotificationService {
     return (TimeOfDay(hour: sh, minute: sm), TimeOfDay(hour: eh, minute: em));
   }
 
-  Future<void> applySchedulesFromPrefs() async {
+  Future<void> _scheduleDailyWordNotification({
+    required String userId,
+    required TimeOfDay time,
+    required bool weekdaysOnly,
+  }) async {
+    try {
+      final dailyWordService = locator<DailyWordService>();
+      final word = await dailyWordService.getGlobalWordOfDay();
+      if (word == null) {
+        if (kDebugMode) {
+          print(
+            '[NotificationService] No global daily word available to schedule.',
+          );
+        }
+        await cancel(idDailyWord);
+        return;
+      }
+
+      final meaning =
+          word.meaning.trim().isNotEmpty ? word.meaning.trim() : word.tr.trim();
+      final body = meaning.isNotEmpty ? '${word.word} - $meaning' : word.word;
+
+      final payloadMap = <String, dynamic>{
+        'route': '/word-detail',
+        'word': word.word,
+        'meaning': word.meaning,
+        'example': word.example,
+        'exampleSentence': word.exampleSentence,
+        'tr': word.tr,
+        'category': word.category,
+        'scheduledFor': _todayKey(),
+      };
+      final payload = jsonEncode(payloadMap);
+
+      await scheduleDaily(
+        id: idDailyWord,
+        title: 'Word of the Day',
+        body: body,
+        time: time,
+        weekdays:
+            weekdaysOnly ? const {1, 2, 3, 4, 5} : const {1, 2, 3, 4, 5, 6, 7},
+        payload: payload,
+      );
+
+      final sp = await SharedPreferences.getInstance();
+      await sp.setString(_kDailyWordScheduledDate, _todayKey());
+      await sp.setString(_kDailyWordPayload, payload);
+    } catch (e) {
+      if (kDebugMode) {
+        print(
+          '[NotificationService] Failed to schedule daily word notification: $e',
+        );
+      }
+    }
+  }
+
+  Future<void> applySchedulesFromPrefs({String? userId}) async {
     await init();
     final (dwEnabled, dwTime) = await loadDailyWordPref();
     final (stEnabled, stTime) = await loadStreakPref();
@@ -274,14 +402,11 @@ class NotificationService {
     final stWeekdays = await loadStreakWeekdaysOnly();
     final rvWeekdays = await loadReviewWeekdaysOnly();
 
-    if (dwEnabled) {
-      await scheduleDaily(
-        id: idDailyWord,
-        title: 'GÃ¼nÃ¼n Kelimesi',
-        body: 'BugÃ¼nÃ¼n kelimesini keÅŸfet!',
+    if (dwEnabled && userId != null) {
+      await _scheduleDailyWordNotification(
+        userId: userId,
         time: dwTime,
-        weekdays: dwWeekdays ? {1, 2, 3, 4, 5} : {1, 2, 3, 4, 5, 6, 7},
-        payload: '/daily_word',
+        weekdaysOnly: dwWeekdays,
       );
     } else {
       await cancel(idDailyWord);
@@ -290,8 +415,8 @@ class NotificationService {
     if (stEnabled) {
       await scheduleDaily(
         id: idStreak,
-        title: 'Serini Koru',
-        body: 'BugÃ¼nkÃ¼ hedefini kaÃ§Ä±rma!',
+        title: 'Keep Your Streak',
+        body: "Do not miss today's learning goal!",
         time: stTime,
         weekdays: stWeekdays ? {1, 2, 3, 4, 5} : {1, 2, 3, 4, 5, 6, 7},
         payload: '/quiz',
@@ -303,8 +428,8 @@ class NotificationService {
     if (rvEnabled) {
       await scheduleDaily(
         id: idReview,
-        title: 'GÃ¶zden GeÃ§irme ZamanÄ±',
-        body: 'Bekleyen kelimelerini tekrar et!',
+        title: 'Time to Review',
+        body: 'Revisit your pending words and keep the flow going.',
         time: rvTime,
         weekdays: rvWeekdays ? {1, 2, 3, 4, 5} : {1, 2, 3, 4, 5, 6, 7},
         payload: '/favorites',
@@ -314,14 +439,79 @@ class NotificationService {
     }
   }
 
-  void _handlePayload(String route) {
+  void _handlePayload(String payload) {
     final nav = _navigatorKey?.currentState;
     if (nav == null) return;
+    if (payload.trim().isEmpty) return;
+
     try {
-      nav.pushNamed(route);
+      final decoded = jsonDecode(payload);
+      if (decoded is Map<String, dynamic>) {
+        _handlePayloadMap(decoded);
+        return;
+      }
+    } catch (_) {
+      // Fallback to treating payload as a route string.
+    }
+
+    try {
+      nav.pushNamed(payload);
     } catch (_) {}
   }
+
+  void handleMessageNavigation(Map<String, dynamic> data) {
+    _handlePayloadMap(data);
+  }
+
+  void _handlePayloadMap(Map<String, dynamic> data) {
+    final nav = _navigatorKey?.currentState;
+    if (nav == null) return;
+
+    final route = (data['route'] ?? data['target'])?.toString();
+    if (route == '/word-detail') {
+      final word = _wordFromPayload(data);
+      if (word != null) {
+        try {
+          nav.pushNamed('/word-detail', arguments: word);
+        } catch (_) {}
+        return;
+      }
+    }
+
+    if (route != null && route.isNotEmpty) {
+      try {
+        nav.pushNamed(route);
+      } catch (_) {}
+    }
+  }
+
+  Word? _wordFromPayload(Map<String, dynamic> data) {
+    final wordText = (data['word'] ?? data['wordText'] ?? '').toString().trim();
+    if (wordText.isEmpty) {
+      return null;
+    }
+
+    final meaning = (data['meaning'] ?? '').toString();
+    final translation = (data['tr'] ?? data['translation'] ?? '').toString();
+    final exampleSentence =
+        (data['exampleSentence'] ?? data['example'] ?? '').toString();
+    final category = (data['category'] ?? '').toString().trim();
+
+    return Word(
+      word: wordText,
+      meaning: meaning,
+      example: exampleSentence,
+      tr: translation,
+      exampleSentence: exampleSentence,
+      isFavorite: false,
+      nextReviewDate: null,
+      interval: 1,
+      correctStreak: 0,
+      tags: const [],
+      srsLevel: 0,
+      isCustom: false,
+      category: category.isEmpty ? null : category,
+      createdAt: null,
+    );
+  }
 }
-
-
-

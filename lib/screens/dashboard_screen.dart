@@ -40,12 +40,12 @@ class DashboardScreen extends StatefulWidget {
 
 // removed old pinned header delegate in favor of FAB coach UI
 
-class _DashboardScreenState extends State<DashboardScreen> 
+class _DashboardScreenState extends State<DashboardScreen>
     with AutomaticKeepAliveClientMixin {
   final DailyWordService _dailyWordService = DailyWordService();
   final StatisticsService _statisticsService = StatisticsService();
   final NotificationService _notificationService = NotificationService();
-  
+
   // Service references from widget
   late final WordService _wordService;
   late final UserService _userService;
@@ -69,13 +69,13 @@ class _DashboardScreenState extends State<DashboardScreen>
   @override
   void initState() {
     super.initState();
-    
+
     // Initialize service references from widget
     _wordService = widget.wordService;
     _userService = widget.userService;
     _adService = widget.adService;
     _sessionService = Provider.of<SessionService>(context, listen: false);
-    
+
     _loadDailyWords();
     _scheduleNotifications();
     _startCountdownTimer();
@@ -83,7 +83,8 @@ class _DashboardScreenState extends State<DashboardScreen>
 
   void _scheduleNotifications() async {
     try {
-      await _notificationService.applySchedulesFromPrefs();
+      final userId = _sessionService.currentUser?.uid;
+      await _notificationService.applySchedulesFromPrefs(userId: userId);
     } catch (e) {
       debugPrint('Notification scheduling failed: $e');
     }
@@ -98,7 +99,7 @@ class _DashboardScreenState extends State<DashboardScreen>
 
     try {
       final user = _sessionService.currentUser;
-      
+
       if (user == null) {
         final words = await _wordService.getRandomWords(5);
         setState(() {
@@ -106,7 +107,9 @@ class _DashboardScreenState extends State<DashboardScreen>
           _isLoading = false;
           _isFirstLoaded = true; // mark as loaded
         });
-        debugPrint('I/flutter: [HOME] firstLoad->$_isFirstLoaded, showingShimmer=${!_isFirstLoaded}');
+        debugPrint(
+          'I/flutter: [HOME] firstLoad->$_isFirstLoaded, showingShimmer=${!_isFirstLoaded}',
+        );
         return;
       }
 
@@ -114,8 +117,10 @@ class _DashboardScreenState extends State<DashboardScreen>
 
       // Use the requested format for daily words loading
       final dailyWordsData = await _dailyWordService.getTodaysWords(user.uid);
-      final dailyWordIds = List<String>.from(dailyWordsData['dailyWords'] ?? []);
-      
+      final dailyWordIds = List<String>.from(
+        dailyWordsData['dailyWords'] ?? [],
+      );
+
       // Get actual Word objects from IDs
       var words = await _dailyWordService.getWordsByIds(dailyWordIds);
       if (words.isEmpty) {
@@ -129,10 +134,12 @@ class _DashboardScreenState extends State<DashboardScreen>
         _isLoading = false;
         _isFirstLoaded = true; // mark as loaded
       });
-      debugPrint('I/flutter: [HOME] firstLoad->$_isFirstLoaded, showingShimmer=${!_isFirstLoaded}');
+      debugPrint(
+        'I/flutter: [HOME] firstLoad->$_isFirstLoaded, showingShimmer=${!_isFirstLoaded}',
+      );
     } catch (e) {
       debugPrint('Error loading daily words: $e');
-      
+
       try {
         final words = await _wordService.getRandomWords(5);
         // ek fallback: eğer random words da boşsa general kategorisinden yükle
@@ -145,14 +152,18 @@ class _DashboardScreenState extends State<DashboardScreen>
             _isLoading = false;
             _isFirstLoaded = true;
           });
-          debugPrint('I/flutter: [HOME] Fallback loaded ${fallbackWords.length} words from general');
+          debugPrint(
+            'I/flutter: [HOME] Fallback loaded ${fallbackWords.length} words from general',
+          );
         } else {
           setState(() {
             _dailyWords = words;
             _isLoading = false;
             _isFirstLoaded = true; // mark as loaded even on fallback
           });
-          debugPrint('I/flutter: [HOME] firstLoad->$_isFirstLoaded, showingShimmer=${!_isFirstLoaded}');
+          debugPrint(
+            'I/flutter: [HOME] firstLoad->$_isFirstLoaded, showingShimmer=${!_isFirstLoaded}',
+          );
         }
       } catch (fallbackError) {
         debugPrint('Fallback error: $fallbackError');
@@ -160,7 +171,9 @@ class _DashboardScreenState extends State<DashboardScreen>
           _isLoading = false;
           _isFirstLoaded = true; // mark as loaded even on error
         });
-        debugPrint('I/flutter: [HOME] firstLoad->$_isFirstLoaded, showingShimmer=${!_isFirstLoaded}');
+        debugPrint(
+          'I/flutter: [HOME] firstLoad->$_isFirstLoaded, showingShimmer=${!_isFirstLoaded}',
+        );
       }
     }
   }
@@ -263,12 +276,8 @@ class _DashboardScreenState extends State<DashboardScreen>
     } else if (icon == Icons.error_outline) {
       toastType = ToastType.error;
     }
-    
-    showLexiflowToast(
-      context,
-      toastType,
-      message,
-    );
+
+    showLexiflowToast(context, toastType, message);
   }
 
   void _showLevelUpDialog(int newLevel) {
@@ -555,11 +564,13 @@ class _DashboardScreenState extends State<DashboardScreen>
                             const SizedBox(width: AppSpacing.sm),
                             Consumer<ProfileStatsProvider>(
                               builder: (context, profileStatsProvider, child) {
-                                final streak = profileStatsProvider.currentStreak;
+                                final streak =
+                                    profileStatsProvider.currentStreak;
                                 return Text(
                                   '$streak',
                                   style: AppTextStyles.title3.copyWith(
-                                    color: Theme.of(context).colorScheme.onSurface,
+                                    color:
+                                        Theme.of(context).colorScheme.onSurface,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 );
@@ -661,7 +672,8 @@ class _DashboardScreenState extends State<DashboardScreen>
                     Expanded(
                       child: Consumer<ProfileStatsProvider>(
                         builder: (context, profileProvider, _) {
-                          final learnedCount = profileProvider.learnedCount ?? 0;
+                          final learnedCount =
+                              profileProvider.learnedCount ?? 0;
                           return _buildModernStatItem(
                             Icons.school,
                             '$learnedCount',
@@ -701,9 +713,10 @@ class _DashboardScreenState extends State<DashboardScreen>
     final due = widget.wordService.getDueReviewCount();
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
-    final colors = isDark
-        ? AppDarkColors.successGradient
-        : AppColors.successGradient; // turkuaz-yeşil degrade
+    final colors =
+        isDark
+            ? AppDarkColors.successGradient
+            : AppColors.successGradient; // turkuaz-yeşil degrade
 
     return Material(
       elevation: 6,
@@ -712,7 +725,9 @@ class _DashboardScreenState extends State<DashboardScreen>
       child: InkWell(
         customBorder: const CircleBorder(),
         onTap: () {
-          try { HapticFeedback.lightImpact(); } catch (_) {}
+          try {
+            HapticFeedback.lightImpact();
+          } catch (_) {}
           _showCoachSheet(context, due);
         },
         child: Ink(
@@ -749,8 +764,11 @@ class _DashboardScreenState extends State<DashboardScreen>
               children: [
                 Row(
                   children: [
-                    Icon(AppIcons.sparkles,
-                        color: theme.colorScheme.primary, size: 24),
+                    Icon(
+                      AppIcons.sparkles,
+                      color: theme.colorScheme.primary,
+                      size: 24,
+                    ),
                     const SizedBox(width: AppSpacing.sm),
                     Text(
                       'Günlük Koç',
@@ -774,9 +792,11 @@ class _DashboardScreenState extends State<DashboardScreen>
                 // What it does (explanatory bullets)
                 Row(
                   children: [
-                    Icon(AppIcons.zap,
-                        size: 18,
-                        color: theme.colorScheme.secondary.withOpacity(0.9)),
+                    Icon(
+                      AppIcons.zap,
+                      size: 18,
+                      color: theme.colorScheme.secondary.withOpacity(0.9),
+                    ),
                     const SizedBox(width: AppSpacing.xs),
                     Expanded(
                       child: Text(
@@ -791,9 +811,11 @@ class _DashboardScreenState extends State<DashboardScreen>
                 const SizedBox(height: 6),
                 Row(
                   children: [
-                    Icon(AppIcons.clock,
-                        size: 18,
-                        color: theme.colorScheme.secondary.withOpacity(0.9)),
+                    Icon(
+                      AppIcons.clock,
+                      size: 18,
+                      color: theme.colorScheme.secondary.withOpacity(0.9),
+                    ),
                     const SizedBox(width: AppSpacing.xs),
                     Expanded(
                       child: Text(
@@ -808,9 +830,11 @@ class _DashboardScreenState extends State<DashboardScreen>
                 const SizedBox(height: 6),
                 Row(
                   children: [
-                    Icon(AppIcons.brain,
-                        size: 18,
-                        color: theme.colorScheme.secondary.withOpacity(0.9)),
+                    Icon(
+                      AppIcons.brain,
+                      size: 18,
+                      color: theme.colorScheme.secondary.withOpacity(0.9),
+                    ),
                     const SizedBox(width: AppSpacing.xs),
                     Expanded(
                       child: Text(
@@ -828,15 +852,18 @@ class _DashboardScreenState extends State<DashboardScreen>
                     Expanded(
                       child: ElevatedButton.icon(
                         onPressed: () {
-                          try { HapticFeedback.mediumImpact(); } catch (_) {}
+                          try {
+                            HapticFeedback.mediumImpact();
+                          } catch (_) {}
                           Navigator.pop(ctx);
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (_) => DailyChallengeScreen(
-                                wordService: widget.wordService,
-                                userService: widget.userService,
-                                adService: widget.adService,
-                              ),
+                              builder:
+                                  (_) => DailyChallengeScreen(
+                                    wordService: widget.wordService,
+                                    userService: widget.userService,
+                                    adService: widget.adService,
+                                  ),
                             ),
                           );
                         },
@@ -915,11 +942,12 @@ class _DashboardScreenState extends State<DashboardScreen>
               // Navigate to Daily Challenge as the single flow
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (_) => DailyChallengeScreen(
-                    wordService: widget.wordService,
-                    userService: widget.userService,
-                    adService: widget.adService,
-                  ),
+                  builder:
+                      (_) => DailyChallengeScreen(
+                        wordService: widget.wordService,
+                        userService: widget.userService,
+                        adService: widget.adService,
+                      ),
                 ),
               );
             },
@@ -939,7 +967,7 @@ class _DashboardScreenState extends State<DashboardScreen>
                 overflow: TextOverflow.ellipsis,
               ),
             ),
-          )
+          ),
         ],
       ),
     );
