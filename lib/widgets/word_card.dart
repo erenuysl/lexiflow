@@ -52,6 +52,13 @@ class _WordCardState extends State<WordCard> with SingleTickerProviderStateMixin
   @override
   Widget build(BuildContext context) {
     final scale = 1 - _pressController.value;
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    const accentColor = Color(0xFF33C4B3);
+    final cardColor = isDark ? const Color(0xFF151A1E) : Colors.white;
+    final borderColor = (isDark ? Colors.white : Colors.black).withOpacity(0.12);
+    final secondaryTextColor =
+        isDark ? Colors.white.withOpacity(0.72) : const Color(0xFF5C6C7C);
     return Dismissible(
       key: ValueKey(widget.word.word),
       direction: DismissDirection.endToStart,
@@ -80,60 +87,85 @@ class _WordCardState extends State<WordCard> with SingleTickerProviderStateMixin
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 400),
             curve: Curves.easeInOut,
-            margin: const EdgeInsets.symmetric(vertical: 8),
+            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             decoration: BoxDecoration(
+              color: cardColor,
               borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: borderColor, width: 1.2),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.withOpacity(0.15),
-                  blurRadius: 12,
-                  offset: const Offset(0, 8),
+                  color: (isDark ? Colors.black : Colors.grey.shade500)
+                      .withOpacity(isDark ? 0.35 : 0.12),
+                  blurRadius: 18,
+                  offset: const Offset(0, 12),
                 ),
               ],
-              gradient: LinearGradient(
-                colors: [
-                  Theme.of(context).cardColor,
-                  Theme.of(context).brightness == Brightness.dark
-                      ? const Color(0xFF232526)
-                      : const Color(0xFFF7FAFF),
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
             ),
             child: Padding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      Icon(
+                        Icons.style_rounded,
+                        color: accentColor.withOpacity(0.6),
+                        size: 18,
+                      ),
+                      const SizedBox(width: 8),
                       Expanded(
-                        child: Text(widget.word.word,
-                            style: GoogleFonts.poppins(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            )),
+                        child: Text(
+                          widget.word.word,
+                          style: GoogleFonts.inter(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700,
+                            color: isDark ? Colors.white : const Color(0xFF111518),
+                          ),
+                        ),
                       ),
                       GestureDetector(
                         onTap: _toggleFavorite,
                         child: AnimatedSwitcher(
                           duration: const Duration(milliseconds: 300),
-                          transitionBuilder: (child, anim) => ScaleTransition(scale: anim, child: child),
+                          transitionBuilder: (child, anim) =>
+                              ScaleTransition(scale: anim, child: child),
                           child: Icon(
                             isFavorite ? Icons.favorite : Icons.favorite_border,
                             key: ValueKey(isFavorite),
-                            color: isFavorite ? Colors.red : Colors.grey,
+                            color: isFavorite ? accentColor : secondaryTextColor.withOpacity(0.6),
                           ),
                         ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 8),
-                  Text(widget.word.meaning, style: GoogleFonts.nunito(fontSize: 16, color: Colors.grey[700])),
-                  const SizedBox(height: 10),
-                  Text(widget.word.example, style: GoogleFonts.nunito(fontSize: 14, fontStyle: FontStyle.italic)),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: accentColor.withOpacity(isDark ? 0.18 : 0.12),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(
+                      widget.word.meaning,
+                      style: GoogleFonts.inter(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: accentColor,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Text(
+                    widget.word.example,
+                    style: GoogleFonts.inter(
+                      fontSize: 14,
+                      fontStyle: FontStyle.italic,
+                      color: secondaryTextColor,
+                      height: 1.5,
+                    ),
+                  ),
                 ],
               ),
             ),

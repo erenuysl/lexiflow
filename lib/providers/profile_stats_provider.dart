@@ -462,7 +462,10 @@ class ProfileStatsProvider extends ChangeNotifier {
   }
   
   /// Get current streak value from stats
-  int get currentStreak => _stats?.currentStreak ?? 0;
+  int get currentStreak {
+    final raw = _stats.currentStreak;
+    return raw > 0 ? raw : 1;
+  }
   
   /// Get longest streak value from stats
   int get longestStreak => _stats?.longestStreak ?? 0;

@@ -79,14 +79,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
       resizeToAvoidBottomInset: true,
       body: Consumer2<SessionService, ProfileStatsProvider>(
         builder: (context, sessionService, profileStatsProvider, child) {
-          // SessionService henüz başlatılmadıysa loading göster
+  // SessionService henüz başlatılmadıysa loading göster
           if (!sessionService.isInitialized) {
             return _buildInitializingState();
           }
 
           if (!sessionService.isAuthenticated) {
             return const Center(
-              child: Text('Lütfen giriş yapın'),
+      child: Text('Lütfen giriş yapın'),
             );
           }
 
@@ -117,7 +117,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           _currentUsername ??= sessionService.currentUser?.displayName;
           _currentAvatar ??= sessionService.currentUser?.photoURL;
           
-          final username = _currentUsername ?? 'Kullanıcı';
+  final username = _currentUsername ?? 'Kullanıcı';
           final avatar = _currentAvatar ?? 'assets/icons/boy.svg';
 
           return _buildProfileContent(context, sessionService, stats, username, avatar, userId);
@@ -202,7 +202,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           children: [
             CircularProgressIndicator(),
             SizedBox(height: 16),
-            Text('Oturum başlatılıyor...'),
+    Text('Oturum başlatılıyor...'),
           ],
         ),
       ),
@@ -218,7 +218,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           children: [
             CircularProgressIndicator(),
             SizedBox(height: 16),
-            Text('Kimlik doğrulanıyor...'),
+    Text('Kimlik doğrulanıyor...'),
           ],
         ),
       ),
@@ -236,20 +236,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
           children: [
             const Icon(Icons.lock_outline, size: 64, color: Colors.orange),
             const SizedBox(height: 16),
-            const Text('Erişim İzNi Gerekli'),
+  const Text('Erişim İzni Gerekli'),
             const SizedBox(height: 8),
             const Text(
-              'Profil verilerinize erişim için giriş yapmanız gerekiyor.',
+  'Profil verilerinize erişim için giriş yapmanız gerekiyor.',
               textAlign: TextAlign.center,
               style: TextStyle(color: Colors.grey),
             ),
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                // Çıkış yap ve tekrar giriş yap
+  // Çıkış yap ve tekrar giriş yap
                 FirebaseAuth.instance.signOut();
               },
-              child: const Text('Tekrar Giriş Yap'),
+              child: const Text('Tekrar GiriÅŸ Yap'),
             ),
           ],
         ),
@@ -567,7 +567,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             context,
             icon: Icons.school_rounded,
             value: learnedCount.toString(),
-            label: 'Öğrenilen Kelime',
+  label: 'Öğrenilen Kelime',
             color: const Color(0xFF4CAF50),
           ),
           _buildStatCard(
@@ -673,7 +673,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  'Günlük Seri',
+  'Günlük Seri',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -682,7 +682,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  '$streak gün üst üste!',
+  '$streak gün üst üste!',
                   style: const TextStyle(
                     fontSize: 14,
                     color: Colors.white70,
@@ -749,7 +749,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             onPressed: () {
               if (controller.text.trim().isNotEmpty) {
                 _updateUsername(context, userId, controller.text.trim(), dialogContext: context);
-                // Navigator.pop satırı silindi - _updateUsername içinde yapılacak
+                // Navigator.pop satÄ±rÄ± silindi - _updateUsername iÃ§inde yapÄ±lacak
               }
             },
             style: ElevatedButton.styleFrom(
@@ -880,7 +880,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
 
   Future<void> _updateAvatar(BuildContext context, String userId, String avatarPath, {required BuildContext dialogContext}) async {
-    // Referansları tanımla
+    // ReferanslarÄ± tanÄ±mla
     final userDocRef = FirebaseFirestore.instance.collection('users').doc(userId);
     final leaderboardDocRef = FirebaseFirestore.instance.collection('leaderboard_stats').doc(userId);
 
@@ -897,7 +897,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       // 3. FirebaseAuth kullanıcısını güncelle (photoURL alanını avatar path'i olarak kullanıyoruz)
       await FirebaseAuth.instance.currentUser?.updatePhotoURL(avatarPath);
 
-      // Batch işlemlerini uygula
+      // Batch iÅŸlemlerini uygula
       await batch.commit();
       
       // Servisleri ve local state'i yenile
@@ -906,7 +906,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
       if (mounted) {
         setState(() {
-          _currentAvatar = avatarPath; // Anında UI güncellemesi
+      _currentAvatar = avatarPath; // Anında UI güncellemesi
         });
         Navigator.pop(dialogContext);
         ScaffoldMessenger.of(context).showSnackBar(
@@ -963,7 +963,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: [
               Icon(Icons.error, color: Colors.white),
               SizedBox(width: 8),
-              Expanded(child: Text('Kullan�c� ad� bo� olamaz!', style: TextStyle(color: Colors.white))),
+              Expanded(child: Text('Kullanıcı adı boş olamaz!', style: TextStyle(color: Colors.white))),
             ],
           ),
           duration: const Duration(seconds: 2),
@@ -1037,7 +1037,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               children: [
                 Icon(Icons.error, color: Colors.white),
                 SizedBox(width: 8),
-                Expanded(child: Text('Bu kullan�c� ad� zaten al�nm��!', style: TextStyle(color: Colors.white))),
+                Expanded(child: Text('Bu kullanıcı adı zaten alınmış!', style: TextStyle(color: Colors.white))),
               ],
             ),
             duration: const Duration(seconds: 2),
@@ -1105,7 +1105,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               children: [
                 Icon(Icons.check_circle, color: Colors.white),
                 SizedBox(width: 8),
-                Expanded(child: Text('Kullan�c� ad� ba�ar�yla g�ncellendi!', style: TextStyle(color: Colors.white))),
+                Expanded(child: Text('Kullanıcı adı başarıyla güncellendi!', style: TextStyle(color: Colors.white))),
               ],
             ),
             duration: const Duration(seconds: 2),
@@ -1126,7 +1126,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               children: [
                 const Icon(Icons.error, color: Colors.white),
                 const SizedBox(width: 8),
-                Expanded(child: Text('Kullan�c� ad� g�ncellenirken hata olu�tu: $e', style: const TextStyle(color: Colors.white))),
+                Expanded(child: Text('Kullanıcı adı güncellenirken hata oluştu: $e', style: const TextStyle(color: Colors.white))),
               ],
             ),
             duration: const Duration(seconds: 2),

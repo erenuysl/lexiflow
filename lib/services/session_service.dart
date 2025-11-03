@@ -100,7 +100,9 @@ class SessionService extends ChangeNotifier {
 
   int get currentStreak {
     final raw = _firestoreUserData?['currentStreak'];
-    return raw is int ? raw : 0;
+    // Streak hiçbir durumda 0 olmamalı; en az 1 döndür
+    if (raw is int && raw > 0) return raw;
+    return 1;
   }
 
   int get longestStreak {
@@ -388,7 +390,8 @@ class SessionService extends ChangeNotifier {
             'favoritesCount': 0,
             'level': 1, // standardized level field
             'totalXp': 0,
-            'currentStreak': 0,
+            // Streak için minimum 1 başlangıç
+            'currentStreak': 1,
             'longestStreak': 0,
             'learnedWordsCount': 0,
             'totalQuizzesTaken': 0,

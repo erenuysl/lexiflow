@@ -38,7 +38,8 @@ class OfflineAuthService {
       final defaultStats = {
         'level': 1, // using standardized level field
         'totalXp': 0,
-        'currentStreak': 0,
+        // Streak hiçbir durumda 0 olmamalı; offline başlangıç için 1
+        'currentStreak': 1,
         'longestStreak': 0,
         'learnedWordsCount': 0,
         'totalQuizzesTaken': 0,

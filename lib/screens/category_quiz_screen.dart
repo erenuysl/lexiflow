@@ -1,13 +1,17 @@
-import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/animation.dart';
-import '../models/word_model.dart';
-import '../services/word_loader.dart';
-import '../services/local_word_cache_service.dart';
-import '../models/category_theme.dart';
-import 'quiz_type_select_screen.dart';
-import 'package:lexiflow/services/category_progress_service.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:lexiflow/di/locator.dart';
+import 'package:lexiflow/services/category_progress_service.dart';
 import 'package:lexiflow/services/session_service.dart';
+
+import '../models/category_theme.dart';
+import '../models/word_model.dart';
+import '../services/local_word_cache_service.dart';
+import '../services/word_loader.dart';
+import 'cards/add_custom_word_sheet.dart';
+import 'quiz_type_select_screen.dart';
 
 class CategoryQuizScreen extends StatefulWidget {
   final String category;
@@ -91,198 +95,36 @@ class _CategoryQuizScreenState extends State<CategoryQuizScreen> {
   }
 
   void _showAddWordDialog(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-    final textTheme = Theme.of(context).textTheme;
 
-    final englishController = TextEditingController();
-    final turkishController = TextEditingController();
-    final exampleController = TextEditingController();
-    final formKey = GlobalKey<FormState>();
+    final accent =
 
-    showModalBottomSheet(
+        widget.categoryColor ?? Theme.of(context).colorScheme.primary;
+
+
+
+    showModalBottomSheet<bool>(
+
       context: context,
+
       isScrollControlled: true,
+
       backgroundColor: Colors.transparent,
-      builder:
-          (context) => Container(
-            padding: EdgeInsets.only(
-              bottom: MediaQuery.of(context).viewInsets.bottom,
-            ),
-            child: Container(
-              decoration: BoxDecoration(
-                color: colorScheme.surface,
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(24),
-                ),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-              child: Form(
-                key: formKey,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    // Handle bar
-                    Center(
-                      child: Container(
-                        width: 40,
-                        height: 4,
-                        decoration: BoxDecoration(
-                          color: colorScheme.onSurfaceVariant.withOpacity(0.4),
-                          borderRadius: BorderRadius.circular(2),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 16),
 
-                    // Title
-                    Text(
-                      'Yeni Kelime Ekle',
-                      style: textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 24),
+      builder: (_) => AddCustomWordSheet(
 
-                    // English word field
-                    TextFormField(
-                      controller: englishController,
-                      decoration: InputDecoration(
-                        labelText: 'İngilizce Kelime',
-                        hintText: 'Örnek: beautiful',
-                        prefixIcon: const Icon(Icons.language),
-                        filled: true,
-                        fillColor: colorScheme.secondaryContainer.withOpacity(
-                          0.1,
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(14),
-                          borderSide: BorderSide.none,
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(14),
-                          borderSide: BorderSide.none,
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(14),
-                          borderSide: BorderSide(
-                            color: colorScheme.primary,
-                            width: 2,
-                          ),
-                        ),
-                      ),
-                      validator: (value) {
-                        if (value == null || value.trim().isEmpty) {
-                          return 'İngilizce kelime gerekli';
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(height: 16),
+        categoryId: widget.category,
 
-                    // Turkish meaning field
-                    TextFormField(
-                      controller: turkishController,
-                      decoration: InputDecoration(
-                        labelText: 'Türkçe Anlam',
-                        hintText: 'Örnek: güzel',
-                        prefixIcon: const Icon(Icons.translate),
-                        filled: true,
-                        fillColor: colorScheme.secondaryContainer.withOpacity(
-                          0.1,
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(14),
-                          borderSide: BorderSide.none,
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(14),
-                          borderSide: BorderSide.none,
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(14),
-                          borderSide: BorderSide(
-                            color: colorScheme.primary,
-                            width: 2,
-                          ),
-                        ),
-                      ),
-                      validator: (value) {
-                        if (value == null || value.trim().isEmpty) {
-                          return 'Türkçe anlam gerekli';
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(height: 16),
+        accentColor: accent,
 
-                    // Example sentence field (optional)
-                    TextFormField(
-                      controller: exampleController,
-                      decoration: InputDecoration(
-                        labelText: 'Örnek Cümle (İsteğe bağlı)',
-                        hintText: 'Örnek: She is very beautiful.',
-                        prefixIcon: const Icon(Icons.chat_bubble_outline),
-                        filled: true,
-                        fillColor: colorScheme.secondaryContainer.withOpacity(
-                          0.1,
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(14),
-                          borderSide: BorderSide.none,
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(14),
-                          borderSide: BorderSide.none,
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(14),
-                          borderSide: BorderSide(
-                            color: colorScheme.primary,
-                            width: 2,
-                          ),
-                        ),
-                      ),
-                      maxLines: 2,
-                    ),
-                    const SizedBox(height: 24),
+        onSave: _addCustomWord,
 
-                    // Buttons
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        TextButton(
-                          onPressed: () => Navigator.pop(context),
-                          child: const Text('Vazgeç'),
-                        ),
-                        const SizedBox(width: 12),
-                        FilledButton(
-                          onPressed: () async {
-                            if (formKey.currentState!.validate()) {
-                              await _addCustomWord(
-                                englishController.text.trim(),
-                                turkishController.text.trim(),
-                                exampleController.text.trim(),
-                              );
-                              Navigator.pop(context);
-                            }
-                          },
-                          style: FilledButton.styleFrom(
-                            backgroundColor: colorScheme.primary,
-                          ),
-                          child: const Text('Kaydet'),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 16),
-                  ],
-                ),
-              ),
-            ),
-          ),
+      ),
+
     );
+
   }
+
+
 
   Future<void> _addCustomWord(
     String englishWord,
@@ -323,6 +165,28 @@ class _CategoryQuizScreenState extends State<CategoryQuizScreen> {
 
       // Add to local storage
       await LocalWordCacheService().addCustomWord(widget.category, newWord);
+
+      final session = locator<SessionService>();
+      final userId = session.currentUser?.uid;
+      if (userId != null) {
+        try {
+          await FirebaseFirestore.instance
+              .collection('users')
+              .doc(userId)
+              .collection('custom_words')
+              .doc(widget.category)
+              .collection('words')
+              .add({
+            'word': englishWord,
+            'meaning': turkishMeaning,
+            'example': example.isEmpty ? null : example,
+            'category': widget.category,
+            'createdAt': FieldValue.serverTimestamp(),
+          });
+        } catch (e) {
+          debugPrint('Firestore custom word save failed: $e');
+        }
+      }
 
       // Refresh the word list
       await _loadCategoryWords();

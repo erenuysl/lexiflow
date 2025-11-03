@@ -92,6 +92,7 @@ class _QuizResultsScreenState extends State<QuizResultsScreen>
     final percentage = (widget.score / widget.totalQuestions * 100).round();
     final perfColor = _performanceColor();
     final isLearnedQuiz = widget.quizType == 'learned';
+    final incorrectAnswers = widget.totalQuestions - widget.score;
 
     return Scaffold(
       body: SafeArea(
@@ -178,23 +179,31 @@ class _QuizResultsScreenState extends State<QuizResultsScreen>
                               ),
                             ),
                             const SizedBox(height: 20),
-
+                            const Text(
+                              'Sonuçların',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                              ),
+                            ),
+                            const SizedBox(height: 12),
                             // 3 mini istatistik (tek satır)
                             Row(
                               children: [
                                 Expanded(
                                   child: _miniStat(
                                     icon: Icons.check_circle,
-                                    title: 'Doğru',
+                                    title: 'Doğru Cevaplar',
                                     value: '${widget.score}/${widget.totalQuestions}',
                                   ),
                                 ),
                                 const SizedBox(width: 12),
                                 Expanded(
                                   child: _miniStat(
-                                    icon: isLearnedQuiz ? Icons.percent : Icons.bolt,
-                                    title: isLearnedQuiz ? 'Başarı' : 'XP',
-                                    value: isLearnedQuiz ? '%$percentage' : '+${widget.earnedXp}',
+                                    icon: Icons.close_rounded,
+                                    title: 'Yanlış Cevaplar',
+                                    value: '$incorrectAnswers',
                                   ),
                                 ),
                                 const SizedBox(width: 12),
@@ -202,11 +211,11 @@ class _QuizResultsScreenState extends State<QuizResultsScreen>
                                   child: _miniStat(
                                     icon: isLearnedQuiz 
                                         ? Icons.quiz 
-                                        : (widget.leveledUp ? Icons.celebration : Icons.military_tech),
-                                    title: isLearnedQuiz ? 'Soru' : 'Seviye',
+                                        : (widget.leveledUp ? Icons.celebration : Icons.bolt),
+                                    title: isLearnedQuiz ? 'Toplam Soru' : (widget.leveledUp ? 'Yeni Seviye' : 'Kazanılan XP'),
                                     value: isLearnedQuiz 
                                         ? '${widget.totalQuestions}' 
-                                        : 'Lv ${widget.currentLevel}',
+                                        : (widget.leveledUp ? 'Lv ${widget.currentLevel}' : '+${widget.earnedXp}'),
                                   ),
                                 ),
                               ],

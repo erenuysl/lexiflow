@@ -10,6 +10,7 @@ import '../providers/sync_status_provider.dart';
 import '../screens/sign_in_screen.dart';
 import '../screens/migration_screen.dart';
 import 'main_navigation.dart';
+import 'error_handler_widget.dart';
 
 class AuthWrapper extends StatefulWidget {
   final WordService wordService;
@@ -39,7 +40,8 @@ class _AuthWrapperState extends State<AuthWrapper> {
   @override
   void initState() {
     super.initState();
-    _checkMigrationStatus();
+    // Geçişlerde siyah/boş ekranı engellemek için arka planda başlat
+    Future.microtask(_checkMigrationStatus);
   }
 
   @override
@@ -52,21 +54,19 @@ class _AuthWrapperState extends State<AuthWrapper> {
   }
 
   Future<void> _checkMigrationStatus() async {
-    // Prevent multiple checks
     if (_hasCheckedMigration) {
-      debugPrint('I/flutter: [AUTH] Migration cached -> skip');
+      debugPrint('[AuthWrapper] Migration already cached -> skip');
       return;
     }
 
     try {
-      debugPrint('I/flutter: [AUTH] Checking migration...');
-      
-      // önce cache kontrol et
+      debugPrint('[AuthWrapper] Checking migration status...');
+
       final prefs = await SharedPreferences.getInstance();
       final isCached = prefs.getBool(_migrationCacheKey) ?? false;
-      
+
       if (isCached) {
-        debugPrint('I/flutter: [AUTH] Migration cached -> skip');
+        debugPrint('[AuthWrapper] Migration cached -> skip');
         if (mounted) {
           setState(() {
             _shouldShowMigration = false;
@@ -76,44 +76,46 @@ class _AuthWrapperState extends State<AuthWrapper> {
         }
         return;
       }
-      
-      // timeout 2 saniyeye düşürüldü
+
       final shouldShow = await widget.migrationIntegrationService
           .shouldShowMigrationScreen()
           .timeout(
             const Duration(seconds: 2),
             onTimeout: () {
-              debugPrint('I/flutter: [AUTH] Migration check timeout -> continue');
+              debugPrint('[AuthWrapper] Migration check timeout -> continue');
               return false;
             },
           );
 
-      // sonucu cache'le
       await prefs.setBool(_migrationCacheKey, true);
 
-      if (mounted) {
-        setState(() {
-          _shouldShowMigration = shouldShow;
-          _isCheckingMigration = false;
-          _hasCheckedMigration = true;
-        });
-        
-        if (shouldShow) {
-          debugPrint('🔄 Migration screen gösterilecek');
-        } else {
-          debugPrint('✅ Ana ekrana geçiliyor');
-        }
+      if (!mounted) {
+        return;
+      }
+
+      setState(() {
+        _shouldShowMigration = shouldShow;
+        _isCheckingMigration = false;
+        _hasCheckedMigration = true;
+      });
+
+      if (shouldShow) {
+        debugPrint('[AuthWrapper] Migration required -> showing migration screen');
+      } else {
+        debugPrint('[AuthWrapper] Migration not needed -> continue');
       }
     } catch (e) {
-      debugPrint('❌ Migration kontrolü hatası: $e');
-      if (mounted) {
-        setState(() {
-          _shouldShowMigration = false; // hata durumunda ana ekrana geç
-          _isCheckingMigration = false;
-          _hasCheckedMigration = true;
-        });
-        debugPrint('🏠 Hata nedeniyle ana ekrana yönlendiriliyor');
+      debugPrint('[AuthWrapper] Migration check error: $e');
+      if (!mounted) {
+        return;
       }
+
+      setState(() {
+        _shouldShowMigration = false;
+        _isCheckingMigration = false;
+        _hasCheckedMigration = true;
+      });
+      debugPrint('[AuthWrapper] Error fallback -> continue to app');
     }
   }
 
@@ -121,46 +123,80 @@ class _AuthWrapperState extends State<AuthWrapper> {
   Widget build(BuildContext context) {
     return Consumer<SessionService>(
       builder: (context, sessionService, child) {
-        // Debug için SessionService durumunu logla
-        debugPrint('🔍 AuthWrapper build - isInitialized: ${sessionService.isInitialized}, isAuthenticated: ${sessionService.isAuthenticated}, _isCheckingMigration: $_isCheckingMigration');
-        
-        if (!sessionService.isInitialized || _isCheckingMigration) {
-          debugPrint('⏳ Loading ekranı gösteriliyor - isInitialized: ${sessionService.isInitialized}, _isCheckingMigration: $_isCheckingMigration');
-          return const Scaffold(
-            body: Center(child: CircularProgressIndicator()),
-          );
-        }
+        try {
+          final logDetails =
+              'isInitialized=${sessionService.isInitialized}, '
+              'isAuthenticated=${sessionService.isAuthenticated}, '
+              'isCheckingMigration=$_isCheckingMigration';
+          debugPrint('[AuthWrapper] build -> ' + logDetails);
 
-        if (sessionService.isAuthenticated) {
-          debugPrint('✅ Kullanıcı authenticate - _shouldShowMigration: $_shouldShowMigration');
-          
-          // Initialize SyncStatusProvider when user is authenticated
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            final syncProvider = context.read<SyncStatusProvider>();
-            final user = sessionService.currentUser;
-            if (user != null && !syncProvider.isInitialized) {
-              syncProvider.initialize().then((_) {
-                syncProvider.setUser(user.uid);
-              });
-            }
-          });
-          
-          if (_shouldShowMigration) {
-            debugPrint('🔄 Migration screen gösteriliyor');
-            return const MigrationScreen();
+          // Always render a minimal scaffold immediately in loading state
+          if (!sessionService.isInitialized || _isCheckingMigration) {
+            return Scaffold(
+              appBar: AppBar(title: const Text('LexiFlow')),
+              body: const Center(child: CircularProgressIndicator.adaptive()),
+            );
           }
 
-          debugPrint('🏠 Ana ekrana yönlendiriliyor');
-          return MainNavigation(
-            wordService: widget.wordService,
-            userService: widget.userService,
-            adService: widget.adService,
+          if (sessionService.isAuthenticated) {
+            debugPrint(
+              '[AuthWrapper] Authenticated user -> shouldShowMigration=$_shouldShowMigration',
+            );
+
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              final syncProvider = context.read<SyncStatusProvider>();
+              final user = sessionService.currentUser;
+              if (user != null && !syncProvider.isInitialized) {
+                syncProvider.initialize().then((_) {
+                  syncProvider.setUser(user.uid);
+                });
+              }
+            });
+
+            if (_shouldShowMigration) {
+              debugPrint('[AuthWrapper] Presenting migration screen');
+              return const MigrationScreen();
+            }
+
+            debugPrint('[AuthWrapper] Launching main navigation');
+            return MainNavigation(
+              wordService: widget.wordService,
+              userService: widget.userService,
+              adService: widget.adService,
+            );
+          }
+
+          debugPrint('[AuthWrapper] Presenting sign-in screen');
+          return const SignInScreen();
+        } catch (e, st) {
+          // Visible error UI instead of propagating raw NotInitialized errors
+          debugPrint('[AuthWrapper] UI error: $e\n$st');
+          return Scaffold(
+            appBar: AppBar(title: const Text('LexiFlow')),
+            body: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ErrorHandlerWidget(
+                error: ErrorData(
+                  type: ErrorType.unknown,
+                  severity: ErrorSeverity.high,
+                  message: 'Uygulama başlatılırken bir hata oluştu',
+                  details: e.toString(),
+                  actionLabel: 'Tekrar Dene',
+                  onAction: () {
+                    // Best-effort: trigger session re-initialize
+                    try {
+                      context.read<SessionService>().initialize();
+                    } catch (_) {}
+                  },
+                ),
+                showDetails: true,
+              ),
+            ),
           );
         }
-
-        debugPrint('🔐 SignIn screen gösteriliyor');
-        return const SignInScreen();
       },
     );
   }
-}
+
+  }
+

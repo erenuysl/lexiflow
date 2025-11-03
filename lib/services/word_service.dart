@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'dart:math';
 import 'package:flutter/foundation.dart';
+import 'dart:math';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -9,6 +9,12 @@ import 'srs_service.dart';
 import '../models/daily_log.dart';
 import 'favorites_cleanup_service.dart';
 import 'word_loader.dart';
+
+// compute requires a top-level function; we provide a parser
+List<Word> _parseWordsFromJsonString(String jsonString) {
+  final List<dynamic> jsonList = json.decode(jsonString);
+  return jsonList.map((e) => Word.fromJson(e as Map<String, dynamic>)).toList();
+}
 
 class WordService {
   static const String _wordsBoxName = 'words';
@@ -74,13 +80,11 @@ class WordService {
       if (kDebugMode) {
         print('✅ JSON file loaded, size: ${jsonString.length} bytes');
       }
-
-      final List<dynamic> jsonList = json.decode(jsonString);
+      // Parse on a background isolate to avoid main-thread jank
+      _allWords = await compute(_parseWordsFromJsonString, jsonString);
       if (kDebugMode) {
-        print('✅ JSON parsed, ${jsonList.length} words found');
+        print('✅ JSON parsed off-main-thread, ${_allWords.length} words found');
       }
-
-      _allWords = jsonList.map((json) => Word.fromJson(json)).toList();
       if (kDebugMode) {
         print('✅ All words loaded successfully!');
       }

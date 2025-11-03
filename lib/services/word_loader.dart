@@ -1,9 +1,16 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import '../models/word_model.dart';
 import 'local_word_cache_service.dart';
 import '../di/locator.dart';
 import 'word_service.dart';
+
+// Top-level parser for compute: converts category JSON string to Word list
+List<Word> _parseCategoryWordsJson(String jsonString) {
+  final List<dynamic> jsonList = json.decode(jsonString);
+  return jsonList.map((e) => Word.fromJson(e as Map<String, dynamic>)).toList();
+}
 
 class WordLoader {
   static const String _assetsPath = 'assets/words/';
@@ -70,9 +77,8 @@ class WordLoader {
         final String jsonString = await rootBundle.loadString(
           '$_assetsPath$category.json',
         );
-        final List<dynamic> jsonList = json.decode(jsonString);
-
-        assetWords = jsonList.map((json) => Word.fromJson(json)).toList();
+        // Parse off the main thread to prevent UI jank
+        assetWords = await compute(_parseCategoryWordsJson, jsonString);
 
         // Cache the loaded words
         _categoryCache[category] = assetWords;

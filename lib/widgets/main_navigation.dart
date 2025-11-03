@@ -8,6 +8,7 @@ import '../screens/favorites_screen.dart';
 import '../screens/quiz_center_screen.dart';
 import '../screens/profile_screen.dart';
 import 'bottom_nav_bar.dart';
+import '../screens/cards/cards_home_screen.dart';
 
 class MainNavigation extends StatefulWidget {
   final WordService wordService;
@@ -27,11 +28,28 @@ class MainNavigation extends StatefulWidget {
 
 class _MainNavigationState extends State<MainNavigation> {
   int _currentIndex = 0;
+  late final List<Widget> _pages;
   final AchievementListenerService _achievementListener = AchievementListenerService();
+  final PageStorageBucket _pageStorageBucket = PageStorageBucket();
 
   @override
   void initState() {
     super.initState();
+    _pages = [
+      DashboardScreen(
+        wordService: widget.wordService,
+        userService: widget.userService,
+        adService: widget.adService,
+      ),
+      const QuizCenterScreen(),
+      const CardsHomeScreen(),
+      FavoritesScreen(
+        wordService: widget.wordService,
+        userService: widget.userService,
+        adService: widget.adService,
+      ),
+      const ProfileScreen(),
+    ];
     // Initialize achievement listener to show popups when achievements are unlocked
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _achievementListener.initialize(context);
@@ -55,30 +73,28 @@ class _MainNavigationState extends State<MainNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: _currentIndex,
-        children: [
-          // Ana Sayfa - Dashboard
-          DashboardScreen(
-            wordService: widget.wordService,
-            userService: widget.userService,
-            adService: widget.adService,
-          ),
-          // Quiz Center
-          const QuizCenterScreen(),
-          // Favoriler
-          FavoritesScreen(
-            wordService: widget.wordService,
-            userService: widget.userService,
-            adService: widget.adService,
-          ),
-          // Profil
-          const ProfileScreen(),
-        ],
+      body: PageStorage(
+        bucket: _pageStorageBucket,
+        child: Stack(
+          children: [
+            for (var i = 0; i < _pages.length; i++) _buildPage(i),
+          ],
+        ),
       ),
       bottomNavigationBar: CustomBottomNavBar(
         currentIndex: _currentIndex,
         onTap: _onItemTapped,
+      ),
+    );
+  }
+
+  Widget _buildPage(int index) {
+    final isActive = index == _currentIndex;
+    return Offstage(
+      offstage: !isActive,
+      child: TickerMode(
+        enabled: isActive,
+        child: _pages[index],
       ),
     );
   }

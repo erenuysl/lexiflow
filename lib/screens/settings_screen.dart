@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import '../providers/theme_provider.dart';
@@ -263,7 +264,7 @@ class _SettingsScreenState extends State<SettingsScreen>
           },
         ),
         title: Text(
-          'Settings',
+          'Ayarlar',
           style: AppTextStyles.title1.copyWith(
             color:
                 isDark
@@ -1132,7 +1133,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                   child: FittedBox(
                     fit: BoxFit.scaleDown,
                     child: Text(
-                      'Send Feedback',
+                      'Geri Bildirim Gönder',
                       style: AppTextStyles.button.copyWith(
                         color: Colors.white,
                         fontWeight: FontWeight.w600,
@@ -1166,7 +1167,7 @@ class _FeedbackDialogState extends State<_FeedbackDialog> {
     if (feedbackText.isEmpty) {
       messenger.showSnackBar(
         SnackBar(
-          content: const Text('Please share a little feedback before sending.'),
+          content: const Text('Geri bildirim alanı boş bırakılamaz.'),
           behavior: SnackBarBehavior.floating,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
@@ -1227,6 +1228,7 @@ class _FeedbackDialogState extends State<_FeedbackDialog> {
       }
 
       await FirebaseFirestore.instance.collection('feedback').add({
+        'text': feedbackText,
         'message': feedbackText,
         'userId': firebaseUser?.uid ?? offlineUser?.uid ?? 'guest',
         'userEmail': firebaseUser?.email ?? '',
@@ -1238,6 +1240,7 @@ class _FeedbackDialogState extends State<_FeedbackDialog> {
         'buildNumber': buildNumber,
         'deviceInfo': deviceInfo,
         'submittedAt': FieldValue.serverTimestamp(),
+        'timestamp': FieldValue.serverTimestamp(),
         'submittedAtLocal': DateTime.now().toIso8601String(),
         'source': 'settings_screen',
       });
@@ -1248,40 +1251,16 @@ class _FeedbackDialogState extends State<_FeedbackDialog> {
 
       Navigator.of(context).pop();
       messenger.showSnackBar(
-        SnackBar(
-          content: Row(
-            children: const [
-              Icon(Icons.check_circle, color: Colors.white),
-              SizedBox(width: 8),
-              Expanded(child: Text('Thank you for your feedback!')),
-            ],
-          ),
-          backgroundColor: AppColors.success,
-          behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
+        const SnackBar(
+          content: Text('Teşekkürler! Geri bildirimin gönderildi.'),
         ),
       );
     } catch (e) {
       debugPrint('Feedback submission failed: ' + e.toString());
       if (mounted) {
         messenger.showSnackBar(
-          SnackBar(
-            content: Row(
-              children: const [
-                Icon(Icons.error_outline, color: Colors.white),
-                SizedBox(width: 8),
-                Expanded(
-                  child: Text('Could not send feedback. Please try again.'),
-                ),
-              ],
-            ),
-            backgroundColor: AppColors.error,
-            behavior: SnackBarBehavior.floating,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
+          const SnackBar(
+            content: Text('Gönderim sırasında bir hata oluştu. Lütfen tekrar dene.'),
           ),
         );
       }
@@ -1319,7 +1298,7 @@ class _FeedbackDialogState extends State<_FeedbackDialog> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'Send Feedback',
+              'Geri Bildirim Gönder',
               style: AppTextStyles.title2.copyWith(
                 color:
                     isDark
@@ -1333,7 +1312,7 @@ class _FeedbackDialogState extends State<_FeedbackDialog> {
               controller: _feedbackController,
               maxLines: 4,
               decoration: InputDecoration(
-                hintText: 'Share your thoughts...',
+                hintText: 'Düşüncelerini paylaş...',
                 hintStyle: AppTextStyles.body2.copyWith(
                   color:
                       isDark
@@ -1379,7 +1358,7 @@ class _FeedbackDialogState extends State<_FeedbackDialog> {
                       Navigator.pop(context);
                     },
                     child: Text(
-                      'Cancel',
+                      'İptal',
                       style: AppTextStyles.button.copyWith(
                         color:
                             isDark
@@ -1419,7 +1398,7 @@ class _FeedbackDialogState extends State<_FeedbackDialog> {
                               ),
                             )
                             : Text(
-                              'Submit',
+                              'Gönder',
                               style: AppTextStyles.button.copyWith(
                                 color: Colors.white,
                               ),

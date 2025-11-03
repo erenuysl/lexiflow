@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import '../models/word_model.dart';
 import '../services/word_service.dart';
 import '../services/user_service.dart';
@@ -12,7 +13,6 @@ import '../utils/design_system.dart';
 import '../utils/app_icons.dart';
 import 'package:flutter/services.dart';
 import '../utils/feature_flags.dart';
-import '../widgets/loading_widgets.dart';
 import '../widgets/offline_indicator.dart';
 import '../services/notification_service.dart';
 import 'word_detail_screen.dart';
@@ -61,7 +61,8 @@ class _DashboardScreenState extends State<DashboardScreen>
   // Daily word system state
   Map<String, dynamic>? _dailyWordsData;
   Timer? _countdownTimer;
-  Duration _timeUntilReset = Duration.zero;
+  Duration _timeUntilReset = Duration.zero; // retained for legacy but not used for rebuilds
+  DateTime? _lastBuildLog;
 
   @override
   bool get wantKeepAlive => true;
@@ -76,8 +77,9 @@ class _DashboardScreenState extends State<DashboardScreen>
     _adService = widget.adService;
     _sessionService = Provider.of<SessionService>(context, listen: false);
 
-    _loadDailyWords();
-    _scheduleNotifications();
+    // Verileri arka planda yükle - ilk frame'i bekletme
+    Future.microtask(_loadDailyWords);
+    Future.microtask(_scheduleNotifications);
     _startCountdownTimer();
   }
 
@@ -107,9 +109,6 @@ class _DashboardScreenState extends State<DashboardScreen>
           _isLoading = false;
           _isFirstLoaded = true; // mark as loaded
         });
-        debugPrint(
-          'I/flutter: [HOME] firstLoad->$_isFirstLoaded, showingShimmer=${!_isFirstLoaded}',
-        );
         return;
       }
 
@@ -134,9 +133,6 @@ class _DashboardScreenState extends State<DashboardScreen>
         _isLoading = false;
         _isFirstLoaded = true; // mark as loaded
       });
-      debugPrint(
-        'I/flutter: [HOME] firstLoad->$_isFirstLoaded, showingShimmer=${!_isFirstLoaded}',
-      );
     } catch (e) {
       debugPrint('Error loading daily words: $e');
 
@@ -152,18 +148,13 @@ class _DashboardScreenState extends State<DashboardScreen>
             _isLoading = false;
             _isFirstLoaded = true;
           });
-          debugPrint(
-            'I/flutter: [HOME] Fallback loaded ${fallbackWords.length} words from general',
-          );
+          // shimmer kaldırıldı; yalnızca sessiz fallback
         } else {
           setState(() {
             _dailyWords = words;
             _isLoading = false;
             _isFirstLoaded = true; // mark as loaded even on fallback
           });
-          debugPrint(
-            'I/flutter: [HOME] firstLoad->$_isFirstLoaded, showingShimmer=${!_isFirstLoaded}',
-          );
         }
       } catch (fallbackError) {
         debugPrint('Fallback error: $fallbackError');
@@ -171,9 +162,6 @@ class _DashboardScreenState extends State<DashboardScreen>
           _isLoading = false;
           _isFirstLoaded = true; // mark as loaded even on error
         });
-        debugPrint(
-          'I/flutter: [HOME] firstLoad->$_isFirstLoaded, showingShimmer=${!_isFirstLoaded}',
-        );
       }
     }
   }
@@ -261,11 +249,9 @@ class _DashboardScreenState extends State<DashboardScreen>
   }
 
   void _updateTimeUntilReset() {
-    if (mounted) {
-      setState(() {
-        _timeUntilReset = _dailyWordService.getTimeUntilReset();
-      });
-    }
+    // Ekranı her saniye yeniden çizmemek için setState kaldırıldı.
+    // Geri sayım artık StreamBuilder ile izole şekilde güncelleniyor.
+    _timeUntilReset = _dailyWordService.getTimeUntilReset();
   }
 
   void _showSnackBar(String message, IconData icon, {Color? color}) {
@@ -368,50 +354,30 @@ class _DashboardScreenState extends State<DashboardScreen>
     );
   }
 
-  String _getTimeOfDay() {
+  String _getGreetingMessage() {
     final hour = DateTime.now().hour;
-    if (hour < 12) return 'Morning';
-    if (hour < 17) return 'Afternoon';
-    return 'Evening';
+    if (hour < 12) return 'Günaydın!';
+    if (hour < 17) return 'İyi Öğleden Sonralar!';
+    if (hour < 21) return 'İyi Akşamlar!';
+    return 'İyi Geceler!';
   }
 
   @override
   Widget build(BuildContext context) {
     super.build(context); // AutomaticKeepAliveClientMixin gereksinimi
     final isDark = Theme.of(context).brightness == Brightness.dark;
-
-    // shimmer sadece ilk yüklemede göster
-    if (_isLoading && !_isFirstLoaded) {
-      return Column(
-        children: [
-          // Offline durum göstergesi
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-            child: OfflineIndicator(compact: true),
-          ),
-          // Modern Header Skeleton
-          const DashboardHeaderSkeleton(),
-          // Content with shimmer loading
-          Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(AppSpacing.lg),
-              child: Column(
-                children: List.generate(
-                  5,
-                  (index) => ShimmerLoading(
-                    child: WordCardSkeleton(
-                      margin: const EdgeInsets.only(bottom: AppSpacing.md),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
+    // Build loglarını azaltmak için basit throttle
+    final now = DateTime.now();
+    if (kDebugMode && (_lastBuildLog == null ||
+        now.difference(_lastBuildLog!) > const Duration(seconds: 3))) {
+      debugPrint(
+        '[DashboardScreen] build -> isLoading=$_isLoading dailyWords=${_dailyWords.length}',
       );
+      _lastBuildLog = now;
     }
-
-    return RefreshIndicator(
+    
+    // Ana içerik: veriler hazırsa göster, değilse boş
+    final Widget content = RefreshIndicator(
       onRefresh: _loadDailyWords,
       child: CustomScrollView(
         slivers: [
@@ -437,6 +403,21 @@ class _DashboardScreenState extends State<DashboardScreen>
             ),
           ),
         ],
+      ),
+    );
+
+    const loadingState = Center(child: CircularProgressIndicator.adaptive());
+
+    // Shimmer kaldırıldı; bunun yerine yumuşak fade-in geçişi
+    return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
+      body: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 150),
+        transitionBuilder: (child, animation) => FadeTransition(
+          opacity: CurvedAnimation(parent: animation, curve: Curves.easeInOut),
+          child: child,
+        ),
+        child: _isLoading ? loadingState : content,
       ),
     );
   }
@@ -487,157 +468,153 @@ class _DashboardScreenState extends State<DashboardScreen>
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Row(
-                    children: [
-                      // Statistics Button
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Theme.of(
-                            context,
-                          ).colorScheme.surface.withOpacity(0.9),
-                          borderRadius: AppBorderRadius.medium,
-                          border: Border.all(
-                            color: Theme.of(
-                              context,
-                            ).colorScheme.outline.withOpacity(0.2),
-                            width: 1,
+                  Builder(
+                    builder: (context) {
+                      final colorScheme = Theme.of(context).colorScheme;
+
+                      BoxDecoration decoration() => BoxDecoration(
+                        color: colorScheme.surface.withOpacity(0.9),
+                        borderRadius: AppBorderRadius.medium,
+                        border: Border.all(
+                          color: colorScheme.outline.withOpacity(0.2),
+                          width: 1,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: colorScheme.shadow.withOpacity(0.1),
+                            blurRadius: 4,
+                            offset: const Offset(0, 2),
                           ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Theme.of(
+                        ],
+                      );
+
+                      Widget decoratedIconButton({
+                        required Icon icon,
+                        required VoidCallback onPressed,
+                        required String tooltip,
+                      }) {
+                        return Container(
+                          decoration: decoration(),
+                          child: IconButton(
+                            icon: icon,
+                            onPressed: onPressed,
+                            tooltip: tooltip,
+                          ),
+                        );
+                      }
+
+                      return Row(
+                        children: [
+                          // Streak Indicator
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: AppSpacing.md,
+                              vertical: AppSpacing.sm,
+                            ),
+                            decoration: decoration().copyWith(
+                              borderRadius: AppBorderRadius.large,
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Text(
+                                  '🔥',
+                                  style: TextStyle(fontSize: 20),
+                                ),
+                                const SizedBox(width: AppSpacing.sm),
+                                Consumer<ProfileStatsProvider>(
+                                  builder: (
+                                    context,
+                                    profileStatsProvider,
+                                    child,
+                                  ) {
+                                    final streak =
+                                        profileStatsProvider.currentStreak;
+                                    return Text(
+                                      '$streak',
+                                      style: AppTextStyles.title3.copyWith(
+                                        color: colorScheme.onSurface,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(width: AppSpacing.sm),
+                          // Analytics Button
+                          decoratedIconButton(
+                            icon: Icon(
+                              Icons.bar_chart_rounded,
+                              color: colorScheme.onSurface,
+                              size: 24,
+                            ),
+                            tooltip: 'İstatistikler',
+                            onPressed: () {
+                              Navigator.push(
                                 context,
-                              ).colorScheme.shadow.withOpacity(0.1),
-                              blurRadius: 4,
-                              offset: const Offset(0, 2),
+                                MaterialPageRoute(
+                                  builder:
+                                      (context) => const StatisticsScreen(),
+                                ),
+                              );
+                            },
+                          ),
+                          const SizedBox(width: AppSpacing.sm),
+                          // Leaderboard Button
+                          decoratedIconButton(
+                            icon: const Icon(
+                              Icons.emoji_events_rounded,
+                              color: Color(0xFFFFC107),
+                              size: 26,
                             ),
-                          ],
-                        ),
-                        child: IconButton(
-                          icon: Icon(
-                            Icons.bar_chart_rounded,
-                            color: Theme.of(context).colorScheme.onSurface,
-                            size: 24,
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const StatisticsScreen(),
-                              ),
-                            );
-                          },
-                          tooltip: 'İstatistikler',
-                        ),
-                      ),
-                      const SizedBox(width: AppSpacing.sm),
-                      // Streak Indicator
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: AppSpacing.md,
-                          vertical: AppSpacing.sm,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Theme.of(
-                            context,
-                          ).colorScheme.surface.withOpacity(0.9),
-                          borderRadius: AppBorderRadius.large,
-                          border: Border.all(
-                            color: Theme.of(
-                              context,
-                            ).colorScheme.outline.withOpacity(0.2),
-                            width: 1,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Theme.of(
+                            tooltip: 'Liderlik Tablosu',
+                            onPressed: () {
+                              Navigator.push(
                                 context,
-                              ).colorScheme.shadow.withOpacity(0.1),
-                              blurRadius: 4,
-                              offset: const Offset(0, 2),
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Text('🔥', style: TextStyle(fontSize: 20)),
-                            const SizedBox(width: AppSpacing.sm),
-                            Consumer<ProfileStatsProvider>(
-                              builder: (context, profileStatsProvider, child) {
-                                final streak =
-                                    profileStatsProvider.currentStreak;
-                                return Text(
-                                  '$streak',
-                                  style: AppTextStyles.title3.copyWith(
-                                    color:
-                                        Theme.of(context).colorScheme.onSurface,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                );
-                              },
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                                MaterialPageRoute(
+                                  builder:
+                                      (context) => const LeaderboardScreen(),
+                                ),
+                              );
+                            },
+                          ),
+                        ],
+                      );
+                    },
                   ),
                 ],
               ),
               const SizedBox(height: AppSpacing.md),
 
-              // Spacer before greeting
-              const SizedBox(height: AppSpacing.lg),
-
               // Greeting Section
-              Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Good ${_getTimeOfDay()}!',
-                          style: AppTextStyles.headline3.copyWith(
-                            color: Theme.of(context).colorScheme.onSurface,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(height: AppSpacing.xs),
-                        Text(
-                          'Ready to learn?',
-                          style: AppTextStyles.body1.copyWith(
-                            color: Theme.of(
-                              context,
-                            ).colorScheme.onSurface.withOpacity(0.7),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LeaderboardScreen(),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.all(AppSpacing.lg),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
-                        borderRadius: AppBorderRadius.large,
-                        boxShadow: [AppShadows.medium],
-                      ),
-                      child: const Icon(
-                        Icons.emoji_events,
-                        color: AppColors.surface,
-                        size: 40,
+              Padding(
+                padding: const EdgeInsets.only(top: 16, bottom: 12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      _getGreetingMessage(),
+                      style: AppTextStyles.headline3.copyWith(
+                        color: Theme.of(context).colorScheme.onSurface,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Inter',
                       ),
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 6),
+                    Text(
+                      'Hazır mısın öğrenmeye?',
+                      style: AppTextStyles.body1.copyWith(
+                        color: Theme.of(
+                          context,
+                        ).colorScheme.onSurface.withOpacity(0.7),
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'Inter',
+                      ),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(height: AppSpacing.lg),
 
@@ -1290,41 +1267,48 @@ class _DashboardScreenState extends State<DashboardScreen>
 
   // Countdown Timer Widget (small and subtle)
   Widget _buildCountdownTimer() {
-    final hours = _timeUntilReset.inHours;
-    final minutes = _timeUntilReset.inMinutes % 60;
-    final seconds = _timeUntilReset.inSeconds % 60;
+    // Her saniye yalnızca sayaç satırını güncelleyen hafif bir akış.
+    return StreamBuilder<int>(
+      stream: Stream.periodic(const Duration(seconds: 1), (i) => i),
+      builder: (context, snapshot) {
+        final duration = _dailyWordService.getTimeUntilReset();
+        final hours = duration.inHours;
+        final minutes = duration.inMinutes % 60;
+        final seconds = duration.inSeconds % 60;
 
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.md,
-        vertical: AppSpacing.sm,
-      ),
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
-        borderRadius: AppBorderRadius.medium,
-        border: Border.all(
-          color: Theme.of(context).colorScheme.outline.withOpacity(0.2),
-          width: 1,
-        ),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            Icons.timer_outlined,
-            size: 16,
-            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+        return Container(
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.md,
+            vertical: AppSpacing.sm,
           ),
-          const SizedBox(width: AppSpacing.sm),
-          Text(
-            'Yenilenme: ${hours.toString().padLeft(2, '0')}:${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}',
-            style: AppTextStyles.caption.copyWith(
-              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
-              fontWeight: FontWeight.w500,
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.surface.withOpacity(0.6),
+            borderRadius: AppBorderRadius.medium,
+            border: Border.all(
+              color: Theme.of(context).colorScheme.outline.withOpacity(0.2),
+              width: 1,
             ),
           ),
-        ],
-      ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                Icons.timer_outlined,
+                size: 16,
+                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+              ),
+              const SizedBox(width: AppSpacing.sm),
+              Text(
+                'Yenilenme: ${hours.toString().padLeft(2, '0')}:${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}',
+                style: AppTextStyles.caption.copyWith(
+                  color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

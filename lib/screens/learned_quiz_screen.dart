@@ -39,7 +39,7 @@ class _LearnedQuizScreenState extends State<LearnedQuizScreen> {
       backgroundColor: colorScheme.surface,
       appBar: AppBar(
         title: Text(
-          'Learned Quiz',
+          'Öğrenilen Quiz',
           style: TextStyle(color: colorScheme.onSurface),
         ),
         backgroundColor: colorScheme.surface,
@@ -77,7 +77,7 @@ class _LearnedQuizScreenState extends State<LearnedQuizScreen> {
                 ),
                 const SizedBox(height: 32),
                 Text(
-                  'Learned Quiz',
+                  'Öğrenilen Quiz',
                   style: textTheme.headlineLarge?.copyWith(
                     color: colorScheme.onSurface,
                     fontWeight: FontWeight.bold,
@@ -115,14 +115,14 @@ class _LearnedQuizScreenState extends State<LearnedQuizScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    '${widget.learnedWords.length} Learned Words',
+                                    '${widget.learnedWords.length} öğrenilen kelime',
                                     style: textTheme.titleLarge?.copyWith(
                                       fontWeight: FontWeight.bold,
                                       color: colorScheme.onSurface,
                                     ),
                                   ),
                                   Text(
-                                    'Refresh what you know with a focused quiz.',
+                                    'Bildiklerini odaklı bir quiz ile tazele.',
                                     style: textTheme.bodyMedium?.copyWith(
                                       color: colorScheme.onSurface.withOpacity(
                                         0.7,
@@ -196,7 +196,7 @@ class _LearnedQuizScreenState extends State<LearnedQuizScreen> {
                         label: const Padding(
                           padding: EdgeInsets.symmetric(vertical: 16),
                           child: Text(
-                            'Start Learned Quiz',
+                            "Quiz'i Başlat",
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -236,7 +236,7 @@ class _LearnedQuizScreenState extends State<LearnedQuizScreen> {
               children: const [
                 Icon(Icons.error_outline, color: Colors.white),
                 SizedBox(width: 12),
-                Expanded(child: Text('No learned words found.')),
+                Expanded(child: Text('Öğrenilen kelime bulunamadı.')),
               ],
             ),
             behavior: SnackBarBehavior.floating,
@@ -260,7 +260,7 @@ class _LearnedQuizScreenState extends State<LearnedQuizScreen> {
               children: const [
                 Icon(Icons.error_outline, color: Colors.white),
                 SizedBox(width: 12),
-                Expanded(child: Text('Not enough learned words for a quiz.')),
+                Expanded(child: Text('Quiz başlatmak için yeterli öğrenilen kelime yok.')),
               ],
             ),
             behavior: SnackBarBehavior.floating,
@@ -287,7 +287,7 @@ class _LearnedQuizScreenState extends State<LearnedQuizScreen> {
                 SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    'Rewarded ad is not ready yet. Please try again soon.',
+                    'Ödüllü reklam henüz hazır değil. Lütfen kısa süre sonra tekrar dene.',
                   ),
                 ),
               ],
@@ -342,7 +342,7 @@ class _LearnedQuizScreenState extends State<LearnedQuizScreen> {
             children: [
               const Icon(Icons.error_outline, color: Colors.white),
               const SizedBox(width: 12),
-              Expanded(child: Text('Something went wrong: $e')),
+              Expanded(child: Text('Bir şeyler ters gitti: $e')),
             ],
           ),
           backgroundColor: Colors.redAccent,

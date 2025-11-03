@@ -3,6 +3,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
+import 'package:intl/intl.dart';
+
 import '../models/word_model.dart';
 import '../utils/logger.dart';
 import 'sync_manager.dart';
@@ -33,6 +35,10 @@ class LearnedWordsService {
   static final LearnedWordsService _instance = LearnedWordsService._internal();
   factory LearnedWordsService() => _instance;
   LearnedWordsService._internal();
+
+  static String _weeklyActivityDayKey() {
+    return DateFormat('E', 'tr_TR').format(DateTime.now());
+  }
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   static const String _learnedWordsBoxName = 'learned_words';
@@ -453,12 +459,17 @@ class LearnedWordsService {
       await box.put(localKey, DateTime.now().toIso8601String());
 
       final isOnline = await ConnectivityService().checkConnectivity();
+      var addedNewWord = false;
       if (isOnline) {
         final docRef = _firestore
             .collection('users')
             .doc(userId)
             .collection('learned_words')
             .doc(docId);
+        final userRef = _firestore.collection('users').doc(userId);
+        final summaryRef = userRef.collection('stats').doc('summary');
+        final leaderboardRef = _firestore.collection('leaderboard_stats').doc(userId);
+        final dayKey = _weeklyActivityDayKey();
 
         await _firestore.runTransaction((tx) async {
           final snap = await tx.get(docRef);
@@ -470,18 +481,25 @@ class LearnedWordsService {
               );
             }
 
-            final statsRef = _firestore.collection('users').doc(userId);
-            final leaderboardRef = _firestore
-                .collection('leaderboard_stats')
-                .doc(userId);
-            tx.update(statsRef, {
+            final serverTimestamp = FieldValue.serverTimestamp();
+
+            tx.set(userRef, {
               'learnedWordsCount': FieldValue.increment(1),
-              'lastUpdated': FieldValue.serverTimestamp(),
-            });
-            tx.update(leaderboardRef, {
+              'lastUpdated': serverTimestamp,
+            }, SetOptions(merge: true));
+
+            tx.set(summaryRef, {
               'learnedWordsCount': FieldValue.increment(1),
-              'lastUpdated': FieldValue.serverTimestamp(),
-            });
+              'updatedAt': serverTimestamp,
+              'weeklyActivity.$dayKey': FieldValue.increment(1),
+            }, SetOptions(merge: true));
+
+            tx.set(leaderboardRef, {
+              'learnedWordsCount': FieldValue.increment(1),
+              'lastUpdated': serverTimestamp,
+            }, SetOptions(merge: true));
+
+            addedNewWord = true;
           } else {
             tx.set(docRef, updatePayload, SetOptions(merge: true));
             if (kDebugMode) {
@@ -551,12 +569,36 @@ class LearnedWordsService {
           'Word marked as learned offline, queued for sync: $docId',
           'LearnedWordsService',
         );
+        addedNewWord = true;
+      }
+
+      if (addedNewWord) {
+        try {
+          await SessionService().addXp(20);
+        } catch (e, stackTrace) {
+          Logger.e(
+            '[XP] Failed to award XP after learning word $docId',
+            e,
+            stackTrace,
+            'LearnedWordsService',
+          );
+        }
       }
 
       return true;
     } catch (e) {
       Logger.e('Error marking word as learned', e, null, 'LearnedWordsService');
       await _queueLearnedWordForSync(userId, safeWord, docId);
+      try {
+        await SessionService().addXp(20);
+      } catch (err, stackTrace) {
+        Logger.e(
+          '[XP] Failed to award XP after queuing learned word $docId',
+          err,
+          stackTrace,
+          'LearnedWordsService',
+        );
+      }
       return true;
     }
   }
@@ -606,6 +648,7 @@ class LearnedWordsService {
         exampleSentence: word.exampleSentence,
         isCustom: word.isCustom,
       );
+      final dayKey = _weeklyActivityDayKey();
 
       // Queue learned word creation
       await SyncManager().addOperation(
@@ -621,6 +664,17 @@ class LearnedWordsService {
         data: {
           'learnedWordsCount': FieldValue.increment(1),
           'lastUpdated': FieldValue.serverTimestamp(),
+        },
+      );
+
+      // Queue summary stats update with weekly activity increment
+      await SyncManager().addOperation(
+        path: 'users/$userId/stats/summary',
+        type: SyncOperationType.update,
+        data: {
+          'learnedWordsCount': FieldValue.increment(1),
+          'weeklyActivity.$dayKey': FieldValue.increment(1),
+          'updatedAt': FieldValue.serverTimestamp(),
         },
       );
 
@@ -843,6 +897,12 @@ class LearnedWordsService {
 
       if (isOnline) {
         // Update Firestore in transaction to ensure consistency
+        final userRef = _firestore.collection('users').doc(userId);
+        final summaryRef = userRef.collection('stats').doc('summary');
+        final leaderboardRef = _firestore
+            .collection('leaderboard_stats')
+            .doc(userId);
+
         await _firestore.runTransaction((transaction) async {
           // References
           final learnedWordRef = _firestore
@@ -850,12 +910,6 @@ class LearnedWordsService {
               .doc(userId)
               .collection('learned_words')
               .doc(docId);
-
-          final statsRef = _firestore.collection('users').doc(userId);
-
-          final leaderboardRef = _firestore
-              .collection('leaderboard_stats')
-              .doc(userId);
 
           // Check if word is actually learned (idempotency check in transaction)
           final existingDoc = await transaction.get(learnedWordRef);
@@ -870,17 +924,24 @@ class LearnedWordsService {
           // Remove learned word
           transaction.delete(learnedWordRef);
 
+          final serverTimestamp = FieldValue.serverTimestamp();
+
           // Decrement stats with standardized field name
-          transaction.update(statsRef, {
+          transaction.set(userRef, {
             'learnedWordsCount': FieldValue.increment(-1),
-            'lastUpdated': FieldValue.serverTimestamp(),
-          });
+            'lastUpdated': serverTimestamp,
+          }, SetOptions(merge: true));
+
+          transaction.set(summaryRef, {
+            'learnedWordsCount': FieldValue.increment(-1),
+            'updatedAt': serverTimestamp,
+          }, SetOptions(merge: true));
 
           // Update leaderboard stats with standardized field name
-          transaction.update(leaderboardRef, {
+          transaction.set(leaderboardRef, {
             'learnedWordsCount': FieldValue.increment(-1),
-            'lastUpdated': FieldValue.serverTimestamp(),
-          });
+            'lastUpdated': serverTimestamp,
+          }, SetOptions(merge: true));
 
           Logger.i(
             '[LEARNED] -1 -> learnedWordsCount after remove (uid=$userId, wordId=$docId)',
@@ -951,6 +1012,15 @@ class LearnedWordsService {
         data: {
           'learnedWordsCount': FieldValue.increment(-1),
           'lastUpdated': FieldValue.serverTimestamp(),
+        },
+      );
+
+      await SyncManager().addOperation(
+        path: 'users/$userId/stats/summary',
+        type: SyncOperationType.update,
+        data: {
+          'learnedWordsCount': FieldValue.increment(-1),
+          'updatedAt': FieldValue.serverTimestamp(),
         },
       );
 

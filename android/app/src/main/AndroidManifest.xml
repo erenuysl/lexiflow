@@ -25,6 +25,11 @@
         android:icon="@mipmap/lexiflow"
         android:roundIcon="@mipmap/lexiflow">
 
+        <!-- Remove FirebaseInitProvider to prevent native auto-initialization of Firebase -->
+        <provider
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            tools:node="remove" />
+
         <!-- ✅ AdMob App ID - CONFIGURE IN BUILD.GRADLE -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

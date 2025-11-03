@@ -21,6 +21,7 @@ import '../widgets/guest_login_prompt.dart';
 import '../widgets/lexiflow_toast.dart';
 import '../di/locator.dart';
 import '../services/learned_words_service.dart';
+import '../widgets/xp_popup.dart';
 
 class QuizScreen extends StatefulWidget {
   final WordService wordService;
@@ -123,7 +124,7 @@ class _QuizScreenState extends State<QuizScreen> {
         setState(() {
           _isInitializing = false;
           _hasError = true;
-          _errorMessage = 'No words available for quiz';
+          _errorMessage = 'Quiz için uygun kelime bulunamadı.';
         });
       }
     } catch (e) {
@@ -347,12 +348,23 @@ class _QuizScreenState extends State<QuizScreen> {
       _isProcessingResults = true;
     });
 
+    var dialogOpen = false;
+
     try {
+      _showPreparingResultsDialog();
+      dialogOpen = true;
+
       await _markLearnedWords();
 
       final earnedXp = _score * 10;
 
+      await Future.delayed(const Duration(seconds: 3));
+
       if (mounted) {
+        if (dialogOpen) {
+          Navigator.of(context, rootNavigator: true).pop();
+          dialogOpen = false;
+        }
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder:
@@ -392,6 +404,9 @@ class _QuizScreenState extends State<QuizScreen> {
         try {
           await sessionService.addXp(earnedXp);
           await WeeklyXpService.addQuizCompletion(uid);
+          if (mounted) {
+            showXPPopup(context, earnedXp);
+          }
           debugPrint(
             '[XP] +$earnedXp → totalXp with weekly tracking (uid=$uid)',
           );
@@ -404,13 +419,51 @@ class _QuizScreenState extends State<QuizScreen> {
       }
     } catch (e) {
       debugPrint('Error in quiz completion: $e');
+      if (mounted && dialogOpen) {
+        Navigator.of(context, rootNavigator: true).pop();
+        dialogOpen = false;
+      }
+      if (mounted) {
+        showLexiflowToast(
+          context,
+          ToastType.error,
+          'Sonuçlar hesaplanırken bir hata oluştu. Lütfen tekrar dene.',
+        );
+      }
     } finally {
+      if (mounted && dialogOpen) {
+        Navigator.of(context, rootNavigator: true).pop();
+      }
       if (mounted) {
         setState(() {
           _isProcessingResults = false;
         });
       }
     }
+  }
+
+  void _showPreparingResultsDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (_) => AlertDialog(
+        backgroundColor: const Color(0xFF111518),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        content: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: const [
+            CircularProgressIndicator(color: Color(0xFF33C4B3)),
+            SizedBox(width: 16),
+            Flexible(
+              child: Text(
+                'Quiz sonuçları hesaplanıyor...',
+                style: TextStyle(color: Colors.white, fontSize: 16),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   void _showFeedback(bool isCorrect) {
@@ -852,31 +905,6 @@ class _QuizScreenState extends State<QuizScreen> {
                 ],
               ),
             ),
-            if (_isProcessingResults) ...[
-              ModalBarrier(
-                dismissible: false,
-                color: Colors.black.withOpacity(isDark ? 0.6 : 0.45),
-              ),
-              Positioned.fill(
-                child: Center(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation<Color>(
-                          theme.colorScheme.primary,
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      const Text(
-                        'Saving quiz results...',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
           ],
         ),
       ),

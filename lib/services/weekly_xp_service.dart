@@ -76,70 +76,66 @@ class WeeklyXpService {
     if (amount <= 0) return;
     
     try {
-      final docRef = _firestore.collection('leaderboard_stats').doc(userId);
+      final leaderboardRef = _firestore.collection('leaderboard_stats').doc(userId);
+      final userRef = _firestore.collection('users').doc(userId);
+      final summaryRef = userRef.collection('stats').doc('summary');
+      final currentWeekStart = getWeekStart();
       
       await _firestore.runTransaction((transaction) async {
-        final doc = await transaction.get(docRef);
+        final leaderboardDoc = await transaction.get(leaderboardRef);
         
-        if (!doc.exists) {
-          // Create new document with initial XP and calculate level
-          final levelData = LevelService.computeLevelData(amount);
-          transaction.set(docRef, {
-            'userId': userId,
-            'totalXp': amount,
-            'weeklyXp': amount,
-            'weeklyQuizzes': 0,
-            'quizzesCompleted': 0,
-            'currentStreak': 1,
-            'longestStreak': 1,
-            'level': levelData.level, // calculated using LevelService
-            'highestLevel': levelData.level,
-            'learnedWordsCount': 0,
-            'lastWeeklyReset': Timestamp.fromDate(getWeekStart()),
-            'lastUpdated': FieldValue.serverTimestamp(),
-          });
-          
-          Logger.i('[WEEKLY_XP] Created new stats for user $userId with XP $amount (level: ${levelData.level})', 'WeeklyXpService');
-          return;
+        int currentTotalXp = 0;
+        int currentWeeklyXp = 0;
+        int currentHighestLevel = 1;
+        Timestamp? lastWeeklyReset;
+        
+        if (leaderboardDoc.exists) {
+          final data = leaderboardDoc.data()!;
+          currentTotalXp = (data['totalXp'] as int?) ?? 0;
+          currentWeeklyXp = (data['weeklyXp'] as int?) ?? 0;
+          currentHighestLevel = (data['highestLevel'] as int?) ?? 1;
+          lastWeeklyReset = data['lastWeeklyReset'] as Timestamp?;
         }
         
-        final data = doc.data()!;
-        final currentTotalXp = (data['totalXp'] as int?) ?? 0;
-        final currentWeeklyXp = (data['weeklyXp'] as int?) ?? 0;
+        final bool needsReset = lastWeeklyReset == null ||
+            lastWeeklyReset.toDate().isBefore(currentWeekStart);
         
-        // Check if weekly reset is needed
-        final lastWeeklyReset = data['lastWeeklyReset'] as Timestamp?;
-        final currentWeekStart = getWeekStart();
-        bool needsReset = false;
+        final int newTotalXp = currentTotalXp + amount;
+        final int newWeeklyXp = needsReset ? amount : currentWeeklyXp + amount;
+        final levelData = LevelService.computeLevelData(newTotalXp);
         
-        if (lastWeeklyReset == null || lastWeeklyReset.toDate().isBefore(currentWeekStart)) {
-          needsReset = true;
-        }
-        
-        final newWeeklyXp = needsReset ? amount : currentWeeklyXp + amount;
-        final newTotalXp = currentTotalXp + amount;
-        
-        // Calculate new level based on total XP
-        final newLevelData = LevelService.computeLevelData(newTotalXp);
-        final currentLevel = (data['level'] as int?) ?? 1;
-        final currentHighestLevel = (data['highestLevel'] as int?) ?? 1;
-        
-        final updateData = <String, dynamic>{
+        final leaderboardUpdates = <String, dynamic>{
+          'userId': userId,
           'totalXp': newTotalXp,
           'weeklyXp': newWeeklyXp,
-          'level': newLevelData.level, // update level based on LevelService calculation
-          'highestLevel': newLevelData.level > currentHighestLevel ? newLevelData.level : currentHighestLevel,
+          'level': levelData.level,
+          'highestLevel': levelData.level > currentHighestLevel
+              ? levelData.level
+              : currentHighestLevel,
           'lastUpdated': FieldValue.serverTimestamp(),
         };
         
         if (needsReset) {
-          updateData['lastWeeklyReset'] = Timestamp.fromDate(currentWeekStart);
-          updateData['weeklyQuizzes'] = 0; // Reset weekly quizzes too
+          leaderboardUpdates['lastWeeklyReset'] =
+              Timestamp.fromDate(currentWeekStart);
+          leaderboardUpdates['weeklyQuizzes'] = 0;
         }
         
-        transaction.update(docRef, updateData);
+        transaction.set(leaderboardRef, leaderboardUpdates, SetOptions(merge: true));
         
-        Logger.i('[WEEKLY_XP] Added $amount XP to user $userId (total: $newTotalXp, weekly: $newWeeklyXp, level: ${newLevelData.level}, reset: $needsReset)', 'WeeklyXpService');
+        transaction.set(userRef, {
+          'totalXp': FieldValue.increment(amount),
+          'level': levelData.level,
+          'lastUpdated': FieldValue.serverTimestamp(),
+        }, SetOptions(merge: true));
+        
+        transaction.set(summaryRef, {
+          'totalXp': FieldValue.increment(amount),
+          'level': levelData.level,
+          'updatedAt': FieldValue.serverTimestamp(),
+        }, SetOptions(merge: true));
+        
+        Logger.i('[WEEKLY_XP] Added $amount XP to user $userId (total: $newTotalXp, weekly: $newWeeklyXp, level: ${levelData.level}, reset: $needsReset)', 'WeeklyXpService');
       });
     } catch (e) {
       Logger.e('[WEEKLY_XP] Error adding XP for user $userId', e, null, 'WeeklyXpService');
@@ -150,10 +146,13 @@ class WeeklyXpService {
   /// Add quiz completion to both total and weekly counters
   static Future<void> addQuizCompletion(String userId) async {
     try {
-      final docRef = _firestore.collection('leaderboard_stats').doc(userId);
+      final leaderboardRef = _firestore.collection('leaderboard_stats').doc(userId);
+      final userRef = _firestore.collection('users').doc(userId);
+      final summaryRef = userRef.collection('stats').doc('summary');
+      final currentWeekStart = getWeekStart();
       
       await _firestore.runTransaction((transaction) async {
-        final doc = await transaction.get(docRef);
+        final doc = await transaction.get(leaderboardRef);
         
         if (!doc.exists) return;
         
@@ -183,7 +182,17 @@ class WeeklyXpService {
           updateData['weeklyXp'] = 0; // Reset weekly XP too
         }
         
-        transaction.update(docRef, updateData);
+        transaction.update(leaderboardRef, updateData);
+        
+        transaction.set(userRef, {
+          'totalQuizzesCompleted': FieldValue.increment(1),
+          'lastUpdated': FieldValue.serverTimestamp(),
+        }, SetOptions(merge: true));
+        
+        transaction.set(summaryRef, {
+          'totalQuizzesCompleted': FieldValue.increment(1),
+          'updatedAt': FieldValue.serverTimestamp(),
+        }, SetOptions(merge: true));
         
         Logger.i('[WEEKLY_XP] Added quiz completion for user $userId (total: ${currentTotalQuizzes + 1}, weekly: $newWeeklyQuizzes, reset: $needsReset)', 'WeeklyXpService');
       });

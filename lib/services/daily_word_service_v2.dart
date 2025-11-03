@@ -23,6 +23,12 @@ class DailyWordServiceV2 {
   
   // Cache for loaded words
   List<Word>? _allWords;
+
+// Top-level parser for compute: parse 1kwords JSON to Word list
+List<Word> _parseAllWordsJson(String jsonString) {
+  final List<dynamic> jsonList = json.decode(jsonString);
+  return jsonList.map((e) => Word.fromJson(e as Map<String, dynamic>)).toList();
+}
   
   /// Load all words from 1kwords.json
   Future<List<Word>> _loadAllWords() async {
@@ -34,9 +40,8 @@ class DailyWordServiceV2 {
       final String jsonString = await rootBundle.loadString(
         'assets/words/1kwords.json',
       );
-      
-      final List<dynamic> jsonList = json.decode(jsonString);
-      _allWords = jsonList.map((json) => Word.fromJson(json)).toList();
+      // Parse off-main-thread to avoid blocking UI
+      _allWords = await compute(_parseAllWordsJson, jsonString);
       
       debugPrint('✅ Loaded ${_allWords!.length} words from JSON');
       return _allWords!;

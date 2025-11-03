@@ -11,6 +11,15 @@ import '../utils/design_system.dart';
 import '../utils/animation_utils.dart';
 import '../widgets/loading_widgets.dart';
 import '../widgets/lexiflow_toast.dart';
+import '../widgets/xp_popup.dart';
+
+const _lexiflowTurquoise = Color(0xFF33C4B3);
+const _lexiflowLightTurquoise = Color(0xFF70E1F5);
+const _lexiflowDeepSea = Color(0xFF203A43);
+const _lexiflowOcean = Color(0xFF2C5364);
+const _lexiflowCardBackground = Color(0xFF1A2226);
+const _lexiflowRippleTint = Color(0xFF33C4B3);
+const _lexiflowMintAccent = Color(0xFF2DD4BF);
 
 class WordDetailScreen extends StatefulWidget {
   final Word word;
@@ -131,6 +140,10 @@ class _WordDetailScreenState extends State<WordDetailScreen>
           widget.word,
         );
 
+        if (success && mounted) {
+          showXPPopup(context, 20);
+        }
+
         if (mounted && success) {
           setState(() {
             _isLearned = true;
@@ -178,22 +191,18 @@ class _WordDetailScreenState extends State<WordDetailScreen>
     final wordService = Provider.of<WordService>(context, listen: false);
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    // ✅ USING APP COLOR SYSTEM - NO CUSTOM COLORS
-    final backgroundColor =
-        isDark ? AppDarkColors.background : AppColors.background;
-    final surfaceColor = isDark ? AppDarkColors.surface : AppColors.surface;
-    final primaryColor = isDark ? AppDarkColors.primary : AppColors.primary;
-    final textColor =
-        isDark ? AppDarkColors.textPrimary : AppColors.textPrimary;
-    final secondaryTextColor =
-        isDark ? AppDarkColors.textSecondary : AppColors.textSecondary;
+    final detailSurface =
+        isDark ? const Color(0xFF0F1F26) : Colors.white.withOpacity(0.08);
 
     return Scaffold(
-      backgroundColor: backgroundColor,
+      backgroundColor: Colors.black,
       body: Container(
-        decoration: BoxDecoration(
-          gradient: isDark ? null : AppGradients.primary,
-          color: isDark ? backgroundColor : null,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [_lexiflowDeepSea, _lexiflowOcean],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
         ),
         child: SafeArea(
           child: Column(
@@ -205,11 +214,19 @@ class _WordDetailScreenState extends State<WordDetailScreen>
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
-                    color: backgroundColor,
+                    color: detailSurface,
                     borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(32),
                       topRight: Radius.circular(32),
                     ),
+                    border: Border.all(color: Colors.white.withOpacity(0.05)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.35),
+                        blurRadius: 30,
+                        offset: const Offset(0, -12),
+                      ),
+                    ],
                   ),
                   child: SingleChildScrollView(
                     padding: const EdgeInsets.all(AppSpacing.lg),
@@ -308,62 +325,34 @@ class _WordDetailScreenState extends State<WordDetailScreen>
 
   // Modern Word Card
   Widget _buildModernWordCard(bool isDark) {
-    // ✅ USING APP COLOR SYSTEM
-    final primaryColor = isDark ? AppDarkColors.primary : AppColors.primary;
-    final surfaceColor = isDark ? AppDarkColors.surface : AppColors.surface;
-    final textColor =
-        isDark ? AppDarkColors.textPrimary : AppColors.textPrimary;
-    final borderColor = isDark ? AppDarkColors.border : AppColors.border;
+    final cardSurface =
+        isDark ? const Color(0xFF14242C) : Colors.white.withOpacity(0.12);
+    final textColor = Colors.white;
+    final borderColor = Colors.white.withOpacity(isDark ? 0.18 : 0.12);
 
     return Container(
       padding: const EdgeInsets.all(AppSpacing.xl),
       decoration: BoxDecoration(
-        color: surfaceColor,
+        color: cardSurface,
         borderRadius: BorderRadius.circular(16), // ✅ Rounded corners
-        border: Border.all(
-          color: isDark ? borderColor : AppColors.borderLight,
-          width: 1,
-        ),
+        border: Border.all(color: borderColor, width: 1.2),
         boxShadow: [
           BoxShadow(
             color:
                 isDark
                     ? Colors.black.withOpacity(0.5)
-                    : Colors.black.withOpacity(0.1),
-            blurRadius: isDark ? 20 : 8,
-            offset: const Offset(0, 4),
+                    : Colors.black.withOpacity(0.2),
+            blurRadius: isDark ? 20 : 14,
+            offset: const Offset(0, 6),
           ),
         ],
       ),
       child: Column(
         children: [
           // Pronunciation Button with Animation
-          PulseAnimation(
-            child: GestureDetector(
-              onTap: () => _speak(widget.word.word),
-              child: Container(
-                width: 80,
-                height: 80,
-                decoration: BoxDecoration(
-                  gradient: AppGradients.primary,
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: primaryColor.withOpacity(0.4),
-                      blurRadius: 16,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
-                ),
-                child: Icon(
-                  _isSpeaking
-                      ? Icons.volume_up_rounded
-                      : Icons.volume_up_outlined,
-                  color: Colors.white,
-                  size: 32,
-                ),
-              ),
-            ),
+          AnimatedAudioButton(
+            isSpeaking: _isSpeaking,
+            onPressed: () => _speak(widget.word.word),
           ),
           const SizedBox(height: AppSpacing.lg),
 
@@ -396,17 +385,17 @@ class _WordDetailScreenState extends State<WordDetailScreen>
                             vertical: 6,
                           ),
                           decoration: BoxDecoration(
-                            color: primaryColor.withOpacity(0.1),
+                            color: Colors.white.withOpacity(0.08),
                             borderRadius: BorderRadius.circular(12),
                             border: Border.all(
-                              color: primaryColor.withOpacity(0.3),
+                              color: Colors.white.withOpacity(0.16),
                               width: 1,
                             ),
                           ),
                           child: Text(
                             tag,
                             style: TextStyle(
-                              color: primaryColor,
+                              color: _lexiflowLightTurquoise,
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                             ),
@@ -427,14 +416,10 @@ class _WordDetailScreenState extends State<WordDetailScreen>
 
   // Tabbed Content
   Widget _buildTabbedContent(bool isDark) {
-    // ✅ USING APP COLOR SYSTEM
-    final surfaceColor = isDark ? AppDarkColors.surface : AppColors.surface;
-    final primaryColor = isDark ? AppDarkColors.primary : AppColors.primary;
-    final borderColor = isDark ? AppDarkColors.border : AppColors.border;
-    final textColor =
-        isDark ? AppDarkColors.textPrimary : AppColors.textPrimary;
-    final secondaryTextColor =
-        isDark ? AppDarkColors.textSecondary : AppColors.textSecondary;
+    final tabBackground =
+        isDark
+            ? Colors.white.withOpacity(0.05)
+            : Colors.white.withOpacity(0.08);
 
     return DefaultTabController(
       length: 3,
@@ -443,23 +428,18 @@ class _WordDetailScreenState extends State<WordDetailScreen>
           // Modern Tab Bar - Dark Mode Optimized
           Container(
             decoration: BoxDecoration(
-              color: surfaceColor,
+              color: tabBackground,
               borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: borderColor, width: 1),
-              boxShadow: isDark ? [AppShadows.medium] : null,
+              border: Border.all(
+                color: Colors.white.withOpacity(0.1),
+                width: 1,
+              ),
             ),
             child: TabBar(
-              indicator: BoxDecoration(
-                color: primaryColor.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: primaryColor.withOpacity(0.3),
-                  width: 1.5,
-                ),
-              ),
-              indicatorSize: TabBarIndicatorSize.tab,
-              labelColor: primaryColor,
-              unselectedLabelColor: secondaryTextColor,
+              indicatorColor: _lexiflowTurquoise,
+              indicatorWeight: 3.2,
+              labelColor: _lexiflowTurquoise,
+              unselectedLabelColor: Colors.white70,
               labelStyle: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 13,
@@ -469,6 +449,13 @@ class _WordDetailScreenState extends State<WordDetailScreen>
                 fontSize: 13,
               ),
               dividerColor: Colors.transparent,
+              overlayColor: MaterialStateProperty.resolveWith(
+                (states) =>
+                    states.contains(MaterialState.pressed)
+                        ? _lexiflowTurquoise.withOpacity(0.12)
+                        : Colors.transparent,
+              ),
+              indicatorSize: TabBarIndicatorSize.label,
               tabs: const [
                 Tab(
                   text: 'Meaning',
@@ -505,10 +492,6 @@ class _WordDetailScreenState extends State<WordDetailScreen>
 
   // Meaning Tab
   Widget _buildMeaningTab(bool isDark) {
-    // ✅ USING APP COLOR SYSTEM
-    final primaryColor = isDark ? AppDarkColors.primary : AppColors.primary;
-    final infoColor = isDark ? AppDarkColors.info : AppColors.info;
-
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -516,7 +499,7 @@ class _WordDetailScreenState extends State<WordDetailScreen>
             icon: Icons.lightbulb_outline_rounded,
             title: 'English Meaning',
             content: widget.word.meaning,
-            color: isDark ? AppDarkColors.warning : AppColors.warning,
+            color: _lexiflowLightTurquoise,
             delay: 200,
             isDark: isDark,
           ),
@@ -526,7 +509,7 @@ class _WordDetailScreenState extends State<WordDetailScreen>
               icon: Icons.translate_rounded,
               title: 'Türkçe Anlamı',
               content: widget.word.tr,
-              color: infoColor,
+              color: _lexiflowTurquoise,
               delay: 400,
               isDark: isDark,
             ),
@@ -538,10 +521,6 @@ class _WordDetailScreenState extends State<WordDetailScreen>
 
   // Examples Tab
   Widget _buildExamplesTab(bool isDark) {
-    // ✅ USING APP COLOR SYSTEM
-    final successColor = isDark ? AppDarkColors.success : AppColors.success;
-    final primaryColor = isDark ? AppDarkColors.primary : AppColors.primary;
-
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -550,7 +529,7 @@ class _WordDetailScreenState extends State<WordDetailScreen>
               icon: Icons.format_quote_rounded,
               title: 'Example Sentence',
               content: widget.word.example,
-              color: successColor,
+              color: _lexiflowMintAccent,
               delay: 200,
               isDark: isDark,
             ),
@@ -561,7 +540,7 @@ class _WordDetailScreenState extends State<WordDetailScreen>
               icon: Icons.auto_stories_rounded,
               title: 'Additional Example',
               content: widget.word.exampleSentence,
-              color: primaryColor,
+              color: _lexiflowLightTurquoise,
               delay: 400,
               isDark: isDark,
             ),
@@ -573,10 +552,6 @@ class _WordDetailScreenState extends State<WordDetailScreen>
 
   // Details Tab
   Widget _buildDetailsTab(bool isDark) {
-    // ✅ USING APP COLOR SYSTEM
-    final infoColor = isDark ? AppDarkColors.info : AppColors.info;
-    final primaryColor = isDark ? AppDarkColors.primary : AppColors.primary;
-
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -585,7 +560,7 @@ class _WordDetailScreenState extends State<WordDetailScreen>
             title: 'Word Information',
             content:
                 'Type: ${widget.word.tags.isNotEmpty ? widget.word.tags.join(', ') : 'General'}',
-            color: infoColor,
+            color: _lexiflowTurquoise,
             delay: 200,
             isDark: isDark,
           ),
@@ -595,7 +570,7 @@ class _WordDetailScreenState extends State<WordDetailScreen>
               icon: Icons.edit_rounded,
               title: 'Custom Word',
               content: 'This is a custom word added by you.',
-              color: primaryColor,
+              color: _lexiflowLightTurquoise,
               delay: 400,
               isDark: isDark,
             ),
@@ -614,11 +589,12 @@ class _WordDetailScreenState extends State<WordDetailScreen>
     required int delay,
     required bool isDark,
   }) {
-    // ✅ USING APP COLOR SYSTEM
-    final backgroundColor = isDark ? AppDarkColors.surface : AppColors.surface;
-    final textColor =
-        isDark ? AppDarkColors.textPrimary : AppColors.textPrimary;
-    final borderColor = isDark ? AppDarkColors.border : AppColors.borderLight;
+    final backgroundColor =
+        isDark
+            ? _lexiflowCardBackground.withOpacity(0.92)
+            : _lexiflowCardBackground.withOpacity(0.85);
+    final textColor = Colors.white;
+    final borderColor = Colors.white.withOpacity(0.1);
 
     return TweenAnimationBuilder<double>(
       duration: Duration(milliseconds: 600 + delay),
@@ -632,7 +608,8 @@ class _WordDetailScreenState extends State<WordDetailScreen>
         );
       },
       child: Container(
-        padding: const EdgeInsets.all(AppSpacing.lg),
+        margin: const EdgeInsets.symmetric(vertical: 8),
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: BorderRadius.circular(16), // ✅ Rounded corners
@@ -642,9 +619,9 @@ class _WordDetailScreenState extends State<WordDetailScreen>
               color:
                   isDark
                       ? Colors.black.withOpacity(0.4)
-                      : Colors.black.withOpacity(0.08),
-              blurRadius: isDark ? 12 : 8,
-              offset: const Offset(0, 2),
+                      : Colors.black.withOpacity(0.18),
+              blurRadius: isDark ? 18 : 12,
+              offset: const Offset(0, 10),
             ),
           ],
         ),
@@ -653,20 +630,13 @@ class _WordDetailScreenState extends State<WordDetailScreen>
           children: [
             Row(
               children: [
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: color.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Icon(icon, color: color, size: 22),
-                ),
-                const SizedBox(width: AppSpacing.md),
+                Icon(icon, color: color, size: 20),
+                const SizedBox(width: 8),
                 Expanded(
                   child: Text(
                     title,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 15,
                       fontWeight: FontWeight.bold,
                       color: color,
                     ),
@@ -674,7 +644,7 @@ class _WordDetailScreenState extends State<WordDetailScreen>
                 ),
               ],
             ),
-            const SizedBox(height: AppSpacing.md),
+            const SizedBox(height: 6),
             Text(
               content,
               style: TextStyle(
@@ -699,118 +669,268 @@ class _WordDetailScreenState extends State<WordDetailScreen>
       return const SizedBox.shrink();
     }
 
-    final primaryColor = isDark ? AppDarkColors.primary : AppColors.primary;
-    final successColor = isDark ? AppDarkColors.success : AppColors.success;
-    final textColor =
-        isDark ? AppDarkColors.textPrimary : AppColors.textPrimary;
-    final surfaceColor = isDark ? AppDarkColors.surface : AppColors.surface;
+    return LearnedRippleButton(
+      isLearned: _isLearned,
+      isProcessing: _isMarkingLearned,
+      onPressed: _toggleWordLearned,
+    );
+  }
+}
 
-    return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 300),
-      transitionBuilder: (Widget child, Animation<double> animation) {
-        return ScaleTransition(scale: animation, child: child);
-      },
-      child:
-          _isLearned
-              ? GestureDetector(
-                key: const ValueKey('learned'),
-                onTap: _isMarkingLearned ? null : _toggleWordLearned,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 12,
-                  ),
-                  decoration: BoxDecoration(
-                    color: successColor.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(25),
-                    border: Border.all(
-                      color: successColor.withOpacity(0.3),
-                      width: 2,
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      if (_isMarkingLearned)
-                        SizedBox(
-                          width: 16,
-                          height: 16,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2,
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              successColor,
-                            ),
-                          ),
-                        )
-                      else
-                        Icon(Icons.check_circle, color: successColor, size: 20),
-                      const SizedBox(width: 8),
-                      Text(
-                        _isMarkingLearned ? 'İşleniyor...' : 'Öğrenildi',
-                        style: TextStyle(
-                          color: successColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
-                  ),
+class AnimatedAudioButton extends StatefulWidget {
+  final VoidCallback onPressed;
+  final bool isSpeaking;
+
+  const AnimatedAudioButton({
+    required this.onPressed,
+    required this.isSpeaking,
+    super.key,
+  });
+
+  @override
+  State<AnimatedAudioButton> createState() => _AnimatedAudioButtonState();
+}
+
+class _AnimatedAudioButtonState extends State<AnimatedAudioButton>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+  late final Animation<Color?> _colorAnim;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+    _colorAnim = ColorTween(
+      begin: _lexiflowTurquoise,
+      end: _lexiflowLightTurquoise,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+    _controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        _controller.reverse();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _handleTap() {
+    _controller.forward(from: 0);
+    widget.onPressed();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _colorAnim,
+      builder: (context, child) {
+        final color = _colorAnim.value ?? _lexiflowTurquoise;
+        return GestureDetector(
+          onTap: _handleTap,
+          child: Container(
+            height: 95,
+            width: 95,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: LinearGradient(
+                colors: [color, _lexiflowMintAccent],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: color.withOpacity(0.45),
+                  blurRadius: 22,
+                  offset: const Offset(0, 10),
                 ),
-              )
-              : GestureDetector(
-                key: const ValueKey('not_learned'),
-                onTap: _isMarkingLearned ? null : _toggleWordLearned,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 12,
-                  ),
-                  decoration: BoxDecoration(
-                    color:
-                        _isMarkingLearned
-                            ? primaryColor.withOpacity(0.05)
-                            : primaryColor.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(25),
-                    border: Border.all(
-                      color: primaryColor.withOpacity(0.3),
-                      width: 2,
+              ],
+            ),
+            child: Icon(
+              widget.isSpeaking
+                  ? Icons.volume_up_rounded
+                  : Icons.volume_up_outlined,
+              color: Colors.white,
+              size: 42,
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class LearnedRippleButton extends StatefulWidget {
+  final bool isLearned;
+  final bool isProcessing;
+  final VoidCallback onPressed;
+
+  const LearnedRippleButton({
+    required this.isLearned,
+    required this.isProcessing,
+    required this.onPressed,
+    super.key,
+  });
+
+  @override
+  State<LearnedRippleButton> createState() => _LearnedRippleButtonState();
+}
+
+class _LearnedRippleButtonState extends State<LearnedRippleButton>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+  late final Animation<double> _scaleAnim;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 450),
+    );
+    _scaleAnim = CurvedAnimation(parent: _controller, curve: Curves.easeOut);
+    _controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        _controller.reverse();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _triggerRipple() {
+    if (widget.isProcessing) {
+      return;
+    }
+    _controller.forward(from: 0);
+    widget.onPressed();
+  }
+
+  @override
+  void didUpdateWidget(covariant LearnedRippleButton oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (!widget.isLearned && oldWidget.isLearned) {
+      _controller.reset();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (widget.isLearned) {
+      return GestureDetector(
+        onTap: widget.isProcessing ? null : widget.onPressed,
+        behavior: HitTestBehavior.opaque,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          decoration: BoxDecoration(
+            color: _lexiflowTurquoise.withOpacity(0.2),
+            borderRadius: BorderRadius.circular(24),
+            border: Border.all(
+              color: _lexiflowMintAccent.withOpacity(0.5),
+              width: 2,
+            ),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (widget.isProcessing)
+                SizedBox(
+                  width: 16,
+                  height: 16,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      _lexiflowMintAccent,
                     ),
                   ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      if (_isMarkingLearned)
-                        SizedBox(
-                          width: 16,
-                          height: 16,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2,
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              primaryColor,
-                            ),
-                          ),
-                        )
-                      else
-                        Icon(
-                          Icons.check_circle_outline,
-                          color: primaryColor,
-                          size: 20,
-                        ),
-                      const SizedBox(width: 8),
-                      Text(
-                        _isMarkingLearned
-                            ? 'İşaretleniyor...'
-                            : 'Bu kelimeyi öğrendim',
-                        style: TextStyle(
-                          color: primaryColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
-                  ),
+                )
+              else
+                Icon(Icons.check_circle, color: _lexiflowMintAccent, size: 20),
+              const SizedBox(width: 8),
+              Text(
+                widget.isProcessing ? 'İşaretleniyor...' : 'Öğrenildi',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        AnimatedBuilder(
+          animation: _scaleAnim,
+          builder: (context, child) {
+            final value = _scaleAnim.value;
+            if (value == 0) {
+              return const SizedBox.shrink();
+            }
+            return Container(
+              width: 150 + 110 * value,
+              height: 50 + 110 * value,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: _lexiflowRippleTint.withOpacity(0.18 * (1 - value)),
+              ),
+            );
+          },
+        ),
+        IgnorePointer(
+          ignoring: widget.isProcessing,
+          child: OutlinedButton.icon(
+            onPressed: _triggerRipple,
+            icon:
+                widget.isProcessing
+                    ? SizedBox(
+                      width: 16,
+                      height: 16,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                          _lexiflowTurquoise,
+                        ),
+                      ),
+                    )
+                    : const Icon(
+                      Icons.check_circle_outline,
+                      color: _lexiflowTurquoise,
+                      size: 18,
+                    ),
+            label: Text(
+              widget.isProcessing ? 'İşaretleniyor...' : 'Bu kelimeyi öğrendim',
+              style: const TextStyle(
+                color: _lexiflowTurquoise,
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            style: OutlinedButton.styleFrom(
+              side: const BorderSide(color: _lexiflowTurquoise),
+              foregroundColor: _lexiflowTurquoise,
+              backgroundColor: Colors.white.withOpacity(0.02),
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
