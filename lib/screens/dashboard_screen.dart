@@ -17,7 +17,8 @@ import '../widgets/offline_indicator.dart';
 import '../services/notification_service.dart';
 import 'word_detail_screen.dart';
 import 'statistics_screen.dart';
-import 'leaderboard_screen.dart';
+// TODO: Re-enable Leaderboard UI if needed later
+// import 'leaderboard_screen.dart';
 import '../widgets/lexiflow_toast.dart';
 import 'daily_challenge_screen.dart';
 import '../providers/profile_stats_provider.dart';
@@ -52,9 +53,15 @@ class _DashboardScreenState extends State<DashboardScreen>
   late final AdService _adService;
   late final SessionService _sessionService;
 
+  // Cache shared across potential re-creations of DashboardScreen
+  static List<Word>? _cachedDailyWords;
+  static DateTime? _cacheTimestamp;
+  static bool _initialLoadDone = false;
+
   List<Word> _dailyWords = [];
-  bool _isLoading = true;
-  bool _isFirstLoaded = false; // latch for first load shimmer
+  // Start in loading state ONLY if we don't have cached data yet
+  bool _isLoading = !_initialLoadDone;
+  bool _isFirstLoaded = false; // legacy latch; superseded by _initialLoadDone
   final bool _isExtended = false;
   List<String> _allWordIds = [];
 
@@ -63,6 +70,10 @@ class _DashboardScreenState extends State<DashboardScreen>
   Timer? _countdownTimer;
   Duration _timeUntilReset = Duration.zero; // retained for legacy but not used for rebuilds
   DateTime? _lastBuildLog;
+  bool _midnightTriggered = false;
+  static String? _cachedDate; // UTC date string for cached words (YYYY-MM-DD)
+  // Cache initial home load to avoid recreating futures on rebuilds
+  late Future<void> _homeFuture;
 
   @override
   bool get wantKeepAlive => true;
@@ -77,8 +88,19 @@ class _DashboardScreenState extends State<DashboardScreen>
     _adService = widget.adService;
     _sessionService = Provider.of<SessionService>(context, listen: false);
 
-    // Verileri arka planda yükle - ilk frame'i bekletme
-    Future.microtask(_loadDailyWords);
+    // Eğer cache varsa anında göster ve arka planda sessizce yenile
+    if (_cachedDailyWords != null && _cachedDailyWords!.isNotEmpty) {
+      _dailyWords = _cachedDailyWords!;
+      _isLoading = false;
+      _isFirstLoaded = true;
+      _initialLoadDone = true;
+      // Sessiz arka plan yenileme (spinner yok)
+      _homeFuture = _loadDailyWords(silent: true);
+    } else {
+      // Verileri arka planda yükle ve geleceği (future) cache'le
+      // Böylece yeniden oluşturmalarda yeni future üretilmez
+      _homeFuture = _loadDailyWords();
+    }
     Future.microtask(_scheduleNotifications);
     _startCountdownTimer();
   }
@@ -92,12 +114,14 @@ class _DashboardScreenState extends State<DashboardScreen>
     }
   }
 
-  Future<void> _loadDailyWords() async {
+  Future<void> _loadDailyWords({bool silent = false}) async {
     if (!mounted) return;
-
-    setState(() {
-      _isLoading = true;
-    });
+    // Yalnızca ilk yüklemede spinner göster; cache varsa sessizce yenile
+    if (!silent) {
+      setState(() {
+        _isLoading = !_initialLoadDone;
+      });
+    }
 
     try {
       final user = _sessionService.currentUser;
@@ -106,9 +130,13 @@ class _DashboardScreenState extends State<DashboardScreen>
         final words = await _wordService.getRandomWords(5);
         setState(() {
           _dailyWords = words;
-          _isLoading = false;
+          if (!silent) _isLoading = false;
           _isFirstLoaded = true; // mark as loaded
+          _initialLoadDone = true;
         });
+        _cachedDailyWords = words;
+        _cacheTimestamp = DateTime.now();
+        _cachedDate = _todayDateUtcString();
         return;
       }
 
@@ -116,6 +144,7 @@ class _DashboardScreenState extends State<DashboardScreen>
 
       // Use the requested format for daily words loading
       final dailyWordsData = await _dailyWordService.getTodaysWords(user.uid);
+      _dailyWordsData = dailyWordsData;
       final dailyWordIds = List<String>.from(
         dailyWordsData['dailyWords'] ?? [],
       );
@@ -130,9 +159,13 @@ class _DashboardScreenState extends State<DashboardScreen>
 
       setState(() {
         _dailyWords = words;
-        _isLoading = false;
+        if (!silent) _isLoading = false;
         _isFirstLoaded = true; // mark as loaded
+        _initialLoadDone = true;
       });
+      _cachedDailyWords = words;
+      _cacheTimestamp = DateTime.now();
+      _cachedDate = (dailyWordsData['date'] ?? _todayDateUtcString()).toString();
     } catch (e) {
       debugPrint('Error loading daily words: $e');
 
@@ -145,22 +178,31 @@ class _DashboardScreenState extends State<DashboardScreen>
           final fallbackWords = generalWords.take(10).toList();
           setState(() {
             _dailyWords = fallbackWords;
-            _isLoading = false;
+            if (!silent) _isLoading = false;
             _isFirstLoaded = true;
+            _initialLoadDone = true;
           });
+          _cachedDailyWords = fallbackWords;
+          _cacheTimestamp = DateTime.now();
+          _cachedDate = _todayDateUtcString();
           // shimmer kaldırıldı; yalnızca sessiz fallback
         } else {
           setState(() {
             _dailyWords = words;
-            _isLoading = false;
+            if (!silent) _isLoading = false;
             _isFirstLoaded = true; // mark as loaded even on fallback
+            _initialLoadDone = true;
           });
+          _cachedDailyWords = words;
+          _cacheTimestamp = DateTime.now();
+          _cachedDate = _todayDateUtcString();
         }
       } catch (fallbackError) {
         debugPrint('Fallback error: $fallbackError');
         setState(() {
-          _isLoading = false;
+          if (!silent) _isLoading = false;
           _isFirstLoaded = true; // mark as loaded even on error
+          _initialLoadDone = true;
         });
       }
     }
@@ -245,6 +287,17 @@ class _DashboardScreenState extends State<DashboardScreen>
     _updateTimeUntilReset();
     _countdownTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
       _updateTimeUntilReset();
+      // When the reset time hits 00:00 UTC, refresh daily words silently
+      final remaining = _dailyWordService.getTimeUntilReset();
+      if (remaining.inSeconds <= 0 && !_midnightTriggered) {
+        _midnightTriggered = true;
+        // Clear cache and fetch new set silently
+        Future.microtask(() async {
+          await _loadDailyWords(silent: true);
+          // Update date cache after refresh
+          _cachedDate = _todayDateUtcString();
+        });
+      }
     });
   }
 
@@ -252,6 +305,11 @@ class _DashboardScreenState extends State<DashboardScreen>
     // Ekranı her saniye yeniden çizmemek için setState kaldırıldı.
     // Geri sayım artık StreamBuilder ile izole şekilde güncelleniyor.
     _timeUntilReset = _dailyWordService.getTimeUntilReset();
+  }
+
+  String _todayDateUtcString() {
+    final now = DateTime.now().toUtc();
+    return '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
   }
 
   void _showSnackBar(String message, IconData icon, {Color? color}) {
@@ -375,11 +433,23 @@ class _DashboardScreenState extends State<DashboardScreen>
       );
       _lastBuildLog = now;
     }
+
+    // Revisited Home tab: show cached content immediately and refresh in background
+    if (_initialLoadDone && !_isLoading) {
+      final shouldRefreshSilently =
+          _cacheTimestamp == null ||
+          now.difference(_cacheTimestamp!) > const Duration(seconds: 10);
+      if (shouldRefreshSilently) {
+        Future.microtask(() => _loadDailyWords(silent: true));
+      }
+    }
     
     // Ana içerik: veriler hazırsa göster, değilse boş
     final Widget content = RefreshIndicator(
       onRefresh: _loadDailyWords,
       child: CustomScrollView(
+        // Preserve scroll position across tab switches
+        key: const PageStorageKey<String>('dashboard_scroll'),
         slivers: [
           // Modern Header with Gradient
           SliverToBoxAdapter(child: _buildModernHeader(isDark)),
@@ -417,7 +487,8 @@ class _DashboardScreenState extends State<DashboardScreen>
           opacity: CurvedAnimation(parent: animation, curve: Curves.easeInOut),
           child: child,
         ),
-        child: _isLoading ? loadingState : content,
+        // Yalnızca ilk açılışta loading göster; cache varsa anında içerik
+        child: (!_initialLoadDone && _isLoading) ? loadingState : content,
       ),
     );
   }
@@ -562,24 +633,25 @@ class _DashboardScreenState extends State<DashboardScreen>
                             },
                           ),
                           const SizedBox(width: AppSpacing.sm),
-                          // Leaderboard Button
-                          decoratedIconButton(
-                            icon: const Icon(
-                              Icons.emoji_events_rounded,
-                              color: Color(0xFFFFC107),
-                              size: 26,
-                            ),
-                            tooltip: 'Liderlik Tablosu',
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder:
-                                      (context) => const LeaderboardScreen(),
-                                ),
-                              );
-                            },
-                          ),
+                          // TODO: Re-enable Leaderboard UI if needed later
+                          // Leaderboard Button (hidden)
+                          // decoratedIconButton(
+                          //   icon: const Icon(
+                          //     Icons.emoji_events_rounded,
+                          //     color: Color(0xFFFFC107),
+                          //     size: 26,
+                          //   ),
+                          //   tooltip: 'Liderlik Tablosu',
+                          //   onPressed: () {
+                          //     Navigator.push(
+                          //       context,
+                          //       MaterialPageRoute(
+                          //         builder:
+                          //             (context) => const LeaderboardScreen(),
+                          //       ),
+                          //     );
+                          //   },
+                          // ),
                         ],
                       );
                     },

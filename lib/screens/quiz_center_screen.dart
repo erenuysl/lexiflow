@@ -300,13 +300,26 @@ class _QuizCenterScreenState extends State<QuizCenterScreen> {
     final session = locator<SessionService>();
     final userId = session.currentUser?.uid;
     final cps = locator<CategoryProgressService>();
+    final bool isDark = colorScheme.brightness == Brightness.dark;
 
     return SizedBox(
       height: 180,
       child: Card(
-        color: Colors.grey.shade900,
+        // TODO: Theme adaptive card color fix applied
+        // Use theme-aware background instead of hardcoded dark color
+        color: Theme.of(context).cardColor,
         clipBehavior: Clip.hardEdge,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        // TODO: Added subtle border for visual consistency with Home cards
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+          side: BorderSide(
+            color: Theme.of(context)
+                .colorScheme
+                .outlineVariant
+                .withOpacity(0.2),
+            width: 1,
+          ),
+        ),
         child: InkWell(
           onTap: () {
             final categoryData = categories[categoryKey]!;
@@ -336,18 +349,20 @@ class _QuizCenterScreenState extends State<QuizCenterScreen> {
                       // mevcut emoji tabanlı ikon kullanımı
                       Text(
                         categoryData['icon']!,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 40,
-                          color: Colors.white,
+                          // Icon color adapts to theme
+                          color: Theme.of(context).iconTheme.color,
                         ),
                       ),
                       const SizedBox(height: 10),
                       Text(
                         categoryData['name']!,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          // Text color adapts to theme
+                          color: colorScheme.onSurface,
                         ),
                         textAlign: TextAlign.center,
                         maxLines: 2,
@@ -355,9 +370,10 @@ class _QuizCenterScreenState extends State<QuizCenterScreen> {
                       ),
                       Text(
                         '$wordCount kelime',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 12,
-                          color: Colors.white70,
+                          // Subtext color adapts to theme
+                          color: colorScheme.onSurface.withOpacity(0.7),
                         ),
                       ),
                     ],
@@ -398,17 +414,21 @@ class _QuizCenterScreenState extends State<QuizCenterScreen> {
                                   ? 'Not learned yet'
                                   : '${percent.toStringAsFixed(1)}% learned',
                               textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 12,
-                                color:
-                                    percent == 0
-                                        ? Colors.grey.shade400
-                                        : Colors.white70,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
+                          style: TextStyle(
+                            fontSize: 12,
+                            // Percentage label color adapts to theme and state
+                            color: percent == 0
+                                ? (isDark
+                                    ? Colors.grey.shade400
+                                    : colorScheme.onSurface.withOpacity(0.6))
+                                : (isDark
+                                    ? Colors.white70
+                                    : colorScheme.onSurface.withOpacity(0.8)),
+                            fontWeight: FontWeight.w500,
                           ),
-                          const SizedBox(height: 4),
+                        ),
+                      ),
+                      const SizedBox(height: 4),
                           // Animated progress bar (Hero) with unique tag to avoid collisions
                           Hero(
                             tag: progressHeroTag,
@@ -439,7 +459,10 @@ class _QuizCenterScreenState extends State<QuizCenterScreen> {
                                   child: LinearProgressIndicator(
                                     value: value,
                                     minHeight: 6,
-                                    backgroundColor: Colors.grey.shade800,
+                                    // Progress background adapts to theme
+                                    backgroundColor: isDark
+                                        ? Colors.grey.shade800
+                                        : colorScheme.surfaceVariant,
                                     valueColor: AlwaysStoppedAnimation<Color>(
                                       _getCategoryColor(categoryKey),
                                     ),

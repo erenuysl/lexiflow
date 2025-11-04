@@ -25,6 +25,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 
 import '../models/leaderboard_user.dart';
+import '../models/leader_entry.dart';
 import '../utils/logger.dart';
 import 'level_service.dart';
 
@@ -964,6 +965,84 @@ class LeaderboardService {
   void dispose() {
     _cache.clear();
     _cacheTimestamps.clear();
+  }
+
+  // =============================
+  // Simplified data-layer methods
+  // Reads from users collection (stats.*) with single-field orderBy
+  // =============================
+
+  /// Top levels: orderBy('stats.level', desc), limit=10
+  Future<List<LeaderEntry>> fetchTopLevels({int limit = 10}) async {
+    try {
+      final snap = await _firestore
+          .collection('users')
+          .orderBy('stats.level', descending: true)
+          .limit(limit)
+          .get();
+
+      final list = snap.docs
+          .map((d) => LeaderEntry.fromDoc(d, metric: 'level'))
+          .toList();
+
+      // assign index 1..N
+      for (var i = 0; i < list.length; i++) {
+        list[i] = list[i].withIndex(i + 1);
+      }
+      return list;
+    } catch (e, st) {
+      debugPrint('❌ fetchTopLevels failed: $e');
+      Logger.e('fetchTopLevels error', e, st, 'LeaderboardService');
+      rethrow; // bubble to upper layer
+    }
+  }
+
+  /// Top streaks: orderBy('stats.longestStreak', desc), limit=10
+  Future<List<LeaderEntry>> fetchTopStreaks({int limit = 10}) async {
+    try {
+      final snap = await _firestore
+          .collection('users')
+          .orderBy('stats.longestStreak', descending: true)
+          .limit(limit)
+          .get();
+
+      final list = snap.docs
+          .map((d) => LeaderEntry.fromDoc(d, metric: 'streak'))
+          .toList();
+
+      for (var i = 0; i < list.length; i++) {
+        list[i] = list[i].withIndex(i + 1);
+      }
+      return list;
+    } catch (e, st) {
+      debugPrint('❌ fetchTopStreaks failed: $e');
+      Logger.e('fetchTopStreaks error', e, st, 'LeaderboardService');
+      rethrow;
+    }
+  }
+
+  /// Top quizzes: orderBy('stats.totalQuizzesCompleted', desc), limit=10
+  Future<List<LeaderEntry>> fetchTopQuizzes({int limit = 10}) async {
+    try {
+      final snap = await _firestore
+          .collection('users')
+          .orderBy('stats.totalQuizzesCompleted', descending: true)
+          .limit(limit)
+          .get();
+
+      final list = snap.docs
+          .map((d) => LeaderEntry.fromDoc(d, metric: 'quiz'))
+          .toList();
+
+      for (var i = 0; i < list.length; i++) {
+        list[i] = list[i].withIndex(i + 1);
+      }
+      return list;
+    } catch (e, st) {
+      debugPrint('❌ fetchTopQuizzes failed: $e');
+      Logger.e('fetchTopQuizzes error', e, st, 'LeaderboardService');
+      rethrow;
+    }
   }
 }
 

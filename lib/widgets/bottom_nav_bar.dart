@@ -63,12 +63,13 @@ class CustomBottomNavBar extends StatelessWidget {
                   label: 'Quiz',
                 ),
                 const SizedBox(width: 64),
+                // TODO: Re-enable Leaderboard UI if needed later
+                // Previously: Leaderboard tab/button was here.
                 _NavItem(
                   index: 3,
                   currentIndex: currentIndex,
                   onTap: onTap,
-                  icon: Icons.favorite_border_rounded,
-                  selectedIcon: Icons.favorite_rounded,
+                  icon: Icons.favorite,
                   label: 'Favoriler',
                 ),
                 _NavItem(
@@ -155,10 +156,7 @@ class _NavItem extends StatelessWidget {
 }
 
 class _CenterButton extends StatelessWidget {
-  const _CenterButton({
-    required this.isSelected,
-    required this.onTap,
-  });
+  const _CenterButton({required this.isSelected, required this.onTap});
 
   final bool isSelected;
   final VoidCallback onTap;

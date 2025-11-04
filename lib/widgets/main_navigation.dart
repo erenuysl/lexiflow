@@ -29,7 +29,8 @@ class MainNavigation extends StatefulWidget {
 class _MainNavigationState extends State<MainNavigation> {
   int _currentIndex = 0;
   late final List<Widget> _pages;
-  final AchievementListenerService _achievementListener = AchievementListenerService();
+  final AchievementListenerService _achievementListener =
+      AchievementListenerService();
   final PageStorageBucket _pageStorageBucket = PageStorageBucket();
 
   @override
@@ -43,6 +44,9 @@ class _MainNavigationState extends State<MainNavigation> {
       ),
       const QuizCenterScreen(),
       const CardsHomeScreen(),
+      // TODO: Re-enable Leaderboard UI if needed later
+      // Previously, the 4th tab routed to LeaderboardScreen.
+      // 4. sekme: Favoriler
       FavoritesScreen(
         wordService: widget.wordService,
         userService: widget.userService,
@@ -76,9 +80,7 @@ class _MainNavigationState extends State<MainNavigation> {
       body: PageStorage(
         bucket: _pageStorageBucket,
         child: Stack(
-          children: [
-            for (var i = 0; i < _pages.length; i++) _buildPage(i),
-          ],
+          children: [for (var i = 0; i < _pages.length; i++) _buildPage(i)],
         ),
       ),
       bottomNavigationBar: CustomBottomNavBar(
@@ -94,7 +96,28 @@ class _MainNavigationState extends State<MainNavigation> {
       offstage: !isActive,
       child: TickerMode(
         enabled: isActive,
-        child: _pages[index],
+        child: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 300),
+          switchInCurve: Curves.easeOut,
+          switchOutCurve: Curves.easeIn,
+          transitionBuilder: (child, animation) => FadeTransition(
+            opacity: animation,
+            child: SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(0.05, 0),
+                end: Offset.zero,
+              ).animate(animation),
+              child: child,
+            ),
+          ),
+          // Use a ValueKey tied to the current index so AnimatedSwitcher
+          // animates when the active tab changes, while preserving state
+          // via PageStorage and keeping inactive tabs mounted.
+          child: KeyedSubtree(
+            key: ValueKey<int>(_currentIndex),
+            child: _pages[index],
+          ),
+        ),
       ),
     );
   }
